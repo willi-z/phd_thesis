@@ -1,0 +1,1 @@
+Textbreite zweireihig 157 mm entspricht Bildbreite

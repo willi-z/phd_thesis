@@ -1,0 +1,29 @@
+\chapter{Kapitel}
+
+\section{Unterkapitel}
+
+\section{Unterunterkapitel}
+Erstellung Bild siehe Kommentar in .tex Datei
+%Bild in Inkscape erzeugt und als SVG sowie pdf_tex speichern (Speichern unter -> .pdf -> Text in PDF weglassen und LaTex Datei erstellen). 
+
+\begin{figure}[h]
+	%\raggedleft
+		%\def\svgwidth{\columnwidth}
+	\def\svgscale{0.98}
+		\input{testbild.pdf_tex} 
+		\caption{\label{fig:testbild}Testbild erzeugt mit Inkscape}
+\end{figure}
+
+Bild \ref{fig:testbild} \cite{Dannemann.Kucher_et.al_AppliedSciences_2018}  
+
+Verwendung Package SIUNITX %(siehe Datei latex_package_readme_siunitx.pdf)   
+
+Anzugsdrehmoment von $M_{\textnormal{a}}=\SI{1.1}{\newtonmetre}$
+
+von \SI{1}{\kilo\hertz} bis \SI{15}{\kilo\hertz}
+
+mittlere Temperaturänderung von $\left\langle \Delta T_{\textnormal{p}}\right\rangle(t)<\SI{0.5}{\degreeCelsius}$
+
+Masse von $m_{\textnormal{p}}=\SI[separate-uncertainty]{0.884 (15)}{\gram}$
+
+(siehe Abschnitt \ref{ch:anhang})
