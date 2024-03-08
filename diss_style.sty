@@ -1,0 +1,123 @@
+\typeout{Initialisierung fuer KOMA scrreprt-Style}
+\typeout{Autoren: mda, refu}
+\typeout{Stand: 7. November 2012}
+
+%*******************************************************************************
+%*******************************************************************************
+% Historie
+% --------
+% Tag					Änderung																								Person
+% ------------------------------------------------------------------------------
+% 16.10.2012:	Erstellung																							mda
+%							- Schriftarten
+%							- Inhaltsverzeichnis
+%							- Kopf- und Fußzeilen
+%							- Name für Abbildungen: Bild
+% 18.10.2012	(Absatz-)Abstand zwischen mehreren Fußnoten							mda
+% 19.10.2012	Schriftgröße und -auszeichnung für Bildunterschriften
+%							Abbildungs- und Tabellenverzeichnis											mda
+% 20.10.2012	\AtBeginEnvironment z.B. für Struktogramme							mda
+% 06.11.2012	Eleminierung if@oneside-Unterscheidung bei Kopfzeilen		refu
+% 07.11.2012	\raggedbottom zum globalen Ausschalten des vertikalen		mda
+%							Ausgleichs hinzugefügt																							
+%*******************************************************************************
+%*******************************************************************************
+
+
+%*******************************************************************************
+% FEHLT NOCH !!!!!!!!!!!!!!!!!!!!!!!!!!
+% -------------------------------------
+% - 
+% - 
+% - 
+%*******************************************************************************
+
+
+%************************************************************************
+% Schriftarten
+%************************************************************************
+\setkomafont{disposition}{\normalcolor\bfseries} % Keine serifenlosen Schriften (Standard sind serifenlose Überschriften)
+
+%************************************************************************
+% Inhaltsverzeichnis
+%************************************************************************
+\setcounter{tocdepth}{3} %% Tiefe des Inhaltsverzeichnisses: -1:part,0:chapter,...
+\addtolength{\cftparskip}{3.5pt} % In Verbindung mit dem Paket tocloft den Zeilenabstand im Inhaltsverzeichnis erhöhen
+\makeatletter% weil gleich ein @-Zeichen kommt, dass auch als solches beachtet werden soll
+\renewcommand*{\@pnumwidth}{1.8em} % Sonst führen dreistellige, fettgedruckte Zahlen zu einer "Overfull hbox"
+\makeatother%
+
+%************************************************************************
+% Abbildungs- und Tabellenverzeichnis
+%************************************************************************
+% Siehe http://www.arthur-schiwon.de/Formatierung_von_Tabellen_und_Abbildungsverzeichnis_mit_Latex
+\renewcommand{\cfttabpresnum}{Tabelle }
+\renewcommand{\cftfigpresnum}{Bild }
+\settowidth{\cfttabnumwidth}{Tabelle 5.17\quad} % Position des "Tabulators"
+\settowidth{\cftfignumwidth}{Bild B.20\quad}
+%\setlength{\cftfignumwidth}{2cm}
+%\setlength{\cfttabnumwidth}{2cm}
+\renewcommand{\cftfigaftersnum}{:} % Doppelpunkt in "Tabelle 1.1: Text"
+\renewcommand{\cfttabaftersnum}{:}
+\setlength{\cftfigindent}{0cm} % Keinen Einzug in den Verzeichnissen
+\setlength{\cfttabindent}{0cm}
+
+%************************************************************************
+% Kopfzeilen
+%************************************************************************
+\pagestyle{scrheadings} 		% Paket scrpage2 mit Optionen automark und autooneside, Kopfzeile enth�lt Kapitel
+\clearpairofpagestyles 			% Alle Definitionen löschen, d.h. nur was nachfolgend definiert wird gilt
+\automark[section]{chapter} 	% headmark enthält für rechte Seiten "section", für linke "chapter"
+\lehead{\pagemark} 		%links (l) auf linker Seite (e - even)
+\rehead{\headmark} 		%rechts (r) auf linker Seite (e - even)
+\lohead{\headmark} 		%links (l) auf rechter Seite (o - odd)
+\rohead{\pagemark} 		%rechts (r) auf rechter Seite (o - odd)
+
+\setkomafont{pageheadfoot}{\normalfont} % Kopfzeilen mit Standardschrift
+\setkomafont{pagefoot}{\normalfont\itshape} % Fu�zeile mit kursiver Standardschrift
+	%\setheadsepline{2pt} % St�rke der Trennlinie zwischen Kopfzeile und Text manuell festlegen
+
+%************************************************************************
+% Fußzeilen
+%************************************************************************
+%\ifoot[Entwurfsversion (KOMA-Script) vom \today, \thistime\ Uhr]{Entwurfsversion (KOMA-Script) vom \today, \thistime\ Uhr} % Zur Kennzeichnung von Entwurfsversionen
+
+%************************************************************************
+% Fußnoten
+%************************************************************************
+\deffootnote[1.5em]{1.5em}{1em}{\textsuperscript{\thefootnotemark}\ } %
+\setlength{\footnotesep}{1em}
+
+%************************************************************************
+% Abbildungen
+%************************************************************************
+\renewcaptionname{ngerman}\figurename{Bild} % Anpassung figurename (Standard: Abbildung, jetzt: Bild)
+\addtokomafont{caption}{\small} % Abbildungsunterschrift kleiner
+\setkomafont{captionlabel}{\small\bfseries} % Text Bild... dick
+
+%************************************************************************
+% Satzparameter
+%************************************************************************
+\clubpenalty=10000	% Keine einzelnen Zeilen am Ende
+\widowpenalty=10000	% und am Anfang der Seiten (10000=maximale Strafe, d.h. einzelne Zeilen sind unm�glich)
+\raggedbottom				% Schaltet den vertikalen Ausgleich bei >twoside< aus; insbesondere hilfreich, wenn bei Bildern mit der Positionierungsoption H gearbeitet wird
+
+%************************************************************************
+% Makro zum ändern von Schriften in ausgewählten Umgebungen
+% Quelle: http://www.mrunix.de/forums/showthread.php?t=56612
+% Beispiel-Syntax: \AtBeginEnvironment{quote}{\itshape}
+%************************************************************************
+\makeatletter
+\providecommand*\AtBeginEnvironment[1]{%
+  \@ifundefined{#1}%
+    {\@latex@error{Environment #1 undefined}\@ehc
+     \@gobble}%
+    {\@ifundefined{ABE@env@#1}%
+       {\expandafter\let\csname ABE@env@#1\expandafter\endcsname
+          \csname #1\endcsname
+        \expandafter\let\csname ABE@hook@#1\endcsname\@empty
+        \@namedef{#1}{\@nameuse{ABE@hook@#1}\@nameuse{ABE@env@#1}}}%
+       {}%
+     \expandafter\g@addto@macro\csname ABE@hook@#1\endcsname}}
+\@onlypreamble\AtBeginEnvironment
+\makeatother

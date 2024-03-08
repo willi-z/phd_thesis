@@ -1,0 +1,255 @@
+%**************************************************************************
+%**************************************************************************
+%*********** DOKUMENTDEKLARATION und GRUNDFORMATIERUNG ********************
+%**************************************************************************
+%**************************************************************************
+\documentclass[
+draft=false, % Entwurfsmodus an/aus true|false
+DIV=14, % DIVzahl|DIV=calc - Satzspiegel (Seitenränder), ggf. geometry-Paket nutzen
+fontsize=12pt, % Schriftgröße
+a4paper, % Papierformat a5paper|a4paper
+twoside, % Ein- oder zweiseitig oneside|twoside
+numbers=noendperiod,
+numbers=noenddot, % kein Punkt nach Abschnitten (statt 3.2.1. also 3.2.1)
+toc=bibliography, % Literaturverzeichnis ins Inhaltsverzeichnios aufnehmen
+parskip=half, %Absatzformat ohne Erstzeileneinzug, Abstand zwischen Absätzen
+headings=normal, % Größe der Überschriften small|normal|big
+%ngerman, % Neue Deutsche Rechtschreibung
+open=any, % any|right - Kapitel fangen auf einer neuen Seite (any) an oder immer reechts (right)
+headinclude=true, % Kopfzeile ist Teil des Satzspiegels
+footinclude=false, % Fußzeile ist nicht Teil des Satzspiegels
+BCOR=10mm, % Breite des Bundsteg
+pagesize=auto, % Ausgabetreiber auto|pdftex|dvips|dvipdfmx|false|automedia
+]{scrreprt} % [bibgerm] % report oder KOMA: scrreprt|scrbook
+
+\usepackage[
+headsepline, % Linie zwischen Kopfzeile und Text %
+%footsepline,
+autooneside, % 
+automark, %
+]{scrlayer-scrpage} % Für die Formatierung von Kopfzeilen
+
+%\usepackage{showframe} % Zeigt den Satzspiegel an
+%\usepackage{layouts}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{tocloft}
+\usepackage{scrhack} % Verbessert das Zusammenspiel zwischen KOMA und dem float-Paket
+
+\usepackage[utf8]{inputenc} %Korrekte Codierung Umlaute etc.
+\usepackage{xspace}
+\usepackage{setspace}
+
+\usepackage[T1]{fontenc} %Nur ändern, wenn kyrillische Gedichte oder japanische Kanji zu setzen sind...
+%%%\usepackage{geometry} % Zum manuellen Einstellen der Seitenränder etc.
+%%%\geometry{
+%%%twoside=false, % für zweiseitiges Layout
+%%%includehead, % Kopfzeile ist Teil des Satzspiegels
+%%%%includefoot, % Kopfzeile ist Teil des Satzspiegels
+%%%inner=24mm,
+%%%outer=24mm,
+%%%top=24mm,
+%%%bottom=35mm,
+%%%bindingoffset=10mm, % Breite des Bundsteg
+%%%}
+
+%**************************************************************************
+%**************************************************************************
+%*********** PAKETDEKLARATION *********************************************
+%**************************************************************************
+%**************************************************************************
+
+%------ MK global path for input -----------------------------------
+\makeatletter
+\def\input@path{
+{Abbildungen/01_Einleitung/}
+{Abbildungen/02_Kapitel/}
+{Abbildungen/03_Kapitel/}
+{Abbildungen/04_Kapitel/}
+{Abbildungen/05_Kapitel/}
+{Abbildungen/06_Kapitel_Zusammenfassung/}
+{Abbildungen/09_Anhang/}}
+%or: \def\input@path{{/path/to/folder/}{/path/to/other/folder/}}
+\makeatother
+
+%------ MikTeX Standardpakete --------------------------------------
+\usepackage[pdftex]{graphicx} \DeclareGraphicsExtensions{.pdf,.jpg}
+\graphicspath{
+{Abbildungen/01_Einleitung/}
+{Abbildungen/02_Kapitel/}
+{Abbildungen/03_Kapitel/}
+{Abbildungen/04_Kapitel/}
+{Abbildungen/05_Kapitel/}
+{Abbildungen/06_Kapitel_Zusammenfassung/}
+{Abbildungen/09_Anhang/}
+} % Definiere Grafikpfade
+
+\usepackage{lmodern}
+
+\usepackage{latexsym}     % Definiert einige Latex-Sonderzeichen (Package ist Teil von LaTeX 2e)
+\usepackage{bibgerm} %bibgerm:	Deutsches Literaturverzeichnis
+
+\usepackage{multirow}          % enthält die Funktion eine Tabellenzelle über mehrer Zeilen zu verbinden
+
+%----- persönl. Anpassungen ----------------------------------------
+\usepackage{diss_style}				% Anpassungen mda
+
+\usepackage{paralist}					 % für kompakte Aufzählungen (compactitem oder compactenum)
+\usepackage{color}						 % für farbigen Text
+\usepackage{threeparttable}		 % für Tabellen mit z.B. Fußnoten etc.
+\usepackage{ragged2e}					 % für \RaggedRight u.ä. mit Silbentrennung
+\usepackage{slashbox}					 % Diagonale Linien in Tabellenzelle
+\usepackage{calc, dcolumn}		 % für Ausrichtung am Dezimalpunkt in Tabellen
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{nicefrac} % Darstellung von schrägen Bruchstrichen, z.B. E'/E'' im Fließtext
+\usepackage{float}
+\usepackage[section]{placeins} % z.B. \FloatBarrier-Befehl zur Ausgabe aller Gleitobjekte ohne Seitenumbruch (Alternative zu \clearpage)
+															% Option [section] erzwingt nach jeder Section einen \FloatBarrier-Befehl, d.h. keine Float-Objekte dürfen in die nächste Section "rutschen"
+\usepackage{longtable}			% Tabellen über mehrere Seiten (z.B. beim Symbolverzeichnis)
+\usepackage{textcomp} % mk \textmu
+\usepackage{rotating} % mk
+\usepackage{pdfpages} % mk: Einbinden von PDF-Dokumenten
+\usepackage{listings} % mk: EInbindung Matlab typeset
+% Für das siunitx müssen die aktuellen Pakete l3kernel und l3packages über den MikTex-Package Manager installiert werden!
+\usepackage{siunitx} % für Einheiten [version-1-compatibility]
+\sisetup{
+list-units = single,
+range-phrase = \,\ldots,
+exponent-product=\cdot,
+per-mode=fraction,
+output-decimal-marker={,},
+detect-family,
+detect-all, % Detektiert die aktuelle Schriftart
+%text-rm=\normalfont, % wenn SI{} im Text auftauch als normalen Text setzen
+%binary-units = true
+} 
+\DeclareSIUnit{\wtpercent}{wt\%}
+\DeclareSIUnit{\newtonmetre}{Nm}
+\DeclareSIUnit{\tanDeltaMilli}{10^{-3}}
+
+\usepackage{hvfloat} % Für Querformatobjekte, die nicht übner die ganze Seite gehen
+
+%\usepackage[color]{changebar} % Für seitliche Striche, insb. zur Hervorhebung von Änderungen
+%	\cbcolor{red}
+%	\setlength{\changebarwidth}{5pt}
+
+\usepackage{enumitem} % zur Formatierung von Aufzählungen
+\usepackage{tikz} % Für Text in Kreisen, z.B. für Aufzählungen
+
+%\usepackage[
+%pict2e, %
+%ngerman, %
+%final, %draft|final
+%]{struktex} % für Struktogramme (Algorithmenstrukturen)
+%\AtBeginEnvironment{struktogramm}{\small} % Schrifteinstellungen für Struktogramme
+
+%\AtBeginEnvironment{table}{\small}
+%\AtBeginEnvironment{threeparttable}{\small}
+%\AtBeginEnvironment{mtabular}{\small}
+
+\usepackage{ifthen} % Für bedingte Anweisungen
+
+% Für richtige Literaturverweise mit Links
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[pdftex,plainpages=false,pdfpagelabels=true,pdfnewwindow]{hyperref} % Hyperref so weit wie möglich hinten einbinden
+
+% Für Koma-Zeitangaben (insb. für die Angabe von Datum in Zeit der Entwurfsversionen
+%\usepackage{scrdate} % Funktion \today bereits in MikTex-Kernel enthalten
+\usepackage{scrtime}
+
+% Informationen für pdf-Dokument
+\usepackage{hypcap}    % Damit in Bilder an die obere Kante gesprungen wird
+\hypersetup{%
+       pdfauthor={Vorname Nachname},
+       pdftitle={Dissertation},
+       pdfcreator={pdfTeX},
+       pdfsubject={Titel der Dissertationsschrift},
+       pdfkeywords={FKV, FVW, FVK, GFK, CFK, FEM, BEM, Bauteil, Auslegung, Messung},
+       plainpages=false,
+       bookmarksopen=true,
+       bookmarksnumbered=true,
+       bookmarksopenlevel=2,       
+       plainpages=false,
+			 pdfpagemode=FullScreen,
+       pdfview=FitV,
+       pdffitwindow=true,
+       citecolor=blue,
+       urlcolor=blue,
+       pdfmenubar=true,
+       pdfwindowui=true,
+       pdfhighlight=/I,
+       pdfborder={0 0 0},
+       pdfpagemode=UseOutlines,
+    	 pdfstartview=Fit,
+			 linktocpage=true			
+}
+%\pdfminorversion=6 %Fehlermeldungen beim Einlesen von pdf-Bildern ausblenden, die mit pdf-Veriosn 1.5 und später erstellt wurden
+\input{Individuelle_Anpassungen}
+
+\ifthenelse{\boolean{Entwurfsmodus}}{
+	\hypersetup{%
+			colorlinks=true, % true|false
+      linkcolor=blue,	% blue|black       
+      citecolor=blue,		% blue|black
+	}
+} {
+	\hypersetup{%
+			colorlinks=false, % true|false
+      linkcolor=black,	% blue|black       
+      citecolor=black,		% blue|black
+	}
+}
+
+%**************************************************************************
+%**************************************************************************
+%*********** BEGINN des Dokumenteninhaltes ********************************
+%**************************************************************************
+%**************************************************************************
+\begin{document}
+
+\pagenumbering{gobble} % Ausschalten der Seitenzählung für die Titelseite und das Vorwort
+
+\include{Kapitel/00_Titelseite}
+\include{Kapitel/00_Vorwort}
+\include{Kapitel/00_Kurzfassung}
+
+\pagenumbering{roman} % Römische Zahlen für den ganzen Vorspann
+
+\pdfbookmark[1]{\contentsname}{toc}	% Link zum Inhaltsverzeichnis in der pdf-Datei
+\tableofcontents
+
+%\clearpage
+%\listoffigures % Abbildungsverzeichnis
+%
+%\clearpage
+%\listoftables % Tabellenverzeichnis
+
+\clearpage
+\include{00_Nomenklatur}
+
+\cleardoublepage % sonst erhält das Tabellenverzeichnis schon die erste arabische Seitenzahl...
+\pagenumbering{arabic} % ab hier Arabische Zahlen für den Hauptteil
+
+\include{Kapitel/01_Einleitung}
+\include{Kapitel/02_Kapitel}
+\include{Kapitel/03_Kapitel}
+\include{Kapitel/04_Kapitel}
+\include{Kapitel/05_Kapitel}
+\include{Kapitel/06_Zusammenfassung}
+
+%Literaturverzeichnis und Datenbank einfügen
+\nocite{} %\nocite{*} --> alle in der Datenbank existierenden Einträge werden bearbeitet; ohne * --> nur die verwendeten werden aufgeführt
+\bibliographystyle {plaindin_mod} %Aussehen des Literaturverzeichnisses
+\bibliography{Literatur_Diss} % Einbinden der Literaturdatenbank <yyyymmdd_Literatur.bib>
+
+\appendix
+\include{09_Anhang}
+
+\cleardoublepage
+\include{10_Lebenslauf}
+
+\end{document}
+

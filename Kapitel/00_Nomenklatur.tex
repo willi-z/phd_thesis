@@ -1,0 +1,70 @@
+%\chapter*{Symbolverzeichnis}
+%\label{sec:Symbolverzeichnis}
+\addchap{Symbolverzeichnis}
+\markboth{Symbolverzeichnis}{Symbolverzeichnis}
+
+
+%Einzug erste Spalte
+\newlength{\TabulatorVZ} % definiert einen neuen Längenparameter
+\settowidth{\TabulatorVZ}{$m$, $n$, $i$, $\imath$, ${\bar{\imath}}$, $\jmath$\quad} % Setzt den Längenparameter auf den Wert, den der Text hat
+% Einzug Einheitenspalte
+\newlength{\TabulatorEH} % definiert einen neuen Längenparameter
+\setlength{\TabulatorEH}{\widthof{$\si{\celsius}$; $\si{\kelvin}$}}
+
+\newlength{\TabulatorTX}
+\setlength{\TabulatorTX}{\textwidth}
+\addtolength{\TabulatorTX}{-\TabulatorVZ-\TabulatorEH-2\tabcolsep}
+
+{\renewcommand*{\arraystretch}{1.2}%
+
+\section*{Abkürzungen}
+
+\begin{longtable}{@{}p{\TabulatorVZ}@{}p{\TabulatorTX+\TabulatorEH+2\tabcolsep}@{}}
+FE								& Finite Elemente \\
+FEM								& Finite"=Elemente"=Methode \\
+PA/PA6						& Polyamid/Polyamid-6 \\
+PEEK    	        & Polyetheretherketon \\
+PP								& Polypropylen
+
+\end{longtable}
+
+\section*{Allgemeine Notation}
+
+\begin{longtable}{@{}p{\TabulatorVZ}@{}p{\TabulatorTX+\TabulatorEH+2\tabcolsep}@{}}
+a									& Skalar \\
+\textbf{a}				& Tensor 1. Stufe (Vektor)
+\end{longtable}
+
+\section*{Lateinische Buchstaben}
+
+\begin{longtable}{@{}p{\TabulatorVZ}@{}p{\TabulatorTX}p{\TabulatorEH}@{}}
+	$A$										& Fläche																										& $\si{\metre\squared}$ \\
+	$C$										& Konstante																								& -					\\
+	$E$										& Elastizitätsmodul																				& $\si{\pascal}$	\\
+	$F$										& Kraft																										& $\si{\newton}$	\\
+	$G$										& Schubmodul																								& $\si{\pascal}$	\\
+	$h$                   & Plattendicke																							& $\si{\metre}$		\\
+	$V$										& Volumen																									& $\si{\cubic\metre}$
+\end{longtable}
+
+\section*{Griechische Buchstaben}
+\begin{longtable}{@{}p{\TabulatorVZ}@{}p{\TabulatorTX}p{\TabulatorEH}@{}}
+	$\varepsilon$					& Dehnung																									& -					\\
+	$\vartheta$						& Temperatur																								& $\si{\celsius}$; $\si{\kelvin}$	\\
+	$\sigma$							& Spannung																									& $\si{\pascal}$
+\end{longtable}
+
+\section*{Indizes, Exponenten und mathematische Akzente}
+
+\begin{longtable}{@{}p{\TabulatorVZ}@{}p{\TabulatorTX+\TabulatorEH+2\tabcolsep}@{}}
+$x_{\text{DS}}$				& Deckschicht																							\\
+$x_n$									& Normal zur Oberfläche																		\\
+$\vec{x}^T$						& Transponierter Vektor																		\\
+$\tilde{x}$				    & Effektivwert 																						\\
+$\avrg{x}$						& Mittelwert
+\end{longtable}
+
+} % Ende arraystrecth
+
+
+\clearpage

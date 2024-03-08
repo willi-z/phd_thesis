@@ -1,0 +1,182 @@
+\typeout{Anpassungen von mda, Stand 10.10.2012 (teilweise basierend auf TEXDEFS.TEX)}
+
+\newboolean{Entwurfsmodus}
+\setboolean{Entwurfsmodus}{true} % true|false
+
+\definecolor{lightgray}{rgb}{0.5,0.5,0.5}
+\definecolor{lightgrey}{rgb}{0.5,0.5,0.5}
+\definecolor{darkred}{rgb}{0.6,0,0}
+
+%\newcommand{\avg}[1]{\left< #1 \right>} % for average
+\newcommand{\rot}[1]{\textcolor{red}{#1}} %rote Hervorhebung
+
+% Breitenangabe f�r Strukturgramme
+% 	Es ist leider nicht m�glich die Breite eines Strukturgramms auf die Textbreite zu beziehen, daher 150 f�r A4, und 105 f�r A5 einstellen
+%		sProofOn muss trotzdem noch f�r jedes Diagramm wegen der H�heneinstellung durchgef�hrt werden!!!
+\newcommand{\struktbreite}{150}
+
+% F�r eigene Verwendung
+\ifthenelse{\boolean{Entwurfsmodus}}
+{
+\typeout{Entwurfsmodus an.}
+\newcommand{\korr}[1]{\textbf{\textcolor{magenta}{#1}}} %rote Hervorhebung
+\newcommand{\kommentar}[1]{ \textcolor{green}{\textit{(#1)}} } % Kommentar; in Endfassung einfach Inhalt der geschweiften Klammer l�schen
+\newcommand{\fertig}{\texorpdfstring{ \textcolor[rgb]{0,0.8,0}{(\checkmark)}}{ o.k.}} % macht ein H�kchen innnherhalb von �berschriften
+\newcommand{\inArbeit}{\texorpdfstring{ \textcolor[rgb]{0.8,0,0}{(\checkmark)}}{ i.A.}} % macht ein H�kchen innnherhalb von �berschriften
+\newcommand{\fehlt}{\texorpdfstring{ \textcolor[rgb]{0.8,0,0}{(\textbf{!!})}}{ fehlt}} % macht ein H�kchen innnherhalb von �berschriften
+\newcommand{\alt}[1]{\underline{ALT:} \textcolor{lightgray}{#1}} %alte Textpassagen
+\newcommand{\neu}[1]{\underline{NEU:} \textcolor{darkred}{#1}} %neue Textpassagen
+}{
+%%%%% F�r Ausdruck und Weitergabe
+\typeout{Entwurfsmodus aus.}
+\newcommand{\korr}[1]{} %rote Hervorhebung
+\newcommand{\kommentar}[1]{} % Kommentar; in Endfassung einfach Inhalt der geschweiften Klammer l�schen
+\newcommand{\fertig}{} % macht ein H�kchen innnherhalb von �berschriften
+\newcommand{\inArbeit}{} % macht ein H�kchen innnherhalb von �berschriften
+\newcommand{\fehlt}{} % macht ein H�kchen innnherhalb von �berschriften
+\newcommand{\alt}[1]{} %alte Textpassagen
+\newcommand{\neu}[1]{#1} %neue Textpassagen
+}
+
+%% Sonstige Definitionen
+% Original war hinter Bild Tabelle Abschnitt immer ein ~ - also ein nicht trennbares Leerzeichen
+\newcommand{\bild}[1]{Bild \ref{#1}} % Bildverweise
+\newcommand{\kreis}[1]{\unitlength1ex\begin{picture}(2.5,2.5) \put(0.75,0.75){\circle{2.5}}\put(0.75,0.75){\makebox(0,0){#1}}\end{picture}} % Einekreiste Zahl oder Buchstabe
+\newcommand{\tabelle}[1]{Tabelle \ref{#1}} % Tabellenverweise
+\newcommand{\abschnitt}[1]{Abschnitt \ref{#1}} % Gliederungsverweise
+\newcommand{\anhang}[1]{Anhang \ref{#1}} % Verweise zum Anhang
+\newcommand{\name}[1]{\textsc{#1}} % Namentliche Nennungen
+\newcommand{\fett}[1]{\textbf{#1}} % Fett
+\newcommand{\ul}[1]{\underline{#1}} % unterstrichen --> in Paket soul bereits definiert
+\newcommand{\dul}[1]{\underline{\underline{#1}}} % Doppelt unterstrichen
+\newcommand{\mat}[1]{\pmb{#1}} % Kennzeichnung von Matrizen besser als \pmb (poor mans bold) w�re \boldsymbol, welches allerdings leider nicht funktioniert -> fehlende Schriftart???
+\newcommand{\kmplx}[1]{\ul{#1}} % Kennzeichnung komplexer Gr��en
+\newcommand{\kkmplx}[1]{\kmplx{#1}^\ast} % Kennzeichnung einer konjungiert komplexen Gr��e
+\newcommand{\oampl}[1]{\hat{#1}} % Ortsamplitude
+\newcommand{\zampl}[1]{\check{#1}} % Zeitamplitude
+\newcommand{\avrg}[1]{\overline{#1}} % Mittelwert
+\newcommand{\gl}[1]{(\ref{#1})} % Gleichungsverweis
+\newcommand{\UD}{\text{UD}}	% UD in Formeln (unidirektional)
+\newcommand{\TV}{\text{TV}} % TV in Formeln (textilverst�rkt)
+\newcommand{\EX}{\text{Exp.}} % Exp. in Formeln (experimentell ermittelt)
+\newcommand{\FE}{\text{FE}} % FE in Formeln
+\newcommand{\DS}{\text{DS}} % Deckschicht DS in Formeln
+\newcommand{\KS}{\text{KS}} % Kernschicht DS in Formeln
+\newcommand{\MAC}{\text{MAC}} % MAC in Formeln
+\newcommand{\Terz}{\text{Terz}} % MAC in Formeln
+\newcommand{\Wert}{\text{Wert}} % Formelzeichen Wert
+\newcommand{\Geni}{{\text{Gen}_i}} % Gen_i in Formeln
+\newcommand{\Kind}{\text{Kind}} % Kind in Formeln
+\newcommand{\Elter}{\text{Elter}} % Elter in Formeln
+\newcommand{\Lag}{\text{Lag}} % Lag f�r Lagerung in Formeln
+\newcommand{\Mat}{\text{Mat}} % Mat f�r Material in Formeln
+\newcommand{\DEVOP}{\name{DevOP}\xspace} % DEVOP- im Text
+
+%-------------------------------------------------------------------
+% Globale Trennvorschl�ge
+\hyphenation{Donau-dampf-schiff-fahrt}
+\hyphenation{Ur-instinkt}
+\hyphenation{ei-nen}
+\hyphenation{vi-bro-akus-tisch}
+\hyphenation{vi-bro-akus-tische}
+\hyphenation{vi-bro-akus-tisch-en}
+\hyphenation{vi-bro-akus-tisch-em}
+\hyphenation{vi-bro-akus-tisch-es}
+\hyphenation{vi-bro-akus-tisch-er}
+\hyphenation{Vi-bro-akus-tik}
+\hyphenation{Mehr-schicht-ver-bund}
+\hyphenation{Straf-funk-tion-en}
+\hyphenation{an-iso-trop}
+\hyphenation{an-iso-tro-pe}
+\hyphenation{an-iso-tro-pen}
+\hyphenation{an-iso-tro-pem}
+\hyphenation{an-iso-tro-per}
+\hyphenation{An-iso-tro-pie}
+\hyphenation{uni-di-rek-tio-nal}
+\hyphenation{uni-di-rek-tio-nale}
+\hyphenation{uni-di-rek-tio-nal-en}
+\hyphenation{Leicht-bau-struk-tur-en}
+\hyphenation{vis-ko-elas-tisch}
+\hyphenation{be-an-spruch-ten}
+\hyphenation{Stich-pro-ben-gr�-�e}
+\hyphenation{me-si-o-buk-kal}
+\hyphenation{pa-la-tal}
+\hyphenation{ste-re-o-mi-kros-ko-pi-sche}
+
+%-------------------------------------------------------------------
+%% Ligaturen - leider nicht global einstellbar
+%% ff fi fl ffi ffl ll lll
+% Schall"|leistung
+% werkstoff"|inh�rent
+% Werkstoff"|integration
+
+
+%-------------------------------------------------------------------
+%\newcommand{\entspr}{\widehat{=}}
+\newcommand{\entspr}{\stackrel{\scriptscriptstyle\wedge}{=}}
+\newcommand*{\dunderl}[1]{\underline{\underline{#1\!}}\,}
+\renewcommand{\Re}{\mbox{Re}} %normalerweise: Schn"orkel-R
+\renewcommand{\Im}{\mbox{Im}} %normalerweise: Schn"orkel-I
+\renewcommand{\i}{{\rm i}}    %normalerweise: i ohne Punkt
+\newcommand{\de}{{\mathsf d}}  %sans serif f�r elektrische Gr��en
+\newcommand{\e}{{\mathsf e}}
+\newcommand{\E}{{\mathsf E}}
+\newcommand{\U}{{\mathsf U}}
+\newcommand{\T}{{\rm T}} % Transponiert-Operator
+\newcommand{\N}{\mbox{I\hspace{-0.19em}N}} % Menge N = nat"urliche Zahlen
+\newcommand{\R}{\mbox{I\hspace{-0.19em}R}} % Menge R = reelle Zahlen
+\newcommand{\C}{\mbox{\hspace{0.35em}\rule{0.04em}{1.55ex}\hspace{-0.35em}C}} % Menge C = komplexe Zahlen
+\newcommand{\mitDelta}{\mathnormal{\Delta}}  % neu: LaTeX 2e
+\newcommand{\mitTheta}{\mathnormal{\Theta}}
+\newcommand{\mitPhi}{\mathnormal{\Phi}}
+\newcommand{\mitPsi}{\mathnormal{\Psi}}
+\newcommand{\brmitTheta}{\breve{\mitTheta}}
+\newcommand{\brmitPhi}{\breve{\mitPhi}}
+\newcommand{\brmitPsi}{\breve{\mitPsi}}
+\newcommand{\brrho}{\breve{\rho}}
+% f�r Buchstaben mit Kreisen
+\newcommand*\mycirc[1]{%
+\begin{tikzpicture}[baseline=(C.base)]
+\node[draw,circle,inner sep=1pt,minimum size=3ex](C) {#1};
+\end{tikzpicture}}
+
+%\renewcommand{\theta}{\fehlertheta}      % \
+%\renewcommand{\theta}{\vartheta}
+\renewcommand{\phi}{\varphi}
+%\renewcommand{\phi}{\fehlerphi}          %  zur Sicherheit
+%\renewcommand{\epsilon}{\textepsilon}  % /
+%\renewcommand{\epsilon}{\fehlerepsilon}  % /
+% Das Symbol \phi (hier \varvarphi) wird fuer Sonderfaelle benoetigt.
+% Folgende Definition entstammt fontmath.ltx.
+\DeclareMathSymbol{\varvarphi}{\mathord}{letters}{"1E}
+\DeclareMathSymbol{\eps}{\mathsf}{letters}{"0F} 
+    
+% Neue Spaltenarten für Tabellen
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % Mehrzeilige horizontal zentrierte Tabellenspalten
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % Mehrzeilige horizontal und vertikal zentrierte Tabellenspalten
+%\newcolumntype{V}[1]{>{\RaggedRight\arraybackslash}m{#1}} % Mehrzeilige linksb�ndige und vertikal zentrierte Tabellenspalten
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}} % Mehrzeilig linksb�ndige oben ausgerichtete Spalten
+\newcolumntype{R}[1]{>{\RaggedLeft\arraybackslash}p{#1}} % Mehrzeilig linksb�ndige oben ausgerichtete Spalten
+\newcolumntype{d}{D{.}{,}{-1}}													% Ausrichtung am Dezimalpunkt und Satz als Komma
+\newcommand{\tabkopf}[1]{\textbf{#1}}
+\newcommand{\Dkopf}[1]{\multicolumn{1}{c}{\textbf{#1}}}% tabkopf f�r Spaltentyp D
+\newcommand{\DkopfZU}[2]{\multicolumn{1}{M{#1}}{\textbf{#2}}} % tabkopf mit Zeilenumbruch
+\newcommand{\DZU}[2]{\multicolumn{1}{M{#1}}{#2}} % tabkopf mit Zeilenumbruch
+\newcommand{\Dtext}[1]{\multicolumn{1}{c}{#1}} 				% normaler Text im Spaltentyp D
+\newcommand{\DSkopf}[2]{\multicolumn{1}{M{#1}|}{\textbf{#2}}}% tabkopf f�r Spaltentyp S mit Umbruchm�glichkeit
+\newcommand{\DStext}[2]{\multicolumn{1}{M{#1}|}{#2}} 				% normaler Text im Spaltentyp S mit Umbruchm�glichkeit
+% Einfacher Abstand in Tabellenumgebung mtabular
+\newenvironment{mtabular}{%
+	\small%
+  \renewcommand*{\arraystretch}{1.4}%
+  \tabular
+}{%
+  \endtabular
+}
+
+\pdfsuppresswarningpagegroup=1 %mk Unterdr�ckung warning of multiple PDF files
+
+\usepackage{lscape} %mk Tabelle Querformat
+\usepackage{amsmath} %mk for boldsymbol
+
+\usepackage[percent]{overpic} %mk Bild auf ganzer Seite

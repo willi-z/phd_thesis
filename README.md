@@ -1,0 +1,1 @@
+pacman -S extra/texlive-langgerman
