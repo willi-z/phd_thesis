@@ -42,7 +42,11 @@
 % Inhaltsverzeichnis
 %************************************************************************
 \setcounter{tocdepth}{3} %% Tiefe des Inhaltsverzeichnisses: -1:part,0:chapter,...
-\addtolength{\cftparskip}{3.5pt} % In Verbindung mit dem Paket tocloft den Zeilenabstand im Inhaltsverzeichnis erhöhen
+%\addtolength{\cftparskip}{3.5pt} % In Verbindung mit dem Paket tocloft den Zeilenabstand im Inhaltsverzeichnis erhöhen
+\RedeclareSectionCommands[
+  tocbeforeskip=3.5pt,
+  %tocentryformat=\bfseries\large,
+]{section, subsection}
 \makeatletter% weil gleich ein @-Zeichen kommt, dass auch als solches beachtet werden soll
 \renewcommand*{\@pnumwidth}{1.8em} % Sonst führen dreistellige, fettgedruckte Zahlen zu einer "Overfull hbox"
 \makeatother%
@@ -51,16 +55,19 @@
 % Abbildungs- und Tabellenverzeichnis
 %************************************************************************
 % Siehe http://www.arthur-schiwon.de/Formatierung_von_Tabellen_und_Abbildungsverzeichnis_mit_Latex
-\renewcommand{\cfttabpresnum}{Tabelle }
-\renewcommand{\cftfigpresnum}{Bild }
-\settowidth{\cfttabnumwidth}{Tabelle 5.17\quad} % Position des "Tabulators"
-\settowidth{\cftfignumwidth}{Bild B.20\quad}
-%\setlength{\cftfignumwidth}{2cm}
-%\setlength{\cfttabnumwidth}{2cm}
-\renewcommand{\cftfigaftersnum}{:} % Doppelpunkt in "Tabelle 1.1: Text"
-\renewcommand{\cfttabaftersnum}{:}
-\setlength{\cftfigindent}{0cm} % Keinen Einzug in den Verzeichnissen
-\setlength{\cfttabindent}{0cm}
+\renewcommand{\tablename}{Tabelle}
+\renewcommand{\figurename}{Bild}
+
+%\settowidth{\cfttabnumwidth}{Tabelle 5.17\quad} % Position des "Tabulators"
+%\settowidth{\cftfignumwidth}{Bild B.20\quad}
+
+%%\setlength{\cftfignumwidth}{2cm}
+%%\setlength{\cfttabnumwidth}{2cm}
+
+%\renewcommand{\cftfigaftersnum}{:} % Doppelpunkt in "Tabelle 1.1: Text"
+%\renewcommand{\cfttabaftersnum}{:}
+%\setlength{\cftfigindent}{0cm} % Keinen Einzug in den Verzeichnissen
+%\setlength{\cfttabindent}{0cm}
 
 %************************************************************************
 % Kopfzeilen
@@ -75,7 +82,7 @@
 
 \setkomafont{pageheadfoot}{\normalfont} % Kopfzeilen mit Standardschrift
 \setkomafont{pagefoot}{\normalfont\itshape} % Fu�zeile mit kursiver Standardschrift
-	%\setheadsepline{2pt} % St�rke der Trennlinie zwischen Kopfzeile und Text manuell festlegen
+	%\setheadsepline{2pt} % Stärke der Trennlinie zwischen Kopfzeile und Text manuell festlegen
 
 %************************************************************************
 % Fußzeilen

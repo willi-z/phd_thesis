@@ -6,4 +6,6 @@
 *.bbl
 *.pdf
 *.synctex*
+*.toc
+*.out
 

@@ -10,30 +10,30 @@
 %\newcommand{\avg}[1]{\left< #1 \right>} % for average
 \newcommand{\rot}[1]{\textcolor{red}{#1}} %rote Hervorhebung
 
-% Breitenangabe f�r Strukturgramme
-% 	Es ist leider nicht m�glich die Breite eines Strukturgramms auf die Textbreite zu beziehen, daher 150 f�r A4, und 105 f�r A5 einstellen
-%		sProofOn muss trotzdem noch f�r jedes Diagramm wegen der H�heneinstellung durchgef�hrt werden!!!
+% Breitenangabe fuer Strukturgramme
+% 	Es ist leider nicht moeglich die Breite eines Strukturgramms auf die Textbreite zu beziehen, daher 150 fuer A4, und 105 fuer A5 einstellen
+%		sProofOn muss trotzdem noch fuer jedes Diagramm wegen der Hoeheneinstellung durchgefuehrt werden!!!
 \newcommand{\struktbreite}{150}
 
-% F�r eigene Verwendung
+% Fuer eigene Verwendung
 \ifthenelse{\boolean{Entwurfsmodus}}
 {
 \typeout{Entwurfsmodus an.}
 \newcommand{\korr}[1]{\textbf{\textcolor{magenta}{#1}}} %rote Hervorhebung
-\newcommand{\kommentar}[1]{ \textcolor{green}{\textit{(#1)}} } % Kommentar; in Endfassung einfach Inhalt der geschweiften Klammer l�schen
-\newcommand{\fertig}{\texorpdfstring{ \textcolor[rgb]{0,0.8,0}{(\checkmark)}}{ o.k.}} % macht ein H�kchen innnherhalb von �berschriften
-\newcommand{\inArbeit}{\texorpdfstring{ \textcolor[rgb]{0.8,0,0}{(\checkmark)}}{ i.A.}} % macht ein H�kchen innnherhalb von �berschriften
-\newcommand{\fehlt}{\texorpdfstring{ \textcolor[rgb]{0.8,0,0}{(\textbf{!!})}}{ fehlt}} % macht ein H�kchen innnherhalb von �berschriften
+\newcommand{\kommentar}[1]{ \textcolor{green}{\textit{(#1)}} } % Kommentar; in Endfassung einfach Inhalt der geschweiften Klammer loeschen
+\newcommand{\fertig}{\texorpdfstring{ \textcolor[rgb]{0,0.8,0}{(\checkmark)}}{ o.k.}} % macht ein Haekchen innnherhalb von Ueberschriften
+\newcommand{\inArbeit}{\texorpdfstring{ \textcolor[rgb]{0.8,0,0}{(\checkmark)}}{ i.A.}} % macht ein Haekchen innnherhalb von Ueberschriften
+\newcommand{\fehlt}{\texorpdfstring{ \textcolor[rgb]{0.8,0,0}{(\textbf{!!})}}{ fehlt}} % macht ein Haekchen innnherhalb von Ueberschriften
 \newcommand{\alt}[1]{\underline{ALT:} \textcolor{lightgray}{#1}} %alte Textpassagen
 \newcommand{\neu}[1]{\underline{NEU:} \textcolor{darkred}{#1}} %neue Textpassagen
 }{
-%%%%% F�r Ausdruck und Weitergabe
+%%%%% Fuer Ausdruck und Weitergabe
 \typeout{Entwurfsmodus aus.}
 \newcommand{\korr}[1]{} %rote Hervorhebung
-\newcommand{\kommentar}[1]{} % Kommentar; in Endfassung einfach Inhalt der geschweiften Klammer l�schen
-\newcommand{\fertig}{} % macht ein H�kchen innnherhalb von �berschriften
-\newcommand{\inArbeit}{} % macht ein H�kchen innnherhalb von �berschriften
-\newcommand{\fehlt}{} % macht ein H�kchen innnherhalb von �berschriften
+\newcommand{\kommentar}[1]{} % Kommentar; in Endfassung einfach Inhalt der geschweiften Klammer loeschen
+\newcommand{\fertig}{} % macht ein Haekchen innnherhalb von Ueberschriften
+\newcommand{\inArbeit}{} % macht ein Haekchen innnherhalb von Ueberschriften
+\newcommand{\fehlt}{} % macht ein Haekchen innnherhalb von Ueberschriften
 \newcommand{\alt}[1]{} %alte Textpassagen
 \newcommand{\neu}[1]{#1} %neue Textpassagen
 }
@@ -49,15 +49,15 @@
 \newcommand{\fett}[1]{\textbf{#1}} % Fett
 \newcommand{\ul}[1]{\underline{#1}} % unterstrichen --> in Paket soul bereits definiert
 \newcommand{\dul}[1]{\underline{\underline{#1}}} % Doppelt unterstrichen
-\newcommand{\mat}[1]{\pmb{#1}} % Kennzeichnung von Matrizen besser als \pmb (poor mans bold) w�re \boldsymbol, welches allerdings leider nicht funktioniert -> fehlende Schriftart???
-\newcommand{\kmplx}[1]{\ul{#1}} % Kennzeichnung komplexer Gr��en
-\newcommand{\kkmplx}[1]{\kmplx{#1}^\ast} % Kennzeichnung einer konjungiert komplexen Gr��e
+\newcommand{\mat}[1]{\pmb{#1}} % Kennzeichnung von Matrizen besser als \pmb (poor mans bold) waere \boldsymbol, welches allerdings leider nicht funktioniert -> fehlende Schriftart???
+\newcommand{\kmplx}[1]{\ul{#1}} % Kennzeichnung komplexer Groessen
+\newcommand{\kkmplx}[1]{\kmplx{#1}^\ast} % Kennzeichnung einer konjungiert komplexen Groesse
 \newcommand{\oampl}[1]{\hat{#1}} % Ortsamplitude
 \newcommand{\zampl}[1]{\check{#1}} % Zeitamplitude
 \newcommand{\avrg}[1]{\overline{#1}} % Mittelwert
 \newcommand{\gl}[1]{(\ref{#1})} % Gleichungsverweis
 \newcommand{\UD}{\text{UD}}	% UD in Formeln (unidirektional)
-\newcommand{\TV}{\text{TV}} % TV in Formeln (textilverst�rkt)
+\newcommand{\TV}{\text{TV}} % TV in Formeln (textilverstaerkt)
 \newcommand{\EX}{\text{Exp.}} % Exp. in Formeln (experimentell ermittelt)
 \newcommand{\FE}{\text{FE}} % FE in Formeln
 \newcommand{\DS}{\text{DS}} % Deckschicht DS in Formeln
@@ -68,12 +68,12 @@
 \newcommand{\Geni}{{\text{Gen}_i}} % Gen_i in Formeln
 \newcommand{\Kind}{\text{Kind}} % Kind in Formeln
 \newcommand{\Elter}{\text{Elter}} % Elter in Formeln
-\newcommand{\Lag}{\text{Lag}} % Lag f�r Lagerung in Formeln
-\newcommand{\Mat}{\text{Mat}} % Mat f�r Material in Formeln
+\newcommand{\Lag}{\text{Lag}} % Lag fuer Lagerung in Formeln
+\newcommand{\Mat}{\text{Mat}} % Mat fuer Material in Formeln
 \newcommand{\DEVOP}{\name{DevOP}\xspace} % DEVOP- im Text
 
 %-------------------------------------------------------------------
-% Globale Trennvorschl�ge
+% Globale Trennvorschlaege
 \hyphenation{Donau-dampf-schiff-fahrt}
 \hyphenation{Ur-instinkt}
 \hyphenation{ei-nen}
@@ -98,7 +98,7 @@
 \hyphenation{Leicht-bau-struk-tur-en}
 \hyphenation{vis-ko-elas-tisch}
 \hyphenation{be-an-spruch-ten}
-\hyphenation{Stich-pro-ben-gr�-�e}
+\hyphenation{Stich-pro-ben-grö-ße}
 \hyphenation{me-si-o-buk-kal}
 \hyphenation{pa-la-tal}
 \hyphenation{ste-re-o-mi-kros-ko-pi-sche}
@@ -107,7 +107,7 @@
 %% Ligaturen - leider nicht global einstellbar
 %% ff fi fl ffi ffl ll lll
 % Schall"|leistung
-% werkstoff"|inh�rent
+% werkstoff"|inhärent
 % Werkstoff"|integration
 
 
@@ -118,7 +118,7 @@
 \renewcommand{\Re}{\mbox{Re}} %normalerweise: Schn"orkel-R
 \renewcommand{\Im}{\mbox{Im}} %normalerweise: Schn"orkel-I
 \renewcommand{\i}{{\rm i}}    %normalerweise: i ohne Punkt
-\newcommand{\de}{{\mathsf d}}  %sans serif f�r elektrische Gr��en
+\newcommand{\de}{{\mathsf d}}  %sans serif für elektrische Groessen
 \newcommand{\e}{{\mathsf e}}
 \newcommand{\E}{{\mathsf E}}
 \newcommand{\U}{{\mathsf U}}
@@ -134,7 +134,7 @@
 \newcommand{\brmitPhi}{\breve{\mitPhi}}
 \newcommand{\brmitPsi}{\breve{\mitPsi}}
 \newcommand{\brrho}{\breve{\rho}}
-% f�r Buchstaben mit Kreisen
+% fuer Buchstaben mit Kreisen
 \newcommand*\mycirc[1]{%
 \begin{tikzpicture}[baseline=(C.base)]
 \node[draw,circle,inner sep=1pt,minimum size=3ex](C) {#1};
@@ -154,17 +154,17 @@
 % Neue Spaltenarten für Tabellen
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % Mehrzeilige horizontal zentrierte Tabellenspalten
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % Mehrzeilige horizontal und vertikal zentrierte Tabellenspalten
-%\newcolumntype{V}[1]{>{\RaggedRight\arraybackslash}m{#1}} % Mehrzeilige linksb�ndige und vertikal zentrierte Tabellenspalten
-\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}} % Mehrzeilig linksb�ndige oben ausgerichtete Spalten
-\newcolumntype{R}[1]{>{\RaggedLeft\arraybackslash}p{#1}} % Mehrzeilig linksb�ndige oben ausgerichtete Spalten
+%\newcolumntype{V}[1]{>{\RaggedRight\arraybackslash}m{#1}} % Mehrzeilige linksbündige und vertikal zentrierte Tabellenspalten
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}} % Mehrzeilig linksbündige oben ausgerichtete Spalten
+\newcolumntype{R}[1]{>{\RaggedLeft\arraybackslash}p{#1}} % Mehrzeilig linksbündige oben ausgerichtete Spalten
 \newcolumntype{d}{D{.}{,}{-1}}													% Ausrichtung am Dezimalpunkt und Satz als Komma
 \newcommand{\tabkopf}[1]{\textbf{#1}}
-\newcommand{\Dkopf}[1]{\multicolumn{1}{c}{\textbf{#1}}}% tabkopf f�r Spaltentyp D
+\newcommand{\Dkopf}[1]{\multicolumn{1}{c}{\textbf{#1}}}% tabkopf für Spaltentyp D
 \newcommand{\DkopfZU}[2]{\multicolumn{1}{M{#1}}{\textbf{#2}}} % tabkopf mit Zeilenumbruch
 \newcommand{\DZU}[2]{\multicolumn{1}{M{#1}}{#2}} % tabkopf mit Zeilenumbruch
 \newcommand{\Dtext}[1]{\multicolumn{1}{c}{#1}} 				% normaler Text im Spaltentyp D
-\newcommand{\DSkopf}[2]{\multicolumn{1}{M{#1}|}{\textbf{#2}}}% tabkopf f�r Spaltentyp S mit Umbruchm�glichkeit
-\newcommand{\DStext}[2]{\multicolumn{1}{M{#1}|}{#2}} 				% normaler Text im Spaltentyp S mit Umbruchm�glichkeit
+\newcommand{\DSkopf}[2]{\multicolumn{1}{M{#1}|}{\textbf{#2}}}% tabkopf für Spaltentyp S mit Umbruchmöglichkeit
+\newcommand{\DStext}[2]{\multicolumn{1}{M{#1}|}{#2}} 				% normaler Text im Spaltentyp S mit Umbruchmöglichkeit
 % Einfacher Abstand in Tabellenumgebung mtabular
 \newenvironment{mtabular}{%
 	\small%
@@ -174,7 +174,7 @@
   \endtabular
 }
 
-\pdfsuppresswarningpagegroup=1 %mk Unterdr�ckung warning of multiple PDF files
+\pdfsuppresswarningpagegroup=1 %mk Unterdrueckung warning of multiple PDF files
 
 \usepackage{lscape} %mk Tabelle Querformat
 \usepackage{amsmath} %mk for boldsymbol
