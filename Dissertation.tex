@@ -64,11 +64,12 @@ automark, %
 \makeatletter
 \def\input@path{
 {Abbildungen/01_Einleitung/}
-{Abbildungen/02_Kapitel/}
-{Abbildungen/03_Kapitel/}
-{Abbildungen/04_Kapitel/}
-{Abbildungen/05_Kapitel/}
-{Abbildungen/06_Kapitel_Zusammenfassung/}
+{Abbildungen/02_SoA/}
+{Abbildungen/03_Modellierung/}
+{Abbildungen/04_Digitalisierung/}
+{Abbildungen/05_Ergebnisse/}
+{Abbildungen/06_Leichtbau/}
+{Abbildungen/06_Zusammenfassung/}
 {Abbildungen/09_Anhang/}}
 %or: \def\input@path{{/path/to/folder/}{/path/to/other/folder/}}
 \makeatother
@@ -77,11 +78,12 @@ automark, %
 \usepackage[pdftex]{graphicx} \DeclareGraphicsExtensions{.pdf,.jpg}
 \graphicspath{
 {Abbildungen/01_Einleitung/}
-{Abbildungen/02_Kapitel/}
-{Abbildungen/03_Kapitel/}
-{Abbildungen/04_Kapitel/}
-{Abbildungen/05_Kapitel/}
-{Abbildungen/06_Kapitel_Zusammenfassung/}
+{Abbildungen/02_SoA/}
+{Abbildungen/03_Modellierung/}
+{Abbildungen/04_Digitalisierung/}
+{Abbildungen/05_Ergebnisse/}
+{Abbildungen/06_Leichtbau/}
+{Abbildungen/07_Zusammenfassung/}
 {Abbildungen/09_Anhang/}
 } % Definiere Grafikpfade
 
@@ -119,7 +121,7 @@ automark, %
 list-units = single,
 range-phrase = \,\ldots,
 exponent-product=\cdot,
-per-mode=fraction,
+%per-mode=fraction,
 output-decimal-marker={,},
 detect-family,
 detect-all, % Detektiert die aktuelle Schriftart
@@ -228,17 +230,18 @@ detect-all, % Detektiert die aktuelle Schriftart
 %\listoftables % Tabellenverzeichnis
 
 \clearpage
-\include{00_Nomenklatur}
+\include{Kapitel/00_Nomenklatur}
 
 \cleardoublepage % sonst erhält das Tabellenverzeichnis schon die erste arabische Seitenzahl...
 \pagenumbering{arabic} % ab hier Arabische Zahlen für den Hauptteil
 
 \include{Kapitel/01_Einleitung}
-\include{Kapitel/02_Kapitel}
-\include{Kapitel/03_Kapitel}
-\include{Kapitel/04_Kapitel}
-\include{Kapitel/05_Kapitel}
-\include{Kapitel/06_Zusammenfassung}
+\include{Kapitel/02_SoA}
+\include{Kapitel/03_Modellierung}
+\include{Kapitel/04_Digitalisierung}
+\include{Kapitel/05_Ergebnisse}
+\include{Kapitel/06_Leichtbau}
+\include{Kapitel/07_Zusammenfassung}
 
 %Literaturverzeichnis und Datenbank einfügen
 \nocite{} %\nocite{*} --> alle in der Datenbank existierenden Einträge werden bearbeitet; ohne * --> nur die verwendeten werden aufgeführt
