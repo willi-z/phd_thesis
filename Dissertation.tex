@@ -11,7 +11,7 @@ a4paper, % Papierformat a5paper|a4paper
 twoside, % Ein- oder zweiseitig oneside|twoside
 numbers=noendperiod,
 numbers=noenddot, % kein Punkt nach Abschnitten (statt 3.2.1. also 3.2.1)
-toc=bibliography, % Literaturverzeichnis ins Inhaltsverzeichnios aufnehmen
+toc=bibliography, % Literaturverzeichnis ins Inhaltsverzeichnis aufnehmen
 parskip=half, %Absatzformat ohne Erstzeileneinzug, Abstand zwischen Absätzen
 headings=normal, % Größe der Überschriften small|normal|big
 %ngerman, % Neue Deutsche Rechtschreibung
@@ -90,7 +90,7 @@ automark, %
 \usepackage{lmodern}
 
 \usepackage{latexsym}     % Definiert einige Latex-Sonderzeichen (Package ist Teil von LaTeX 2e)
-\usepackage{bibgerm} %bibgerm:	Deutsches Literaturverzeichnis
+\usepackage{bibgerm}      %bibgerm:	Deutsches Literaturverzeichnis
 
 \usepackage{multirow}          % enthält die Funktion eine Tabellenzelle über mehrer Zeilen zu verbinden
 
@@ -155,7 +155,16 @@ detect-all, % Detektiert die aktuelle Schriftart
 \usepackage{ifthen} % Für bedingte Anweisungen
 
 % Für richtige Literaturverweise mit Links
+%\usepackage{cite}
 \usepackage[numbers,sort&compress]{natbib}
+%\usepackage[
+%  backend=biber,
+%  bibstyle=trad-plain,
+%  citestyle=numeric-comp ,
+%  dashed=true,
+%  sorting=none
+%]{biblatex}
+%\addbibresource{Literatur_Diss.bib}
 \usepackage[pdftex,plainpages=false,pdfpagelabels=true,pdfnewwindow]{hyperref} % Hyperref so weit wie möglich hinten einbinden
 
 % Für Koma-Zeitangaben (insb. für die Angabe von Datum in Zeit der Entwurfsversionen
@@ -165,11 +174,11 @@ detect-all, % Detektiert die aktuelle Schriftart
 % Informationen für pdf-Dokument
 \usepackage{hypcap}    % Damit in Bilder an die obere Kante gesprungen wird
 \hypersetup{%
-       pdfauthor={Vorname Nachname},
+       pdfauthor={Willi Zschiebsch},
        pdftitle={Dissertation},
        pdfcreator={pdfTeX},
-       pdfsubject={Titel der Dissertationsschrift},
-       pdfkeywords={FKV, FVW, FVK, GFK, CFK, FEM, BEM, Bauteil, Auslegung, Messung},
+       pdfsubject={Titel der Dissertationsschrift}, % TODO: change title
+       pdfkeywords={FKV, FVW, FVK, GFK, CFK, FEM, BEM, Bauteil, Auslegung, Messung}, % TODO: change keywords
        plainpages=false,
        bookmarksopen=true,
        bookmarksnumbered=true,
@@ -245,9 +254,9 @@ detect-all, % Detektiert die aktuelle Schriftart
 
 %Literaturverzeichnis und Datenbank einfügen
 \nocite{} %\nocite{*} --> alle in der Datenbank existierenden Einträge werden bearbeitet; ohne * --> nur die verwendeten werden aufgeführt
-\bibliographystyle {plaindin_mod} %Aussehen des Literaturverzeichnisses
+\bibliographystyle{plaindin_mod} %Aussehen des Literaturverzeichnisses
 \bibliography{Literatur_Diss} % Einbinden der Literaturdatenbank <yyyymmdd_Literatur.bib>
-
+%\printbibliography
 \appendix
 \include{Kapitel/09_Anhang}
 

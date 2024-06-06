@@ -1,36 +1,89 @@
-%***************************************************************************************************
-%********************  EINLEITUNG  *****************************************************************
-%***************************************************************************************************
+%*******************************************************
+%                       EINLEITUNG  
+%*******************************************************
 \chapter[Einleitung]{\label{sec:Einleitung}Einleitung}
 % max 1 Seite
+Mit den aktuellen Herausforderungen bei der Reduzierung von Treibhausgasen steigt das Interesse an Energiespeicherkonzepten, welche den Weg für energieeffiziente und nachhaltige Systeme ermöglichen. Dabei haben sich besonders bei der Verwendung in mobilen Systemen, wie etwa Elektrische Fahrzeuge \cite{Huo2015, Donateo2015,Jochem2015,Kim2014,Orsi2016,Silva2011,Holdway2010,Sternberg2015,Ramachandran2015} und mobile Roboter \cite{Hecht2023,Mikolajczyk2023,Ghobadpour2023,Wang2020} die Vorteile von Batterie angetrieben Systemen gezeigt.
 
-Die vorliegende Dissertation widmet sich einem hochaktuellen Thema im Bereich der Energiespeicherung für die e-Mobilität \cite{Huo2015, Donateo2015,Jochem2015,Kim2014,Orsi2016,Silva2011,Holdway2010,Sternberg2015,Ramachandran2015} und mobile Robotik \cite{Hecht2023,Mikolajczyk2023,Ghobadpour2023,Mikolajczyk2023a}: der computergestützten Identifikation von verbesserten Strukturbatterien. Strukturbatterien stellen eine innovative Lösung dar, da sie über deutlich verbesserte mechanische Eigenschaften im Vergleich zu herkömmlichen Batterien verfügen und direkt in die Struktur von Fahrzeugen integriert werden können, ohne auf ein separates Gehäuse angewiesen zu sein. Diese Eigenschaft eröffnet Potenziale für eine gesteigerte Gesamtenergiedichte, selbst wenn die Strukturbatterien aufgrund ihrer Bauweise zunächst niedrigere Energiedichten aufweisen.
+Herkömmliche Batterien sind oft nur wenig mechanisch belastbar, weshalb diese oft mit einer zusätzlichen Schutzstruktur umgeben sind. Allerdings kann durch die klare Funktionsteilung keine synergetischen Effekte ausgenutzt werden , wie z.B bei Materialien die sowohl als Energiespeicher, als auch als Strukurkomponente dienen können. Die daraus resultierende niedrige Energiespeicher zu Massenverhältnis des Gesamtsystems ist einer der größten Schwächen dieser Technologie \cite{Armand2020,Schaefer2018, Cano2018,Goodenough2009}. Ein Vielversprechender Ansatz stellt dabei die Entwicklung von sogenannten Strukurbatterien, die zuätzlich zu ihrer Speicherfunktion auch Lastentragend sein können \cite{Johannisson2018, Danzi2021, Wetzel2004, Thomas2004, Liu2009, Ekstedt2010, Wang2019, Asp2019, Moyer2020, Zhao2020, Yin2020, Wang2020, Lutkenhaus2020, Fu2021, Jin2021, Kalnaus2021, Wong2007, Carlson2013, Xu2022} und damit signifikante Ersarrnisse bei der Gesamtmasse und Gesamtvolumen ermöglichen \cite{Wetzel2004, Snyder2015, Carlstedt2020a, Asp2014, Johannisson2019}. Auch haben diese den zusätzlichen Vorteil, dass sich diese leichter in exitierende Designs integrieren lassen, was Gewichtsverteilung erleichtern kann und einen Einbau näher am Verbraucher und damit Kabel einsparrt. Diese Vorteile erlauben damit neue innovative Designs im Bereich Elektrofahrzeuge, elektrische Alltagsgeräte, wie etwa Laptops und Telefone, mobile Roboter, Flugdrohnen, und Sateliten.
 
-Durch die dringende Notwendigkeit, die Energiedichte von Batterien weiter zu steigern, um den Anforderungen an die Reichweite und Leistungsfähigkeit von Elektrofahrzeugen gerecht zu werden, ist dieses Thema so relevant wie nie. Trotz der vielversprechenden mechanischen Eigenschaften von Strukturbatterien bleiben die bisherigen Ergebnisse bezüglich ihrer elektrochemischen Leistung hinter den Erwartungen zurück.
+Diese Dissertation fokusiert sich auf die computergestützte Suche von Strukurbatterien in laminarer Bauweise.
 
-Die bisherige Forschung hat sich hauptsächlich auf die Untersuchung einzelner Komponenten wie Strukturelektrolyte und den Bau spezifischer Konfigurationen konzentriert. Dabei wurde jedoch eine ganzheitliche Methodik zur Verknüpfung der Erkenntnisse aus den verschiedenen Teilbereichen vernachlässigt. Zudem basiert die Forschungsmethodik größtenteils auf experimentellen Ansätzen und wenigen computergestützten Modellen, die oft extrem rechenintensiv sind und oft auf den Einsatz von Supercomputern angewiesen sind.
+Die hier dargestellte Forschung ist Teil der vom deutschen Bundestag geförderten Forschungsinitiative „Luftfahrtforschung und -technologie“ LuFo-VI-2 in der Programm-linie „(A) Disruptive Technologien und innovative Syseme (ökoeffizientes Fliegen)“ im Fachbereich „(4) Strukturen und Bauweisen“ mit dem wichtigsten förderpolitischen Ziel „umweltfreundliche Luftfahrt“. In der „Entwicklung und Erprobung ultraleichter Verbundstrukutren mot integrierter elektroscher Speicherfunktion“ (ElViS)
 
-Diese Dissertation zielt darauf ab, diese Lücke zu schließen, indem sie eine digitale Methode entwickelt, die vorhandene Erkenntnisse aus Literatur und Experimenten zu den wichtigsten Komponenten von Strukturbatterien sammelt und mithilfe von computergestützten Modellen verknüpft. Das entwickelte Framework, genannt QUINTUS, ermöglicht es, schnell und effizient Aussagen über die Leistungsfähigkeit entstehender Batteriekonfigurationen zu treffen.
 
-Das zugrundeliegende Prinzip dieses Lösungsansatzes besteht darin, dass Computer besser dazu geeignet sind, eine Vielzahl von einfachen Zusammenhängen zu verarbeiten und wiederholt anzuwenden. Im Gegensatz zu bestehenden Ansätzen beginnt die Modellierung nicht auf atomarer Ebene, sondern auf der Komponentenebene, was eine schnellere Generierung von Ergebnissen ermöglicht. Zudem kann das Modellsystem leicht um Modelle auf mikro- oder molekularer Ebene erweitert werden, um zusätzliche Einflussfaktoren zu berücksichtigen.
-
-%***************************************************************************************************
-%********************  Motivation und Zielstellung  ************************************************
-%***************************************************************************************************
+%*************************************************************
+%               Motivation und Zielstellung  
+%*************************************************************
 \section{\label{sec:Motivation_Zielstellung}Problemstellung und Zielsetzung}
 % rund 1,5 Seiten inklusive Bild
 
-Die 
+%Um die Reichweite und Nutzungsdauer von mobilen elektrischen Geräten, wie Elektrofahrzeuge und mobile Roboter zu erhöhen ist sind elektrische Speicher mit besserem Verhältnis von Speichervermögen zu Gesamtmasse von entscheidenter Bedeutung. Aus dieser übergeordneten Zielstellung leiten sich drei mögliche Ansätze ab: erstens die Energiedichte der einzelnen Speicherzellen steigern, zweitens die Masse der mechansichen Entkoppelung durch die Verwendung von Werkstoffen mit hoher spezifischer Festigkeit und Steifigkeit reduzieren und drittens die Erhöhung der Gesamtenergiedichte durch die Verwendung von mechanisch belastbaren Batterien, welches einen Kompromiss zu den ersten beiden Ansätzten darstellt.
 
-%***************************************************************************************************
-%********************  LITERATURÜBERSICHT  *********************************************************
-%***************************************************************************************************
+%Der letzte Ansatz hat außerdem den Vorteil, dass solche strukturtragenden Batterien (kurz Strukturbatterien) flexibler verbaut werden können und somit bei Verkabelung eingespart werden kann und Gewichtsverteilungsprobleme, wie sie etwa bei Flugmaschinen und Satelliten auftreten einfacher gelöst werden können
+
+Derzeitige Strukturbatterien zeichnen sich oft durch eine große mechanische Steifigkeit und eine verhältnismäßig geringe Energiedichte aus. Dies macht sie jedoch für die meisten primären Anwendungsfälle ungeeignet und beschränkt damit ihr Anwendungsfeld auf sekundäre oder Schwachstromanwendungen (\textit{engl.} low energy applications). Der Mangel an Strukturspeichern mit signifkant höheren Energiedichten stellt neben noch weiteren ungeklären Fragestellungen zum Auswechseln und Recycling eine Markteintrittsbarriere da.
+
+Hinzukommt, dass die bisherige Forschung in diesem Bereich sich hauptsächlich auf die Untersuchung und Verbesserung einzelner Komponenten wie Strukturelektrolyte und den Bau spezifischer Konfigurationen konzentriert. Dabei wurde jedoch eine ganzheitliche Methodik zur Verknüpfung der Erkenntnisse aus den verschiedenen Teilbereichen vernachlässigt. So lässt sich aktuell nur schwer bewerten, inwie weit in neues Material, was bessere Elektrochemische Eigenschaften, aber schlechtere mechanische Eigenschaften als ein beliebiges Referenzmaterial hat nun eher oder schlechter für den Einsatz in Strukturbatterien geeignet ist. Zudem basiert die Forschungsmethodik größtenteils auf experimentellen Ansätzen und wenigen computergestützten Modellen. Außerdem sind diese oft rechenintensiv und sind auf niedrigen Skalen auf den Einsatz von Supercomputern angewiesen. Des Weiteren benötigen die existierenden physikalischen Modelle eine Vielzahl an Materialkennwerten, die teilweise sehr aufwendig bestimmt werden müssen.
+
+\begin{figure}[h]
+	%\raggedleft
+		%\def\svgwidth{\columnwidth}
+        \center
+	\includegraphics[width=\textwidth, angle=0]{sb_types.pdf}
+		\caption{\label{fig:sb_types}Vereinfachte Darstellung von a) konventionellen Li-Ionen Batterie, b) einer Strukturbatterie als multifunktionales Material und c) als multifunktionale Struktur.}
+\end{figure}
+
+Diese Dissertation zielt darauf ab, diese Lücke zu schließen durch die Entwicklung einer digitalen Methode. Diese soll dabei helfen den experimentellen Aufwand zu reduzieren und Neuerungen im wissenschaftlichen Bereich besser zu berücksichtigen und einzuschätzen. Dazu muss die Methodik in der Lage sein mit Daten sowohl aus der vorhandenen Literatur und eigenen Experimenten qualitative Aussagen über mögliche Stukturbatterievarianten zu einer Vielzahl an anwendungsgetriebenen Fragestellungen zu machen. 
+Ausgangspunkt ist hierfür die Erarbeitung einer Modellgetrieben Auslegung mit eigener Erweiterung der Bewertung hinsichtlich fehlender Teilaspekte. Als erster Schritt dient hierbei die Erstellung einer Materialdatenbank für mögliche Strukturbatterienanwendungen. Dies beinhaltet auch die Recherche von Materialkandidaten aus dem Bereich Leichtbau und aktueller Batterieforschung. Die hierbei ermittelten Parameter dienen als Datengrundlage für Schritt zwei. In diesem werden exitierende computergestützten Modellen verknüpft und mit eigenen Modellen erweitert. Die eigenen Modelle werden mit Daten aus Literatur und Experimenten, die während des Projektzeitraums ElViS stattfanden einzeln validiert. Im dritten Schritt werden potenzielle Strukturspeicher mithilfe der validierten Einzelmodelle bewertet und exemplarisch an ausgewählten Kandidaten überprüft. Die  in einer prottypischen Strukturbatterie 
+
+% Das zugrundeliegende Prinzip dieses Lösungsansatzes besteht darin, dass Computer besser dazu geeignet sind, eine Vielzahl von einfachen Zusammenhängen zu verarbeiten und dies wiederholt für jede erdenkliche Kombination anzuwenden. Im Gegensatz zu bestehenden Ansätzen beginnt die Modellierung nicht auf atomarer Ebene, sondern auf der Komponentenebene, was eine schnellere Generierung von Ergebnissen ermöglicht. Zudem kann das Modellsystem leicht um Modelle auf mikro- oder molekularer Ebene erweitert werden, um zusätzliche Einflussfaktoren zu berücksichtigen.
+
+
+%**************************************************************
+%                   LITERATURÜBERSICHT  
+%**************************************************************
 \section{\label{sec:Literaturübersicht}Literaturübersicht}
 % 3-5 Seiten
+
+\subsection{Exitierende Strukturbatteriekonzepte}
+
+Die erste multifunktionale Strukturbatterie wurde 2004 von \textsc{Wetzel et al.} im Army Reasearch Laboratories (ARL) der USA entwickelt \cite{Wetzel2004, Snyder2006, Wong2007, Snyder2007}. Dieses Strukturbatterieverbundmaterial basierte auf Kohlenstofffasern als Anode und einer $\text{LiFePO}_\text{4}$ beschichteten Edelstahlkathode und eine Glasfasermatte als Separator \cite{Wong2007}. Dieser Aufbau zeigte bereits gute mechanische Eigenschaften. Allerdings konnten die elektrochemischen Eigenschaften wegen auftretenden Kurzschlüssen nicht final bestimmt werden.
+
+2009 konzeptionierte \textsc{Liu et al.} \cite{Liu2009} die erste Kurzfaserverträrkte Elektrode mit einem festen Polymerelektrolyte als Matrixmaterial. Allerdings konnte das Team die faserverstärkte Elektrode herstellen oder einen Feststoffelektrolyte mit ausreichender Ionenleitfähigkeit finden, weshalb schließlich auf ein Gelbasiertes Elektorlyte, mit festem und flüssigen Phasenanteil umgeschwenkt wurde. Da aufgrund der besseren Ionenleitfähigkeit weniger des Elektrolytes eingesetzt werden musste konnte eine Energiedichte von 35~Wh/kg erreicht werden.  Durch die fehlende strukturelle Verstärkung wurden allerdings nur eine verhältnismäßig geringe Zugsteifigkeit von 3 GPa erreciht werden.
+
+Der Ansatz des Gelelektrolyten wurde von \textsc{Ekstedt et al.} aufgenommen \cite{Ekstedt2010}, der erstmalig in diesen ein Kohlenstofffasergewebe einbettete. Ähnlich zu den Arbeiten von \textsc{Wetzel et al.} wurde auch hier auf einen Glasfaser basierten Separator und eine $\text{LiFePO}_\text{4}$ beschichte gewebte Aluminiumfasermatte als Kathode. Die resultierende Batterie zeichnete sich durch eine Zellspannung von 3,3~V aus.
+
+Im Jahr 2011 \textsc{Carlson et al.} \cite{Carlson2011} eine der ersten funktionierenden Strukturbatterien mit einer laminatartartigen Struktur, die sich aus einem IMS65 Kohlenstofffaserngebe als Anode, einem Gelelektrolyte als Elektrolyte, Glasfaserseparator und einer  $\text{LiFePO}_\text{4}$ beschichte gewebte Aluminumfolie. Die speicherbare elektroische Energie betrug XX, was  was ausreichend war um eine LED 70~s lang zum glimmen zu bekommen.
+
+Zwie Jahr später wurden \textsc{Asp et al.} \cite{Asp2013US,Asp2013CN} zwei Patentente zugesprochen, welches einen Ansatz der durch gezielte funktionailiserung der Faseroberflächen, jede Kohlenstofffaser zu einer Elektrode macht. Auch wenn die Patente seit 2017 nicht mehr verfolgt werden, konnte mittels aufbauend wurde eine Batterie mit 
+Dadurch wurden eine Energiedichte 10~Wh/kg erzielt, die theortisch möglichen 175 Wh/kg bei einem gleichzeitigen Schubmodul von 1 GPa, wurden jedoch noch noch nicht ansatzweise erreicht \cite{Leijonmarck2013, Carlson2013}.
+
+2018 untersuchte \textsc{Meng et al.} \cite{Meng2018} erstmalig den Einsatz von vertiakl ausgerichten Karbonnanoröhren (CNT), diese wurden für die Elktrode auf ein Edelstahlnetz aufgedampft. Anschließedn wurde für die Anode $\text{NiO}_\text{x}$ durch einen elektroschemischen Ausscheideprozess eingelagert. Mit dem gleichen Verfahren wurde mit $\text{FeO}_\text{x}$ für die Kathode auf die CNT-Edelstahlelektrode eingelagert. Die Strukurbatterie erreichte dabei eine Zugsteifigkeit von 7,0~GPa und eine Energiedichte von 1.4~Wh/kg.
+
+\textsc{Moyer et al.} \cite{Moyer2020} Gruppe modifizierte den für Patterientypischen Pouchzellenansatz in dem das verpresste Kohlenstoffasergewebe als Stromkolletor und Schutzfolie dient. Durch das anodenseitige Aufbringen von Graphit und $\text{LiFePO}_\text{4}$ auf der Kathode nehmen die Fasern aber nicht direkt am chemischen Prozess teil. Durch das bessere Interkalationsverhalten bei Graphit konnte aber eine hohe Energiedichte von 35~Wh/kg gemessen werden. Jedoch führte der Ansatz zu einer vergleichweise geringen Zugsteifigkeit von 2~GPa.
+
+\textsc{Thakur Dong} \cite{Thakur2020} stellten 2020 die erste 3D gedruckte Strukturbatterie her. Mithilfe eines Koextrusionsprozesses konnte eine Kohlenstofffaser die vorher mit einem festen Polymerelktrolyte beschichtet wurde, zusammen mit einem Li gedopted Matrixmaterial aufgepracht werden. Nachdem Drukcen der Elektrode wurde manuel eine Glasfasermatte und abschließend eine Alumiumfolie als Gegenelektrode aufgebracht. Neben der Möglichkeit neue Batterieformen zu drucken wurde auch durch die höhere Dichte an Aktivmaterial in Fasernähe eine vergleichweise hohe Energiedichte von 24~Wh/kg erreicht. Allerdings konnte durch den geringen Faservolumenanteil ein geringes Zugmodul von 0.29~GPa gemessen werden.
+
+2021 überarbeitete  \textsc{Asp et al.} \cite{Asp2021} das Design von \textsc{Carlson et al.} hinsichtlich   24~Wh/kg, Zugsteifigkeit von 25~GPa und Zugfestigkeit von 300~MPa.
+
+Die exitierenden Studien an Strukturbatterieverbundmaterialien zeigen eine reihe an Verbesserungspotenzialen für weitere Forschungen. Die größte Herausforderung stellt dabei das Erzielen einer möglichst guten Lithiuminterkalation in das Aktivmaterial der Elektrode und unbehinderten Lithiummigration zwischen diesen, bei gelichzeitiger Beibehaltung der mechanischen Steifigkeit und Festigkeit \cite{Asp2015}.
+
+- Die Forschung zu Strukturbatterien erlangte weitreichenede Bekanntheit 2021 mit \textsc{Asp et al.} Veröffentlichung zum Thema \textit{}.
+
+
 - Forschung nach neuen Kombinationen war lange und ist experimentell getrieben
 - zunehmener Einfluss von DFT etc. aber immer nur auf niedriger Ebene
 
-- Einzige wirkliche Vorhersagen auf dem Gebiet Strukturspeicher durch Carsted, aber nur an 3 Variaenten und ohne Elektrolytische Effekte zu Berücksichtigen 
+\begin{figure}[h]
+	%\raggedleft
+		%\def\svgwidth{\columnwidth}
+        \center
+	\includegraphics[width=\textwidth, angle=0]{sb_types.pdf}
+		\caption{\label{fig:sb_types}Testbild erzeugt mit Inkscape}
+\end{figure}
+
+- Einzige wirkliche Vorhersagen auf dem Gebiet Strukturspeicher durch Carsted, aber nur an 3 Varianten und ohne Elektrolytische Effekte zu Berücksichtigen 
 
 - Jedoch zahlreiche multiphysikalische Modelle für Batterie Management Systemens BMS, die jedoch hauptsächlich für Regelungssysteme eingesetzt werden.
 
