@@ -16,10 +16,35 @@ Strukturbatterien sind
 \subsection{Multifunktionale Effizienz}
 
 \section{Materialauswahl}
+
+Jedes  Material in einer Strukturbatterie erfüllt mehrere Aufgaben gleichzeitig. Die am meisten benutzte Untergliederung teilt die Materialien nach ihrer elektrochemischen Rolle ein.
+
+
 \subsection{Anode}
+Die Anode sollte ein niedriges elektrochemisches Potenzial und eine schnelle Interkalation für eine möglichst hohe Energiedicht und Leistungsdichte aufweisen. Zusätzlich profitieren Strukturbatterien sehr von Anoden mit hohen Festigkeits- und Steifigkeitswerten.
+
+Eines der am frühsten und immer noch am weitverbreitesten Aktivematerialien anodenseitig ist Graphit. Zwischen den Graphitschichten können Lithiumionen eingelagert werden. Der Interkalationsprozess in vier Stufen, was sich im Potenzialverlauf erkennen lässt. Das Lithium-Ion wird dabei zwischen zwei bencahbarten Graphene-Ebenen eingelager, wobei jedes Lithium-Ion den niedrigsten Energiezustand einnimmt, der im Zentrum eines hexagonalen Kohelnstoffring exitiert. Das maximale Einlagerungsmenge ist mit der $\text{LiC}_\text{6}$-Konfugration erriecht, bei der in zwischen jeder Graphitschicht alle möglichen Plätze belget wurden. Die Menge an eingelagerten Lithiumion entspricht dabei  einer theoretischen spezischen Kapazität von 372~mAh/g. 
+In herkömmlichen monofunktionalen Batterien werden oft dünne Kupferfolien mit einer Graphitpartikelbeschichtung verwendet. Die zusätzliche Additive in der Pulvermischung halten die Partikel zusammen und sorgen für einen geringen Widerstand beim Transport der Elektronen zur Kupferelektrode. Die Bindungen zwischen den Partikeln sind jedoch sehr schwach und tragen nicht zur steigerung der mechansichen Eigenschaften bei. Außerdem sorgt die Ausdehung infolge von Lithiierung mit der Zeit für Risse durch die mit der Zeit der Leitungswiderstand steigt, was einer von vielen beobachten Alterungsmechanismen von Batterien ist.
+
+Die begrenzte Kapazität, langsame Diffusionskinetik, geringe mechanische Eigenschaften, sind einige der Faktoren die die Untersuchungen Kohlenstoff-Nanostrukturen und andere Morphologien bewegen.
+
+Seit seiner Entdeckung in 2004\cite{Novoselov2004} ist Graphene zunehmend in den Fokus der Batterieforschung geraten mit einer theoretischen Kapazität von >1000~mAh/g hoher mechansicher Zugfestigkeit von $\approx$130~GPa und einer Zugsteifigkeit von $\approxeq$ 1TPa stellt es ein ideales Material für den Einsatz in Strukturbatterien da \cite{Novoselov2012}. Jedoch konnte das Material bisher nur im Labormaßstab und nur in unzureichenden Mengen syntehtisiert werden. Auch ist bisher umstritten, wie die Einlagerung von Li-bei Graphene genau abläuft, was je nachdem die theoretische Kapazität noch stark noch oben oder unten korrigiert. Bisherige Experimente mit zweilagigen Graphene kommen zu unterschiedlichen Ergebnissen. \textsc{Ji et al.} beobachtete einen Mechanismus der auf einen ähnlichen Prozess wie bei Graphit vermuten lässt, während \textsc{Kühne et al.} sugenante super-dichte Lithiumeinlagerung zwischen den beiden Grapheneschichten gemessen haben will. 
+
+Ebenfalls aus vielen Graphitschichten bestehend, aber mit deutlich höheren Festigkeits- und Steifigkeitswerten sind Kohlenstofffaser. Bereits unbehandelt können bis zu XXX mol/g eingelagert werden, was einer Flächenkapazität von etwa XXX entspricht.
+
+\input{Abbildungen/02_SoA/carbon_active_material.tex}
+
 \subsection{Kathode}
 \subsection{Elektrolyte}
 \subsection{Separator}
+
+\subsection{Pouchfolie}
+Herkömmliche Pouchzellen sind mit einer kunststoffbeschichteten Aluminiumhülle vor Umwelteinflüssen geschützt. Insbesondere verhindert diese das Feuchtigkeit in die Batterie eindringt und giftige oder brennbare Stoffe aus der Batterie entweichen können. Außerdem ermöglichen die guten mechanischen und Wärmeleiteigenschaften der Alumiumfolie eine geringe Gesamtmasse und eine effizientere Temperaturregulierung der Zellen. Eine zunehmend wichtiger werdende Aufgabe, die allerdings noch nicht hinreichend erfüllt, wird ist das Aufbirngen einen äußeren Zelldruckes.
+In mehrere Studien konnte gezeigt werden, dass durch einen hohen externen Druck die Kontaktierung zwischen Elektrode und Elektrolyte verbessert wird, was einen besseren Ionen- und Elektronentransport bewirkt. Außerdem können ungewünschte Nebenreaktionen unterdrückt werden, wie etwa Gasbildung und Dendritwachstum, was den Lithiumverlust beim Laden und Entladen reduziert und somit dem Kapazitätsverlust entgegenwirkt und das Batterieleben verlängert \cite{Mussa2018,Mueller2019,Sakamoto2019}.
+Besonders Batterien mit Feststoffelektrolyten benötigen einen deutlich höherer Druck um den Kontakt zwischen Elektrode und Elektrolyte zu gewährleisten \cite{Boaretto2021}. Jedoch existiert zurzeit noch keine zufriedenstellende Lösung. Zwar wird bereits bei der Herstellung mittels verpressen der Elektroden ein gewisser Druck realisiert, allerdings können größere Drücke damit nicht appliziert werden oder über längere Zeit aufrechterhalten werden \cite{Garayt2023}. Daher wird oft versucht durch eine externen Einspannung auf Systemebene diesen Druck aufzubringen. Jedoch entsteht durch die innere Reibung der Batterien kein gleichmäßiger Druckverlauf, was dazuführt, dass äußere Zellen stärker belastet werden und weiter innen liegende Zellen kaum von dem äußeren Druck profitieren. Auch haben höhere Ausgleichsdrücke, dass Problem, dass diese eine höhere Anstrengung für das Gesamtpaket darstellen, was zu dickeren Materialien und damit einer niedrigeren Gesamtenergiedichte führt.
+Einzig die Knopfzellen, die durch eine integrierte Feder einen definierten Druck auf eine, im Verhältnis zur Pouchzelle, deutlich kleinere Fläche auswirkt ist die einzige bekannte Lösung zu diesem Problem. Hinzukommt, dass auch hier der Massenanteil von Gehäuse zu Zelle deutliche höher ist als bei Pouchzellen.
+
+Für Strukturbatterien sind bisher keine Alternativen zum herkömmlichen Aluminiumpouchfolie untersucht wurden \cite{Ye2024}. Jedoch gibt es viele Gruppen die ihre Strukturbatterien mit Pouchfolie zusätzlich in einen kohlefaserverstärkten Kunststoff einbetten \cite{Pattarakunnan2020,Asp2021}. 
 
 
 \section{Aktuelle Ansätze zur Entwicklung und Auslegung von Strukturbatterien}
