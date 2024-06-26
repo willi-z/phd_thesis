@@ -1,16 +1,74 @@
 \begin{table}[ht]
     \centering
     \caption{Übersicht bisher entwickelter Strukturbatterien.}
-    \begin{tabular}[t]{lccc}
+    \begin{tabular}[t]{lcccc}
     \toprule
-    &Spezifische Kapazität [mAh/g]&Spezifische Kapazität [mAh/g]&Referenz\\
+    &Entlade Kapazität\textsuperscript{*} [mAh/g]
+    &CR [\%] % Capacity Retention
+    &$\text{D}_{\text{Li}}$ %[$\text{cm^2/s}$]
+    &Ref.\\
     \midrule
-    T300&170&91&\cite{Kjell2011}\\
-    T300 unbeschichtet&350&130&\cite{Kjell2011}\\
-    T800&170&98&\cite{Kjell2011}\\
-    T800 unbeschichtet&194&112&\cite{Kjell2011}\\
-    IMS65 &166&108&\cite{Kjell2011}\\
-    IMS65 unbeschichtet&360&177&\cite{Kjell2011}\\
+    Graphit
+        &356-372
+        &98
+        &$10^{-7}-10^{-6}$ ($10^{-11}$\textsuperscript{,K})
+        &\cite{Persson2010,Wang2021,Olutogun2024}\\
+    Graphen
+        &770/1115
+        %&100
+        &90
+        &$7 \times 10^{-5}$
+        &\cite{Zhu2014,Wang2017,Kuehne2017}\\
+    Kohlenstofff Nanoröhren
+        &1115
+        &90
+        &$10^{-14}-10^{-11}$
+        &\cite{Maurin1999,Zhao2000,Meunier2002,Shin2002,Nishidate2005,Schauerman2012}\\
+    Harter Kohlenstoff
+        &200-600 % 0.2C
+        %802-1063 lade capacitität
+        % 27.9-47.3 lade/entlade effizienz / Columbic Efficiency
+        &72-90 % nach 50 Zyklen
+        &$10^{-9}$-$10^{-8}$
+        &\cite{Fujimoto2010,Bridges2012,Yang2012}\\
+    Karbon Aerogel
+        &349-570,2
+        &31,9-97%(836.9-570.2)/836.9
+        &n.a.
+        &\cite{Yang2015,Pham2024,Li2022a}\\
+    T300
+        &91
+        &46,5 % (170-91)/170
+        &$10^-12-10^-11$
+        &\cite{Uchida1996,Kjell2011,Johansen2022}\\
+    T300 unbeschichtet
+        &130
+        &62,9 %(350-130)/350
+        &$10^-12-10^-11$
+        &\cite{Uchida1996,Kjell2011,Johansen2022}\\
+    T800
+        &98
+        &42,4 % (170-98)/170
+        &n.a.
+        &\cite{Kjell2011,Johansen2022,Johansen2024}\\
+    T800 unbeschichtet
+        &112
+        &42,3 %(194-112)/194
+        &n.a.
+        &\cite{Kjell2011,Johansen2022,Johansen2024}\\
+    IMS65
+        &108
+        &34,9 %(166-108)/166
+        &$10^{-8}-10^{-6}$
+        &\cite{Kjell2011}\\
+    IMS65 unbeschichtet
+        &177
+        &52,3 %(360-177)/350
+        & $10^{-8}-10^{-6}$
+        &\cite{Kjell2011,Kjell2013}\\
     \bottomrule
     \end{tabular}
+    \noindent{\footnotesize{\textsuperscript{1} gemessen nach min. 10 Zyklen.}}
+    \noindent{\footnotesize{\textsuperscript{K} Korngrenze.}}
+    \noindent{\footnotesize{\textsuperscript{*} Die Abkürzung nicht auffindbar (n.a.) wurde benutzt.}}
 \end{table}%
