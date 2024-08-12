@@ -1,7 +1,16 @@
-# Promotion
+<div align="center">
+    <h1>Promotion</h1>
+    <!-- Badges -->
+    <p>
+        <img alt="GitHub all releases" src="https://img.shields.io/github/v/tag/willi-z/phd_thesis">
+        <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/willi-z/phd_thesis/main">
+        <img alt="Program" src="https://img.shields.io/badge/written_in-LaTeX-blue?logo=latex">
+        <img alt="Language" src="https://img.shields.io/badge/language-Deutsch-crimson">
+    </p>
+</div>
 
+## Gliederung
 
-# Gliederung
 1. Einleitung
     - Thema
     - Relevanz
@@ -10,7 +19,6 @@
     - Forschungslücke
     - Forschungsfrage/ Forschungshypothese
 3. Forschungsmethode
-    
 4. Ergebnisse
     1. Datenbank
     2. Elektrolyteinfluss
@@ -25,7 +33,6 @@
 1. Einleitung (6 Seiten)
     - Problemstellung
     - Ziele
-
 2. Stand der Forschung (20 Seiten)
     - Grundlagen zur Strukurbatterie
         - Konzept, Was ist eine Strukturbatterie? Was ist der Vorteil?
@@ -36,7 +43,6 @@
     - derzeitige Defizite
         - Fragen und Probleme im Zusammenhang Leichtbau beschreiben
         - Multifunktionale Performanz
-
 3. Beschreibung der gekoppelten mechanischen-elektrochemischen Eigenschaften von Strukturbatterien (25 Seiten)
     - Batteriechemie
     - Mechanik
@@ -44,7 +50,6 @@
     - Validierung mit Literatur
     - Zusammenfassung
         - insgesamt sieht meine Methode also wie folgt aus
-
 4. Digitale Auslegung (15 Seiten)
     - Verknüpfung verschiedener Auslegungsmethoden mit QUINTUS
     - Erstellung einer Materialdatenbank für Strukturbatteriekomponenten
@@ -52,7 +57,6 @@
     - Koppelung simulationsbasierter Ansätze
     - effiziente Identifizierung geeigneter Strukturbatterien
     - Umsetzung der Auslegungsmethodik in Python
-
 5. Ergebnisse (20 Seiten)
     - Vorhersagen
         - Validierung 
@@ -63,7 +67,6 @@
         - Limitierung von QUINTUS auf Konzept bis anfängliche Optimierungsphase
     - Design vor Recyclebarkeit
 
-
 6. Strukturbatterien im Leichtbau (4 Seiten)
     - Anwendungsbeispiel(e) aufzeigen
     - Roadmap
@@ -71,15 +74,15 @@
 
 7. Zusammenfassung und Ausblick (2 Seiten)
 
-# Neuheiten
+## Neuheiten
 
 - Bestimmung neuer Batteriedesigns unter Berücksichtigung des Elektrolyteffektes
 - Beschleunigung exisiterender Simulationsmethoden mit Hilfe von Random Linear Algebra (https://www.youtube.com/watch?v=6htbyY3rH1w)
 - Multikriterielle Design Optimierung der perforierter Elektroden
 - beschleunigtes Berechnungsmodell zur bestimmung des Biegeverhaltens von Batterien
 
+## Einleitung
 
-# Einleitung
 - Um welches Thema handelt es sich?
 - Warum ist es wichtig, sich mit dem Thema zu befassen?
 - Was hat die bisherige Forschung an Erkenntnissen zu dem
@@ -108,8 +111,8 @@ menhang zu einem Forschungsvorhaben, Kooperation mit ei-
 nem Industriepartner]
 - Optional: Aufbau der Arbeit
 
-
-
 # Setup
 
+```sh
 pacman -S extra/texlive-langgerman
+```
