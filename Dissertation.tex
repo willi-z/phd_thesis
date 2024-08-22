@@ -32,17 +32,36 @@ automark, %
 %\usepackage{showframe} % Zeigt den Satzspiegel an
 %\usepackage{layouts}
 
-\usepackage[ngerman]{babel}
-
 %\usepackage{tocloft}
 \usepackage{scrhack} % Verbessert das Zusammenspiel zwischen KOMA und dem float-Paket
 
 \usepackage[utf8]{inputenc} %Korrekte Codierung Umlaute etc.
 \usepackage{xspace}
 
+%\usepackage[ngerman]{babel}
+%\usepackage[german=quotes]{csquotes}
+%\MakeOuterQuote{"}
+\usepackage[ngerman,math=normal]{babel}
+
+\useshorthands{'}
+
+\newif\ifclosequote
+\defineshorthand{''}{%
+  \ifclosequote
+    \closequotefalse\dq
+  \else
+    \closequotetrue\glqq
+  \fi
+}
+
+
 \usepackage{tabularx}
 \usepackage{multirow, makecell}
 \usepackage{booktabs}
+
+\newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}} % superscript
+\newcommand{\subscript}[1]{\ensuremath{_{\textrm{#1}}}}   % subscript
+
 
 
 \usepackage[T1]{fontenc} %Nur ändern, wenn kyrillische Gedichte oder japanische Kanji zu setzen sind...
@@ -136,6 +155,7 @@ detect-all, % Detektiert die aktuelle Schriftart
 \DeclareSIUnit{\newtonmetre}{Nm}
 \DeclareSIUnit{\tanDeltaMilli}{10^{-3}}
 \DeclareSIUnit\angstrom{\text{\AA}}
+\usepackage[version=4]{mhchem}
 
 \usepackage{hvfloat} % Für Querformatobjekte, die nicht übner die ganze Seite gehen
 
