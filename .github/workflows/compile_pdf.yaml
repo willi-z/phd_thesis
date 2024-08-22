@@ -13,5 +13,15 @@ jobs:
       - name: Upload PDF file
         uses: actions/upload-artifact@v4
         with:
-          name: PDF
+          name: Dissertation
           path: Dissertation.pdf
+      - name: Create prerelease
+        uses: marvinpinto/action-automatic-releases@v1.2.1
+        with:
+          # GitHub secret token
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          # Git tag (for automatic releases)
+          automatic_release_tag: "latest" # optional
+          # Assets to upload to the release
+          files: Dissertation.pdf
+              
