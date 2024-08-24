@@ -1,10 +1,9 @@
 \chapter{Stand der Forschung}
 
-Im folgenden Kapitel wird ein grundlegendes Verständnis für die Funktionsweise von Strukturbatterien vermittelt werden. Außerdem werden die Besonderheiten gegenüber konventionellen Batterien oder faserverstärkten Verbundwerkstoffen erläutert. Dazu werden die wichtigsten Eigenschaften und ihre Ermittlungsverfahren erläutert und Rolle der Einzelkomponenten im Zusammenhang der Materialauswahl näher erklärt. Anschließend werden aktuelle Entwicklungsansätze diskutiert und abschließend die ungelösten Herausforderungen mit den aktuellen Methoden näher analysiert.
+Im folgenden Kapitel wird ein grundlegendes Verständnis für die Funktionsweise von Strukturbatterien vermittelt. Außerdem werden die Besonderheiten im Vergleich zu konventionellen Batterien und faserverstärkten Verbundwerkstoffen erläutert. Dazu werden die wichtigsten Eigenschaften und deren Ermittlungsverfahren dargestellt sowie die Rolle der einzelnen Komponenten im Zusammenhang mit der Materialauswahl näher erklärt. Anschließend werden aktuelle Entwicklungsansätze diskutiert und abschließend die ungelösten Herausforderungen mit den aktuellen Methoden näher analysiert.
 
-\section{Funktionsweise der Strukturbatterie}
-Strukturbatterien sind Batterien die mechanisch belastbar sind und damit auch zur strukturellen Integrität beitragen können. 
-Batterien erlauben es temporär Energie speichern in dem Ladungsträger reversible in einem Hostmaterial eingelagert werden. Solche Zellen werden daher auc ''Shuttle-Clock''\cite{Ohzuku1993}-, ''Rocking-Chair''\cite{Tarascon1993}- oder ''Swing''\cite{Bittihn1993}-Zellen bezeichnet. Der Einlagerungsprozess selbst wird meist als ''Interkalation'' bezeichent \cite{Eichinger1976}. Durch den Einlagerungsprozess nehmen die beiden Hostmaterialien einen aktiven Anteil am Ladungsaustausch teil, daher auch der Name ''Aktivmaterial'', siehe Abbildung~\ref{fig:battery_function}. Häufig ist das Aktivmaterial für die Anode Graphit und die Kathode aus einem Metalloxid (\ce{MO_2}). 
+\section{Funktionsweise der Strukturbatterie} Strukturbatterien sind Batterien, die mechanisch belastbar sind und damit auch zur strukturellen Integrität beitragen können.
+Batterien erlauben es, temporär Energie zu speichern, indem Ladungsträger reversibel in einem Hostmaterial eingelagert werden. Solche Zellen werden daher auch ''Shuttle-Clock''\cite{Ohzuku1993}-, ''Rocking-Chair''\cite{Tarascon1993}- oder ''Swing''\cite{Bittihn1993}-Zellen genannt. Der Einlagerungsprozess selbst wird meist als ''Interkalation'' bezeichnet \cite{Eichinger1976}. Durch den Einlagerungsprozess nehmen die beiden Hostmaterialien aktiv am Ladungsaustausch teil, daher auch der Name ''Aktivmaterial'', siehe Bild~\ref{fig:battery_function}. Häufig ist das Aktivmaterial für die Anode Graphit und für die Kathode ein Metalloxid (\ce{MO_2}).
 \begin{figure}[h]
 	%\raggedleft
 		%\def\svgwidth{\columnwidth}
@@ -12,20 +11,18 @@ Batterien erlauben es temporär Energie speichern in dem Ladungsträger reversib
 	\includegraphics[width=\textwidth, angle=0]{battery_function.pdf}
 		\caption{\label{fig:battery_function}Die Energiespeicherfunktion einer Batterie wird maßgeblich durch den skalenübergreifenen Ein- und Auslagerungsprozess der Ladungsträger realisiert.}
 \end{figure}
-Beim Entladen der Batteriezelle wandern die Ladungsträger von Anode zur Kathode. An beiden Elektroden kommt es zum Ladungsaustausch, der mittels Redox-Gleichungen beschrieben werden kann \cite{Goodenough2013}:
+Beim Entladen der Batteriezelle wandern die Ladungsträger von der Anode zur Kathode. An beiden Elektroden kommt es zum Ladungsaustausch, der mittels Redox-Gleichungen beschrieben werden kann \cite{Goodenough2013}: 
 \begin{align}
-	\ce{C_6 + x Li^+ + x e^- &<=> Li_xC_6}\\
-	\ce{LiMO_2 - x Li^+ - x e^- &<=> Li_{1-x}MO_2}
-\end{align}
-Der Einlagerungsprozess erlaubt im Vergleich zu reinen elektrostatischen Speicherung, wie etwa bei Kondensatoren, eine signifikant höhere Beladungsdichte an Ladungsträgern, wodurch höhere Energiemengen gespeichert werden können.
+	\ce{C_6 + x Li^+ + x e^- &<=> Li_xC_6}\\ 
+	\ce{LiMO_2 - x Li^+ - x e^- &<=> Li_{1-x}MO_2} 
+\end{align} 
+Der Einlagerungsprozess erlaubt im Vergleich zur reinen elektrostatischen Speicherung, wie etwa bei Kondensatoren, eine signifikant höhere Beladungsdichte an Ladungsträgern, wodurch größere Energiemengen gespeichert werden können.
 
-Entscheident für die Funktion der Batterie ist hier bei, dass der Transport der Ionen durch das Elektrolyte und den Separator erfolgt. Die Elektronen können jedoch nur entlang des Stromkollektors entlang geleitet werden und  müssen daher einen ''Umweg'' außererhalb der Zell machen, siehe Abbildung~\ref{fig:battery_function}. Die Bewegung der Elektronen ist dabei im Vergleich zum Ionentransport deutlich schneller, weshalb die Ent- und Beladungsgeschwindigkeiten einzig von der Ionenmobilität limitiert wird. 
+Entscheidend für die Funktion der Batterie ist hierbei, dass der Transport der Ionen durch den Elektrolyten und den Separator erfolgt. Die Elektronen können jedoch nur entlang des Stromkollektors geleitet werden und müssen daher einen „Umweg“ außerhalb der Zelle machen, siehe Bild~\ref{fig:battery_function}. Die Bewegung der Elektronen ist dabei im Vergleich zum Ionentransport deutlich schneller, weshalb die Ent- und Beladungsgeschwindigkeit einzig von der Ionenmobilität limitiert wird.
 
-Im Falle großer Ströme, wie etwa bei einem Kurzschluss, finden viele Laungsumwandlungsreaktionen gleichzeitig statt. Die dabei entstehende Wärme kann zum Versagen oder Brennen der Zelle führen. Mögliche Ursachen für Kurzschlüsse sind Herstellungsfehler, Dendritwachstum und mechansiche Belastungen, bei denen die Elektroden durch Versagen des Separats in direkten Kontak kommen, wie etwa Penetration oder Biegung. 
+Im Falle großer Ströme, wie etwa bei einem Kurzschluss, finden viele Ladungsumwandlungsreaktionen gleichzeitig statt. Die dabei entstehende Wärme kann zum Versagen oder Brennen der Zelle führen. Mögliche Ursachen für Kurzschlüsse sind Herstellungsfehler, Dendritwachstum und mechanische Belastungen, bei denen die Elektroden durch Versagen des Separators in direkten Kontakt kommen, wie etwa bei Penetration oder Biegung.
 
-Darüberhinaus führt die mit der mechanischen Belastungen einehrgehende Rissbildung zu einer Erhöhung des innenren elektrischen Widerstandes, was zu einem Verlust and Sepichereffizienzführt und deshalb versucht wird zu vermeiden.
-Daher kommen bei konvnetionellen Batterien spezielle Umhausungen zum Einsatz, die eine Belastung der Batterien verhindern soll. Diese bringen allerdings eine signifikanten Anteil an zusätzlicher Masse hinzu und sind durch ihre Größe meist schwerer in Hoststrukturen zu integrieren. Um diesen Nachteilen zu begegnen versuchen Struktrubatterien durch die Integration geeingeter Materialien die mechanische Belastungsfähigkeit zu verbesseren.  ist neben einem umfangreichen Verständis der wichtigsten Eigenschaten auch ??
-
+Darüber hinaus führt die mit den mechanischen Belastungen einhergehende Rissbildung zu einer Erhöhung des inneren elektrischen Widerstandes, was zu einem Verlust an Speichereffizienz führt und daher vermieden werden soll. Bei konventionellen Batterien kommen daher spezielle Umhausungen zum Einsatz, die eine Belastung der Batterien verhindern sollen. Diese bringen allerdings einen signifikanten Anteil an zusätzlicher Masse hinzu und sind aufgrund ihrer Größe meist schwerer in Hoststrukturen zu integrieren. Um diesen Nachteilen zu begegnen, versuchen Strukturbatterien durch die Integration geeigneter Materialien die mechanische Belastungsfähigkeit zu verbessern. Zur Steigerung der Multifunktionalität neuer Strukturbatterien ist daher neben einem umfangreichen Verständnis der wichtigsten Eigenschaften auch ein Überblick über mögliche Materialkandidaten aus bestehenden Untersuchungen zu konventionellen Batterien sowie dem Leichtbaubereich notwendig.
 
 
 \section{Wichtigsten Eigenschaften und ihre Ermittlungsverfahren}
