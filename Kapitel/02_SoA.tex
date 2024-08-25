@@ -203,13 +203,27 @@ Als Ausgangsmaterialien für die flüssige Phase kommen ionische Flüssigkeiten~
 Feststoffelektrolyten bestehen meist aus einer Polymermatrix mit flexiblen Ketten, um die Bewegung eines gelösten Salzes zu ermöglichen. Der Hauptvorteil dieses Ansatzes liegt im Verzicht auf flüchtige oder brennbare Bestandteile und in den durch das Polymer bestimmten vergleichsweise guten mechanischen Eigenschaften. Allerdings ist die ionische Leitfähigkeit bei Raumtemperatur deutlich geringer als bei zweiphasigen Vertretern. Die Herstellung von Feststoffelektrolyten kann auf zwei Wegen erfolgen. Eine Möglichkeit stellt dabei die Polymerisation in Anwesenheit von Lithiumsalz dar. \textsc{Snyder et al.}~\cite{Snyder2007, Snyder2009} erreichten mit diesem Ansatz Ionenleitfähigkeiten von $1,6 \times 10^{-5}$ - $1,7 \times 10^{-3}$ $\si{\milli \siemens \per \cm}$ und damit verbundene Zugmodule von 552 bis 15~$\si{\MPa}$. Der zweite, häufig verwendete Ansatz nutzt eine Mischung von Polymeren mit Lithiumsalz. Für diese komplett festen zweiphasigen Elektrolytsysteme kommen häufig Epoxid~\cite{Matsumoto2011,Munoz2021,Wang2020b} oder PEO~\cite{Moreno2011,Ji2010,Guo2021} zum Einsatz.
 
 \subsection{Separator}
-\begin{itemize}
-	\item Glasfaser
-	\item Polymer
-	\item Keramik
-	\item Cellulose
-\end{itemize}
+
+Separatoren befinden sich zwischen den beiden Elektroden und dienen hauptsächlich dem Verhindern eines elektroschen Kurzschlusses. Daraus folgen die Anforderungen, dass Seperatormaterialien für Elektronen nicht durchlässig sind, aber für Ladungsträger Transportmechanismen bereitstellen~\cite{Kurzweil2015}. Um Kurzschluss auch bei mechansichen Belastungen zu verhindern werden werden außerdem Anforderungen an die mechansiche Belastbarkeit gestellt~\cite{Asp2015}. Weitere wichtige Eigenschaften sind eine hohe chemische und thermische Stabilität, insbesondere gegen Korrosion, geringe Dichte, geringe Dicke, große Verfügbarkeit und damit verbunden geringe Materialkosten~\cite{Beard2019}. Im Kontext von Strukturbatterien und der häufigen Verwendung von festen Elektrolytesystemen ist der Einsatz von Separatoren theoretische nicht notwendig, da anders als bei flüssigen Elektrolyen das Auseinanderhalten der Elektroden auch unter Druck gewährleistet werden kann. Jedoch ist im Rahmen von Sicherheitsbedenken und einer signifikanten Erschwerung des Herstellungsprozesses ohne diese der Einsatz von Seperatoren immer noch ein wichtiges Element in der Konzeptionierung von Strukturbatterien~\cite{Asp2015, Hubert2022}.
+Das meisten verwendete Separatormaterial ist Glasfaser~\cite{Zhou2022}. Jedoch exitieren auch vielversprechende Kandidaten, wie Polymerbasierte Separatoren, Keramiken und Cellulose~\cite{Simon2008, Greenhalgh2023}, siehe Tabelle~\ref{tab:separator_comp}
 \input{Abbildungen/02_SoA/separator_material.tex}
+
+Glasfaserseparatoren finden großen Einsatz wegen ihrer hohen mechanischen Belastbarkeit, ihrer sehr hohen thermischen und elektrochemischen Stabilät und relativ geringen Materialkosten~\cite{Luo2015,Asp2019,Asp2021,Liu2022}. Allerdings haben sie im Vergleich zu anderen Materialkandiadten eine signifikant höhere Dicke und benötigen eine hohe Maschenweite um einen hohen Ionenaustausch zu ermöglichen, siehe Bild~\ref{fig:separator_transportation}, was allerdings mit einem höheren Kurzschlussrisiko einher geht~\cite{Danzi2021,Zhou2022}. 
+Im Kontext von faserbasierten Separatoren wurden außer Glasfasern auch Aramidfaser eingehen betrachtet~\cite{Jin2023}. Hervorzuheben ist hierbei ihre Fähigkeit Dendritwachstum zu verhindern und zeigt bei Lithiumionenbatterien oft ein besser Zyklenverhalten gegenüber Glasfasern~\cite{Tung2015,Wang2021a}.
+\begin{figure}[h]
+	%\raggedleft
+		%\def\svgwidth{\columnwidth}
+        \center
+	\includegraphics[width=\textwidth, angle=0]{separator_transportation.pdf}
+		\caption{\label{fig:separator_transportation}Visualisierung verschiedener Separatormaterialien und der jeweligen Ionentransportwege (gestrichelte Linie) für: (a) Gewebe, (b) Polymer-, (c) Keramikseparator und (d) Cellulose~\cite{Zschiebsch2024}.}
+\end{figure}
+
+
+Polymerseparator
+
+Keramische Seperatormaterialien zeichnen sich besonders durch ihre hohe thermische Stabilität aus. 
+
+Das Interesse an Cellulose ist in den letzten Jahren zusammen mit einem wachsenden Forschungsfeld zu den Themenfeldern ''nachwachsende Rohstoffe'' und ''recyclebare elektrische Speicher'' immer mehr gewachsen~\cite{Liang2018,Teng2020}. Cellulose zeigt dabei eine sehr hohe Ionenleitfähigkeit, und eine gute, wenn auch im Vergleich mit Glasfasern deutlich geringer, mechanische Festigkeit und Zugsteifigkeit~\cite{Xu2020}, siehe Tabelle~\ref{tab:separator_comp}. Eine Möglichkeit der Steigerung der Steifigkeit stellt dabei dei Verwendung von Nanocellulose dar die Zugsteifigkeiten von bis zu 130~$\si{\GPa}$ erreicht~\cite{Dufresne2013,Zhang2019}.
 
 \subsection{Pouchfolie}
 Herkömmliche Pouchzellen sind mit einer kunststoffbeschichteten Aluminiumhülle vor Umwelteinflüssen geschützt. Insbesondere verhindert diese, dass Feuchtigkeit in die Batterie eindringt und giftige oder brennbare Stoffe aus der Batterie entweichen können. Außerdem ermöglichen die guten mechanischen und Wärmeleiteigenschaften der Aluminiumfolie eine geringe Gesamtmasse und eine effizientere Temperaturregulierung der Zellen. Eine zunehmend wichtiger werdende Aufgabe, die allerdings noch nicht hinreichend erfüllt wird, ist das Aufbringen eines äußeren Zelldrucks.
