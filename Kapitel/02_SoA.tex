@@ -3,7 +3,7 @@
 Im folgenden Kapitel wird ein grundlegendes Verständnis für die Funktionsweise von Strukturbatterien vermittelt. Außerdem werden die Besonderheiten im Vergleich zu konventionellen Batterien und faserverstärkten Verbundwerkstoffen erläutert. Dazu werden die wichtigsten Eigenschaften und deren Ermittlungsverfahren dargestellt sowie die Rolle der einzelnen Komponenten im Zusammenhang mit der Materialauswahl näher erklärt. Anschließend werden aktuelle Entwicklungsansätze diskutiert und abschließend die ungelösten Herausforderungen mit den aktuellen Methoden näher analysiert.
 
 \section{Funktionsweise der Strukturbatterie} Strukturbatterien sind Batterien, die mechanisch belastbar sind und damit auch zur strukturellen Integrität beitragen können.
-Batterien erlauben es, temporär Energie zu speichern, indem Ladungsträger reversibel in einem Hostmaterial eingelagert werden. Solche Zellen werden daher auch ''Shuttle-Clock''\cite{Ohzuku1993}-, ''Rocking-Chair''\cite{Tarascon1993}- oder ''Swing''\cite{Bittihn1993}-Zellen genannt. Der Einlagerungsprozess selbst wird meist als ''Interkalation'' bezeichnet \cite{Eichinger1976}. Durch den Einlagerungsprozess nehmen die beiden Hostmaterialien aktiv am Ladungsaustausch teil, daher auch der Name ''Aktivmaterial'', siehe Bild~\ref{fig:battery_function}. Häufig ist das Aktivmaterial für die Anode Graphit und für die Kathode ein Metalloxid (\ce{MO_2}).
+Batterien erlauben es, temporär Energie zu speichern, indem Ladungsträger reversibel in einem Hostmaterial eingelagert werden. Solche Zellen werden daher auch ''Shuttle-Clock''~\cite{Ohzuku1993}-, ''Rocking-Chair''~\cite{Tarascon1993}- oder ''Swing''~\cite{Bittihn1993}-Zellen genannt. Der Einlagerungsprozess selbst wird meist als ''Interkalation'' bezeichnet~\cite{Eichinger1976}. Durch den Einlagerungsprozess nehmen die beiden Hostmaterialien aktiv am Ladungsaustausch teil, daher auch der Name ''Aktivmaterial'', siehe Bild~\ref{fig:battery_function}. Häufig ist das Aktivmaterial für die Anode Graphit und für die Kathode ein Metalloxid (\ce{MO_2}).
 \begin{figure}[h]
 	%\raggedleft
 		%\def\svgwidth{\columnwidth}
@@ -11,54 +11,53 @@ Batterien erlauben es, temporär Energie zu speichern, indem Ladungsträger reve
 	\includegraphics[width=\textwidth, angle=0]{battery_function.pdf}
 		\caption{\label{fig:battery_function}Die Energiespeicherfunktion einer Batterie wird maßgeblich durch den skalenübergreifenen Ein- und Auslagerungsprozess der Ladungsträger realisiert.}
 \end{figure}
-Beim Entladen der Batteriezelle wandern die Ladungsträger von der Anode zur Kathode. An beiden Elektroden kommt es zum Ladungsaustausch, der mittels Redox-Gleichungen beschrieben werden kann \cite{Goodenough2013}: 
+Beim Entladen der Batteriezelle wandern die Ladungsträger von der Anode zur Kathode. An beiden Elektroden kommt es zum Ladungsaustausch, der mittels Redox-Gleichungen beschrieben werden kann~\cite{Goodenough2013}: 
 \begin{align}
 	\ce{C_6 + x Li^+ + x e^- &<=> Li_xC_6}\\ 
 	\ce{LiMO_2 - x Li^+ - x e^- &<=> Li_{1-x}MO_2} 
 \end{align} 
-Der Einlagerungsprozess erlaubt im Vergleich zur reinen elektrostatischen Speicherung, wie etwa bei Kondensatoren, eine signifikant höhere Beladungsdichte an Ladungsträgern, wodurch größere Energiemengen gespeichert werden können.
+Der Einlagerungsprozess erlaubt im Vergleich zur reinen elektrostatischen Speicherung, wie etwa bei Kondensatoren, eine signifikant höhere Beladungsdichte an Ladungsträgern, wodurch größere Energiemengen gespeichert werden können~\cite{Newman2021}.
 
-Entscheidend für die Funktion der Batterie ist hierbei, dass der Transport der Ionen durch den Elektrolyten und den Separator erfolgt. Die Elektronen können jedoch nur entlang des Stromkollektors geleitet werden und müssen daher einen „Umweg“ außerhalb der Zelle machen, siehe Bild~\ref{fig:battery_function}. Die Bewegung der Elektronen ist dabei im Vergleich zum Ionentransport deutlich schneller, weshalb die Ent- und Beladungsgeschwindigkeit einzig von der Ionenmobilität limitiert wird.
+Entscheidend für die Funktion der Batterie ist hierbei, dass der Transport der Ionen durch den Elektrolyten und den Separator erfolgt. Die Elektronen können jedoch nur entlang des Stromkollektors geleitet werden und müssen daher einen „Umweg“ außerhalb der Zelle machen~\cite{Plett2015}, siehe Bild~\ref{fig:battery_function}. Die Bewegung der Elektronen ist dabei im Vergleich zum Ionentransport deutlich schneller, weshalb die Ent- und Beladungsgeschwindigkeit einzig von der Ionenmobilität limitiert wird~\cite{Plett2024}.
 
-Im Falle großer Ströme, wie etwa bei einem Kurzschluss, finden viele Ladungsumwandlungsreaktionen gleichzeitig statt. Die dabei entstehende Wärme kann zum Versagen oder Brennen der Zelle führen. Mögliche Ursachen für Kurzschlüsse sind Herstellungsfehler, Dendritwachstum und mechanische Belastungen, bei denen die Elektroden durch Versagen des Separators in direkten Kontakt kommen, wie etwa bei Penetration oder Biegung.
+Im Falle großer Ströme, wie etwa bei einem Kurzschluss, finden viele Ladungsumwandlungsreaktionen gleichzeitig statt. Die dabei entstehende Wärme kann zum Versagen oder Brennen der Zelle führen. Mögliche Ursachen für Kurzschlüsse sind Herstellungsfehler, Dendritwachstum und mechanische Belastungen, bei denen die Elektroden durch Versagen des Separators in direkten Kontakt kommen, wie etwa bei Penetration oder Biegung~\cite{Beard2019}.
 
-Darüber hinaus führt die mit den mechanischen Belastungen einhergehende Rissbildung zu einer Erhöhung des inneren elektrischen Widerstandes, was zu einem Verlust an Speichereffizienz führt und daher vermieden werden soll. Bei konventionellen Batterien kommen daher spezielle Umhausungen zum Einsatz, die eine Belastung der Batterien verhindern sollen. Diese bringen allerdings einen signifikanten Anteil an zusätzlicher Masse hinzu und sind aufgrund ihrer Größe meist schwerer in Hoststrukturen zu integrieren. Um diesen Nachteilen zu begegnen, versuchen Strukturbatterien durch die Integration geeigneter Materialien die mechanische Belastungsfähigkeit zu verbessern. Zur Steigerung der Multifunktionalität neuer Strukturbatterien ist daher neben einem umfangreichen Verständnis der wichtigsten Eigenschaften auch ein Überblick über mögliche Materialkandidaten aus bestehenden Untersuchungen zu konventionellen Batterien sowie dem Leichtbaubereich notwendig.
+Darüber hinaus führt die mit den mechanischen Belastungen einhergehende Rissbildung zu einer Erhöhung des inneren elektrischen Widerstandes, was zu einem Verlust an Speichereffizienz führt und daher vermieden werden soll~\cite{Plett2024}. Bei konventionellen Batterien kommen daher spezielle Umhausungen zum Einsatz, die eine Belastung der Batterien verhindern sollen~\cite{Beard2019}. Diese bringen allerdings einen signifikanten Anteil an zusätzlicher Masse hinzu und sind aufgrund ihrer Größe meist schwerer in Hoststrukturen zu integrieren~\cite{Asp2021}. Um diesen Nachteilen zu begegnen, versuchen Strukturbatterien durch die Integration geeigneter Materialien die mechanische Belastungsfähigkeit zu verbessern~\cite{Carlstedt2018}. Zur Steigerung der Multifunktionalität neuer Strukturbatterien ist daher neben einem umfangreichen Verständnis der wichtigsten Eigenschaften auch ein Überblick über mögliche Materialkandidaten aus bestehenden Untersuchungen zu konventionellen Batterien sowie dem Leichtbaubereich notwendig~\cite{Asp2019}.
 
 
 \section{Wichtigsten Eigenschaften und ihre Ermittlungsverfahren}
 %\subsection{Interkalation}
 \subsection{Ladungszustand}
-Ein wesentliches Merkmal von Batterien ist die Einlagerung von Ionen in das Hostmaterial (Interkalation). Je nach Hostmaterial stehen dabei eine bestimmte Menge an Einlagerungsplätzen zur Verfügung. Der Ladungszustand (\textit{engl.} state of charge) beschreibt dabei den Anteil von besetzen Plätzen zu insgesamt verfügbaren Plätzen.
-Dies bedeutet, dass wenn alle Plätze belegt sind SoC=1 oder 100~\% ist und falls alle Ionen das Hostmaterial verlassen haben, also keiner der Plätze belegt ist, SOC einen Wert von 0~\% hat.
-Der SOC hat maßgeblich Wirkungen auf das chemische Potenzial und die Diffusionsgeschwindigkeiten. Der SOC kann jedoch nicht direkt gemessen werden und wird über die Elektrodenspannung ermittelt.
+Ein wesentliches Merkmal von Batterien ist die Einlagerung von Ionen in das Hostmaterial (Interkalation). Je nach Hostmaterial steht dabei eine bestimmte Menge an Einlagerungsplätzen zur Verfügung. Der Ladungszustand (\textit{engl.} state of charge, SOC) beschreibt den Anteil der besetzten Plätze an den insgesamt verfügbaren Plätzen~\cite{Plett2015}.
+
+Das bedeutet, dass, wenn alle Plätze belegt sind, der SOC gleich 1 bzw. 100~\% ist, und wenn alle Ionen das Hostmaterial verlassen haben, also keiner der Plätze belegt ist, der SOC einen Wert von 0~\% hat. Alternativ wird der Beladungszustand auch durch die stöchiometrische Größe $x$ angegeben, die besonders häufig im Kontext der Beschreibung von Zwischenzuständen (z.B. \ce{Li_xMn2O4} oder \ce{Li_{1-x}C}) benutzt wird~\cite{Newman2021}. Der SOC hat maßgeblichen Einfluss auf das chemische Potenzial (siehe Bild~\ref{fig:battery_voltage}), die Volumenausdehnung (siehe Tabelle~\ref{tab:volume_change}) und die Diffusionsgeschwindigkeiten~\cite{Plett2024}. Der SOC kann jedoch nicht direkt gemessen werden und wird stattdessen über die Elektrodenspannung ermittelt~\cite{Newman2021}.
+
 \input{Abbildungen/02_SoA/volume_change.tex}
 
 \subsection{Elektrische Spannung}
 
-Die elektrische Spannung ist neben dem Strom, der direkt mit der Bewegung der Ladungsträger gekommt ist einer der wichtigsten Größen zur beschreibung des Zustandes in einer Batteriezelle. 
-
-Die Leerlaufspannung wird gemessen, wenn kein Strom zwischen den zwei Elektroden fließt und ist damit entscheident für die Beschreibung des Gleichgewichtszustandes innerhalb der Zelle.
-Allgemein sinkt die Spannung mit steigender Entladung der Elektrode. Abhängig von der chemischen Striktur variert das Einalgerungsverhalten, was in den Kurvenanstiegen bemerkbar macht.
-Die Spannung der Batterie ist dabei die Differenz der beiden Referenzspannungen.
-Zwei der wichtigsten Spannungsgrößen einer Batterie ist die nominale Spannung und die Abschaltspannung, die die minimal erlaubte Spannung und damit den ''entladenen'' Zustand markiert.
+Die elektrische Spannung ist neben dem Strom, der direkt mit der Bewegung der Ladungsträger verbunden ist, eine der wichtigsten Größen zur Beschreibung des Zustandes in einer Batteriezelle~\cite{Beard2019}. 
 
 \begin{figure}[h]
-	%\raggedleft
-		%\def\svgwidth{\columnwidth}
-        \center
-	\includegraphics[width=\textwidth, angle=0]{uocp.pdf}
+    \center
+		\includegraphics[width=\textwidth, angle=0]{uocp.pdf}
 		\caption{\label{fig:battery_voltage}Spannung über den stöchiometrischen Anteil der beladung einer Lithiumionenbatterie, sowie die Anteile der negativen (Graphit) und positiven (Manganoxid) Elektrode (angelehnt an~\cite{Newman2021}).}
 \end{figure}
 
+Im Kontext der Elektrochemie ist die elektrische Spannung ein Maß für das elektrochemische Potenzial einer Elektrode. Ein Potenzial kann jedoch nur durch den Vergleich zu einem Referenzpotenzial, das dann oft als ''Nullpotenzial'' bezeichnet wird, gemessen werden. In der Batterieforschung wird hierbei häufig die Referenzspannung gegen reines Lithium gemessen~\cite{Newman2021}. Entscheidend ist hierbei, dass diese Referenzspannung bei einer Elektrode nicht konstant ist, da sich durch das Ein- und Auslagern das chemische Potenzial verändert. Der resultierende Funktionsverlauf ist abhängig von der chemischen Struktur und kann damit Aufschlüsse auf das Einlagerungsverhalten und damit verbundene Phasenumwandlungen geben~\cite{Plett2015}, siehe Bild~\ref{fig:battery_voltage}.
+
+Damit Batterien sich nicht selbst entladen, wenn ein Verbraucher angeschlossen ist, ist es wichtig, dass die Zellspannung, auch als nominale Spannung bezeichnet, mit zunehmender Entladung stetig sinkt~\cite{Newman2021}, siehe Bild~\ref{fig:battery_voltage}. Der reversible Lithiumbeladungsprozess ist dabei stets mit einem abnehmenden Potenzialanstieg an der jeweiligen Elektrode verbunden. Da in einer Batterie durch den Ladungsaustausch immer eine Elektrode beladen wird, während die andere entladen wird, kann der stetige Spannungsabfall während der Entladung sichergestellt werden, wenn die Referenzspannung einer Elektrode immer größer ist als die der anderen~\cite{Plett2024}. Aus dem stetigen Verlauf der Zellspannung leiten sich für die Anwendung weitere wichtige Spannungsgrößen ab: die Abschaltspannung, die die minimal erlaubte Spannung und damit den ''entladenen'' Zustand markiert~\cite{Plett2015}.
+
+Eine weitere wichtige Kenngröße für Batterien ist die Leerlaufspannung, welche gemessen wird, wenn kein Strom zwischen den beiden Elektroden fließt. Daher ist sie von signifikanter Bedeutung für die Beschreibung des Gleichgewichtszustandes innerhalb der Zelle~\cite{Newman2021}.
+
 \subsection{C-Raten}
-Die Auflade- oder Entladerate einer Batterie wird oft in sogenannten C-Raten angegeben. Dabei meint 1~C, dass eine voll entladene/beladene Batterie in 1~h komplett aufgeladen/entladen wird. Bei einer doppelt so hohen C-Rate wird die Batterie folglich in halber Zeit also 30~min entladen bzw. aufgeladen. Bei einer halb so hohen Auflade- bzw. Entladerate (0.5C oder C/2) benötigt die Batterie 2~h um komplett aufgeladen oder entladen zu werden.
-Die Wahl der C-Rate ist vor allem bei der Messung von Kapazität von Bedeutung.
-Verallgemeinert gilt, je höher die C-Rate desto geringer ist die gemessene Kapazität. Die Stärke des Kapazitätsabfalls wird durch eine Reihe wie Faktoren, wie Übergangsverhalten, Form und Art der chemischen Struktur der Elektrode usw. bestimmt.
+Die Auflade- oder Entladerate einer Batterie wird oft in sogenannten C-Raten angegeben. Dabei bedeutet 1~C, dass eine vollständig entladene/geladene Batterie in 1~h komplett aufgeladen/entladen wird. Bei einer doppelt so hohen C-Rate wird die Batterie folglich in der Hälfte der Zeit, also 30~min, entladen bzw. aufgeladen. Bei einer halb so hohen Auflade- bzw. Entladerate (0.5C oder C/2) benötigt die Batterie 2~h, um vollständig aufgeladen oder entladen zu werden. Die Wahl der C-Rate ist vor allem bei der Messung der Kapazität von Bedeutung. Verallgemeinert gilt: Je höher die C-Rate, desto geringer ist die gemessene Kapazität. Die Stärke des Kapazitätsabfalls wird durch eine Reihe von Faktoren, wie Übergangsverhalten, Form und Art der chemischen Struktur der Elektrode usw., bestimmt~\cite{Plett2015,Beard2019}.
+
 
 \subsection{Kapazität}
-Die Kapazität einer Elektrode beschreibt wie viele Ladungsträger eingelagert oder entfernt werden konnten. Besonders in den ersten Zyklen ist der Unterschied zwischen Auflade- ($\text{C}_{\text{aufl}}$) und Entladekapazität ($\text{C}_{\text{entl}}$) signifikant, weshalb die Kapazität für beide Prozesse getrennt bestimmt wird.
+Die Kapazität einer Elektrode beschreibt, wie viele Ladungsträger eingelagert oder entfernt werden können. Besonders in den ersten Zyklen ist der Unterschied zwischen Auflade- ($\text{C}_{\text{aufl}}$) und Entladekapazität ($\text{C}_{\text{entl}}$) signifikant, weshalb die Kapazität für beide Prozesse getrennt bestimmt wird~\cite{Plett2015}.
 
-Zur Ermittlung der Kapazität wird konstanten Auflade- ($\text{I}_\text{C,aufl})$ oder Entladestrom ($\text{I}_\text{C,entl})$ (C-Rate) an eine Zelle aus Elektrode und Referenzelektrode, meist Lithiummetall, angelegt und die Zeit $\Delta \text{T}_\text{aufl}$ gemessen die für die komplette Auf- bzw. Entladung benötigt wird. Da die Kapazität das zeitliche Integral des Stromes ist, kann die bestimmung zu den folgenden Formeln vereinfacht werden
+Zur Ermittlung der Kapazität wird ein konstanter Auflade- ($\text{I}_\text{C,aufl}$) oder Entladestrom ($\text{I}_\text{C,entl}$) (C-Rate) an eine Zelle aus Elektrode und Referenzelektrode, meist Lithiummetall, angelegt und die Zeit $\Delta \text{T}_\text{aufl}$ gemessen, die für die komplette Auf- bzw. Entladung benötigt wird. Da die Kapazität das zeitliche Integral des Stromes ist, kann die Bestimmung auf die folgenden Formeln vereinfacht werden~\cite{Newman2021}:
 \begin{align}
 	\text{C}_{\text{aufl}} &= \text{I}_\text{C,aufl} \cdot \Delta \text{T}_\text{aufl}\\
 	\text{C}_{\text{entl}} &= \text{I}_\text{C,entl} \cdot \Delta \text{T}_\text{entl}.
@@ -66,63 +65,71 @@ Zur Ermittlung der Kapazität wird konstanten Auflade- ($\text{I}_\text{C,aufl})
 
 %komplett entladen oder in der die Spannung von Abschalt- bzw. Leerspannung $\text{U}_{\text{leer}}$ zur vorher ermittelten maximal Spannung $\text{U}_{\text{voll}}$ benötigt. Die Aufladekapazit stellt dabei das Produkt aus Durch Umkehrung des Prozesses lässt sich die Entladekapazität bestimmen 
 
-Bei der Entwicklung neuer Batteriematerialien wird die Kapazität meist auf die Masse des am Einlagerungsprozess teilnehmenden Material (Aktivmaterial) normiert. Diese spezifische Kapazität hat dann die Einheit [$\si{\A \hour \per \g}$]. Im Kontext der Batterieentwicklung wird allerdings die Kapazität je Elektrodenfläche [$\si{\A \hour \per \cm \squared}$] häufig angegeben.
+Bei der Entwicklung neuer Batteriematerialien wird die Kapazität meist auf die Masse des am Einlagerungsprozess teilnehmenden Materials (Aktivmaterial) normiert. Diese spezifische Kapazität hat dann die Einheit [$\si{\A \hour \per \g}$]. Im Kontext der Batterieentwicklung wird allerdings die Kapazität je Elektrodenfläche [$\si{\A \hour \per \cm\squared}$] häufig angegeben.
 
 
 \subsection{Columbische Effizienz}
-Die Coulumbische Effizienz (CE) ist eienr der meist benutzen Metriken um die intern Reaktion die eine. Die CE vom Zyklus n ist definiert als das Verhältnis der gemessene Kapazität während des Entladevorgangs $C_{Dch}(n)$ zum Kapaziät des vorherigen Beladungsvorganges $C_{Ch}(n)$ \cite{Tornheim2020}.
+Die coulombsche Effizienz (CE) ist eine der meistbenutzten Metriken, um die interne Reaktion zu bewerten. Die CE des Zyklus \( n \) ist definiert als das Verhältnis der gemessenen Kapazität während des Entladevorgangs \( C_{Dch}(n) \) zur Kapazität des vorherigen Beladungsvorgangs \( C_{Ch}(n) \) \cite{Tornheim2020}.
 Die Formel
 \begin{equation}
 CE = \frac{C_{Dch}(n)}{C_{Ch}(n)}
 \end{equation}
-gilt dabei für Aufbauten, die in einem Entladenzustand zusammengebaut werden und daher zu erst Beladen werden müssen. Zellen die in einem beladenen Zustand gefertigt werden, wie etwa Lithium-Schwefel-Batterien beginnen allerdings zu erst mit einem Entladungszyklus. Die korrekte Formel lautet in einem solchen Fall
+gilt dabei für Aufbauten, die in einem Entladenzustand zusammengebaut werden und daher zuerst beladen werden müssen. Zellen, die in einem beladenen Zustand gefertigt werden, wie etwa Lithium-Schwefel-Batterien, beginnen allerdings zuerst mit einem Entladungszyklus. Die korrekte Formel lautet in einem solchen Fall
 \begin{equation}
     CE = \frac{C_{Dch}(n+1)}{C_{Ch}(n)}.
 \end{equation}
 
 \subsection{Kapaziätserhalt}
-Die Kapaziätserhalt (\textit{engl.} Capacity Retention) ist eine wichtige Metrik um den Anteil an Nebenreaktionen die zu einem Kaparzitätsverlust in Batterien führen zu bemessen. Sie ist definiert als das Verhältnis von Entladungskapazität des n+1 zykluses $C_{Dch}(n+1)$ und der des n-ten Zyklus $C_{Dch}(n)$ 
+Die Kapazitätserhalt (\textit{engl.} Capacity Retention) ist eine wichtige Metrik, um den Anteil an Nebenreaktionen, die zu einem Kapazitätsverlust in Batterien führen, zu bemessen. Sie ist definiert als das Verhältnis von Entladungskapazität des $(n+1)$-ten Zyklus $C_{Dch}(n+1)$ und der des $n$-ten Zyklus $C_{Dch}(n)$:
 \begin{equation}
-    CE = \frac{C_{Dch}(n+1)}{C_{Ch}(n)}.
+    CE = \frac{C_{Dch}(n+1)}{C_{Dch}(n)}.
 \end{equation}
-In einigen Fällen wird CR auch im Verhältnis zur intiiallen Entlade Kapazität bestimmt, also
+In einigen Fällen wird CR auch im Verhältnis zur initialen Entlade-Kapazität bestimmt, also
 \begin{equation}
-    CE = \frac{C_{Dch}(n)}{C_{Ch}(1)}.
+    CE = \frac{C_{Dch}(n)}{C_{Dch}(1)}.
 \end{equation}
-Dieser Ansatz ist besonders dann hilfreich wenn die Langlebigkeit zu bestimmen \cite{Tornheim2020}.
-Im Gegensatz zu CE ist CR meist relevanter Hersteller und Endnutzer.
-
-
+Dieser Ansatz ist besonders dann hilfreich, wenn die Langlebigkeit zu bestimmen ist \cite{Tornheim2020}.
+Im Gegensatz zu CE ist CR meist relevanter für Hersteller und Endnutzer.
 
 \subsection{Energiedichte}
-Die gravimetrische oder volumetrische Energiedichte ist eine der wichtigsten Metriken für Batterien. Sie gibt an wie viel Energie relative zur Masse oder Volumen gespeichert werden kann. 
+Die gravimetrische Energiedichte bzw. spezifische Energie bemisst, wie viel Energie pro eingesetzter Masse gespeichert werden kann. Alternativ wird mittels der volumetrischen Energiedichte die Menge an speicherbarer Energie pro Volumen angegeben. Beide Kenngrößen sind wichtige Größen, die bei der Entwicklung neuer Speichertechnologien nach Möglichkeit gesteigert werden sollen~\cite{Plett2015}.
 
-Einer der größten Schwierigkeiten beim Umgang mit angebenen Energiedichten aus der Literatur besteht in dem Umstand, dass oft bei der Masse oder Volumen sich auf verschiedene Komponenten bezogen wird. Im allgemeinen Unterscheidet die Angaben ob die Werte im Kontext von:
+Eine der größten Schwierigkeiten beim Umgang mit angegebenen Energiedichten aus der Literatur besteht in dem Umstand, dass oft bei der Masse oder dem Volumen auf verschiedene Komponenten Bezug genommen wird~\cite{Son2021}. Im Allgemeinen unterscheiden sich die Angaben darin, ob die Werte im Kontext von:
 \begin{enumerate}
 	\item Materialentwicklung
-	\item Elektrodentwicklung
+	\item Elektrodenentwicklung
 	\item Zellentwicklung
 \end{enumerate}
-erhoben wurden \cite{Son2021}.
-So wird bei der Forschung von neuen Aktivmaterialien, die spezifische Energie pro eingesetzte Masse an Aktivmaterial bezogen. Bei der 
+erhoben wurden, siehe Tabelle~\ref{tab:energy_densities}.
+So wird bei der Forschung an neuen Aktivmaterialien die spezifische Energie auf die eingesetzte Masse an Aktivmaterial bezogen. Im Bereich neuer Elektroden wird die Speicherkapazität entweder auf die Elektrodenmasse oder, im Falle einer Oberflächenbeschichtung, meist nur auf die Masse der Beschichtung normiert. In Publikationen zu neuen Zellen gibt es noch mehr Varianten. Je nach Autor finden sich hier Angaben in Referenz zur Masse der gebauten Knopfzelle oder der gebauten Pouchzelle; bei Letzterer gibt es Varianten mit einer einzelnen Zelle oder einer mehrlagigen Ausführung. Außerdem werden in manchen Publikationen die Mantelmaterialien herausgerechnet.
+\input{Abbildungen/02_SoA/energy_densities.tex}
+Die beschriebene Uneinheitlichkeit in der Veröffentlichung der Daten ist ein großer Diskussionspunkt in der Batterieforschung und macht es sehr aufwendig, vielversprechende Ansätze zu identifizieren~\cite{Greenhalgh2023, Zschiebsch2024}.
 
 %\subsection{Zyklenverhalten}
 \subsection{Steifigkeit und Festigkeit}
+\begin{itemize}
+	\item finden in der konventionellen Batteriforschung bislang keine Betrachtung
+	\item entscheident
+	\item SOC hat einfuss auf beides: Festigkeit wird reduziert Steifigkeit wird erhöht
+	\item Problem: Ermittlungsverfahren nicht eindeutig (Biegeversuch vs Zugversuch)
+\end{itemize}
 %\subsection{Mechanische Spannung}
 \subsection{Multifunktionale Effizienz}
 
-Die einheitenlose multifunktionale Effizienz ist ein Maß um zu bewerten ob ein Vorteil durch den Einsatz von multifunktionalen Lösungen gegenüber einem kombinierten Einsatz von monofunktionalen Komponenten entsteht.
-Die multifunktionale Effizienz wurde erstmalig von XXX eingeführt und ist die Summe der mechanischen  und elektrochemsichen Effizienz.
+Die einheitenlose multifunktionale Effizienz ist ein Maß, um zu bewerten, ob ein Vorteil durch den Einsatz von multifunktionalen Lösungen gegenüber einem kombinierten Einsatz von monofunktionalen Komponenten entsteht~\cite{Johannisson2020}.
+Der von \textsc{Snyder et al.}~\cite{Snyder2015} im Jahr 2011 veröffentlichte Ansatz beschreibt die multifunktionale Effizienz als Summe der mechanischen und elektrochemischen Effizienz.
 \begin{align}
 	\eta_{\text{mutli}} &= \eta_{\text{mech}} + \eta_{\text{elchem}}\\
 						&= \frac{E}{E_{\text{ref}}} + \frac{\Gamma}{\Gamma_\text{ref}} 
 \end{align}
-Im Kontext von Strukturspeicher wird für die mechanische Effizienz oft der das Verhältnis der spezifischen Steifigkeiten, oft das Elastizitätsmodul, der multifunktionalen Strukturbatterie und der eines UD-Kohlefasergeleges. Ähnlich ergibt sich elektrochemische Effizienz der Strukturbatterie aus dem Verhältnis der jeweiligen Energiedichten. Ein multifunktionaler Effizienzwert größer gleich eins Bedeutet damit, dass durch den Einsatz eine Reduktion der Gesamtmasse gegenüber der monofunktionalen Lösung besteht.
+Diese Herangehensweise erlaubt eine vereinfachte Betrachtung der sonst komplexen multidisziplinären Optimierung und ist nach \textsc{Ashby}~\cite{Ashby2000} eine der möglichen Optimierungsstrategien für Materialdesign und -auswahl. In der Strukturbatterieforschung hat sich der Bewertungsansatz mittels multifunktionaler Effizienz weitgehend durchgesetzt~\cite{O’Brien2011,Freund2018}.
+
+Im Kontext von Strukturspeichern wird für die mechanische Effizienz oft das Verhältnis der spezifischen Steifigkeiten, häufig dargestellt durch das Elastizitätsmodul, der multifunktionalen Strukturbatterie und der eines UD-Kohlefasergeleges betrachtet. Ähnlich ergibt sich die elektrochemische Effizienz der Strukturbatterie aus dem Verhältnis der jeweiligen Energiedichten~\cite{Sha2021}. Ein multifunktionaler Effizienzwert größer oder gleich eins bedeutet, dass durch den Einsatz eine Reduktion der Gesamtmasse gegenüber der monofunktionalen Lösung erreicht wird~\cite{Snyder2015}.
 
 \section{Materialauswahl}
 
-Jedes  Material in einer Strukturbatterie erfüllt mehrere Aufgaben gleichzeitig. Dies bedeutet, dass 
-Die am meisten benutzte Untergliederung teilt die Materialien nach ihrer elektrochemischen Rolle ein.
+Jedes Material in einer Strukturbatterie erfüllt mehrere Aufgaben gleichzeitig. Dies bedeutet, dass 
+die am häufigsten verwendete Untergliederung die Materialien nach ihrer elektrochemischen Rolle einteilt.
 
 
 \subsection{Anode}
