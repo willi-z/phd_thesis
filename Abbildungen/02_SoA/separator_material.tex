@@ -1,51 +1,52 @@
 \begin{table}[h!]
-    \caption{Properties of different types of separators}
-    \label{tab_separator_comp}
+    \caption{Vergleich elektro-chemischer und mechanischer Eigenschaften von verschiedenen Separatormaterialien.}
+    \label{tab:separator_comp}
     %\begin{adjustwidth}{-\extralength}{0cm}
-    \newcolumntype{C}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}%
-    \begin{tabularx}{\textwidth}{
-    %C{0.6}
-    C{1} 
-    C{1.8} 
-    C{0.8} 
-    C{0.8} 
-    C{0.8} 
-    C{0.6}
-    }
+    \begin{tabular}[t]{cccccc}
         \toprule
-        \textbf{Separatortyp}
+        \makecell{\textbf{Separator-}\\\textbf{typ}}
         &\textbf{Separatormaterial} 
-        &\textbf{Ionische Leit- fähigkeit\textsuperscript{*} (mS/cm)} 
-        &\textbf{Zug- steifigkeit\textsuperscript{*} (GPa)}
-        & \textbf{Festigkeit\textsuperscript{*} (MPa)}
+        &\makecell{\textbf{Ionische}\\\textbf{Leit-}\\\textbf{fähigkeit\textsuperscript{*}}\\\textbf{(mS/cm)}} 
+        &\makecell{\textbf{Zug-}\\\textbf{steifig}\\\textbf{keit\textsuperscript{*}}\\\textbf{(GPa)}}
+        &\makecell{\textbf{Festig-}\\\textbf{keit\textsuperscript{*}}\\\textbf{(MPa)}}
         &\textbf{Ref.} \\
         \midrule
         %\legendsep{c0}&
-        Glassfaser&Glassfaser&1.13&21
-        &325
-        &\cite{Deka2017}\\
+        \multirowcell{2}{Gewebe}
+            &GF
+            &1,13&21
+            &325
+            &\cite{Deka2017}\\
+            %\midrule
+            %\addlinespace
+            %Aramid
+            &ANF&1,89&2,8
+            &22,0
+            &\cite{Wang2021a}\\
         %\midrule
         \addlinespace
         %\legendsep{c10}&
-        Polymer&RF/PLA&110&0.3271
-        &15.2
-        &\cite{Vargun2020}\\
-        %\midrule
-        \addlinespace
-        %Gel polymer electrolyte&$\mathrm{PVA/KOH/K_3[Fe(CN)_6]}$&45.56&n.a.&n.a.&\cite{maHighPerformanceSolidstate2014}\\
-        %%\midrule
-        %\legendsep{c4}&
-        Feststoff- elektrolyt&$\mathrm{PEGDGE/TETA/EMIBF_4}$&0.2&26
-        &350
-        &\cite{Hubert2022, Choi2022}\\
+        \multirowcell{2}{Polymer}
+            &RF/PLA&110&0,3271
+            &15,2
+            &\cite{Vargun2020}\\
+            %\midrule
+            %\addlinespace
+            %Gel polymer electrolyte&$\mathrm{PVA/KOH/K_3[Fe(CN)_6]}$&45.56&n.a.&n.a.&\cite{maHighPerformanceSolidstate2014}\\
+            %%\midrule
+            %\legendsep{c4}&
+            %\makecell{Feststoff-\\elektrolyt}
+            &$\mathrm{PEGDGE/TETA/EMIBF_4}$&0.014&0,54
+            &7
+            &\cite{Hubert2022, Choi2022}\\
         %\midrule
         \addlinespace
         %\multirowcell{2}{\legendsep{c6}}&
         \multirowcell{2}{Keramik}
-            &$\mathrm{PVDF/PPG/LiCl/CaTiO_3}$&n.a.&1.2
+            &$\mathrm{PVDF/PPG/LiCl/CaTiO_3}$&n.a.&1,2
             &65
             &\cite{Alvarez‐Sanchez2019}\\
-            &$\mathrm{PVB/Al_2O_3NW}$&13.5&n.a.
+            &$\mathrm{PVB/Al_2O_3NW}$&13,5&n.a.
             &30
             &\cite{Liu2020a}\\
         %\midrule
@@ -59,15 +60,15 @@
         %Eggshell membrane&Eggshell membrane&3.8&n.a.&6.59&\cite{yuUsingEggshellMembrane2012}\\
         %%\midrule
         %\legendsep{c8}&
-        Cellulose&MCC/AMIM-Cl&298.6&5.43
-        &71.71
+        Cellulose&MCC/AMIM-Cl&298,6&5,43
+        &71,71
         &\cite{Ahankari2022, Xu2020}\\
         %%\midrule
         %Graphene oxide&Graphene oxide paper&n.a.&n.a.&n.a.&\cite{shulgaSupercapacitorsGrapheneOxide2015,comptonTuningMechanicalProperties2012}\\
         %%\midrule
         %Metal-organic framework&Metal-organic framework&n.a.&n.a.&n.a.&\cite{mengMetalOrganicFrameworks2015,bundschuhMechanicalPropertiesMetalorganic2012}\\
         \bottomrule
-    \end{tabularx}
+    \end{tabular}
     %\end{adjustwidth}
-    \noindent{\footnotesize{\textsuperscript{*} The abbreviation not available (n.a.) is used.}}
+    \noindent{\footnotesize{\textsuperscript{*} Die Abkürzung ''nicht auffindbar'' (n.a.) wurde benutzt.}}
 \end{table}
