@@ -1,0 +1,148 @@
+%% Creator: Inkscape 1.3.2 (091e20ef0f, 2023-11-25), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'electrolyte_data.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{360bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.7)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{electrolyte_data.pdf}}%
+    \put(0.12083995,0.05509027){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$10^{-5}$\end{tabular}}}}%
+    \put(0.26300011,0.05509027){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$10^{-4}$\end{tabular}}}}%
+    \put(0.40466677,0.05509027){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$10^{-3}$\end{tabular}}}}%
+    \put(0.54008344,0.05509027){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$10^{-2}$\end{tabular}}}}%
+    \put(0.67966677,0.05509027){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$10^{-1}$\end{tabular}}}}%
+    \put(0.82341677,0.05509027){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$10^{0}$\end{tabular}}}}%
+    \put(0.96300011,0.05509027){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$10^{1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{electrolyte_data.pdf}}%
+    \put(0.3892565,0.01197829){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Ionic Conductivity [$\si{\milli \siemens \per \cm}$]\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{electrolyte_data.pdf}}%
+    \put(0.12899122,0.08450546){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$10^{-1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{electrolyte_data.pdf}}%
+    \put(0.12899122,0.20195312){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$10^{0}$\end{tabular}}}}%
+    \put(0.12899122,0.32504441){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$10^{1}$\end{tabular}}}}%
+    \put(0.12899122,0.44379441){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$10^{2}$\end{tabular}}}}%
+    \put(0.12899122,0.56254439){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$10^{3}$\end{tabular}}}}%
+    \put(0.12899122,0.6812944){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$10^{4}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{electrolyte_data.pdf}}%
+    \put(0.05490001,0.25573958){\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Young's Modulus [MPa]\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{electrolyte_data.pdf}}%
+    \put(0.85408923,0.14721228){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Gayet2009}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{electrolyte_data.pdf}}%
+    \put(0.86064123,0.27239246){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Li2018}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{electrolyte_data.pdf}}%
+    \put(0.54473419,0.44281888){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Bae2018}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{electrolyte_data.pdf}}%
+    \put(0.67467194,0.42079983){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Bae2018}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{electrolyte_data.pdf}}%
+    \put(0.76553586,0.50204725){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Schneider2019}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{electrolyte_data.pdf}}%
+    \put(0.87752342,0.42312158){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Matsumoto2010}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{electrolyte_data.pdf}}%
+    \put(0.89424953,0.35468451){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Matsumoto2010}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{electrolyte_data.pdf}}%
+    \put(0.25890045,0.53876363){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Snyder2009}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{electrolyte_data.pdf}}%
+    \put(0.16491229,0.52224056){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Snyder2007}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{electrolyte_data.pdf}}%
+    \put(0.3323734,0.5763616){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Munoz2021}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{electrolyte_data.pdf}}%
+    \put(0.19671636,0.4090155){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Ji2010}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{electrolyte_data.pdf}}%
+    \put(0.2570838,0.44078204){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Ji2010}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{electrolyte_data.pdf}}%
+    \put(0.19095834,0.47997692){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Moreno2011}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=19]{electrolyte_data.pdf}}%
+    \put(0.71338762,0.32088277){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Choi2018}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=20]{electrolyte_data.pdf}}%
+    \put(0.43323177,0.54638144){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Choi2018}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{electrolyte_data.pdf}}%
+    \put(0.66052392,0.48557262){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Sudiarti2017}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=22]{electrolyte_data.pdf}}%
+    \put(0.6926239,0.38144054){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Tian2022}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=23]{electrolyte_data.pdf}}%
+    \put(0.43088875,0.61144657){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Joyal2022}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=24]{electrolyte_data.pdf}}%
+    \put(0.77857895,0.37500499){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Wang2007a}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=25]{electrolyte_data.pdf}}%
+    \put(0.62276503,0.59904354){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Huang2022}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=26]{electrolyte_data.pdf}}%
+    \put(0.64546661,0.54609838){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Huang2022}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=27]{electrolyte_data.pdf}}%
+    \put(0.83905258,0.4809533){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Shirshova2013}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=28]{electrolyte_data.pdf}}%
+    \put(0.82756634,0.52542208){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Shirshova2013}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=29]{electrolyte_data.pdf}}%
+    \put(0.77571551,0.58784889){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Wendong2021}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=30]{electrolyte_data.pdf}}%
+    \put(0.70411218,0.58165195){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Shirshova2014}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=31]{electrolyte_data.pdf}}%
+    \put(0.71677602,0.45627543){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Shirshova2014}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=32]{electrolyte_data.pdf}}%
+    \put(0.87765376,0.45483085){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Gienger2015}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=33]{electrolyte_data.pdf}}%
+    \put(0.58667761,0.51123481){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Yu2016}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=34]{electrolyte_data.pdf}}%
+    \put(0.62623348,0.45637827){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Feng2017}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=35]{electrolyte_data.pdf}}%
+    \put(0.86545989,0.39245828){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\cite{Matsumoto2008}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=36]{electrolyte_data.pdf}}%
+    \put(0.20555105,0.28259027){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Gel\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=37]{electrolyte_data.pdf}}%
+    \put(0.20555105,0.24322396){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Zweiphasige PIPS Elektroylt\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=38]{electrolyte_data.pdf}}%
+    \put(0.20555105,0.20303298){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Feststoffelektrolyt\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=39]{electrolyte_data.pdf}}%
+    \put(0.20555105,0.16353646){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Zweiphasige RIPS Elektroylt\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=40]{electrolyte_data.pdf}}%
+    \put(0.20555105,0.12364931){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Idealer Strukturelektroylt\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=41]{electrolyte_data.pdf}}%
+  \end{picture}%
+\endgroup%
