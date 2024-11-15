@@ -1,15 +1,15 @@
 %\chapter*{Symbolverzeichnis}
 %\label{sec:Symbolverzeichnis}
-\addchap{Symbolverzeichnis}
+\addchap{Abkürzungs- und Symbolverzeichnis}
 \markboth{Symbolverzeichnis}{Symbolverzeichnis}
 
 
 %Einzug erste Spalte
-\newlength{\TabulatorVZ} % definiert einen neuen L�ngenparameter
-\settowidth{\TabulatorVZ}{$m$, $n$, $i$, $\imath$, ${\bar{\imath}}$, $\jmath$\quad} % Setzt den L�ngenparameter auf den Wert, den der Text hat
+\newlength{\TabulatorVZ} % definiert einen neuen Längenparameter
+\settowidth{\TabulatorVZ}{$m$, $n$, $i$, $\imath$, ${\bar{\imath}}$, $\jmath$\quad} % Setzt den Längenparameter auf den Wert, den der Text hat
 % Einzug Einheitenspalte
-\newlength{\TabulatorEH} % definiert einen neuen L�ngenparameter
-\setlength{\TabulatorEH}{\widthof{$\si{\celsius}$; $\si{\kelvin}$}}
+\newlength{\TabulatorEH} % definiert einen neuen Längenparameter
+\setlength{\TabulatorEH}{\widthof{$\si{\celsius}$; $\si{\mole\per\metre\squared\per\second}$}}
 
 \newlength{\TabulatorTX}
 \setlength{\TabulatorTX}{\textwidth}
@@ -38,22 +38,22 @@ a									& Skalar \\
 \section*{Lateinische Buchstaben}
 
 \begin{longtable}{@{}p{\TabulatorVZ}@{}p{\TabulatorTX}p{\TabulatorEH}@{}}
-	$A$					& Fläche					& $\si{\metre\squared}$ \\
-	$C$					& Capazität					& $\si{\ampere\s}$					\\
-	$c$					& Konzentration				& $\si{\mole\per\metre\cubed}$\\
-	$D$					& Diffusionskonstante		& $\si{\metre\squared\per\second}$\\
-	$E$					& Elastizitätsmodul			& $\si{\pascal}$	\\
-	$F$					& Kraft						& $\si{\newton}$	\\
-	$F_{\text{K}}$		& Faraday-Konstante			& $\si{\coulomb\per\mole}$	\\
-	$f_{\pm}$			& Aktivitätskoeffizient		& $\si{\coulomb\per\mole}$	\\
-	$G$					& Schubmodul				& $\si{\pascal}$	\\
-	$h$					& Plattendicke				& $\si{\metre}$		\\
-	$\textbf{i}$		& Stromdichte				& $\si{\ampere\per\metre\squared}$		\\
-	$j$					& molare Ionenflussdichte	& $\si{\mole\per\metre\squared\per\second}$		\\
-	$K$					& Konstante					& -					\\
-	$R_{\text{K}}$		& Unverselle-Gaskonstante	& $\si{\joule\per\mole\per\kelvin}$	\\
-	$U_{\theta}$ 		& Elektrochemisches Standardpotenzial	& $\si{\volt}$ \\
-	$V$					& Volumen					& $\si{\cubic\metre}$
+	$A$					& Fläche					&$\si{\metre\squared}$\\
+	$C$					& Capazität					&$\si{\ampere\s}$\\
+	$c$					& Konzentration				&$\si{\mole\per\metre\cubed}$\\
+	$D$					& Diffusionskonstante		&$\si{\metre\squared\per\second}$\\
+	$E$					& Elastizitätsmodul			&$\si{\pascal}$\\
+	$F$					& Kraft						&$\si{\newton}$\\
+	$F_{\text{K}}$		& Faraday-Konstante			&$\si{\coulomb\per\mole}$\\
+	$f_{\pm}$			& Aktivitätskoeffizient		&$\si{\coulomb\per\mole}$\\
+	$G$					& Schubmodul				&$\si{\pascal}$\\
+	$h$					& Plattendicke				&$\si{\metre}$\\
+	$\textbf{i}$		& Stromdichte				&$\si{\ampere\per\metre\squared}$\\
+	$j$					& molare Ionenflussdichte	&$\si{\mole\per\metre\squared\per\second}$\\
+	$K$					& Konstante					&-\\
+	$R_{\text{K}}$		& Unverselle-Gaskonstante	&$\si{\joule\per\mole\per\kelvin}$\\
+	$U_{\theta}$ 		& Elektrochemisches Standardpotenzial	& $\si{\volt}$\\
+	$V$					& Volumen					&$\si{\cubic\metre}$
 \end{longtable}
 
 \section*{Griechische Buchstaben}
@@ -70,18 +70,20 @@ a									& Skalar \\
 \section*{Indizes, Exponenten und mathematische Akzente}
 
 \begin{longtable}{@{}p{\TabulatorVZ}@{}p{\TabulatorTX+\TabulatorEH+2\tabcolsep}@{}}
+	$x_{\text{A}}$				& flächenbezogenes Maß\\
 	$x_{\text{AM}}$				& Aktivmaterial\\
 	$x_{\text{b}}$				& Binder\\
 	$x_{\text{DS}}$				& Deckschicht\\
 	$x_{\text{echem}}$			& elektro"=chemisch\\
+	$x_{\text{E}}$				& Elektroylte\\
 	$x_{\text{exp}}$			& experimentell\\
 	$x_{\text{l}}$				& leitende Phase\\
-	$x_{\text{s}}$				& specihernde Phase\\
+	$x_{\text{s}}$				& speichernde Phase\\
 	$x_{\text{mech}}$			& mechanisch\\
 	$x_n$						& Normal zur Oberfläche	\\
 	$x_{-}$						& negative Elektrode \\
 	$x_{\text{OCV}}$			& Gleichgewichtsspannung (\textit{engl.} open-circuit voltage) \\
-	$x^{+}$						& positive Elektrode \\
+	$x_{+}$						& positive Elektrode \\
 	$x_{\text{th}}$				& thermisch \\
 	$x_{\text{theor}}$			& theoretisch \\
 	$\vec{x}^T$					& Transponierter Vektor	\\

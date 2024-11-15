@@ -111,6 +111,11 @@ menhang zu einem Forschungsvorhaben, Kooperation mit ei-
 nem Industriepartner]
 - Optional: Aufbau der Arbeit
 
+
+## Sprachliche Einheitlichkeit
+- Strukturbatterie
+- E-Modul (nicht Zugsteifigkeit)
+
 # Setup
 
 ```sh
