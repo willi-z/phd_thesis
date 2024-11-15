@@ -1,19 +1,48 @@
-\chapter{Modellierungsansatz zur Vorhersage mechansicher und elektrochemsicher Eigenscahften von Strukutbatterien}
-
+\chapter{Modellierung von Strukturbatterien}
 
 %\section{Beschreibung der gekoppelten mechanischen-elektrochemischen Eigenschaften von Strukturbatterien}
-\section{Physikalische Beschreibung der wichtigsten batteriechemischen Effekte}
+\section{Physikalische Beschreibung der gekoppelten multiphysikalischen Beschreibung von faserbasierten Strukturbatterien}
 
+Für konventionelle Batterien lassen sich die elektrochemsichen Pähnomene durch fünf Differentialgleichungen beschreiben~\cite{Plett2015}.
+\begin{enumerate}
+    \item Ladungserhalt in homogenen Festkörpern
+    \begin{equation}
+        \nabla \cdot \boldsymbol{i}_{\text{s}} = \nabla \cdot \left( - \sigma \cdot \nabla \phi_{\text{s}} \right) = 0
+    \end{equation}
 
+    \item Massenserhalt in homogenen Festkörpern
+    \begin{equation}
+        \frac{\partial c_{\text{s}}}{\partial t}  = \nabla \cdot \left( D_{\text{s}} \nabla c_{\text{s}} \right) = 0
+    \end{equation}
+
+    \item Massenerhalt in dem homogenen Elektrolyt
+    \begin{equation}
+        \frac{\partial c_e}{\partial t} = \nabla \cdot \left( D_e   \nabla c_e \right) - \frac{\boldsymbol{i}_{\text{e}} \cdot    \nabla \boldsymbol{t}_+^0}{F} - \nabla \cdot \left( c_{\text   {e} \boldsymbol{v}_0}\right)
+    \end{equation}
+
+    \item Ladungserhalt  in dem homogenen Elektrolyt
+    \begin{equation}
+        \nabla \cdot \boldsymbol{i}_{\text{e}} = \nabla \cdot \left(    - \kappa \nabla \phi_{\text{e}}  -\frac{2\kappa RT}{F} \left(  1+ \frac{\partial \ln f_\pm}{\partial \ln c_{\text{e}}}\right)   \left( t_+^0-1\right) \nabla \ln c_{\text{e}} \right) = 0
+    \end{equation}
+
+    \item Ionentrasport zwischen fester und flüssiger Phase
+    \begin{align}
+        j &= \frac{i_0}{F}\left( \exp \left(\frac{\left(1-\alpha\right)  F}{RT}\eta \right) - \exp \left(-\frac{\alpha F}{RT}  \eta\right) \right)\\
+        \eta &= (\phi_{\text{s}}-\phi_{\text{e}}) - U_{\text{ocp}}
+    \end{align}
+\end{enumerate}
+
+und asymetrischer Ladungungstransferkoeffizient $0<\alpha<1$
 \begin{equation}
-    \nabla \cdot \boldsymbol{i}_{\text{s}} = \nabla \cdot \left( - \sigma \cdot \nabla \phi_{\text{s}} \right) = 0
+        \alpha = \left|\frac{\Delta E_{\text{a,red}}}{\Delta G_0}\right|
 \end{equation}
-
-\begin{equation}
-    \frac{\partial c_{\text{s}}}{\partial t}  = \nabla \cdot \left( D_{\text{s}} \nabla c_{\text{s}} \right) = 0
-\end{equation}
+Änderung der Aktivierungsenergie der Reduktionsmittel
+Änderung der Gibbs-Energy der Oxidationsmittel
 
 
+
+
+Spezialfall Massenserhalt in Zylindrischen Festkörpern
 \begin{equation}
     \frac{\partial c_{\text{s}}^{\pm}}{\partial t}(x,r,t) = \frac{1}{r^2} \frac{\partial}{ \partial r} \left[ D_{\text{s}}^\pm r^2 \frac{\partial c_{\text{s}}^\pm}{\partial r}(x,r,t)\right]
 \end{equation}
@@ -27,208 +56,145 @@ und
 j_{n}^{\pm}(t) = \mp \frac{I(t)}{F a^{\pm} L^{\pm}}
 \end{equation}
 
+\chapter{Entwicklung einer hybriden Auslegung von Strukturbatterien}
 
+\section{Konzeptionierung eines effizienten Entwicklung von Strukturbatterien}
+Für den effektiven Einsatz der Modellen für die Vorhersage von mechansichen und elektroschmeischen Eigenschaften wurde eine Vielzahl an Anforderungen an die Modellierung gesammelt:
+\begin{itemize}
+    \item Moddelierung baiserend auf physikalischen Prozessen, % kein Fitting
+    \item geringe Materialparameteranzahl und keine Einführung Neuer, % aufwendige bestimmung
+    \item präzise genug für Vergleichbarkeit zwischen mehreren Ergebnissen, % 
+    \item schnelle Berechnungen. % nicht wochenlang rechnen
+\end{itemize} 
+
+Diese Anforderungen folgen aus der Annahme, dass experimentell erworbene Ergebnisse das reale Verhalten des Objektes unter Beobachtung darstellen. Aus dieser Annhame folgt, dass sich simulative Ergbenisse maximal den experimentellen Ergebnissen annähern und damit folglich stehts ungenauer sind, solange experimentelle Messfehler vernachlässigt werden können~\cite{Morris2024}. Jedoch ist mit diesen hochwerigen Experimenten verbunde Aufwand ($k_{\mathrm{exp}}$) hinsichtlich Material-  und Zeitkosten oftmals um einiges höher als der Aufwand die Simulation mithilfe eines Computers zu berechnen ($k_{\mathrm{sim}}$).
 \begin{equation}
-    C_{\text{A}}
+    k_{\mathrm{exp}} \ll k_{\mathrm{sim}} 
 \end{equation}
-
-
-\section{Physikalische Beschreibung der wichtigsten mechanischen Effekte}
-\subsection{Vereinfachte Modellierung der Gesamtsteifigkeit mittels klassischer Laminat-Theorie}
-
-
-\subsection{Modellierung der Biegesteifigkeit unter Berücksichtigung des Elektrolyteffektes}
-
-Das mechanische
-
-
-
-
+Für einen rein experimentellen Ansatz der jede mögliche Materialkombination ($n_{\mathrm{Kombis}}$) einer bestimmten Anzahl an experimentellen Bestimmungen ($n_{\mathrm{exp,Bestimmungen}}$) unterzieht ergibt sich der gesamte Aufwand ($k_{\mathrm{exp, gesamt}}$) wie folgend.
 \begin{equation}
-    \sigma = E \varepsilon
+    k_{\mathrm{exp, gesamt}} = k_{\mathrm{exp}} \cdot n_{\mathrm{Kombis}} \cdot n_{\mathrm{exp,Bestimmungen}}
 \end{equation}
-
-\begin{equation}
-    F = A \sigma
-\end{equation}
-
-\begin{equation}
-    \frac{\partial F}{\partial x}+ q_x(x) = 0
-\end{equation}
-
-Unter der Annahme eines linearen Deformationsverlaufes in einem Stab ergibt sich die folgende Verschiebungsfunktion 
-\begin{equation}
-    u_x(x) = \begin{bmatrix} 1-\frac{x}{l} & \frac{x}{l} \end{bmatrix}\begin{bmatrix} 
-        u_{x,1} \\
-        u_{x,2} 
-    \end{bmatrix}.
-\end{equation}
-
-Mittels der Beziehung zwischen Dehnung und Deformation folgt 
-\begin{equation}
-    \varepsilon_x = \frac{\partial u_x}{\partial x} = 
-    \frac{1}{l}
-    \begin{bmatrix} 
-        \text{-}1 & 1 
-    \end{bmatrix}
-    \begin{bmatrix} 
-        u_{x,1} \\
-        u_{x,2} 
-    \end{bmatrix}.
-\end{equation}
-
-Aus dem Zusammenhang zwischen Normalspannung und Dehnung
-\begin{equation}
-    \sigma_x = E \varepsilon_x = 
-    \frac{E}{l}
-    \begin{bmatrix} 
-        \text{-}1 & 1 
-    \end{bmatrix}
-    \begin{bmatrix} 
-        u_{x,1} \\
-        u_{x,2} 
-    \end{bmatrix}
-\end{equation}
-kann eine Beziehung zur äußeren Kraft aufgestellt werden
-\begin{equation}
-    F = A \sigma = 
-    \frac{EA}{l}
-    \begin{bmatrix} 
-        \text{-}1 & 1 
-    \end{bmatrix}
-    \begin{bmatrix} 
-        u_{x,1} \\
-        u_{x,2} 
-    \end{bmatrix}
-\end{equation}
-
+Wie 
+Um wie im konkreten Beispiel knapp 1000 verschiedene Kombination zu testen sind Modelle also unablässig. Dennoch muss sich auch der Auffwand der Modellierungstrategie ($k_{\mathrm{sim, gesamt}}$) in Grenzen halten, da sich der Modellierungsaufwand aus der Summe der für Materialparameter notwenigen Untersuchungen und dem Berechnungsaufwand ergibt.
 \begin{align}
-   - \frac{\partial u_x}{\partial x} \left( EA\; \frac{\partial u_x}{\partial x} \right) &= q_x[x]\\
-    -EA\; \frac{\partial u_x}{\partial x} &= F
+    k_{\mathrm{sim, gesamt}} &= k_{\mathrm{sim}} \cdot n_{\mathrm{Kombis}} \cdot n_{Rechnungen} \nonumber \\
+    &+ \sum_{m}^{n_{\mathrm{Material}}} n_{\mathrm{exp, Bestimmung}} \cdot k_{\mathrm{exp}} + n_{\mathrm{lit, Bestimmung}} \cdot k_{\mathrm{lit}} 
+\end{align}
+Da wie bereits am Anfang beschrieben Modelle sich maximal der Präzesion durch Experimente annähern, ist es unter Berücksichtigungen der verschiedenen Aufwände naheliegend mittels der Modellierungsmethodik soviele wie mögliche Materialkandidaten herauszufiltern und im Anschluss diese besten Kombination mittels Experimente zu identifizieren.
+
+
+\section{Identifizierung elektrochemischer Materialparameter}
+
+Das hergeleitet Modell zur multi-physikalischen Beschreibung der Strukturbatterie auf der Mikroskala benötigt in der kompletten ausführung 18 zu bestimmende Parameter für jede faserbasierte Elektrode, 11 Parameter pro Elektrolytesystem und faserbasierten Separato, und zwei Interaktionskoeffizienten für jede Kombination an Elektrode und Elektrolyte. Hinzukommen 10 Parameter die für transversal Isotropematerialien, die als Pouchbag und damit nicht an der Reaktion teilnehmen.
+
+
+\begin{itemize}
+    \item Diffusionskoeffizient wird durch equivalente Schaltung ermittelt, die konstanten Wert vorraussetzen
+    \item Diffusionskoeeffizeint ist eigentlich stark von der Lithierung abhängig
+    \item aufwendig zu ermitteln
+    \item außerdem abweichungen durch Bildung Elektrolyteinterface
+    \item daher für vorhersagen ist die benutzung eher ungeeignet
+    \item für Batterien ist Energidichte wichtiger als Leisungsdichte
+    \item Lösung quasistatische Be- und Entladung, also warten bis vorher
+    \item dies reduziert die vereinfacht die oberen Gleichungen enorm
+\end{itemize}
+
+\begin{equation}
+    C_{\text{A, Zelle}} = \min \left( C_{\text{A, -}} , C_{\text{A, +}}\right)
+\end{equation}
+
+\begin{equation}
+    C_{\text{A, Stack}} = n_{\text{Zellen}} \cdot C_{\text{A, Zelle}}
+\end{equation}
+
+\begin{equation}
+    m_{\text{A, Stack, E}} = C_{\text{A, Stack}} \cdot V_{\text{C,E}} \cdot \rho_{\text{E}}
+\end{equation}
+
+\begin{equation}
+    m_{\text{A, Stack}} = m_{\text{A, Stack, E}} + \sum_{i}^{n_{\text{Schichten}}} m_{\text{A,i}} 
+\end{equation}
+
+\begin{equation}
+    C_{\text{m, Stack}} = \frac{C_{\text{A, Stack}} }{ m_{\text{A, Stack}}}
+\end{equation}
+
+\begin{equation}
+    \Gamma_{\text{Stack}} = C_{\text{m, Stack}} \cdot \left(U_{+} - U_{-}\right)
+\end{equation}
+
+
+
+\section{Identifizierung mechanischer Materialparameter}
+Unter der Annahme, dass alle Einzelschichten bei der Bestimmung der Zugsteifigkeit auf beiden Seiten in der Klemmung mit aufgenommen werden und keiner Vordehnung der Einzelschichten sind die Dehnungen in Zugrichtungen für alle Schichten gleich.
+\begin{equation}
+    \varepsilon_{x,ges} = \varepsilon_{x,i}\\
+\end{equation}
+
+
+
+\subsection*{Reduktion des Berechnungsaufwandes für 3-Punkt-Biegebelastungen unter Berücksichtigung verschiederner Elektrolytarten}
+
+Der Struktur von konventionellen Batterien oder Strukturbatterie mit Gel oder flüssigem Elektrolytsystemen kann vereinfacht als Schichtung, lastentragende Materialien betrachtet werden, in deren Zwischnraum eine nicht-lastentragenden Substanz in Form eines Flüssigen oder Gelartigen Zustandes infiltriert wurde.
+Die einzelnen Schichten sind nicht direkt mit einander verbundnen und halten einzig durch den Druck der durch die äußere Pouchfolie aneinander. Unter der Annahme, dass die Sichten sich lückenlos anschmiegen ist davon aus zugehen, dass die Krümmung $\kappa$ mit
+\begin{equation}
+    \kappa = \frac{1}{r} = \frac{M_y}{E I_y}
+\end{equation}
+in jeder Schicht gleichgroßt ist.
+\begin{equation}
+    \kappa = \kappa_1 = \kappa_2 = \dots = \kappa_i = \dots = \kappa_n
+\end{equation}
+Des Weiteren folgt aus dem Momentengleichgewicht, dass das außen angreifende Biegemoment $M_{b}$ gleich der Summe der Schnittmomente in den Einzelschichten sein muss.
+\begin{equation}
+    M_{b} = \sum_{i}^{n}M_{y,i}
+\end{equation}
+Unter Annahme von rechticken Querschnitten mit Breite $b_i$ und Höhe $h_i$ und der Annhame, dass alle Elektroden näherungsweise gleich Breit sind, also $b_i = b$ gilt, folgt für die Belastung einer Einzelschicht durch das Moment $M_i$:
+\begin{align}
+    M_{b} &= M_i \sum_{k}^{n}\frac{E_k I_{yy,k}}{E_i I_{yy,i}}\\
+    M_{b} &= M_i \frac{\sum_{k}^{n} E_k h_k^3}{E_i h_i^3}\\
+    M_i &= M_{b} \frac{ E_i h_i^3} { \sum_{k}^{n}E_k h_k^3}
+\end{align}
+Durch einsetzen Einzelschichtbelastung in die Formel zur Bestimmung der Biegespannung erhält man einen Zusammenhang zwischen Einzelschichtspannung und Biegemomentenbelastung:
+\begin{align}
+    \sigma_{b,i} &= \frac{M_y,i}{I_{yy}/h_i} \\
+    \sigma_{b,i} &= 12 \frac{ M_y,i}{b h_i^2}\\
+    \sigma_{b,i} &= 12 \frac{M_{b} E_i h_i^3}{b h_i^2 \sum_{k}^{n}E_k h_k^3}\\
+    \sigma_{b,i} &= 12 \frac{M_{b} E_i h_i}{b \sum_{k}^{n}E_k h_k^3}
 \end{align}
 
+Für die Bestimmung der Durchbiegung $u$ beim 3-Punkt-Biegeversuch kann 
+unter der
 \begin{equation}
-   [K_{\text{Stab}}] \boldsymbol{u}_{Stab} = \frac{E \; A}{l} 
-   \begin{bmatrix}
-    1 & \text{-}1 \\
-    \text{-}1 & 1
-   \end{bmatrix}
-   \begin{bmatrix}
-    u_{x,1} \\
-    u_{x,2}
-   \end{bmatrix}
-   = 
-   \begin{bmatrix}
-    f_{x,1} \\
-    f_{x,2}
-   \end{bmatrix}
+\frac{\frac{\partial^2 u(x)}{\partial x^2}}{\left(1 + \left(\frac{\partial u(x)}{\partial x} \right)^2 \right)^{3/2}} = -\frac{M_y}{E I_{yy}}
+\end{equation}
+Diese Gleichung kann für kleine Verformungen, so dass $(\frac{\partial u(x)}{\partial x})^2 \ll 1$ durch die folgende Näherung ersetzt werden.
+\begin{equation}
+    \frac{\partial^2 u(x)}{\partial x^2} \approx -\frac{M_y(x)}{E I_{yy}}
 \end{equation}
 
-Wegen der vergleichsweise geringen Höhe der Elektrode zu ihrer Länge können Schubverformungen vernachlässigt werden. Dies bedeutet, dass 
-
-
-Durch de Minimierung der potentiellen Energie folgt
-\begin{equation}
-    [k] = \int_0^l [B]^T \; EI \; [B] dx
-\end{equation}
-
-\begin{equation}
-    [K_{\text{Balken}}] \boldsymbol{u}_{Balken} = \frac{E \; I}{l^3} 
-    \begin{bmatrix}
-        12 & 6 \; l & \text{-}12 & 6 \; l        \\
-        6 \; l & 4 \; l^2 & \text{-}6 \; l & 2 \; l^2 \\
-        \text{-}12 & \text{-}6 \; l & 12 & \text{-}6 \; l      \\
-        6 \; l & 2 \; l^2 & \text{-}6 \; l & 4 \; l^2
-    \end{bmatrix}
-    \begin{bmatrix}
-        u_{y,1}  \\
-        \Theta_1 \\
-        u_{y,2}  \\
-        \Theta_2
-    \end{bmatrix}
-    = 
-    \begin{bmatrix}
-        \frac{q \; l}{2}  \\
-        \frac{q \; l^2}{12} \\
-        \frac{q \; l}{2}  \\
-        \text{-}\frac{q \; l^2}{12}
-    \end{bmatrix} 
-\end{equation}
-
+Unter der Annhame kleiner Verformung und konstantem Querschnitt und Steifigkeit lässt sich die Durchbiegung infolge der Kraft F durch folgende Gleichung annähern.
 \begin{align}
-    [K_{\text{Elektrode}}] \boldsymbol{u}_{\text{Träger}} &= ([K_{\text{Stab}}] + [K_{\text{Balken}}])\boldsymbol{u}_{Elektrode}\\
-    &= 
-    \begin{bmatrix}
-        \frac{E \; A}{l} & 0     & 0     &  \text{-}\frac{E \; A}{l}  & 0 & 0 \\
-        0 & 12 \frac{E \; I}{l^3}     & 6 \frac{E \; I}{l^2} & 0    &\text{-}12\frac{E \; I}{l^3}  & 6 \frac{E \; I}{l^2}       \\
-        0 & 6 \frac{E \; I}{l^2} & 4 \frac{E \; I}{l}  & 0    & \text{-}6 \frac{E \; I}{l^2}  & 2 \frac{E \; I}{l} \\
-        \text{-}\frac{E \; A}{l} & 0     & 0     &  \text{-}\frac{E \; A}{l}  & 0 & 0 \\
-        0 & \text{-}12\frac{E \; I}{l^3}    & \text{-}6 \frac{E \; I}{l^2}& 0 &12\frac{E \; I}{l^3}   & \text{-}6 \frac{E \; I}{l^2}      \\
-        0 & 6 \frac{E \; I}{l^2} & 2 \frac{E \; I}{l} & 0    & \text{-}6 \frac{E \; I}{l^2} & 4 \frac{E \; I}{l}
-    \end{bmatrix}
-    \begin{bmatrix}
-        u_{x,1}  \\
-        u_{y,1}  \\
-        \Theta_1 \\
-        u_{x,2}  \\
-        u_{y,2}  \\
-        \Theta_2
-    \end{bmatrix}
-    = 
-    \begin{bmatrix}
-        f_{x,1} \\
-        \frac{q \; l}{2}  \\
-        \frac{q \; l^2}{12} \\
-        f_{x,2} \\
-        \frac{q \; l}{2}  \\
-        \text{-}\frac{q \; l^2}{12}
-    \end{bmatrix} 
+    u(x) &= \frac{F L^3}{48 \sum_{k}^{n} E_k I_{yy,k}} \left[ 3 \frac{x}{L} - 4\left(\frac{x}{L}\right)^3 \right] \text{für} \; 0 \leq x \leq L/2 \\
+    u_{max} (x = L/2) &= \frac{FL^3}{48 \sum_{k}^{n} E_k I_{yy,k}} 
 \end{align}
 
 
 
-Das mechanische Verhalten des porösen Aktivmaterials unterscheidet sich besonders bei Kompression. Qu et al.  schlagen zur Modelierung das Deshpande-Fleck Schaummodel \cite{Deshpande2000} vor, welches vorher bereits zur Beschreibung von Gesteinsschichten und Metallschäumen zum Einsatz kam \cite{Qu2023}.
+An dieser Stelle ist zu bemerken, dass für Spezialfall wo alle $n$ Schichten gleich dick sind und aus dem gleichen Material bestehen, die Spannung sich wie folgend ergibt.
 \begin{equation}
-    F = \sqrt{q^2 + \alpha^2 (p-p_0)^2} - B = 0
+    \sigma = \sigma_i = \frac{12 M_{b}}{n b h^2},
 \end{equation}
+Diese Formel ist bereits im Kontext geschichteter Blattfedern bekannt und ist, was 
 
-Wenn sich Elektrolyte zwischen den Elektroden befindet entsteht durch die Deformation eine Volumenänderung, die über die ideale Gasgleichung eine Veränderung im innen Druck bewirkt.
-
+Druchbiegung $u_max$
 \begin{equation}
-    p\;V = n \; R_{K} \ T
+    u_{max} = \frac{L^3 Q}{4 n b h^3 E} = \frac{L^2 \sigma}{6 h E}
 \end{equation}
-Bei konstanter Temparatur kann die Zustandsänderung des Systems mit Boyles Gesetz beschrieben werden. 
-\begin{equation}
-    p_1 \; V_1 = p_2 \; V_2
-\end{equation}
-Bei iener zeitlichen Diskretisierung ist allerdings eine leicht modifizierte Schrebiweise hilfreicher.
-\begin{equation}
-    p_{t} \; V_{t} = p_{t+\Delta t} \; V_{t+\Delta t}
-\end{equation}
-
-\begin{equation}
-    p_{t+\Delta t}   = \frac{p_{t} \; V_{t}}{V_{t+\Delta t}}
-\end{equation}
-
-Der Druckausgleich im System wird durch die zahlreichen Widerstände verhindert, was durch die Naviar-Stokes-Gleichung beschrieben wird.
-\begin{equation}
-    \rho \frac{\partial \boldsymbol{u}}{\partial t} + \rho \boldsymbol{u} \cdot \nabla \boldsymbol{u} = -\nabla p + \mu \nabla^2\boldsymbol{u} + f_{ext}
-\end{equation}
-Für inkompressible Flüssigkeiten gilt außerdem
-\begin{equation}
-    \nabla \cdot \boldsymbol{u} = 0.
-\end{equation}
-Die Gleichung hat fünf Terme. Dabei beschreiben die ersten Beiden den Einfluss der Trägheit uaf das Systems, der Dritte den Druckgradient, der Vierte die Vikosität und der Fünfte die Externen Kräfte. 
-
-\begin{equation}
-    \frac{\partial \boldsymbol{v}}{ \partial t} = - \nabla p + \frac{1}{\text{Re}} \nabla^2\boldsymbol{v} + \boldsymbol{f}
-\end{equation}
-
-Der Volumenstrom wiederum hat 
-
-\section{Koppelung der mechanischen und elektrochemischen Effekte}
+ergibt sich die 
 
 
-\section{Fehlerabschätzung der Modellierung durch Literturwerte}
+Im Verältniss zum stofflichen Verbund ist davon auszugehen, dass diese Steifigkeitssteigerung deutlich geringer ist, wenn aber auch nicht komplett vernachlässigbar.
 
-\section{Zusammenfassende Darstellung der Modellierungsmethodik}
+
+\section{Erstellung einer Materialdatenbank für Strukturbatterien}

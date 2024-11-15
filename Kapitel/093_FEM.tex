@@ -1,0 +1,191 @@
+
+
+
+\begin{equation}
+    \sigma = E \varepsilon
+\end{equation}
+
+\begin{equation}
+    F = A \sigma
+\end{equation}
+
+\begin{equation}
+    \frac{\partial F}{\partial x}+ q_x(x) = 0
+\end{equation}
+
+Unter der Annahme eines linearen Deformationsverlaufes in einem Stab ergibt sich die folgende Verschiebungsfunktion 
+\begin{equation}
+    u_x(x) = \begin{bmatrix} 1-\frac{x}{l} & \frac{x}{l} \end{bmatrix}\begin{bmatrix} 
+        u_{x,1} \\
+        u_{x,2} 
+    \end{bmatrix}.
+\end{equation}
+
+Mittels der Beziehung zwischen Dehnung und Deformation folgt 
+\begin{equation}
+    \varepsilon_x = \frac{\partial u_x}{\partial x} = 
+    \frac{1}{l}
+    \begin{bmatrix} 
+        \text{-}1 & 1 
+    \end{bmatrix}
+    \begin{bmatrix} 
+        u_{x,1} \\
+        u_{x,2} 
+    \end{bmatrix}.
+\end{equation}
+
+Aus dem Zusammenhang zwischen Normalspannung und Dehnung
+\begin{equation}
+    \sigma_x = E \varepsilon_x = 
+    \frac{E}{l}
+    \begin{bmatrix} 
+        \text{-}1 & 1 
+    \end{bmatrix}
+    \begin{bmatrix} 
+        u_{x,1} \\
+        u_{x,2} 
+    \end{bmatrix}
+\end{equation}
+kann eine Beziehung zur äußeren Kraft aufgestellt werden
+\begin{equation}
+    F = A \sigma = 
+    \frac{EA}{l}
+    \begin{bmatrix} 
+        \text{-}1 & 1 
+    \end{bmatrix}
+    \begin{bmatrix} 
+        u_{x,1} \\
+        u_{x,2} 
+    \end{bmatrix}
+\end{equation}
+
+\begin{align}
+   - \frac{\partial u_x}{\partial x} \left( EA\; \frac{\partial u_x}{\partial x} \right) &= q_x[x]\\
+    -EA\; \frac{\partial u_x}{\partial x} &= F
+\end{align}
+
+\begin{equation}
+   [K_{\text{Stab}}] \boldsymbol{u}_{Stab} = \frac{E \; A}{l} 
+   \begin{bmatrix}
+    1 & \text{-}1 \\
+    \text{-}1 & 1
+   \end{bmatrix}
+   \begin{bmatrix}
+    u_{x,1} \\
+    u_{x,2}
+   \end{bmatrix}
+   = 
+   \begin{bmatrix}
+    f_{x,1} \\
+    f_{x,2}
+   \end{bmatrix}
+\end{equation}
+
+Wegen der vergleichsweise geringen Höhe der Elektrode zu ihrer Länge können Schubverformungen vernachlässigt werden. Dies bedeutet, dass 
+
+
+Durch de Minimierung der potentiellen Energie folgt
+\begin{equation}
+    [k] = \int_0^l [B]^T \; EI \; [B] dx
+\end{equation}
+
+\begin{equation}
+    [K_{\text{Balken}}] \boldsymbol{u}_{Balken} = \frac{E \; I}{l^3} 
+    \begin{bmatrix}
+        12 & 6 \; l & \text{-}12 & 6 \; l        \\
+        6 \; l & 4 \; l^2 & \text{-}6 \; l & 2 \; l^2 \\
+        \text{-}12 & \text{-}6 \; l & 12 & \text{-}6 \; l      \\
+        6 \; l & 2 \; l^2 & \text{-}6 \; l & 4 \; l^2
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{y,1}  \\
+        \Theta_1 \\
+        u_{y,2}  \\
+        \Theta_2
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        \frac{q \; l}{2}  \\
+        \frac{q \; l^2}{12} \\
+        \frac{q \; l}{2}  \\
+        \text{-}\frac{q \; l^2}{12}
+    \end{bmatrix} 
+\end{equation}
+
+\begin{align}
+    [K_{\text{Elektrode}}] \boldsymbol{u}_{\text{Träger}} &= ([K_{\text{Stab}}] + [K_{\text{Balken}}])\boldsymbol{u}_{Elektrode}\\
+    &= 
+    \begin{bmatrix}
+        \frac{E \; A}{l} & 0     & 0     &  \text{-}\frac{E \; A}{l}  & 0 & 0 \\
+        0 & 12 \frac{E \; I}{l^3}     & 6 \frac{E \; I}{l^2} & 0    &\text{-}12\frac{E \; I}{l^3}  & 6 \frac{E \; I}{l^2}       \\
+        0 & 6 \frac{E \; I}{l^2} & 4 \frac{E \; I}{l}  & 0    & \text{-}6 \frac{E \; I}{l^2}  & 2 \frac{E \; I}{l} \\
+        \text{-}\frac{E \; A}{l} & 0     & 0     &  \text{-}\frac{E \; A}{l}  & 0 & 0 \\
+        0 & \text{-}12\frac{E \; I}{l^3}    & \text{-}6 \frac{E \; I}{l^2}& 0 &12\frac{E \; I}{l^3}   & \text{-}6 \frac{E \; I}{l^2}      \\
+        0 & 6 \frac{E \; I}{l^2} & 2 \frac{E \; I}{l} & 0    & \text{-}6 \frac{E \; I}{l^2} & 4 \frac{E \; I}{l}
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{x,1}  \\
+        u_{y,1}  \\
+        \Theta_1 \\
+        u_{x,2}  \\
+        u_{y,2}  \\
+        \Theta_2
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        f_{x,1} \\
+        \frac{q \; l}{2}  \\
+        \frac{q \; l^2}{12} \\
+        f_{x,2} \\
+        \frac{q \; l}{2}  \\
+        \text{-}\frac{q \; l^2}{12}
+    \end{bmatrix} 
+\end{align}
+
+
+
+Das mechanische Verhalten des porösen Aktivmaterials unterscheidet sich besonders bei Kompression. Qu et al.  schlagen zur Modelierung das Deshpande-Fleck Schaummodel \cite{Deshpande2000} vor, welches vorher bereits zur Beschreibung von Gesteinsschichten und Metallschäumen zum Einsatz kam \cite{Qu2023}.
+\begin{equation}
+    F = \sqrt{q^2 + \alpha^2 (p-p_0)^2} - B = 0
+\end{equation}
+
+Wenn sich Elektrolyte zwischen den Elektroden befindet entsteht durch die Deformation eine Volumenänderung, die über die ideale Gasgleichung eine Veränderung im innen Druck bewirkt.
+
+\begin{equation}
+    p\;V = n \; R_{K} \ T
+\end{equation}
+Bei konstanter Temparatur kann die Zustandsänderung des Systems mit Boyles Gesetz beschrieben werden. 
+\begin{equation}
+    p_1 \; V_1 = p_2 \; V_2
+\end{equation}
+Bei iener zeitlichen Diskretisierung ist allerdings eine leicht modifizierte Schrebiweise hilfreicher.
+\begin{equation}
+    p_{t} \; V_{t} = p_{t+\Delta t} \; V_{t+\Delta t}
+\end{equation}
+
+\begin{equation}
+    p_{t+\Delta t}   = \frac{p_{t} \; V_{t}}{V_{t+\Delta t}}
+\end{equation}
+
+Der Druckausgleich im System wird durch die zahlreichen Widerstände verhindert, was durch die Naviar-Stokes-Gleichung beschrieben wird.
+\begin{equation}
+    \rho \frac{\partial \boldsymbol{u}}{\partial t} + \rho \boldsymbol{u} \cdot \nabla \boldsymbol{u} = -\nabla p + \mu \nabla^2\boldsymbol{u} + f_{ext}
+\end{equation}
+Für inkompressible Flüssigkeiten gilt außerdem
+\begin{equation}
+    \nabla \cdot \boldsymbol{u} = 0.
+\end{equation}
+Die Gleichung hat fünf Terme. Dabei beschreiben die ersten Beiden den Einfluss der Trägheit uaf das Systems, der Dritte den Druckgradient, der Vierte die Vikosität und der Fünfte die Externen Kräfte. 
+
+\begin{equation}
+    \frac{\partial \boldsymbol{v}}{ \partial t} = - \nabla p + \frac{1}{\text{Re}} \nabla^2\boldsymbol{v} + \boldsymbol{f}
+\end{equation}
+
+Der Volumenstrom wiederum hat 
+
+\section{Koppelung der mechanischen und elektrochemischen Effekte}
+
+
+\section{Fehlerabschätzung der Modellierung durch Literturwerte}
+
+\section{Zusammenfassende Darstellung der Modellierungsmethodik}
