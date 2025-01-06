@@ -1,7 +1,8 @@
 \chapter{Modellierung von Strukturbatterien}
+Die Modellierung von Strukturbatterien auf der Mirkoskalenebene wurde in den letzten Jahren maßgeblich durch die Arbeiten von Carlstedt vorrangetrieben. Allerdings ist bis auf die Homogenisierung des Strukturelektrolytens die komplette Modellierung auf 
 
-%\section{Beschreibung der gekoppelten mechanischen-elektrochemischen Eigenschaften von Strukturbatterien}
-\section{Physikalische Beschreibung der gekoppelten multiphysikalischen Beschreibung von faserbasierten Strukturbatterien}
+\section{Bestehende Mikroskalen Modellierungen}
+Ausgehend von der mach
 
 Für konventionelle Batterien lassen sich die elektrochemsichen Pähnomene durch fünf Differentialgleichungen beschreiben~\cite{Plett2015}.
 \begin{enumerate}
@@ -30,6 +31,16 @@ Für konventionelle Batterien lassen sich die elektrochemsichen Pähnomene durch
         j &= \frac{i_0}{F}\left( \exp \left(\frac{\left(1-\alpha\right)  F}{RT}\eta \right) - \exp \left(-\frac{\alpha F}{RT}  \eta\right) \right)\\
         \eta &= (\phi_{\text{s}}-\phi_{\text{e}}) - U_{\text{ocp}}
     \end{align}
+
+    \item Temperaturentwicklung in der festen und flüssigen Phase
+    \begin{align}
+        \rho_{\text{s}} c_{\text{P,s}} \frac{T_{\text{s}}}{\partial t} &= \nabla \cdot (\lambda_{\text{s}} \nabla T_{\text{s}}) - \boldsymbol{i}_{\text{s}} \cdot \nabla \phi_{\text{s}}\\
+        \rho_{\text{e}} c_{\text{P,e}} \frac{T_{\text{e}}}{\partial t} &= \nabla \cdot (\lambda_{\text{e}} \nabla T_{\text{e}}) - \boldsymbol{i}_{\text{e}} \cdot \nabla \phi_{\text{e}}
+    \end{align}
+    \item Mechanische Spannung in der festen Phase
+    \begin{equation}
+        -\nabla \cdot \boldsymbol{\sigma} = \boldsymbol{0}
+    \end{equation}
 \end{enumerate}
 
 und asymetrischer Ladungungstransferkoeffizient $0<\alpha<1$
@@ -41,6 +52,7 @@ und asymetrischer Ladungungstransferkoeffizient $0<\alpha<1$
 
 
 
+\section{Überführung der Mikroskaligen Modellierungsansätze in makroskalige Modelle durch Homogenisierung}
 
 Spezialfall Massenserhalt in Zylindrischen Festkörpern
 \begin{equation}
@@ -55,6 +67,7 @@ und
 \begin{equation}
 j_{n}^{\pm}(t) = \mp \frac{I(t)}{F a^{\pm} L^{\pm}}
 \end{equation}
+
 
 \chapter{Entwicklung einer hybriden Auslegung von Strukturbatterien}
 
@@ -124,7 +137,27 @@ Das hergeleitet Modell zur multi-physikalischen Beschreibung der Strukturbatteri
     \Gamma_{\text{Stack}} = C_{\text{m, Stack}} \cdot \left(U_{+} - U_{-}\right)
 \end{equation}
 
+% aus: Simultaneously Coupled
+% Mechanical-Electrochemical-
+% Thermal Simulation of Lithium-
+% Ion Cells
+\begin{align}
+    R_{\text{Kurz}} &= A_{\text{Kurz}} \sum_{i} \frac{1}{K_i}\\
+    A &= \sum_{i}^{n_{\text{Versagen}}} A_{i}
+\end{align}
 
+\begin{equation}
+    V_{\text{Zelle}} = (U_{+} - U_{-} + \sum_{j=+,-} \frac{2 RT}{F} ln\left(\frac{\sqrt{m_j^2 +4} + m_j}{2}\right) - i_{app} R_{\text{Kurz}}
+    m_j = \frac{i_{app}}{F k_j S_j c_{s,j}^{max} \sqrt{c_e (1-x_{Li,j}) x_{Li,j}}} 
+\end{equation}
+
+\begin{equation}
+    \rho v c_p \frac{\partial T}{\partial t} = i_{app}\left(V_{\text{Zelle}} - U_{+} + U_{-} + i_{app} R_{Kurz} \right) -q
+\end{equation}
+
+\begin{equation}
+    q = 0
+\end{equation}
 
 \section{Identifizierung mechanischer Materialparameter}
 Unter der Annahme, dass alle Einzelschichten bei der Bestimmung der Zugsteifigkeit auf beiden Seiten in der Klemmung mit aufgenommen werden und keiner Vordehnung der Einzelschichten sind die Dehnungen in Zugrichtungen für alle Schichten gleich.
