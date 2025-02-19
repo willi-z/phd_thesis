@@ -3,6 +3,7 @@
 %*********** DOKUMENTDEKLARATION und GRUNDFORMATIERUNG ********************
 %**************************************************************************
 %**************************************************************************
+\RequirePackage[hyphens]{url}
 \documentclass[
 draft=false, % Entwurfsmodus an/aus true|false
 DIV=14, % DIVzahl|DIV=calc - Satzspiegel (Seitenränder), ggf. geometry-Paket nutzen
@@ -43,22 +44,14 @@ automark, %
 %\MakeOuterQuote{"}
 \usepackage[ngerman,math=normal]{babel}
 
-\useshorthands{'}
-
-\newif\ifclosequote
-\defineshorthand{''}{
-  \ifclosequote
-    \closequotefalse\grqq
-  \else
-    \closequotetrue\glqq
-  \fi
-}
 
 
 \usepackage{tabularx}
 \usepackage{multirow, makecell}
 \usepackage{booktabs}
 \usepackage{import}
+%\usepackage{hyperref}
+%\PassOptionsToPackage{hyphens}{url}
 
 \newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}} % superscript
 \newcommand{\subscript}[1]{\ensuremath{_{\textrm{#1}}}}   % subscript
