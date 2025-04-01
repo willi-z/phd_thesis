@@ -1,10 +1,9 @@
-\chapter{Modellierung von Strukturbatterien}
-Die Modellierung von Strukturbatterien auf der Mirkoskalenebene wurde in den letzten Jahren maßgeblich durch die Arbeiten von Carlstedt vorrangetrieben. Allerdings ist bis auf die Homogenisierung des Strukturelektrolytens die komplette Modellierung auf 
+\chapter{\label{sec:modelling_SB}Modellierung von Strukturbatterien}
+Die Modellierung von Strukturbatterien auf der Mirkoskalenebene wurde in den letzten Jahren maßgeblich durch die Arbeiten von Carlstedt~\cite{Carlstedt2018,Carlstedt2019,Carlstedt2022a,Carlstedt2023} vorrangetrieben. Modelle und die Kopplung der mechansichen, elektrochemischen und thermischen Effekte wurde bereits erbracht~\cite{Carlstedt2022,Carlstedt2022b}. Des Weiteren sind aus der Forschung zu herkömmlichen Batterien auch noch andere Ansätze bekannt, die in Kaptiel~\ref{sec:existing_micro_models} kurz erläutert werden sollen. Die Modelle von Carlstedt beschreiben, allerdings vorranging das Verhalten auf der Mikro- oder Partikelebene. Jedoch existiert eine Vielzahl an Arbeiten, die gezeigt haben, wie für konventionelle Batterien eine mittels Homogenisierung, diese Modelle für höhere Skalen adaptiert werden können. Mit Hilfe dieser Methoden wird in Kapitel~\ref{sec:homogenisation} die Modellierung für die Makroebene hergeleitet.
 
-\section{Bestehende Mikroskalen Modellierungen}
-Ausgehend von der mach
+\section{\label{sec:existing_micro_models}Bestehende Mikroskalen Modellierungen}
 
-Für konventionelle Batterien lassen sich die elektrochemsichen Pähnomene durch fünf Differentialgleichungen beschreiben~\cite{Plett2015}.
+Die auf der Mirko- oder Partikelebene stattfindenden Prozesse sind unabhängig davon, ob eine konventionelle oder eine Strukturbatterie modelliert wird. Einige Prozesse spielen allerdings für konventionelle Batterien nur eine untergeordente Rolle, weshalb diese oft ignoriert oder vereinfacht werden~\cite{Carlstedt2020a}. Der Ionentransport ist dabei der wichtigste Prozess~\cite{Carlstedt2019b}. Dabei bestehen nach \textsc{Newman} wesentliche Unterschide zwischen flüssige und festen Phasen~\cite{Newman2021}. Da sowohl  konventionelle Batterien, als auch Strukturbatterien, mit zweiphasigen Elektrolyten einen Ionentransport durch beide Phasen besitz lassen sich kann ihr Verhalten in erster Näherung durch die folgenden fünf Differnetialgleichungen\footnote{auch unter dem Namen \textsc{Doyle}-\textsc{Fuller}-\textsc{Newman}-Modell bekannt} beschrieben werden~\cite{Plett2015}.
 \begin{enumerate}
     \item Ladungserhalt in homogenen Festkörpern
     \begin{equation}
@@ -18,47 +17,177 @@ Für konventionelle Batterien lassen sich die elektrochemsichen Pähnomene durch
 
     \item Massenerhalt in dem homogenen Elektrolyt
     \begin{equation}
-        \frac{\partial c_e}{\partial t} = \nabla \cdot \left( D_e   \nabla c_e \right) - \frac{\boldsymbol{i}_{\text{e}} \cdot    \nabla \boldsymbol{t}_+^0}{F} - \nabla \cdot \left( c_{\text   {e} \boldsymbol{v}_0}\right)
+        \frac{\partial c_e}{\partial t} = \nabla \cdot \left( D_e   \nabla c_e \right) - \frac{\boldsymbol{i}_{\text{e}} \cdot    \nabla t_+^0}{F_{\text{K}}} - \nabla \cdot \left( c_{\text{e}} \boldsymbol{v}_0\right)
     \end{equation}
 
     \item Ladungserhalt  in dem homogenen Elektrolyt
     \begin{equation}
-        \nabla \cdot \boldsymbol{i}_{\text{e}} = \nabla \cdot \left(    - \kappa \nabla \phi_{\text{e}}  -\frac{2\kappa RT}{F} \left(  1+ \frac{\partial \ln f_\pm}{\partial \ln c_{\text{e}}}\right)   \left( t_+^0-1\right) \nabla \ln c_{\text{e}} \right) = 0
+        \nabla \cdot \boldsymbol{i}_{\text{e}} = \nabla \cdot \left(    - \kappa \nabla \phi_{\text{e}}  -\frac{2\kappa R_{\text{K}} T}{F_{\text{K}}} \left(  1+ \frac{\partial \ln f_\pm}{\partial \ln c_{\text{e}}}\right)   \left( t_+^0-1\right) \nabla \ln c_{\text{e}} \right) = 0
     \end{equation}
 
     \item Ionentrasport zwischen fester und flüssiger Phase
     \begin{align}
-        j &= \frac{i_0}{F}\left( \exp \left(\frac{\left(1-\alpha\right)  F}{RT}\eta \right) - \exp \left(-\frac{\alpha F}{RT}  \eta\right) \right)\\
+        j &= \frac{i_0}{F}\left( \exp \left(\frac{\left(1-\alpha\right)  F}{RT}\eta \right) - \exp \left(-\frac{\alpha F_{\text{K}}}{R_{\text{K}} T}  \eta\right) \right)\\
+        i_0 &= n F_{\text{K}} k_0 \left(\prod_i c_{o,i}\right)^{1-\alpha} \left( \prod_i c_{r,i}\right)^\alpha\\
         \eta &= (\phi_{\text{s}}-\phi_{\text{e}}) - U_{\text{ocp}}
     \end{align}
-
-    \item Temperaturentwicklung in der festen und flüssigen Phase
-    \begin{align}
-        \rho_{\text{s}} c_{\text{P,s}} \frac{T_{\text{s}}}{\partial t} &= \nabla \cdot (\lambda_{\text{s}} \nabla T_{\text{s}}) - \boldsymbol{i}_{\text{s}} \cdot \nabla \phi_{\text{s}}\\
-        \rho_{\text{e}} c_{\text{P,e}} \frac{T_{\text{e}}}{\partial t} &= \nabla \cdot (\lambda_{\text{e}} \nabla T_{\text{e}}) - \boldsymbol{i}_{\text{e}} \cdot \nabla \phi_{\text{e}}
-    \end{align}
-    \item Mechanische Spannung in der festen Phase
-    \begin{equation}
-        -\nabla \cdot \boldsymbol{\sigma} = \boldsymbol{0}
-    \end{equation}
 \end{enumerate}
-
-und asymetrischer Ladungungstransferkoeffizient $0<\alpha<1$
+Dabei beschreibt $\boldsymbol{i}$ die Ladungsdichte, $\sigma$ die materialabhängige  Leitfähigkeit, $\phi$ das elektrische Potenzial, $c$ die Ladungsträgerkonzentration, $D$ der materialabhängige Diffusionskoeffizient, $\boldsymbol{t}^0_+$ die Hittorfsche Überführungszahl der Kationen im bezug auf das Elektrolytsystem, $F_{\text{K}}$ Farrady-Konstante, $\boldsymbol{v}_0$ die Geschwindigkeit des Elektrolytes, $\kappa$ die ionische Leitfähigkeit, $R_{\text{K}}$ die ideale Gaskonstante, $T$ die Temperatur, $f_{\pm}$ der mittlere molare Aktivitäntskoeffizient, $j$ die molare Ionenflussdichte, $i_0$ die Austauschladungsdichte\footnote{Vereinfacht sich für Lithium und Natrium zu: $i_0 = F_{\text{K}} k_0 c_e^{1-\alpha} (c_{s,max}-c_{s,e})^{1-\alpha} c_{s,e}^\alpha$},  $\eta$ das Reaktionsüberpotenzial, $k_{0,K}$ effektive Rekationsratenkonstante, $U_{\text{ocp}}$ das Leerlaufspannung und asymetrischer Ladungungstransferkoeffizient $0<\alpha<1$ definiert durch
 \begin{equation}
         \alpha = \left|\frac{\Delta E_{\text{a,red}}}{\Delta G_0}\right|
 \end{equation}
-Änderung der Aktivierungsenergie der Reduktionsmittel
-Änderung der Gibbs-Energy der Oxidationsmittel
+das Verhältnis aus Änderung der Aktivierungsenergie der Reduktionsmittel ($\Delta E_{\text{a,red}}$) und Änderung der Gibbs-Energy der Oxidationsmittel ($\Delta G_0$).
 
+Neben dem Ladungstransport spielen Temperaturentwicklung und die Entstehung mechansicher Spannungen eine Rolle.
+Dabei hängt die Temperaturentwicklung in der festen und flüssigen Phase von $\rho$ der Dichte, $c_\text{P}$ der spezifischen Wärmekapazität, $\lambda$ der Wärmeleitfähigkeit und dem elektrischen Strom ab.
+\begin{align}
+    \rho_{\text{s}} c_{\text{P,s}} \frac{T_{\text{s}}}{\partial t} &= \nabla \cdot (\lambda_{\text{s}} \nabla T_{\text{s}}) - \boldsymbol{i}_{\text{s}} \cdot \nabla \phi_{\text{s}}\\
+    \rho_{\text{e}} c_{\text{P,e}} \frac{T_{\text{e}}}{\partial t} &= \nabla \cdot (\lambda_{\text{e}} \nabla T_{\text{e}}) - \boldsymbol{i}_{\text{e}} \cdot \nabla \phi_{\text{e}}
+\end{align}
 
-
-\section{Überführung der Mikroskaligen Modellierungsansätze in makroskalige Modelle durch Homogenisierung}
-
-Spezialfall Massenserhalt in Zylindrischen Festkörpern
+Mechanische Spannung hat besonders im Kontext von Strukturbatterien eine signifikante Bedeutung~\cite{Carlstedt2020b}, wird aber auch bei konventionellen Batterien als entscheidenter Faktor für einige Alterungsmechanismen berücksichtigt~\cite{Mueller2019}. Die mechanische Spannung kann dabei nur in der festen Phase auftreten.
 \begin{equation}
-    \frac{\partial c_{\text{s}}^{\pm}}{\partial t}(x,r,t) = \frac{1}{r^2} \frac{\partial}{ \partial r} \left[ D_{\text{s}}^\pm r^2 \frac{\partial c_{\text{s}}^\pm}{\partial r}(x,r,t)\right]
+    -\nabla \cdot \boldsymbol{\sigma} = \boldsymbol{0}
 \end{equation}
-mit den Randbedingungen
+Durch \textsc{Hook} lässt sich außerdem die mechanische Spannugn mit der Dehnung als lineare Abhängigkeit darstellen.
+\begin{equation}
+    \boldsymbol{\sigma} = \boldsymbol{C} \boldsymbol{\varepsilon}_{mech}
+\end{equation}
+Bei dem Elastizitätstensor $\boldsymbol{C}$ wird im Kontext von Strukturbatterien je nach Material zwischen einer isotrop\footnote{z.B. Metallelelektrode, Aktivmaterial, Polymerphase}, transversal-isotropen\footnote{z.B. einzelne Kohlenstofffaser} und orthotropen\footnote{z.B. Kohlenstofffasergewebe, Glasfaserseparator} Beschreibung unterschieden.
+\begin{align}
+\boldsymbol{C}^{-1}_{\text{iso}} &= 
+\begin{bmatrix}
+    \frac{1}{E} & -\frac{\nu}{E} & -\frac{\nu}{E} & 0 & 0 & 0 \\
+    -\frac{\nu}{E}& \frac{1}{E} & -\frac{\nu}{E} & 0 & 0 & 0 \\
+    -\frac{\nu}{E} & -\frac{\nu}{E} & \frac{1}{E} & 0 & 0 & 0 \\
+    0 & 0 & 0 & \frac{2(1+\nu)}{E} & 0 & 0 \\
+    0 & 0 & 0 & 0 & \frac{2(1+\nu)}{E} & 0 \\
+    0 & 0 & 0 & 0 & 0 & \frac{2(1+\nu)}{E} \\
+\end{bmatrix}\\
+\boldsymbol{C}^{-1}_{\text{trans}} &= 
+\begin{bmatrix}
+    \frac{1}{E_{1}} & -\frac{\nu_{12}}{E_{1}} & -\frac{\nu_{13}}{E_{1}} & 0 & 0 & 0 \\
+    -\frac{\nu_{12}}{E_{1}}& \frac{1}{E_{2}} & -\frac{\nu_{23}}{E_{2}} & 0 & 0 & 0 \\
+    -\frac{\nu_{13}}{E_{1}} & -\frac{\nu_{23}}{E_{2}} & \frac{1}{E_{2}} & 0 & 0 & 0 \\
+    0 & 0 & 0 & \frac{2(1+\nu_{23})}{E_{2}} & 0 & 0 \\
+    0 & 0 & 0 & 0 & \frac{1}{G_{31}} & 0 \\
+    0 & 0 & 0 & 0 & 0 & \frac{1}{G_{12}} \\
+\end{bmatrix}\\
+\boldsymbol{C}^{-1}_{\text{ortho}} &= 
+\begin{bmatrix}
+    \frac{1}{E_{1}} & -\frac{\nu_{12}}{E_{1}} & -\frac{\nu_{13}}{E_{1}} & 0 & 0 & 0 \\
+    -\frac{\nu_{12}}{E_{1}}& \frac{1}{E_{2}} & -\frac{\nu_{23}}{E_{2}} & 0 & 0 & 0 \\
+    -\frac{\nu_{13}}{E_{1}} & -\frac{\nu_{23}}{E_{2}} & \frac{1}{E_{3}} & 0 & 0 & 0 \\
+    0 & 0 & 0 & \frac{1}{G_{23}} & 0 & 0 \\
+    0 & 0 & 0 & 0 & \frac{1}{G_{31}} & 0 \\
+    0 & 0 & 0 & 0 & 0 & \frac{1}{G_{12}} \\
+\end{bmatrix}
+\end{align}
+
+\begin{figure}[!ht]
+	%\raggedleft
+		%\def\svgwidth{\columnwidth}
+        \center
+		\includegraphics[width=0.99\textwidth, angle=0]{carlstedt.pdf}
+		\caption{\label{fig:carlstedt}a) Schematische Darstellung der zu analysierenden Kohlenstofffaser-Strukturbatterie und LFP Zelle angelehnt an Studien von \textsc{Carlstedt}~\cite{Carlstedt2022b}. b) 2D-Model für die FEM Berechnung. c) Der Angelegte Strom als treibende Randbedingung über die Zeit. e) Die elektrische Spannung und Stromdichte über die Zeit und die Lithiumkonzentration an den beiden Zeitpunkten $t_1= 2000s$ und $t_2= 6000s$. f) Die gemittelte Temperatur in der Halbzelle über die Zeit und die Temperaturverteilung bei $t_1$ und $t_2$. g) Die mechansichen Spannungskomponenten $\sigma_{11}$ und $\sigma_{22}$ zu $t_1$ und $t_2$.}
+\end{figure}
+
+Besonders bei den Materialien, die als Interkalationsort dienen, haben Untersuchungen von \textsc{Duan}~\cite{Duan2021} gezeigt, dass die Elastizitätsmodule näherungsweise linear von der Ionenkonzentration abhängig sind.
+\begin{equation}
+    E(c_{s}) = E_0 + \frac{c_{s}}{c_{s,1}} (E_1 - E_0)
+\end{equation}
+
+Die Gesamtdehnung $\boldsymbol{\varepsilon}$ ergibt sich dabei aus Summe der elektrochemischen, thermischen und mechanischen Einflüsse
+\begin{equation}
+    \boldsymbol{\varepsilon} = \boldsymbol{\varepsilon}_{echem} +\boldsymbol{\varepsilon}_{th} + \boldsymbol{\varepsilon}_{mech}
+\end{equation}
+und wird direkt aus dem Verschiebungsfeld $u$ bestimmt werden.
+\begin{equation}
+    \boldsymbol{\varepsilon} = \frac{1}{2}\left[\left(\nabla u\right)^T + \left(\nabla u\right)\right]
+\end{equation}
+Die themische und elektrochemischen Dehnungsanteile hängen dabei durch den jeweiligen Ausdehnungskoeffizeinten $\boldsymbol{\alpha}$ linear von der Veränderung der Temperatur bzw. Konzentration ab.
+\begin{align}
+    \boldsymbol{\varepsilon}_{echem} &= \boldsymbol{\alpha}_{echem} \left(c_{\pm}-c_{\pm,0}\right)\\
+    \boldsymbol{\varepsilon}_{th}  &= \boldsymbol{\alpha}_{th}\left( T - T_0\right)
+\end{align}
+
+Die aus den Gleichungen folgende mikroskalige Simulation kann benutzt werden um Zellen mit Geometrien in ähnlichen Größenskalen zu simulieren~\cite{Plett2015}. Angelehnt an Arbeiten von \textsc{Carlstedt}~\cite{Carlstedt2022b}\footnote{Die Materialwerte und Geometrie, sowie die Randbedingung wurden aus der Arbeit entnommen um einen Vergleich zu haben.} wird dies für eine Kohlenstofffaser-LFP-Zelle gemacht (Bild~\ref{fig:carlstedt}). Die Zelle durch läuft dabei einen Entladungs- und Ladezyklus innerhalb von 2,2 h. Die Simulationszeit betrug dabei 34,6 h auf einem Berechnungsserver der HTWK\footnote{Unter voller Ausnutzung von zwei eingebauten CPUs der Marke AMD EPYC 75F3 mit einer Taktrate von 2,95 Ghz und jeweils 32 Kernen}. Der hohe Berechnungsaufwand für breits einen Ladezykls macht diesen Anasatz jedoch ungeeignet um eine Vielzahl an Varianten und größere, mehrzellige Batteriesysteme vorauszulegen.
+
+
+
+
+\section{\label{sec:homogenisation}Überführung der Mikroskaligen Modellierungsansätze in makroskalige Modelle durch Homogenisierung}
+
+Die Modellierung der einzelnen phyiskalischen Prozesse sind oft einfacher auf der Mikroskale zu beschreiben~\cite{Plett2015}. Mit Hilfe dieser lassen sich Geometrie-, Verteilungs- und Clusterbildungseinflüsse ermitteln~\cite{Newman2021}. Jedoch ist der mit der hohen Komplexität durch die verschiedenen Skalenbereiche verbunde Berechnungsaufwand zu groß um mehrere Zellen damit zu simulieren~\cite{Liu2019}. Daher werden makroskalige Modelle benötigt, die den Berechnungsaufwand durch Homogenisierung und Modellvereinfachunngen reduziern~\cite{Plett2015}.
+
+Ein häufig verwendeter Ansatz stellt dabei die Mittelung der physikalischen Eigenschaften über ein repräsentatives Volumenelement dar~\cite{Burow2016,Arunachalam2019,Li2020}. Die dazu mathematischen Grundlagen basieren auf drei Volumenmittlungstheoremen~\cite{Gray1977}.
+\begin{enumerate}
+    \item Volumenmittlung für ein skalares Feld $\psi$ 
+    \begin{equation}
+        \varepsilon_{\alpha} \overline{\nabla \psi_{\alpha}} = \nabla \left(\epsilon_{\alpha} \bar{\psi}_{\alpha} \right) + \frac{1}{V} \iint_{A_{\alpha \beta(\boldsymbol{x},t)}}\psi_{\alpha} \hat{\boldsymbol{n}}_{\alpha} \text{d}A
+    \end{equation}
+    \item Volumenmittlung für ein Vektorfeld $\boldsymbol{\psi}$
+    \begin{equation}
+        \varepsilon_{\alpha} \overline{\nabla \cdot \boldsymbol{\psi}_{\alpha}} = \nabla \cdot \left(\epsilon_{\alpha} \bar{\boldsymbol{\psi}}_{\alpha} \right) + \frac{1}{V} \iint_{A_{\alpha \beta(\boldsymbol{x},t)}}\boldsymbol{\psi}_{\alpha} \cdot \hat{\boldsymbol{n}}_{\alpha} \text{d}A
+    \end{equation}
+    \item Volumenmittlung für die zeitliche Änderung eines skalaren Feldes $\psi$ 
+    \begin{equation}
+        \varepsilon_{\alpha} \overline{\left[\frac{\partial \psi_{\alpha}}{\partial t}\right]} = \frac{\partial \left(\epsilon_{\alpha} \bar{\psi}_{\alpha} \right)}{\partial t} - \frac{1}{V} \iint_{A_{\alpha \beta(\boldsymbol{x},t)}}\psi_{\alpha} \boldsymbol{v}_{\alpha \beta} \cdot \hat{\boldsymbol{n}}_{\alpha} \text{d}A
+    \end{equation}
+\end{enumerate}
+Dabei beschreibt $\bar{\psi}_{\alpha}$ bzw. $\bar{\boldsymbol{\psi}}_{\alpha}$ die intrinsischen Mittelung über Phase $\alpha$. Diese Art der Mittelung wird nur über das von Phase $\alpha$ eingenommene Volumen\footnote{Hier als zwei Phasensystem mit der zweiten Phase $\beta$ betrachtet.} ermittelt. Die intrinische Mittelung erlaubt gegenüber einer klassischen Mittelung $\langle \psi_{\alpha} \rangle$, welcher auf das Volumen des gesamten Gebietes bezogen ist, eine größere Flexibilität und wieder Verwendbarkeit. Mittels des Volumenanteils $\epsilon_{\alpha}$
+\begin{equation}
+    \varepsilon_{\alpha} = \frac{V_{\alpha}(\boldsymbol{x},t)}{V} 
+\end{equation}
+können die beiden Mittelungsarten in einander umgewandelt werden.
+\begin{equation}
+    \langle \psi_{\alpha} \rangle = \varepsilon_{\alpha} \bar{\psi}_{\alpha}
+\end{equation}
+
+Mit Hilfe der drei Volumenmittelungstheoreme lassen sich die folgenden vier Gleichungen herleiten~\cite{Doyle1995}.
+\begin{enumerate}
+    \item Volumengemittelte Annäherung des Ladungserhaltes in der festen Phase der porösen Elektrode
+    \begin{equation}
+        \nabla \cdot \left(\sigma_{\text{eff}} \nabla \hat{\phi}_{s} \right) = a_s F_{\text{K}} \hat{j}
+    \end{equation}
+    \item Volumengemittelte Annäherung des Ladungserhaltes in der Elektrolytphase der porösen Elektrode
+    \begin{equation}
+        \nabla \cdot \left(\kappa_{\text{eff}} \nabla \hat{\phi}_e + \kappa_{D, \text{eff}} \nabla ln \hat{c}_e\right) + a_s F_{\text{K}} \hat{j} = 0
+    \end{equation}
+    \item Volumengemittelte Annäherung des Massenerhaltes in der Elektrolytphase der porösen Elektrode
+    \begin{equation}
+        \frac{\partial \left(\epsilon_e \hat{c}_e \right)}{\partial t} = \nabla \cdot \left(D_{e,\text{eff}}\nabla\hat{c}_e\right) + a_s (1+t^0_+) \hat{j}
+    \end{equation}
+    \item Volumengemittelte Annäherung der mikroskopischen Butler-Volmer Beziehung für den Ionenphasenwechsel
+    \begin{equation}
+        \hat{j} = j(c_{s,e},\hat{c}_e,\hat{\phi}_s,\hat{\phi}_e)
+    \end{equation}
+\end{enumerate}
+
+Analog lassen sich für die Temparatur und die Spannung die folgenden Zusammenhänge aufstellen.
+\begin{enumerate}
+    \item Spezialfall Massenserhalt in kugelförmigen Festkörpern
+    \begin{equation}
+        \rho_{\text{eff}} c_{\text{P,eff}} \frac{T_{\text{eff}}}{\partial t} = \nabla \cdot (\lambda_{\text{eff}} \nabla T_{\text{eff}}) - \boldsymbol{i}_{\text{eff}} \cdot \nabla \phi_{\text{s}}
+    \end{equation}
+    \item Homogenisierung der Steifigkeit
+    \begin{equation}
+    \boldsymbol{\sigma} = \boldsymbol{C}_{\text{eff}} \boldsymbol{\varepsilon}_{\text{mech}} 
+    \end{equation}
+\end{enumerate}
+
+Für die Massenerhaltung in der festen Phase\footnote{Die Materialien, die als Interkalationsort dienen} ist eine Volumenmittelung wegen der Butler-Volmer Randbedingung nicht möglich~\cite{Plett2015}.Allerdings können durch Geometrievereinfachungen Freiheitsgrade reduziert werden und zusätzlicher Berechnungsaufwand vermieden werden. Im Kontext von Strukturbatterien ist der an der Interkalation aktiv teilnehmende Teil Partikel- oder Faserförmig, welche durch Kugeln oder Zylinder approximiert werden könnent~\cite{Newman2021}.
+\begin{enumerate}
+    \item Spezialfall Massenserhalt in kugelförmigen Festkörpern
+    \begin{equation}
+    \frac{\partial c_{\text{s}}}{\partial t} = \frac{1}{r^2} \frac{\partial}{ \partial r} \left[ D_{\text{s}} r^2 \frac{\partial c_{\text{s}}}{\partial r}\right]
+    \end{equation}
+    \item Spezialfall Massenserhalt in zylindrischen Festkörpern
+    \begin{equation}
+    \frac{\partial c_{\text{s}}^{\pm}}{\partial t} = \frac{1}{r} \frac{\partial}{ \partial r} \left[ D_{\text{s}} r \frac{\partial c_{\text{s}}}{\partial r}\right] + \frac{\partial}{ \partial z}\left[D_{\text{s}}  \frac{\partial c_{\text{s}}}{\partial z}\right]
+    \end{equation}
+\end{enumerate}
+Die Randbedingung
 \begin{align}
     \frac{\partial c_{\text{s}}^{\pm}}{\partial r}(x,0,t) &= 0 \\
     \frac{\partial c_{\text{s}}^{\pm}}{\partial r}(x,R_{\text{p,s}}^{\pm},t) &= -\frac{1}{ D_{\text{s}}^\pm} j_{n}^{\pm}(x,t)
@@ -68,10 +197,32 @@ und
 j_{n}^{\pm}(t) = \mp \frac{I(t)}{F a^{\pm} L^{\pm}}
 \end{equation}
 
+Durch ermittlung effektiver physikalischer Eigenschaften werden dabei die Inhomognitäten auf der Mikroskale durch ein Kontinuum auf der Markoskale beschrieben~\cite{Plett2024}. Die Genauigkeit dieses Ansatz hängt jedoch stark von dem zu betrachten Dimensionen ab~\cite{Plett2015}. Durch die Beschreibung als Kontinuum können Einglüsse wie etwa eine lokal höhere Porendichte nur aufwendig berücksichtigt werden~\cite{Mei2019}. Bei der Analyse von deutlich größeren Skalen, als die Inhomogenität, zeigen diese Modelle dafür eine hohe Genauigkeit~\cite{Plett2015}. 
+
+
+
+\begin{figure}[!h]
+	%\raggedleft
+		%\def\svgwidth{\columnwidth}
+        \center
+		\includegraphics[width=\textwidth, angle=0]{simulation_model.pdf}
+		\caption{\label{fig:homogenisation}Mehrskalige Homogenisierung der Strukturbatterie durch Abstraktion der Geometrie, }
+\end{figure}
+
+\begin{figure}[!h]
+	%\raggedleft
+		%\def\svgwidth{\columnwidth}
+        \center
+		\includegraphics[width=0.75\textwidth, angle=0]{bending.pdf}
+		\caption{\label{fig:bending}Validierung des 3-Punkt-Biegefalls durch: a) Visueller Vergleich von Simulation und Experiment und b) Kraftverlauf in Abhängigkeit der Durchbiegung für Pouchzellen mit und ohne Elektrolyt.}
+\end{figure}
+
+
 
 \chapter{Entwicklung einer hybriden Auslegung von Strukturbatterien}
+Die Modelle, die sich aus den Arbeiten von \textsc{Carlstedt}, \textsc{Doyle}, \textsc{Newman}, \textsc{Fuller} und \textsc{Plett} ergeben sind mit einem hohen hohen Detailgrad versehen. Dieser Detailgrad erlaubt eine hohe physikalische Präzesion, jedoch sorgt dies gleichzeitig für eine hohe Anzahl an Parametern, die aufwenig bestimmt werden müssen. Damit entsteht das Problem, dass in bestimmten Konstellationen es schneller und günstiger ist direkt Experimente mit allen Materialkombinationen zu machen, als erst alle benötigten Material- und Interaktionsparamter zu bestimmen. Um dies einzuschätzen und eine möglichst optimale Entwicklungsstrategie wird in Kapitel~\ref{sec:efficent_development} ein entsprechendes Auswahl und Bewertungsrahmenwerk entwickelt. Mit Hilfe dieses werden in den Kapiteln~\ref{sec:improve_elchem} und \ref{sec:improve_mech} eine Reihe an häufig gültigen Vereinfachungen der elektrochemische und mechansichen Modellierung unternommen. Um die Einsatzfähigkeiten der verschiedenen Strukturbatterie automatisiert bewerten zu können wird in Kaptiel~\ref{sec:automated_failure} ein Versagens- und Risikoabschätzung vorgestellt. Abschließend wird in Kapitel~\ref{sec:digitalisation} auf die Umsetzung der digitalen und automatisierten Vorauswahl geegineter Strukturbatteriekonfigurationen eingegangen.
 
-\section{Konzeptionierung eines effizienten Entwicklung von Strukturbatterien}
+\section{\label{sec:efficent_development}Konzeptionierung eines effizienten Entwicklung von Strukturbatterien}
 Für den effektiven Einsatz der Modellen für die Vorhersage von mechansichen und elektroschmeischen Eigenschaften wurde eine Vielzahl an Anforderungen an die Modellierung gesammelt:
 \begin{itemize}
     \item Moddelierung baiserend auf physikalischen Prozessen, % kein Fitting
@@ -97,7 +248,7 @@ Um wie im konkreten Beispiel knapp 1000 verschiedene Kombination zu testen sind 
 Da wie bereits am Anfang beschrieben Modelle sich maximal der Präzesion durch Experimente annähern, ist es unter Berücksichtigungen der verschiedenen Aufwände naheliegend mittels der Modellierungsmethodik soviele wie mögliche Materialkandidaten herauszufiltern und im Anschluss diese besten Kombination mittels Experimente zu identifizieren.
 
 
-\section{Identifizierung elektrochemischer Materialparameter}
+\section{\label{sec:improve_elchem}Identifizierung elektrochemischer Materialparameter}
 
 Das hergeleitet Modell zur multi-physikalischen Beschreibung der Strukturbatterie auf der Mikroskala benötigt in der kompletten ausführung 18 zu bestimmende Parameter für jede faserbasierte Elektrode, 11 Parameter pro Elektrolytesystem und faserbasierten Separato, und zwei Interaktionskoeffizienten für jede Kombination an Elektrode und Elektrolyte. Hinzukommen 10 Parameter die für transversal Isotropematerialien, die als Pouchbag und damit nicht an der Reaktion teilnehmen.
 
@@ -159,7 +310,7 @@ Das hergeleitet Modell zur multi-physikalischen Beschreibung der Strukturbatteri
     q = 0
 \end{equation}
 
-\section{Identifizierung mechanischer Materialparameter}
+\section{\label{sec:improve_mech}Identifizierung mechanischer Materialparameter}
 Unter der Annahme, dass alle Einzelschichten bei der Bestimmung der Zugsteifigkeit auf beiden Seiten in der Klemmung mit aufgenommen werden und keiner Vordehnung der Einzelschichten sind die Dehnungen in Zugrichtungen für alle Schichten gleich.
 \begin{equation}
     \varepsilon_{x,ges} = \varepsilon_{x,i}\\
@@ -227,7 +378,15 @@ Druchbiegung $u_max$
 ergibt sich die 
 
 
-Im Verältniss zum stofflichen Verbund ist davon auszugehen, dass diese Steifigkeitssteigerung deutlich geringer ist, wenn aber auch nicht komplett vernachlässigbar.
+Im Verhältniss zum stofflichen Verbund ist davon auszugehen, dass diese Steifigkeitssteigerung deutlich geringer ist, wenn aber auch nicht komplett vernachlässigbar.
 
 
-\section{Erstellung einer Materialdatenbank für Strukturbatterien}
+\section{\label{sec:automated_failure}Automatisierte Versagensanalyse für Strukturbatterien und Risikoeinschätzung}
+
+Mit Hilfe der entwickelten Modelle, kann der Spannungszustand $\boldsymbol{\sigma}$ in den einzelnen Materialien innerhalb der Strukturbatterie bestimmt werden. Durch geeignet Versagenskriterien kann ein mechanisches Versagen der Schichten ermittelt werden.  
+Typsiche Versagenskriterein für isotrope 
+
+
+\input{Abbildungen/03_Modellierung/failure_modes/failure_modes.tex}
+
+\section{\label{sec:digitalisation}Erstellung einer Materialdatenbank für Strukturbatterien}
