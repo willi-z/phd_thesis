@@ -1,5 +1,5 @@
 \chapter{\label{sec:modelling_SB}Modellierung von Strukturbatterien}
-Die Modellierung von Strukturbatterien auf der Mikroskalenebene wurde in den letzten Jahren maßgeblich durch die Arbeiten von Carlstedt~\cite{Carlstedt2018,Carlstedt2019,Carlstedt2022a,Carlstedt2023} vorangetrieben. Dabei wurden bereits Modelle sowie die Kopplung mechanischer, elektrochemischer und thermischer Effekte erfolgreich entwickelt~\cite{Carlstedt2022,Carlstedt2022b}. Darüber hinaus existieren weitere Ansätze aus der Forschung zu konventionellen Batterien, die in Kapitel~\ref{sec:existing_micro_models} kurz vorgestellt werden. Die Modelle von Carlstedt konzentrieren sich vorrangig auf das Verhalten auf Mikro- bzw. Partikelebene. Es existiert jedoch eine Vielzahl an Arbeiten, die zeigen, wie diese mikroskaligen Modelle mittels Homogenisierung auf höhere Skalen übertragen werden können. In Kapitel~\ref{sec:homogenisation} wird auf Basis dieser Methoden die Modellierung auf Makroebene entwickelt.
+Die Modellierung von Strukturbatterien auf der Mikroskalenebene wurde in den letzten Jahren maßgeblich durch die Arbeiten von Carlstedt~\cite{Carlstedt2018,Carlstedt2019,Carlstedt2022a,Carlstedt2023} vorangetrieben. Dabei wurden bereits Modelle sowie die Kopplung mechanischer, elektrochemischer und thermischer Effekte erfolgreich entwickelt~\cite{Carlstedt2022,Carlstedt2022b}. Darüber hinaus existieren weitere Ansätze aus der Forschung zu konventionellen Batterien, die in Kapitel~\ref{sec:existing_micro_models} kurz vorgestellt werden. Die Modelle von Carlstedt konzentrieren sich vorrangig auf das Verhalten auf Mikro- bzw. Partikelebene. Es existiert jedoch eine Vielzahl an Arbeiten, die zeigen, wie diese mikroskaligen Modelle mittels Homogenisierung auf höhere Skalen übertragen werden können. Die aus der Kombination der aus Batterieforschung bekannten Simualtionsansätze mit den Kopplungsansätzen von \textsc{Carlstedt} folgende gesamtheitliche Modellierung übersteigt die bekannten Arbeiten in ihrer komplexität und Detailgrad. Auch erlaubt dieser Ansatz, unter Einbeziehnung existierender Homogenisierungensansätze, die leichtere Entwkikclungen eines kompletten makroskaligen Modellierungsansatzes, siehe Kapitel~\ref{sec:homogenisation}.
 
 \section{\label{sec:existing_micro_models}Bestehende Mikroskalen-Modellierungen}
 
@@ -46,11 +46,11 @@ Die Temperaturverteilung in der festen und flüssigen Phase wird dabei durch die
 \end{align}
 
 Mechanischer Spannung kommt insbesondere im Kontext von Strukturbatterien eine zentrale Rolle zu~\cite{Carlstedt2020b}. Auch bei konventionellen Batterien wird sie als ein entscheidender Faktor für bestimmte Alterungsmechanismen berücksichtigt~\cite{Mueller2019}. Dabei kann mechanische Spannung ausschließlich in der Festkörperphase auftreten~\cite{Kaliaperumal2021,Berg2022}.
-\begin{equation}
-    -\nabla \cdot \boldsymbol{\sigma} = \boldsymbol{0}
+\begin{equation}\label{eq:stress_gov}
+    -\nabla \cdot \boldsymbol{\sigma} + f = \boldsymbol{0}
 \end{equation}
-Durch \textsc{Hook} lässt sich außerdem die mechanische Spannugn mit der Dehnung als lineare Abhängigkeit darstellen.
-\begin{equation}
+Durch \textsc{Hook} lässt sich außerdem die mechanische Spannung mit der Dehnung als lineare Abhängigkeit darstellen.
+\begin{equation}\label{eq:stress_material}
     \boldsymbol{\sigma} = \boldsymbol{C} \boldsymbol{\varepsilon}_{mech}
 \end{equation}
 Der Elastizitätstensor $\boldsymbol{C}$ wird im Kontext von Strukturbatterien in Abhängigkeit vom Material als isotrop\footnote{z.B. Metallelektrode, Aktivmaterial, Polymerphase}, transversal-isotrop\footnote{z.B. einzelne Kohlenstofffaser} oder orthotrop\footnote{z.B. Kohlenstofffasergewebe, Glasfaserseparator} beschrieben.
@@ -90,11 +90,11 @@ Besonders bei den Materialien, die als Interkalationsort dienen, haben Untersuch
 \end{equation}
 
 Die Gesamtdehnung $\boldsymbol{\varepsilon}$ ergibt sich dabei aus der Summe der elektrochemischen, thermischen und mechanischen Einflüsse
-\begin{equation}
+\begin{equation}\label{eq:strain_total}
     \boldsymbol{\varepsilon} = \boldsymbol{\varepsilon}_{echem} +\boldsymbol{\varepsilon}_{th} + \boldsymbol{\varepsilon}_{mech}
 \end{equation}
 und wird direkt aus dem Verschiebungsfeld $u$ bestimmt werden.
-\begin{equation}
+\begin{equation}\label{eq:strain_total_displacement}
     \boldsymbol{\varepsilon} = \frac{1}{2}\left[\left(\nabla u\right)^T + \left(\nabla u\right)\right]
 \end{equation}
 Die themische und elektrochemischen Dehnungsanteile hängen dabei durch den jeweiligen Ausdehnungskoeffizeinten $\boldsymbol{\alpha}$ linear von der Veränderung der Temperatur bzw. Konzentration ab.
@@ -123,7 +123,7 @@ Dabei wird die Phasenseparation der Konzentration $c$\footnote{Konzentrationswer
     \mu - \frac{\partial f}{\partial c} + \nabla^2 c &= 0 \text{ in }\Omega
 \end{align}
 Die Poren des resultierenden Strukturelektrolyten befinden sich im Nanometerbereich. Die typischen Partikelgrößen der LFP-Komponenten und Kohlenstofffasern betragen hingegen etwa 1~$\mu m$ bzw. 10~$\mu m$. Dies erfordert ein äußerst feines Rechennetz\footnote{Im gezeigten Beispiel besteht das Netz aus $180 \times 180 \times 640 = 20\,736\,000$ Elementen.}, um die relevanten Mikrostrukturen adäquat abzubilden.
-In Kombination mit den nichtlinearen Differentialgleichungen und den vielfältigen physikalischen Kopplungen resultiert daraus ein erheblicher Rechenaufwand. Die Simulation eines vollständigen Entlade- und Beladevorgangs kann mehr als zwei Wochen in Anspruch nehmen\footnote{Berechnungsserver der HTWK unter Ausnutzung von zwei integrierten AMD EPYC 75F3 CPUs mit einer Taktfrequenz von 2{,}95~GHz und jeweils 32 Rechenkernen.} (Bild~\ref{fig:micro_model}).
+In Kombination mit den nichtlinearen Differentialgleichungen und den vielfältigen physikalischen Kopplungen resultiert daraus ein erheblicher Rechenaufwand\footnote{Um die Parallelisierbarkeit von Blocknetzten möglichst gut auszunutzen werden alle benötigten Parameter allen Knotten zu gewiesen. Bereiche die nicht an den jeweiligen Prozessen teilnehmen bekommen dafür um mehrer Größenordnungen größerer bzw. kleiner Parameter. Außerdem verhindert dieser Ansatz Sigularitäten in der Matrize, die sonst bei isolierten Bereichen entstehen können.}. Die Simulation eines vollständigen Entlade- und Beladevorgangs kann mehr als zwei Wochen in Anspruch nehmen\footnote{Berechnungsserver der HTWK unter Ausnutzung von zwei integrierten AMD EPYC 75F3 CPUs mit einer Taktfrequenz von 2{,}95~GHz und jeweils 32 Rechenkernen.} (Bild~\ref{fig:micro_model}).
 
 
 \section{\label{sec:homogenisation}Überführung der Mikroskaligen Modellierungsansätze in makroskalige Modelle durch Homogenisierung}
@@ -264,7 +264,7 @@ Die daraus folgenden zweidimensionalen Modelle\footnote{Eine Dimension in Dicken
 
 
 \chapter{Entwicklung einer hybriden Auslegung von Strukturbatterien}
-Die Modelle, die sich aus den Arbeiten von \textsc{Carlstedt}, \textsc{Doyle}, \textsc{Newman}, \textsc{Fuller} und \textsc{Plett} ergeben sind mit einem hohen hohen Detailgrad versehen. Dieser Detailgrad erlaubt eine hohe physikalische Präzesion, jedoch sorgt dies gleichzeitig für eine hohe Anzahl an Parametern, die aufwenig bestimmt werden müssen. Damit entsteht das Problem, dass in bestimmten Konstellationen es schneller und günstiger ist direkt Experimente mit allen Materialkombinationen zu machen, als erst alle benötigten Material- und Interaktionsparamter zu bestimmen. Um dies einzuschätzen und eine möglichst optimale Entwicklungsstrategie wird in Kapitel~\ref{sec:efficent_development} ein entsprechendes Auswahl und Bewertungsrahmenwerk entwickelt. Mit Hilfe dieses werden in den Kapiteln~\ref{sec:improve_elchem} und \ref{sec:improve_mech} eine Reihe an häufig gültigen Vereinfachungen der elektrochemische und mechansichen Modellierung unternommen. Um die Einsatzfähigkeiten der verschiedenen Strukturbatterie automatisiert bewerten zu können wird in Kapitil~\ref{sec:automated_failure} ein Versagens- und Risikoabschätzung vorgestellt. Abschließend wird in Kapitel~\ref{sec:digitalisation} auf die Umsetzung der digitalen und automatisierten Vorauswahl geeigneter Strukturbatteriekonfigurationen eingegangen.
+Die Modelle, die sich aus den Arbeiten von \textsc{Carlstedt}, \textsc{Doyle}, \textsc{Newman}, \textsc{Fuller} und \textsc{Plett} ergeben sind mit einem hohen hohen Detailgrad versehen. Dieser Detailgrad erlaubt eine hohe physikalische Präzesion, jedoch sorgt dies gleichzeitig für eine hohe Anzahl an Parametern, die aufwenig bestimmt werden müssen. Damit entsteht das Problem, dass in bestimmten Konstellationen es schneller und günstiger ist direkt Experimente mit allen Materialkombinationen zu machen, als erst alle benötigten Material- und Interaktionsparamter zu bestimmen. Um dies einzuschätzen und eine möglichst optimale Entwicklungsstrategie wird in Kapitel~\ref{sec:efficent_development} ein entsprechendes Auswahl und Bewertungsrahmenwerk entwickelt. Mit Hilfe dieses werden in den Kapiteln~\ref{sec:improve_elchem} und \ref{sec:improve_mech} eine Reihe an häufig gültigen Vereinfachungen der elektrochemische und mechansichen Modellierung unternommen. Um die Einsatzfähigkeiten der verschiedenen Strukturbatterie automatisiert bewerten zu können wird in Kapitel~\ref{sec:automated_failure} ein Versagens- und Risikoabschätzung vorgestellt. Abschließend wird in Kapitel~\ref{sec:digitalisation} auf die Umsetzung der digitalen und automatisierten Vorauswahl geeigneter Strukturbatteriekonfigurationen eingegangen.
 
 \section{\label{sec:efficent_development}Konzeptionierung eines effizienten Entwicklung von Strukturbatterien}
 Für den effektiven Einsatz der Modellen für die Vorhersage von mechansichen und elektroschmeischen Eigenschaften wurde eine Vielzahl an Anforderungen an die Modellierung gesammelt:
@@ -280,23 +280,251 @@ Diese Anforderungen folgen aus der Annahme, dass experimentell erworbene Ergebni
     k_{\mathrm{exp}} \ll k_{\mathrm{sim}} 
 \end{equation}
 Für einen rein experimentellen Ansatz der jede mögliche Materialkombination ($n_{\mathrm{Kombis}}$) einer bestimmten Anzahl an experimentellen Bestimmungen ($n_{\mathrm{exp,Bestimmungen}}$) unterzieht ergibt sich der gesamte Aufwand ($k_{\mathrm{exp, gesamt}}$) wie folgend.
-\begin{equation}
-    k_{\mathrm{exp, gesamt}} = k_{\mathrm{exp}} \cdot n_{\mathrm{Kombis}} \cdot n_{\mathrm{exp,Bestimmungen}}
-\end{equation}
-Wie 
-Um wie im konkreten Beispiel knapp 1000 verschiedene Kombination zu testen sind Modelle also unablässig. Dennoch muss sich auch der Auffwand der Modellierungstrategie ($k_{\mathrm{sim, gesamt}}$) in Grenzen halten, da sich der Modellierungsaufwand aus der Summe der für Materialparameter notwenigen Untersuchungen und dem Berechnungsaufwand ergibt.
 \begin{align}
-    k_{\mathrm{sim, gesamt}} &= k_{\mathrm{sim}} \cdot n_{\mathrm{Kombis}} \cdot n_{Rechnungen} \nonumber \\
-    &+ \sum_{m}^{n_{\mathrm{Material}}} n_{\mathrm{exp, Bestimmung}} \cdot k_{\mathrm{exp}} + n_{\mathrm{lit, Bestimmung}} \cdot k_{\mathrm{lit}} 
+    k_{\mathrm{exp, gesamt}} &= \prod_{i}^{n_{\mathrm{Kombis}}}\prod_{j}^{n_{\mathrm{Bestimmungen,i}}} k_{\mathrm{exp,j}}\\
+    &\approx k_{\mathrm{exp}} \cdot n_{\mathrm{Kombis}} \cdot n_{\mathrm{exp,Bestimmungen}}
 \end{align}
-Da wie bereits am Anfang beschrieben Modelle sich maximal der Präzesion durch Experimente annähern, ist es unter Berücksichtigungen der verschiedenen Aufwände naheliegend mittels der Modellierungsmethodik soviele wie mögliche Materialkandidaten herauszufiltern und im Anschluss diese besten Kombination mittels Experimente zu identifizieren.
+Der sich daraus ergebene schnelle Anstieg des experimentellen Aufwandes, bei einer hohen Anzahl an potenziellen Kombinationen oder Versuchen zur Bestimmung der resultierenden Eigenschaften, kann zu hohen zeitlichen und finanzieleln Kosten führen. Insbesondere im Kontext von Strukturbatterie zeigt sich aus der Erfahrung, dass der Einzelaufwand $k_{\mathrm{exp}}$ zur Präperation, Zusammenbau und Validierung einzelnener Zellen im Rahmen von Monaten liegt.
+Um die zahlreichen potenziellen Materialkombination zu testen sind Modelle also unablässig. Dennoch muss darauf geachtet werden, dass durch den Bestimmungsaufwand der Materialkennwerte $(n_{\mathrm{exp, Bestimmung}}$) und den Berechnungsaufwand ($n_{\mathrm{Rechnungen}}$) der Auffwand der Modellierungstrategie ($k_{\mathrm{sim, gesamt}}$) nicht den Aufwand eines rein experimentellen Ansatzes übersteigt.
+\begin{align}
+    k_{\mathrm{sim, gesamt}}
+    &= k_{\mathrm{sim}} \cdot n_{\mathrm{Kombis}} \cdot n_{\mathrm{Rechnungen}} \nonumber \\
+    &+ \sum_{m}^{n_{\mathrm{Material}}} \left( \prod_{i}^{n_{\mathrm{exp, Bestimmung, m}}}k_{\mathrm{exp,i}} + \prod_{j}^{n_{\mathrm{lit, Bestimmung, m}}} k_{\mathrm{lit,j}} \right)\\
+    &\approx k_{\mathrm{sim}} \cdot n_{\mathrm{Kombis}} \cdot n_{\mathrm{Rechnungen}} \nonumber \\
+    &+ \sum_{}^{n_{\mathrm{Material}}} \left( n_{\mathrm{exp, Bestimmung}} \cdot k_{\mathrm{exp}} + n_{\mathrm{lit, Bestimmung}} \cdot k_{\mathrm{lit}} \right)
+\end{align}
+Für eine große Menge an möglichen Materialkandidaten zeigt sich an mit diesem Modell, dass die Menge der experimentell zu bestimmenden Größen den Simulationsaufwand schnell erhöht. Da von auszugehen ist, dass die Genauigkeit der Simulation sich den Experimente maximal annähern, ist es unter Berücksichtigungen der verschiedenen Aufwände stellt ein mehrstufiges Verfahren oft einen guten Kompromiss zwischen Aussagegenauigkeit und Bestimmungsaufwand dar. Durch im Umfang reduzierte Berechnungen können am Anfang viele wenig versprechende Kombinationen ausgeschlossen werden. Mittels detailierter Simulationen können diese auf möglichst wenige Aussichtsreiche Kandidaten eingeschränkt werden. Anschließend können durch umfangreiche Experimenten die Simulationen teilweise validiert und letzte Detailabwägungen getroffen werden. Da für die Simulation und die Experimente bereits hinreichende Ansätze exitieren ist es notwendig das Reduktionspotenzial für die Anwendung bei Strukturbatterien zu identifizieren und den experimentellen Bestimmungsaufwand von schwer zubestimmenden physikalischen Größen\footnote{z.B. Der Diffusionskoeffizient und die Steifigkeit bei verschiedenen zweiphasigen Elektrolytsystemen.} mit hilfe schnellerer Methoden abzuschätzen.
 
 
-\section{\label{sec:improve_elchem}Identifizierung elektrochemischer Materialparameter}
+\section{\label{sec:params_elchem}Identifizierung elektrochemischer Materialparameter}
 
-Das hergeleitet Modell zur multi-physikalischen Beschreibung der Strukturbatterie auf der Mikroskala benötigt in der kompletten ausführung 18 zu bestimmende Parameter für jede faserbasierte Elektrode, 11 Parameter pro Elektrolytesystem und faserbasierten Separato, und zwei Interaktionskoeffizienten für jede Kombination an Elektrode und Elektrolyte. Hinzukommen 10 Parameter die für transversal Isotropematerialien, die als Pouchbag und damit nicht an der Reaktion teilnehmen.
+Das hergeleitet Modell zur multi-physikalischen Beschreibung der Strukturbatterie auf der Mikroskala benötigt in der kompletten ausführung 18 zu bestimmende Parameter für jede faserbasierte Elektrode, 11 Parameter pro Elektrolytesystem und faserbasierten Separator, und zwei Interaktionskoeffizienten für jede Kombination an Elektrode und Elektrolyte. Hinzukommen 10 Parameter die für transversal Isotropematerialien, die als Pouchbag und damit nicht an der Reaktion teilnehmen.
+
+\section{\label{sec:sim_sbe}Untersuchung des Geometrieeinflusses von zweiphasigen Elektrolytsystemen auf das Diffusions- und Steifigkeitsverhalten}
+
+Zweiphasige Elektrolyte besitzen eine komplexe Porenstruktur, die im Durchmesser meist zwischen 1 bis 400 $\si{\nano \metre}$ schwanken (Bild~\ref{fig:sphere_cylinder_model_RVE_generation}a). Bereits verwendete Ansätze, wie etwa Lösen der \textsc{Cahn-Hilliard}-Gleichung, mit anschließendem lösen der linear elastischen Verformung in der festen Domaine (Gleichungen~\ref{eq:stress_gov}, \ref{eq:stress_material}, \ref{eq:strain_total_displacement})
+sowie die Simualtion des Diffusionsverhaltens nach \textsc{Fick}\footnote{Gilt unter den Annahmen, dass die Eigenschaften der Flüssigkeit innerhalb des Netzwerks einheitlich sind und das elektrische Feld das gesamte Medium durchdringt.}
+\begin{equation}\label{eq:fick}
+    J = -D \frac{\partial c}{\partial x}
+\end{equation}
+in der flüssigen Domain kommt hierbei an mehrer Grenzen. Für einen gute Repräsentation muss das ausgewählte Repräsentationselement ausreichend groß sein, um den Einfluss von lokalen Unterschieden auszugleichen. Durch die große Porenvarianz ist der Generierungs und Vernetzungsaufwand jedoch aufwendig und sorgt für lange Berechnungszeiten. 
+
+\subsection{Modellierung des effektiven Leitfähigkeit als Porennetzwerk}
+Ein urspünnglich aus der Geologie stammender Ansatz der eigenständig für zweiphasige Elektrolyte adaptiert wurde nutzt ein sogenanntes Pore-Netzwerk-Modell~\cite{Xiong2016,Gostick2016}. Dabei wird angenommen, dass kein Ionentransport im festen Polymernetzwerk stattfindet~\cite{Tu2020}.
+
+\begin{figure}[!h]
+	%\raggedleft
+		%\def\svgwidth{\columnwidth}
+        \center
+		\includegraphics[width=0.99\textwidth, angle=0]{sphere_cylinder_model.pdf}
+		\caption{\label{fig:sphere_cylinder_model}Das Porennetzwerkmodel mit Kugelförmigen Poren und zylindrischen Verbindungselementen für beschleunigte Berechnungen der effktiven Transporteigenschaften von zweiphasigen Strukturelektrolyten.
+        }
+\end{figure}
+
+Durch Multiplikation von Gleichung~\ref{eq:fick} mit dem Querschnitt $A$ ergibt sich die Massenflussrate $\dot{m}$.
+\begin{equation}
+\dot{m} = -D \cdot A(x) \frac{\partial c}{\partial x}
+\end{equation}
+Aus der Massenbilanz für jede Pore $i$  mit allen benachbarten Poren $ j \in \text{Nb}_i $ folgt
+\begin{equation}
+\sum_{j \in \text{Nb}_i} \dot{m}_{ij} = \sum_{j \in \text{Nb}_i} D \cdot S_{ij} (c_i - c_j).
+\end{equation}
+Dabei ist $S_{ij}$ der Formfaktor, welcher wie folgt definiert ist.
+\begin{equation}
+\frac{1}{S_{ij}} = \frac{1}{S^p_i} + \frac{1}{S^v_{ij}} + \frac{1}{S^p_j}
+\end{equation}
+Für kugelförmige Poren $p$ und die zylindrische Verbindung $v$ ergibt sich, der Formfaktor
+\begin{align}
+S^p_i &= \frac{\pi (3d_i^2 - 4l_{ij,i}^2)}{12l_{ij,i}} \\
+S^p_j &= \frac{\pi (3d_j^2 - 4l_{ij,j}^2)}{12l_{ij,j}} \\
+S^v_{ij} &= \frac{\pi d_{ij}^2}{4l_{ij}}
+\end{align}
+
+Die Umrechnung in ionische Leitfähigkeit erfolgt über die Nernst-Einstein-Gleichung.
+\begin{equation}
+D = \frac{kT}{nq^2} \sigma
+\end{equation}
+Analog ergibt sich für die modifizierte molare Flussrate $\dot{m}'$
+\begin{equation}
+\dot{m}' = \frac{nq^2}{kT} \dot{m}
+\end{equation}
+und
+\begin{equation}
+\sum_{j \in \text{Nb}_i} \dot{m}'_{ij} = \sum_{j \in \text{Nb}_i} \sigma \cdot S_{ij} (c_i - c_j) = 0
+\end{equation}
+
+Damit lassen sich die drei wichtigsten Größen für Porennetzwerke bestimmen:
+\begin{enumerate}
+    \item der effektive Diffusionskoeffizient
+    \begin{equation}
+    D_\text{eff} = \frac{\dot{m} \cdot L}{A \Delta c}
+    \end{equation}
+    \item die effektive Leitfähigkeit
+    \begin{equation}
+    \sigma_\text{eff} = \frac{\dot{m}' \cdot L}{A \Delta c}
+    \end{equation}
+    \item und die Tortuosität.
+    \begin{equation}
+    \tau = \epsilon \frac{D}{D_\text{eff}} = \epsilon \frac{\sigma}{\sigma_\text{eff}}
+    \end{equation}
+\end{enumerate}
+Dabei ist die Porosität $\epsilon$ definiert durch das Verhältnis von Volumen flüssiger Phase $V_f$ zum Gesamtvolumen $V_{\text{gesamt}}$.
+\begin{equation}
+\epsilon = \frac{V_f}{V_{\text{gesamt}}} = \frac{V_p + V_v}{V_{\text{gesamt}}}
+\end{equation}
+
+\begin{figure}[!h]
+	%\raggedleft
+		%\def\svgwidth{\columnwidth}
+        \center
+		\includegraphics[width=0.99\textwidth, angle=0]{RVE_generation.pdf}
+		\caption{\label{fig:sphere_cylinder_model_RVE_generation}Die Generierung möglichst akurater Repräsentationen des Strukturelektrolytes beinhaltet (a) die experimenteller Bestimmung der Porenverteilung durch Gasabsorptionsmessungen verschiedener Oligomere (O1-O4), (b) die Konvertierung in eine kommulative Wahrscheinlichkeitsverteilung, (c) das zufällige Auswählen einer vorher festgelegten Anzahl an Poren, (d) die Vernetzung und Skalierung der Porenverbindungen und (e) die Simulation der Ionentransportes und vergleich mit den Experimentellen Ergebnissen.
+        }
+\end{figure}
+
+Das Modell wurde mit experimentellen Porengrößenverteilungen validiert, die über Gasabsorptionsmessungen gewonnen wurden (Bild~\ref{fig:sphere_cylinder_model_RVE_generation}a). Dazu wurde die Verteilung auf das Intervall [0,1] normalisiert, um eine Wahrscheinlichkeitsverteilung für die zufällige Generierung zu erhalten (Bild~\ref{fig:sphere_cylinder_model_RVE_generation}b). Allerdings muss das Volumenverhältnis $r$ zwischen Verbindungs- und Porenvolumen vorgegeben werden, welches durch
+\begin{equation}
+r = \frac{V_v}{V_p}
+\end{equation}
+definiert ist.
+Daraus ergibt sich das Porenvolumen alternativ als
+\begin{equation}
+V_f = V_p (1 + r).
+\end{equation}
+Durch die Wahl eines würfelförmigen repräsentativen Volumenelementes (RVE) können folgende Zusammenhänge für die Seitenlänge $L$ und die Querschnittsfläche $A$ aufgestellt werden.
+\begin{align}
+L &= \sqrt[3]{V_{\text{gesamt}}} \\
+A &= L^2
+\end{align}
+Die Poren werden dann der Größe nach absteigend, in das RVE hineingelegt (Bild~\ref{fig:sphere_cylinder_model_RVE_generation}c). Befindet sich eine Pore am Rand muss, zum erhalt der Symmetrie, diese enstprechend dupliziert werden. Dabei wird ein KD-Tree-Algorithmus benutzt, um Porenkollisionen zu verhindern. Anschließend wurden die nächsten $n$ Nachbarn jeder Pore verbunden. Dabei wird als Ausgangsdurchmesser der Durchmesser der kleinsten Pore genommen und abschließend alle Verbindungsradien entsprechend skalliert\footnote{Das nicht-lineare Verhältnis macht ein iteratives Verfahren notwendig. In dieser Arbeit wurde dazu, dass Intervallhalbierungsverfahren benutzt.}, um dem vorher definierten Volumenverhältnis zu entsprechen (Bild~\ref{fig:sphere_cylinder_model_RVE_generation}d).
+Zur Bestimmung der effektiven Größen wurde eine konstante molarere Flussrate an zwei gegenüberliegenden Seiten vorgegeben (Bild~\ref{fig:sphere_cylinder_model_RVE_generation}e). Aus den ermittelten Größen wurde der relative Fehler $\text{Err}_{\text{rel}}$ nach folgendem Prinzip bestimmt.
+\begin{align}
+    \text{Err}_{\text{rel}} &= \frac{\sigma_{\text{eff,PNM}} - \sigma_{\text{eff,exp}}}{\sigma_{\text{eff,PNM}}}\\
+    &= \frac{D_{\text{eff,PNM}} - D_{\text{eff,exp}}}{D_{\text{eff,PNM}}}
+\end{align}
+
+\begin{figure}[!h]
+	%\raggedleft
+		%\def\svgwidth{\columnwidth}
+        \center
+		\includegraphics[width=0.99\textwidth, angle=0]{convergence.pdf}
+		\caption{\label{fig:sphere_cylinder_model_convergence}Der relative Fehler verschiedener Porennetzwerke mit (a) einer festen Anazahl an Verbindungen über verschieden Volumenverhältnise zwischen Verbindungs- und Porenvolumen, (b) Verschiedene Anzahl an verbunden Porennachbarn und (c)-(d) Konvergenzverhalten bei vermehrter Porenanzahl bei optimalen Volumenverhältnisen.
+        }
+\end{figure}
+
+\input{Abbildungen/03_Modellierung/poren_network_results.tex}
+
+Die Validierung der Methode wurde durch mehrere Studien mit verschiedenen Konfigurationen hinsichtlich Stichprobengröße und Modellparametern wurde für drei unterschiedliche bicontinuierliche oligomere Elektrolyte (O1\_50, O2\_40 und O4\_40) erbracht (Bild~\ref{fig:sphere_cylinder_model_RVE_generation}a)~\cite{Emilsson2023}. Für jede Konfiguration wurden auf Basis der gasadsorptiv gemessenen Porengrößenverteilung verschiedene Netzwerkmodelle erstellt. Die Ionentransporteigenschaft dieser Netzwerke wurde unter Verwendung der jeweiligen ionischen Leitfähigkeit der reinen Flüssigphase\footnote{O1: \SI{0,24}{\milli\siemens\per\centi\meter}, O2: \SI{0,026}{\milli\siemens\per\centi\meter} und O4: \SI{0,0026}{\milli\siemens\per\centi\meter}} simuliert.
+Zur Analyse der Genauigkeit wurden die berechneten Leitfähigkeiten mit den experimentell gemessenen Werten verglichen (Tabelle~\ref{tab:pore_network_result}).
+
+Für jede Konfiguration wurden 50 unterschiedliche Netzwerke mit zufälliger Porenverteilung generiert. In der ersten Untersuchung wurde der durchschnittliche relative Fehler für jede Substanz über verschiedene Volumenverhältnisse hinweg verfolgt (Bild~\ref{fig:sphere_cylinder_model_convergence}a). Das Volumenverhältnis mit dem geringsten durchschnittlichen Fehler wurde anschließend für eine Konvergenzstudie ausgewählt.
+
+Diese Ergebnisse zeigt, dass der Fehlerbereich und der durchschnittliche Fehler mit zunehmender Netzwerkgröße kleiner werden. Bereits ab etwa 3000 Poren nähert sich der Fehler einem Wert unterhalb von \SI{10}{\percent} an und lässt sich mit steigender Porenzahl weiter reduzieren (Bild~\ref{fig:sphere_cylinder_model_convergence}c-e).
+
+Abschließend wurde die Konnektivität zwischen benachbarten Poren variiert. Dabei zeigte sich ein signifikanter Einfluss auf die Gesamtleitfähigkeit des Netzwerks: Eine höhere Konnektivität führte zu einer deutlichen Steigerung der effektiven Leitfähigkeit (Bild~\ref{fig:sphere_cylinder_model_convergence}b).
+
+Die Ergebnisse deuten darauf hin, dass die vorgeschlagene Methode die ionische Leitfähigkeit mit guter Genauigkeit modellieren kann, insbesondere bei zunehmender Porenzahl, was zu einer verbesserten Konvergenz führt. Allerdings ist nur die Porenkonnektivität direkt experimentell messbar. Die Beziehung zwischen Konnektivität und das Verhältnis von Hals- zu Porenvolumen — beides entscheidende Parameter zur Vorhersage der ionischen Leitfähigkeit — sind derzeit nicht direkt experimentell erfassbar. 
+Allerdings könnten beide Parameter mithilfe von kleinmaßstäblichen RVE-Modellen abgeschätzt werden, die den Phasentrennungsprozess simulieren. 
+
+Des Weiteren konnte auch ein Zusammenhang zwischen der Zusammensetzung des Elektrolyten und dem am besten passenden Verhältnis von Hals- zu Porendurchmesser gefunden werden. Ein möglicher Grund hierfür könnte sein, dass das zugrunde liegende Prinzip, den Halsdurchmesser anhand des kleineren Durchmessers der verbundenen Poren zu skalieren, nicht dem tatsächlichen physikalischen Verhalten entspricht.
+
+Abschließend lassen sich mit diesem Ansatz nur schwer die effektiven Eigenschaften der festen Phase bestimmen, wie etwa die Steifigkeit. Hierfür benötigt es andere Methoden, wie etwa Walk-On-Stars~\cite{Sawhney2023a}.
 
 
+\subsection{Parallele Berechnung des effektiven Diffusionskoeffizient und Steifigkeit für fraktale Geometrien mit der Walk-on-Stars Methode}
+
+Walk-on-Stars (WoSt) ist eine netzfrei Methode zum Lösen linearer Differentialgleichungen, die mittels der Benutzung von Grafikkarten besonders gut parallelisiet werden kann und auch in Domainen funktioniert, die fraktale Strukturen mit vielen feinen Details aufweisen~\cite{Sawhney2023a}. Die mathematische Grundlage basiert dabei auf den Arbeiten von \textsc{Feyman} und \textsc{Kac}, die erstmal den Zusammenhang zwischen parabolischen partiellen Differentialgleichungen und storastischten Prozessen darstellten~\cite{Pascucci2024}. 
+WoSt stellt dabei die Weiterentwicklung von Walk on Spheres (WoS) dar, welcher Brownische Teilchenbewegungen durch Zufallsbewegungen innerhalb von Kugeln annähert (Bild~\ref{fig:wost_method}a)~\cite{Sawhney2020}. WoSt basiert auf drei Kernmechnismen: die Bestimmung des größtmöglichen Sterngebietes\footnote{Ein (Teil-)Gebiet bei der alle Punkte von einem Punkt aus sichtbar sind.} für jeden Abfragepunkt, die Reflektion von Pfaden die durch Flächen mit Neumann Randbedingung durchlaufen würden und die Beednung und Aggregation der beendeten Pfade nach treffen auf eine Dirchlet-Randbedingung oder einer maximalen Anzahl an Schritten~\cite{Sawhney2023a}.
+
+\begin{figure}[!h]
+	%\raggedleft
+		%\def\svgwidth{\columnwidth}
+        \center
+		\includegraphics[width=0.99\textwidth, angle=0]{wost_method.pdf}
+		\caption{\label{fig:wost_method}a) Brownschen Bewegung mit absorbierenden Dirichlet Randbedingungen und reflektierenden Neumann Randbedingung. b)-f) Ablauf der Walk-on-Star Methode zur Annäherung der Lösung einer linearen Differentialgleichung in einem Punkt. e) Berücksichtigung des Einflusses unterschiedlicher Materialkoeefizienten durch Abtastung an der Stelle $y_{k+1}$.
+        }
+\end{figure}
+
+Vorrausgesetzt, die Geometrie des Strukturelektrolyten ist bekannt, kann diese Methode adaptiert werden um schnell eine sehr gute Annäherung an die Diffusionskoefizienten in der flüssigen Phase und eine durch die feste Phase erzeugte Steifigkeit zu bestimmen.
+
+Ausgang der Annäherung der Verschiebung $\boldsymbol{u}$ in der festen Phase an der Stelle $\boldsymbol{x}$ ist dabei der folgende Zusammenhang.
+\begin{equation}
+    \boldsymbol{u}(\boldsymbol{x}) = \boldsymbol{E} \left( \int_{0}^{\tau} \boldsymbol{G}(\boldsymbol{x},\boldsymbol{X}_t) \boldsymbol{f}(\boldsymbol{X}_t)dt + \boldsymbol{G}(\boldsymbol{x},\boldsymbol{X}_{\tau}) \boldsymbol{g}(\boldsymbol{X}_{\tau}) \right)
+\end{equation}
+Dabi ist $\boldsymbol{G}(\boldsymbol{x},\boldsymbol{y})$ der elastische greensche Tensor\footnote{Häfig auch als Kelvinlösung oder Kelvinlet bezeichnet.}, $\tau$ die Endzeit beim Erreichen der Dirchlet Randbedingung und $\boldsymbol{g}$ die vorgegeben Verschiebung an dieser. Für isotope Medien ist greensche Tensor definiert\footnote{Die hier benutzte Version hat eine Singularität bei $r=0$. Diese kann zu bei kleinen Radien zu numerischen instabilitäten führen, weshalb in der Praxis oft regulierte Versionen verwendet werden~\cite{DeGoes2017,Chen2022b,Ringel2024}.} als~\cite{Lazar2014,Chen2022b}
+\begin{equation}
+    \boldsymbol{G}(\boldsymbol{x}, \boldsymbol{y}) = \frac{1}{4\pi \mu r} \begin{bmatrix}
+        1-\frac {1}{2b}+\frac {1}{2b}\frac {x^2}{r^2} & {\frac {1}{2b}}{\frac {xy}{r^{2}}} & {\frac {1}{2b}}{\frac {xz}{r^{2}}}\\
+        {\frac {1}{2b}}{\frac {yx}{r^{2}}} & 1-{\frac {1}{2b}}+{\frac {1}{2b}}{\frac {y^{2}}{r^{2}}} & {\frac {1}{2b}}{\frac {yz}{r^{2}}}\\
+        {\frac {1}{2b}}{\frac {zx}{r^{2}}} & {\frac {1}{2b}}{\frac {zy}{r^{2}}} & 1-{\frac {1}{2b}}+{\frac {1}{2b}}{\frac {z^{2}}{r^{2}}}
+    \end{bmatrix}
+\end{equation}
+wobei $\boldsymbol{r} = \boldsymbol{x} - \boldsymbol{y}$, $r = \lVert \boldsymbol{r} \rVert$, $a = 1-2 \nu$, $b = 2(1-\nu)$ und $\mu$ das Schubmodul ist, was für isotrope Materialien als 
+\begin{equation}
+    \mu = \frac{E}{2(1+\nu)}
+\end{equation} definiert ist.
+Unter der Annahme, dass außer an den Rändern keine Käfte im Körper auftreten und die Eigenschaften in der festen Phase ortsunabhängig sind, kann die Verschiebung an einem Punkt durch 
+\begin{equation}
+    \boldsymbol{u}(\boldsymbol{x}) = \frac{1}{N} \sum_{i=1}^{N} \sum_{K_i}^{k=1} \boldsymbol{G}(\boldsymbol{x}, \boldsymbol{X}_{i,k}) w_{i,k}
+\end{equation}
+angenähert werden~\cite{Kulkarni2003,Taylor2013,Chen2024b}. Wobei $K_i$ die Anzahl an Schritten der $i$-ten Stichprobe ist und $w_{i,k}$ die Wichtung darstellt. Die Wichtung bei der Reflektion durch Neumannflächen ist 
+\begin{equation}
+    w_{k,N} = \boldsymbol{t}(\boldsymbol{X}_{k+1}) = \boldsymbol{\sigma} \boldsymbol{n},
+\end{equation}
+während für Dirichlet Randbedingungen
+\begin{equation}
+    w_{k,D} = \boldsymbol{g}(\boldsymbol{X}_{k+1}) = \boldsymbol{u}
+\end{equation} 
+gilt und die Iteration beendet wird~\cite{Shia2000,Lazar2014,Sawhney2023a}.
+
+Um die Steifikeit des RVEs mittels WoSt zu bestimmen wird in der würfelförmigen Domain $\Omega = [0,L] \times [0,L] \times [0,L]$ eine Dirichletbedingung am unteren Rand ($\boldsymbol{u}(x,y,0) = \boldsymbol{0}$) und eine Neumannbedingung am oberen Rand ($\boldsymbol{n} \boldsymbol{\sigma} = -p \boldsymbol{e}_z$) benutzt. Die Verschiebungen am oberen Rand können direkt und damit sehr effizient über WoSt approximiert werden. Die Gesamtverschiebung oben wird dann aus dem gemittelten Wert angenommen. Anschließend wird die Steifigkeit durch 
+\begin{equation}
+E = \frac{\Delta \sigma}{\Delta \varepsilon} = \frac{pL}{u_z(z=L)}  
+\end{equation}
+angenähert.
+
+\begin{figure}[!h]
+	%\raggedleft
+		%\def\svgwidth{\columnwidth}
+        \center
+		\includegraphics[width=0.99\textwidth, angle=0]{wost_results.pdf}
+		\caption{\label{fig:wost_result}a) Simulation des Diffusionsverhaltens durch Walk-on-Stars. b) Simulation des Verformungsverhaltens. c-d) Konvergenzverhaltens des berrechneten Diffusions- und Steifigkeitsfehlers mit höherer Schrittmenge pro Pixel.
+        }
+\end{figure}
+
+Analog kann WoSt benutzt werden, um in der flüssigen Phase die effektive Diffusion zu bestimmen.
+
+
+
+\subsection{Automatisierte Generierung von repräsentativen Volumenelementen für zweiphasige Elektrolytsysteme aus Raster Elektronen Aufnahmen}
+
+Sowohl die Porennetzwerkmethode, als auch die Annäherung durch Walk on Stars benötigt eine geometrische Rräsetnation der zweiphasige Strukturelektroyten. In den Erläuterungen zur Porennetzwerkmethode wurde bereits eine Möglichkeit aus Gasabsorptionsmessungen ein Ersatzmodel aus Kugeln und zylindirsichen Verbindungen zu genieren näher beschrieben. Während diese Methode auch für den WoSt Ansatz benutzt werden kann\footnote{Dazu die Domain innerhalb der Kugeln und Hälse für die fluid Phase wählen oder die außerhalb liegende, aber immer noch im RVE-Würfel liegende Domain für die feste Phase benutzen.} sind Gasabsorptionsmessungen in der Literatur nicht immer gegeben. Allerdings können aus Computertomographen Aufnahmen von ausreichender Auflösung benutzt werden, um mithilfe machinellen Lernens (ML) die Randbedingung der \textsc{Cahn-Hilliard}-Gleichungen, sowie die Stoppzeit abzuschätzen.
+
+Die Trainingsdaten bestehen aus Grauwert-REM-Scans, die in Schwarz-Weiß-Darstellung vorliegen, sowie den zugehörigen realen Abmessungen der Bildausschnitte in Nanometern. Zusätzlich werden experimentell bestimmte Diffusionskoeffizienten $D_i$ und elastische Steifigkeiten $E_i$ sowohl für die Einzelkomponenten als auch für den Verbundmaterial gemessen und den entsprechenden REM-Bildabschnitten zugeordnet.
+
+Ein Convolutional Neural Network extrahiert aus den REM-Bildern textur- und strukturrelevante Merkmale. Diese Merkmale, kombiniert mit den realen Abmessungen, dienen als Eingabe für ein nachgeschaltetes Fully Connected Network, das die Parameter für die \textsc{Cahn-Hilliard}-Gleichung vorhersagt, namentlich die Randbindung $M$ und die Mobilität $L$ %\citep{Zhang2021CHparameters, Müller2017MLforCH}.
+
+Die \textsc{Cahn-Hilliard}-Gleichung wird mit einem Finite-Elemente Methode gelöst, wobei die Parameter $L(\mathbf{x})$ und $\varepsilon$ werden durch das ML-Modell bereitgestellt %\citep{Elliott1989CHFEM, Schneider2022FEMCH}.
+
+Aus der zeitabhängigen Lösung $c(\mathbf{x},t)$ werden die Phasengrenzen als Isoflächen $c(\mathbf{x},t^*) = c_\mathrm{threshold}$ extrahiert. Dies erfolgt durch Level-Set- oder Schwellenwertverfahren %\citep{Osher1988LevelSet, Lee2015InterfaceExtraction}.
+
+Die extrahierte Geometrie definiert zwei Domänen: die Matrix- und die Flüssigphase. Auf jeder Domäne wird mittels linear-elastischer Finite-Elemente-Analyse die effektive Steifigkeit $E_\mathrm{eff}$ berechnet:
+\begin{equation}
+\nabla \cdot \bigl(\mathbf{C} : \nabla \mathbf{u}\bigr) = \mathbf{0}, 
+\end{equation}
+wobei $\mathbf{C}$ das Materialsteifigkeits-Tensor ist %\citep{Ciarlet2002FEM, Smith2018CompositeElasticity}. 
+Parallel dazu wird die Diffusionsgleichung von \textsc{Fick}
+zur Bestimmung des effektiven Diffusionskoeffizienten $D_\mathrm{eff}$ gelöst %\citep{Crank1979Diffusion, Kim2016MLDiffusion}.
+
+Das gesamte Modell wird end-to-end trainiert, indem der Vergleich der berechneten $E_\mathrm{eff}$ und $D_\mathrm{eff}$ mit den experimentellen Werten in den Verlustfunktionsterm
+\begin{equation}
+    \mathcal{L} = \alpha \lVert E_\mathrm{eff}^\mathrm{pred} - E_\mathrm{eff}^\mathrm{exp}\rVert^2
++ \beta \lVert D_\mathrm{eff}^\mathrm{pred} - D_\mathrm{eff}^\mathrm{exp}\rVert^2
+\end{equation}
+aufgenommen wird. Hyperparameter $\alpha,\beta$ werden via Kreuzvalidierung optimiert %\citep{Goodfellow2016DeepLearning, Bishop2006PatternRecognition}.
+
+
+\section{\label{sec:improve_elchem} Reduktion des Berechnungsaufwandes}
 \begin{itemize}
     \item Diffusionskoeffizient wird durch equivalente Schaltung ermittelt, die konstanten Wert vorraussetzen
     \item Diffusionskoeeffizeint ist eigentlich stark von der Lithierung abhängig
