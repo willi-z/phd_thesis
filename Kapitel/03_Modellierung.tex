@@ -117,10 +117,10 @@ Die aus den Gleichungen abgeleitete mikroskalige Modellierung kann eingesetzt we
     M\left( \nabla \left( \frac{df}{dc} - \lambda \nabla^2 c \right)\right) \cdot n &= 0 \text{ auf }\partial\Omega\\
     M \lambda \nabla c \cdot n &= 0 \text{ auf }\partial\Omega
 \end{align}
-Dabei wird die Phasenseparation der Konzentration $c$\footnote{Konzentrationswerte nahe -1 gehören zur ersten Phase, während Werte nahe 1 der zweiten Phase zugeordnet werden.} allein durch zwei Parameter $f$\footnote{Häufig eine in $c$ nicht-konvexe Polynomfunktion 4. Grades.} und $M$\footnote{Skalarer Wert} beschrieben. Da die \textsc{Cahn-Hilliard}-Gleichung jedoch eine Differentialgleichung vierter Ordnung ist, führt dies in der schwachen Formulierung zu Ortsableitungen zweiter Ordnung, was mit Standard-Lagrange-Elementen nicht direkt lösbar ist. Eine häufig verwendete Herangehensweise zur Lösung dieses Problems besteht darin, die Gleichung mittels Operatorzerlegung umzuformulieren.
+Dabei wird die Phasenseparation der Konzentration $c$\footnote{Konzentrationswerte nahe 0 gehören zur ersten Phase, während Werte nahe 1 der zweiten Phase zugeordnet werden.} allein durch zwei Parameter $f$\footnote{Häufig eine in $c$ nicht-konvexe Polynomfunktion 4. Grades.} und $M$\footnote{Skalarer Wert} beschrieben. Da die \textsc{Cahn-Hilliard}-Gleichung jedoch eine Differentialgleichung vierter Ordnung ist, führt dies in der schwachen Formulierung zu Ortsableitungen zweiter Ordnung, was mit Standard-Lagrange-Elementen nicht direkt lösbar ist. Eine häufig verwendete Herangehensweise zur Lösung dieses Problems besteht darin, die Gleichung mittels Operatorzerlegung umzuformulieren.
 \begin{align}
     \frac{\partial c}{\partial t} - \nabla \cdot M \nabla \mu &= 0 \text{ in }\Omega\\
-    \mu - \frac{\partial f}{\partial c} + \nabla^2 c &= 0 \text{ in }\Omega
+    \mu - \frac{\partial f}{\partial c} + \lambda \nabla^2 c &= 0 \text{ in }\Omega
 \end{align}
 Die Poren des resultierenden Strukturelektrolyten befinden sich im Nanometerbereich. Die typischen Partikelgrößen der LFP-Komponenten und Kohlenstofffasern betragen hingegen etwa 1~$\mu m$ bzw. 10~$\mu m$. Dies erfordert ein äußerst feines Rechennetz\footnote{Im gezeigten Beispiel besteht das Netz aus $180 \times 180 \times 640 = 20\,736\,000$ Elementen.}, um die relevanten Mikrostrukturen adäquat abzubilden.
 In Kombination mit den nichtlinearen Differentialgleichungen und den vielfältigen physikalischen Kopplungen resultiert daraus ein erheblicher Rechenaufwand\footnote{Um die Parallelisierbarkeit von Blocknetzten möglichst gut auszunutzen werden alle benötigten Parameter allen Knotten zu gewiesen. Bereiche die nicht an den jeweiligen Prozessen teilnehmen bekommen dafür um mehrer Größenordnungen größerer bzw. kleiner Parameter. Außerdem verhindert dieser Ansatz Sigularitäten in der Matrize, die sonst bei isolierten Bereichen entstehen können.}. Die Simulation eines vollständigen Entlade- und Beladevorgangs kann mehr als zwei Wochen in Anspruch nehmen\footnote{Berechnungsserver der HTWK unter Ausnutzung von zwei integrierten AMD EPYC 75F3 CPUs mit einer Taktfrequenz von 2{,}95~GHz und jeweils 32 Rechenkernen.} (Bild~\ref{fig:micro_model}).
@@ -134,15 +134,15 @@ Ein häufig verwendeter Ansatz stellt dabei die Mittelung der physikalischen Eig
 \begin{enumerate}
     \item Volumenmittlung für ein skalares Feld $\psi$ 
     \begin{equation}
-        \varepsilon_{\alpha} \overline{\nabla \psi_{\alpha}} = \nabla \left(\epsilon_{\alpha} \bar{\psi}_{\alpha} \right) + \frac{1}{V} \iint_{A_{\alpha \beta(\boldsymbol{x},t)}}\psi_{\alpha} \hat{\boldsymbol{n}}_{\alpha} \text{d}A
+        \varepsilon_{\alpha} \overline{\nabla \psi_{\alpha}} = \nabla \left(\varepsilon_{\alpha} \bar{\psi}_{\alpha} \right) + \frac{1}{V} \iint_{A_{\alpha \beta(\boldsymbol{x},t)}}\psi_{\alpha} \hat{\boldsymbol{n}}_{\alpha} \text{d}A
     \end{equation}
     \item Volumenmittlung für ein Vektorfeld $\boldsymbol{\psi}$
     \begin{equation}
-        \varepsilon_{\alpha} \overline{\nabla \cdot \boldsymbol{\psi}_{\alpha}} = \nabla \cdot \left(\epsilon_{\alpha} \bar{\boldsymbol{\psi}}_{\alpha} \right) + \frac{1}{V} \iint_{A_{\alpha \beta(\boldsymbol{x},t)}}\boldsymbol{\psi}_{\alpha} \cdot \hat{\boldsymbol{n}}_{\alpha} \text{d}A
+        \varepsilon_{\alpha} \overline{\nabla \cdot \boldsymbol{\psi}_{\alpha}} = \nabla \cdot \left(\varepsilon_{\alpha} \bar{\boldsymbol{\psi}}_{\alpha} \right) + \frac{1}{V} \iint_{A_{\alpha \beta(\boldsymbol{x},t)}}\boldsymbol{\psi}_{\alpha} \cdot \hat{\boldsymbol{n}}_{\alpha} \text{d}A
     \end{equation}
     \item Volumenmittlung für die zeitliche Änderung eines skalaren Feldes $\psi$ 
     \begin{equation}
-        \varepsilon_{\alpha} \overline{\left[\frac{\partial \psi_{\alpha}}{\partial t}\right]} = \frac{\partial \left(\epsilon_{\alpha} \bar{\psi}_{\alpha} \right)}{\partial t} - \frac{1}{V} \iint_{A_{\alpha \beta(\boldsymbol{x},t)}}\psi_{\alpha} \boldsymbol{v}_{\alpha \beta} \cdot \hat{\boldsymbol{n}}_{\alpha} \text{d}A
+        \varepsilon_{\alpha} \overline{\left[\frac{\partial \psi_{\alpha}}{\partial t}\right]} = \frac{\partial \left(\varepsilon_{\alpha} \bar{\psi}_{\alpha} \right)}{\partial t} - \frac{1}{V} \iint_{A_{\alpha \beta(\boldsymbol{x},t)}}\psi_{\alpha} \boldsymbol{v}_{\alpha \beta} \cdot \hat{\boldsymbol{n}}_{\alpha} \text{d}A
     \end{equation}
 \end{enumerate}
 Dabei beschreibt $\bar{\psi}_{\alpha}$ bzw. $\bar{\boldsymbol{\psi}}_{\alpha}$ die intrinsischen Mittelung über Phase $\alpha$. Diese Art der Mittelung wird nur über das von Phase $\alpha$ eingenommene Volumen\footnote{Hier als zwei Phasensystem mit der zweiten Phase $\beta$ betrachtet.} ermittelt. Die intrinische Mittelung erlaubt gegenüber einer klassischen Mittelung $\langle \psi_{\alpha} \rangle$, welcher auf das Volumen des gesamten Gebietes bezogen ist, eine größere Flexibilität und wieder Verwendbarkeit. Mittels des Volumenanteils $\varepsilon_{\alpha}$
@@ -193,7 +193,7 @@ Der neu eingeführte Wärmegenerierungsterm $q$ kann dabei aus den folgenden fü
     \begin{equation}
         q_i = a_{\text{s}} F_{\text{K}} \hat{j}_j \eta_{j}
     \end{equation}
-    \item Rreversible Wärmebildung durch Verädnerung der Entropie\footnote{Für jede chemische Reaktion $j$.}
+    \item Reversible Wärmebildung durch Veränderung der Entropie\footnote{Für jede chemische Reaktion $j$.}
     \begin{equation}
     q_{r} = a_{\text{s}} F_{\text{K}} \hat{j}_j \eta_{j} T \frac{\partial U_{\text{ocp},j}}{\partial T}
     \end{equation}
@@ -518,10 +518,10 @@ zur Bestimmung des effektiven Diffusionskoeffizienten $D_\mathrm{eff}$ gelöst %
 
 Das gesamte Modell wird end-to-end trainiert, indem der Vergleich der berechneten $E_\mathrm{eff}$ und $D_\mathrm{eff}$ mit den experimentellen Werten in den Verlustfunktionsterm
 \begin{equation}
-    \mathcal{L} = \alpha \lVert E_\mathrm{eff}^\mathrm{pred} - E_\mathrm{eff}^\mathrm{exp}\rVert^2
-+ \beta \lVert D_\mathrm{eff}^\mathrm{pred} - D_\mathrm{eff}^\mathrm{exp}\rVert^2
+    \mathcal{L} =  \frac{1}{1+\sqrt{\lVert \frac{E_\mathrm{eff}^\mathrm{pred} - E_\mathrm{eff}^\mathrm{exp}}{E_\mathrm{rein}^\mathrm{exp}}\rVert^2
++ \lVert \frac{D_\mathrm{eff}^\mathrm{pred} - D_\mathrm{eff}^\mathrm{exp}}{D_\mathrm{rein}^\mathrm{exp}}\rVert^2}}
 \end{equation}
-aufgenommen wird. Hyperparameter $\alpha,\beta$ werden via Kreuzvalidierung optimiert %\citep{Goodfellow2016DeepLearning, Bishop2006PatternRecognition}.
+aufgenommen wird.  %\citep{Goodfellow2016DeepLearning, Bishop2006PatternRecognition}.
 
 
 \section{\label{sec:improve_elchem} Reduktion des Berechnungsaufwandes}
@@ -649,8 +649,145 @@ Druchbiegung $u_max$
 \end{equation}
 ergibt sich die 
 
+\section*{Dreipunkt-Biegebelastung eines Laminats mit der klassischen Laminattheorie}
+
+Wir betrachten einen einfach gelagerten Laminatbalken der Länge $L$, auf den eine Einzelkraft $F$ exakt in der Mitte wirkt (Dreipunkt-Biegung). Die Laminatstruktur kann beliebig viele Lagen mit unterschiedlichen Orientierungen aufweisen und wird durch die klassische Laminattheorie (CLT) beschrieben. Es wird angenommen, dass das Material linear-elastisch ist und kleine Durchbiegungen auftreten.
+
+\subsection*{Kinematik und Spannung-Dehnungs-Zusammenhang}
+
+In der CLT wird die Dehnung über der Dicke $z$ des Laminats beschrieben durch:
+
+\[
+\boldsymbol{\varepsilon}(z) = \boldsymbol{\varepsilon}^0 + z\,\boldsymbol{\kappa},
+\]
+
+wobei $\boldsymbol{\varepsilon}^0$ die Dehnungen in der Mittelfläche und $\boldsymbol{\kappa}$ die Krümmungen sind. Die Beziehung zwischen den Schnittgrößen (Kräfte und Momente pro Breite) und den Dehnungen/Krümmungen ergibt sich aus der ABD-Matrix:
+
+\[
+\begin{pmatrix}
+\mathbf{N} \\
+\mathbf{M}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\mathbf{A} & \mathbf{B} \\
+\mathbf{B} & \mathbf{D}
+\end{pmatrix}
+\begin{pmatrix}
+\boldsymbol{\varepsilon}^0 \\
+\boldsymbol{\kappa}
+\end{pmatrix},
+\]
+
+wobei:
+\begin{itemize}
+  \item $\mathbf{A}$: Membranstetigkeit (in-plane),
+  \item $\mathbf{B}$: Kopplung zwischen Membran- und Biegebeanspruchung,
+  \item $\mathbf{D}$: Biegesteifigkeit.
+\end{itemize}
+
+\subsection*{Biegebelastung ohne Normalkräfte}
+
+Für reine Biegung (keine Normalkräfte) gilt $\mathbf{N} = \mathbf{0}$. Daraus folgt:
+
+\[
+\mathbf{A}\boldsymbol{\varepsilon}^0 + \mathbf{B}\boldsymbol{\kappa} = \mathbf{0}
+\quad\Rightarrow\quad
+\boldsymbol{\varepsilon}^0 = -\mathbf{A}^{-1} \mathbf{B} \boldsymbol{\kappa}.
+\]
+
+Einsetzen in die Momentengleichung ergibt:
+
+\[
+\mathbf{M} = \mathbf{B} \boldsymbol{\varepsilon}^0 + \mathbf{D} \boldsymbol{\kappa} = 
+\left( \mathbf{D} - \mathbf{B} \mathbf{A}^{-1} \mathbf{B} \right) \boldsymbol{\kappa}.
+\]
+
+Wir definieren daraus die effektive Biegesteifigkeit:
+
+\[
+\mathbf{D}^* = \mathbf{D} - \mathbf{B} \mathbf{A}^{-1} \mathbf{B}.
+\]
+
+Somit gilt:
+
+\[
+\boldsymbol{\kappa} = (\mathbf{D}^*)^{-1} \mathbf{M}.
+\]
+
+Für reine Biegung um die $x$-Achse gilt $M_x \ne 0$, alle anderen Momente sind null, also:
+
+\[
+\kappa_x = \frac{M_x}{D^*_{11}}.
+\]
+
+\subsection*{Durchbiegung bei Dreipunkt-Biegung}
+
+Die Momentenverteilung über den Balken ist:
+
+\[
+M_x(x) = \frac{F}{2}x \quad\text{für } 0 \le x \le \frac{L}{2}.
+\]
+
+Somit ergibt sich die Krümmung zu:
+
+\[
+\kappa_x(x) = \frac{F x}{2 D^*_{11}}.
+\]
+
+Nach zweimaliger Integration (Euler–Bernoulli-Theorie) ergibt sich die maximale Durchbiegung in der Balkenmitte zu:
+
+\[
+\delta_\mathrm{max} = \frac{F L^3}{48 D^*_{11}}.
+\]
+
+Für einen symmetrischen Laminataufbau ($\mathbf{B} = \mathbf{0}$) vereinfacht sich $D^*_{11} = D_{11}$, und die Durchbiegung wird:
+
+\[
+\delta_\mathrm{max} = \frac{F L^3}{48 D_{11}}.
+\]
+
+\subsection*{Spannungen und Dehnungen im Laminat}
+
+Die Dehnung in $x$-Richtung in einer Schicht bei Höhe $z$ ergibt sich zu:
+
+\[
+\varepsilon_x(z) = \varepsilon_x^0 + z\,\kappa_x.
+\]
+
+Diese globale Dehnung wird in die lokale Koordinatenrichtung jeder Schicht transformiert (je nach Faserwinkel $\theta_i$), und die Spannungen ergeben sich aus dem Stoffgesetz:
+
+\[
+\boldsymbol{\sigma}_i = \mathbf{Q}^{(i)}\, \boldsymbol{\varepsilon}_i.
+\]
+
+Dabei ist $\mathbf{Q}^{(i)}$ die Steifigkeitsmatrix der Schicht im lokalen Koordinatensystem. Die Spannungsverteilung ist innerhalb jeder Schicht linear, aber mit unterschiedlichen Steigungen je nach E-Modul und Orientierung.
+
+\subsection*{Zusammenfassung}
+
+Die maximale Durchbiegung des Laminatbalkens unter einer mittigen Kraft $F$ beträgt:
+
+\[
+\boxed{
+\delta_\mathrm{max} = u_{max}(x=L/2) = \frac{F L^3}{48\,D^*_{11}}, \quad
+D^*_{11} = D_{11} - [\mathbf{B} \mathbf{A}^{-1} \mathbf{B}]_{11}
+}
+\]
+
+Für symmetrische Laminataufbauten (mit $\mathbf{B} = \mathbf{0}$) vereinfacht sich dies zu:
+
+\[
+\delta_\mathrm{max} = \frac{F L^3}{48\,D_{11}}.
+\]
+
+Die Spannungsverteilung im Laminat ergibt sich aus den berechneten Krümmungen und den Materialeigenschaften jeder Schicht.
+
+
 
 Im Verhältniss zum stofflichen Verbund ist davon auszugehen, dass diese Steifigkeitssteigerung deutlich geringer ist, wenn aber auch nicht komplett vernachlässigbar.
+\begin{equation}
+    u_{max} = \varphi \cdot u_\mathrm{max,flüssig} + (1-\varphi) \cdot u_\mathrm{max,fest}
+\end{equation}
 
 \begin{figure}[!h]
 	%\raggedleft
