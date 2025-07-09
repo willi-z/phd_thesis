@@ -6,10 +6,38 @@ pkgs.mkShell {
     
     (pkgs.texlive.combine {
       inherit (pkgs.texlive)
-        scheme-small  # or scheme-full for everything
         latexmk
         pgf
-        standalone; # to complile small snippets
+        standalone # to complile small snippets
+
+        scheme-small  # gives some packages
+        # missing .sty packages
+        scrhack 
+        multirow
+        makecell
+        import
+        germbib
+        paralist
+        threeparttable
+        units
+        floatbytocbasic
+        placeins
+        siunitx
+        mhchem
+        hvfloat
+        varwidth
+        picture
+        marginnote
+        multido
+        fbox
+        ifoddpage
+        zref
+        sttools
+        enumitem
+        lscapeenhanced
+        overpic
+        eepic
+        ; 
     })
   ];
 }
