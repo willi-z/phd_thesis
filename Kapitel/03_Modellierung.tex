@@ -103,7 +103,7 @@ Die themische und elektrochemischen Dehnungsanteile hängen dabei durch den jewe
     \boldsymbol{\varepsilon}_{th}  &= \boldsymbol{\alpha}_{th}\left( T - T_0\right)
 \end{align}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	%\raggedleft
 		%\def\svgwidth{\columnwidth}
         \center
@@ -211,7 +211,7 @@ Der neu eingeführte Wärmegenerierungsterm $q$ kann dabei aus den folgenden fü
     \end{equation}
 \end{enumerate}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	%\raggedleft
 		%\def\svgwidth{\columnwidth}
         \center
@@ -251,7 +251,7 @@ j_{n}^{\pm}(t) = \mp \frac{I(t)}{F a^{\pm} L^{\pm}}
 \end{equation}
 ist~\cite{Plett2015}.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	%\raggedleft
 		%\def\svgwidth{\columnwidth}
         \center
@@ -312,7 +312,7 @@ in der flüssigen Domain kommt hierbei an mehrer Grenzen. Für einen gute Reprä
 \subsection{Modellierung des effektiven Leitfähigkeit als Porennetzwerk}
 Ein urspünnglich aus der Geologie stammender Ansatz der eigenständig für zweiphasige Elektrolyte adaptiert wurde nutzt ein sogenanntes Pore-Netzwerk-Modell~\cite{Xiong2016,Gostick2016}. Dabei wird angenommen, dass kein Ionentransport im festen Polymernetzwerk stattfindet~\cite{Tu2020}.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	%\raggedleft
 		%\def\svgwidth{\columnwidth}
         \center
@@ -373,7 +373,7 @@ Dabei ist die Porosität $\epsilon$ definiert durch das Verhältnis von Volumen 
 \epsilon = \frac{V_f}{V_{\text{gesamt}}} = \frac{V_p + V_v}{V_{\text{gesamt}}}
 \end{equation}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	%\raggedleft
 		%\def\svgwidth{\columnwidth}
         \center
@@ -403,7 +403,7 @@ Zur Bestimmung der effektiven Größen wurde eine konstante molarere Flussrate a
     &= \frac{D_{\text{eff,PNM}} - D_{\text{eff,exp}}}{D_{\text{eff,PNM}}}
 \end{align}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	%\raggedleft
 		%\def\svgwidth{\columnwidth}
         \center
@@ -436,7 +436,7 @@ Abschließend lassen sich mit diesem Ansatz nur schwer die effektiven Eigenschaf
 Walk-on-Stars (WoSt) ist eine netzfrei Methode zum Lösen linearer Differentialgleichungen, die mittels der Benutzung von Grafikkarten besonders gut parallelisiet werden kann und auch in Domainen funktioniert, die fraktale Strukturen mit vielen feinen Details aufweisen~\cite{Sawhney2023a}. Die mathematische Grundlage basiert dabei auf den Arbeiten von \textsc{Feyman} und \textsc{Kac}, die erstmal den Zusammenhang zwischen parabolischen partiellen Differentialgleichungen und storastischten Prozessen darstellten~\cite{Pascucci2024}. 
 WoSt stellt dabei die Weiterentwicklung von Walk on Spheres (WoS) dar, welcher Brownische Teilchenbewegungen durch Zufallsbewegungen innerhalb von Kugeln annähert (Bild~\ref{fig:wost_method}a)~\cite{Sawhney2020}. WoSt basiert auf drei Kernmechnismen: die Bestimmung des größtmöglichen Sterngebietes\footnote{Ein (Teil-)Gebiet bei der alle Punkte von einem Punkt aus sichtbar sind.} für jeden Abfragepunkt, die Reflektion von Pfaden die durch Flächen mit Neumann Randbedingung durchlaufen würden und die Beednung und Aggregation der beendeten Pfade nach treffen auf eine Dirchlet-Randbedingung oder einer maximalen Anzahl an Schritten~\cite{Sawhney2023a}.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	%\raggedleft
 		%\def\svgwidth{\columnwidth}
         \center
@@ -483,7 +483,7 @@ E = \frac{\Delta \sigma}{\Delta \varepsilon} = \frac{pL}{u_z(z=L)}
 \end{equation}
 angenähert.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	%\raggedleft
 		%\def\svgwidth{\columnwidth}
         \center
@@ -786,10 +786,10 @@ Die Spannungsverteilung im Laminat ergibt sich aus den berechneten Krümmungen u
 
 Im Verhältniss zum stofflichen Verbund ist davon auszugehen, dass diese Steifigkeitssteigerung deutlich geringer ist, wenn aber auch nicht komplett vernachlässigbar.
 \begin{equation}
-    u_{max} = \varphi \cdot u_\mathrm{max,flüssig} + (1-\varphi) \cdot u_\mathrm{max,fest}
+    u_\text{max} = \varphi \cdot u_{\text{max,flüssig}} + (1-\varphi) \cdot u_{\text{max,fest}}
 \end{equation}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	%\raggedleft
 		%\def\svgwidth{\columnwidth}
         \center
@@ -797,7 +797,7 @@ Im Verhältniss zum stofflichen Verbund ist davon auszugehen, dass diese Steifig
 		\caption{\label{fig:homogenisation}Mehrskalige Homogenisierung der Strukturbatterie durch Abstraktion der Geometrie, }
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	%\raggedleft
 		%\def\svgwidth{\columnwidth}
         \center
