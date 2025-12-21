@@ -1,0 +1,35 @@
+\begin{table}[ht!]
+    \centering
+    \caption{\label{tab:nn_method_rve_se_results}Von einem Neuronalen Netzwerk abgeschätzte \textsc{Cahn-Hilliard}-Parameter und resultierende RVE-Elemente basierend auf REM-Aufnahmen von Strukturelektrolyten.}
+    \begin{tabularx}{\textwidth}{
+        >{\centering\arraybackslash}m{0.2\textwidth}  % SEM column
+        >{\centering\arraybackslash}m{0.08\textwidth} % M
+        >{\centering\arraybackslash}m{0.08\textwidth} % λ
+        >{\centering\arraybackslash}m{0.11\textwidth} % T_end
+        >{\centering\arraybackslash}m{0.08\textwidth} % c0
+        >{\centering\arraybackslash}m{0.08\textwidth} % c0                                           % L
+        >{\centering\arraybackslash}m{0.2\textwidth}  % RVE column
+    }
+    \toprule
+    \textbf{SEM-Aufnahme}
+    & \textbf{M}
+    & $\boldsymbol{\mathrm{\lambda}}$
+    & $\boldsymbol{\mathrm{T_{end}}}$
+    & $\boldsymbol{\mathrm{c_0}}$
+    & $\boldsymbol{\mathcal{L}}$
+    & \textbf{RVE}
+    \\
+    \midrule
+    \makecell{\includegraphics[width=0.2\textwidth]{generated_rve_se/SEM_60DGEBA.png}\\60DEBA}
+        & 0,94 & 0,013 & $\mathrm{5,5 \times 10^{-5}}$ & 0,92 & 0,97 
+        & \includegraphics[width=0.22\textwidth]{generated_rve_se/RVE_spheres.png} \\
+    \makecell{\includegraphics[width=0.22\textwidth]{generated_rve_se/SEM_50MTM57_2.3.png}\\50MTM57/2.3}
+        & 3,22 & 0,061 & $\mathrm{36,0 \times 10^{-5}}$ & 0,94 & 0,98 
+        & \includegraphics[width=0.22\textwidth]{generated_rve_se/RVE_Cahn_Hilbert.png} \\
+    \makecell{\includegraphics[width=0.2\textwidth]{generated_rve_se/SEM_polyMIPE.png}\\polyMIPE}
+        & 1,02 & 0,012 & $\mathrm{7,5 \times 10^{-5}}$ & 0,06 & 0,88 
+        & \includegraphics[width=0.22\textwidth]{generated_rve_se/RVE_Template.png} \\
+    \bottomrule
+    \end{tabularx}\\
+    %\noindent{\footnotesize{\textsuperscript{*} Gemessen gegenüber \ce{Li}/\ce{Li+}.}}
+\end{table}

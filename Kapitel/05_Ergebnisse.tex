@@ -1,4 +1,56 @@
 \chapter{Vergleich experimenteller und simulativer Ergebnisse}
 \section{Validierung der Eigenschaftsvorhersagen}
+Die Validierung der theoretischen Modelle erfolgt durch den Vergleich mit experimentellen Daten eines Schichtverbunds aus neun Lagen, die in einer Stapelanordnung vier funktionale Einzelzellen (Anode-Separator-Kathode) realisieren. Als Referenz dient ein System aus einer Graphitanode auf Kupferfolie, einer NMC622-Kathode auf Aluminium und einem Celgard 2400 Separator mit flüssigem LP30-Elektrolyten. Die zu validierende Strukturbatterie basiert hingegen auf einem PX-35 Kohlenstofffasergelege mit Kupfer-Primer und Hardcarbon-Beschichtung, wobei die mechanische Integrität durch eine Modifikation des Elektrolyten mit KYNAR FLEX 28 gesteigert wurde.
+
+Die experimentelle Charakterisierung der Referenz- und Strukturbatterien erfolgte durch eine Kombination aus elektrochemischen Zyklierungsversuchen und 3-Punkt-Biegeversuchen. Die elektrische Bemessung wurde mittels galvanostatischer Entladung durchgeführt, wobei die Stromraten stufenweise von $C/100$ bis $2C$ variiert wurden, um die Ratenfähigkeit und Energiedichte über einen Verlauf von bis zu 35 Zyklen zu erfassen. Parallel dazu wurde die mechanische Tragfähigkeit im 3-Punkt-Biegeversuch ermittelt. Hierbei wurden die Proben mit einer konstanten Traversengeschwindigkeit belastet, um die resultierende Kraftaufnahme in Abhängigkeit von der Durchbiegung dokumentieren. Diese Versuchsreihen dienten als primäre Datenbasis für den Abgleich mit den Simulationsergebnissen und die anschließende Kalibrierung der Modellparameter.
+
+\begin{figure}[!ht]
+    \center
+    \includegraphics[width=0.8\textwidth, angle=0]{electrical_sim_final.pdf}
+    \caption{\label{fig:electrical_sim_final}Vergleich der experimentellen und simulativen Energiedichte über 40 Zyklen bei variierenden Entladeraten für die Referenz- und Strukturbatterie.}
+\end{figure}
+
+In Bild~\ref{fig:electrical_sim_final} wird die elektrische Performanz anhand der gravimetrischen Energiedichte über den Zyklusverlauf dargestellt. Die Referenzzelle erreicht eine Energiedichte von ca. 75,0 Wh/kg, während die Strukturbatterie aufgrund der zusätzlichen passiven Masse der strukturellen Komponenten eine Energiedichte von etwa 43 Wh/kg aufweist. Die simulative Vorhersage zeigt eine exzellente Übereinstimmung mit den experimentellen Daten über das gesamte Entladespektrum von $C/10$ bis $2C$.
+
+\begin{figure}[!ht]
+    \center
+    \includegraphics[width=0.99\textwidth, angle=0]{mech_sim_final.pdf}
+    \caption{\label{fig:mech_sim_final}Kraft-Durchbiegungs-Diagramm der experimentellen Validierung und der korrigierten Simulation im Drei-Punkt-Biegeversuch.}
+\end{figure}
+
+Die mechanischen Eigenschaften wurden im 3-Punkt-Biegeversuch validiert, siehe Bild~\ref{fig:mech_sim_final}. Während die Referenzzelle eine maximale Kraftaufnahme von lediglich ca. 4,5 N zeigt , demonstriert die Strukturbatterie durch den Einsatz des Kohlefaserverbunds eine signifikante Steigerung auf 9,6 N. Im Kontext der entwickelten Auslegungsmethodik lassen sich die geringfügigen Abweichungen im Post-Peak-Bereich der Strukturbatterie auf komplexe, lokal begrenzte Versagensmechanismen im Hardcarbon-Slurry zurückführen, die über die globale Modellierung hinausgehen.
+
+Um die Genauigkeit gegenüber der rein theoretischen Vorhersage zu optimieren, wurde die Simulation durch ein gezieltes Parameterfitting kalibriert. Hierbei werden die Modellparameter anhand der Messdaten der ersten Zyklen (elektrisch) sowie der ersten Prozent der Dehnung (mechanisch) im linear-elastischen Bereich angepasst. Durch diesen Abgleich können fertigungsbedingte Toleranzen, wie etwa Variationen in der Schichtdicke oder der Infiltrationsqualität des versteiften Elektrolyten, kompensiert werden, was zu einer hochpräzisen Abbildung des realen Systemverhaltens führt.
 
 \section{Ashby Logic}
+Basierend auf den vorliegenden Erkenntnissen wurde eine systematischen Untersuchung von insgesamt 6600 Materialkombinationen für Batterie- und Strukturbatteriekonzepte vollzogen. Die Kombinationen wurden mithilfe der eigens entwickelten Software Quintus analysiert, welche auf Basis der zuvor beschriebenen Methoden Batteriestacks hinsichtlich relevanter mechanischer Eigenschaften für Strukturbatterien sowie ihrer Energiedichte bewertet. In den Abbildungen sind die durch Quintus ermittelten Ergebnisse als Scatterplots dargestellt. Zusätzlich ist jeweils ein hellgrauer Hintergrundbereich eingezeichnet, der mögliche Abweichungen berücksichtigt, welche aus experimentellen Verifikationen der Modellannahmen resultieren.
+
+\begin{figure}[!ht]
+	%\raggedleft
+		%\def\svgwidth{\columnwidth}
+        \center
+		\includegraphics[width=0.8\textwidth, angle=0]{quintus_tensile_energy.pdf}
+		\caption{\label{fig:quintus_tensile_energy}Konvergenz der Verlustfunktion über den Trainingsprogress des neuronalen Netzwerkes.
+        }
+\end{figure}
+Bild~\ref{fig:quintus_tensile_energy} stellt die Zugsteifigkeit in GPa auf der y-Achse in Abhängigkeit von der gravimetrischen Energiedichte in Wh/kg auf der x-Achse dar. Jeder Punkt repräsentiert eine konkrete Materialkombination. Der in der Abbildung markierte Multifunktionalitätsbereich kennzeichnet jene Kombinationen, die gegenüber einer konventionellen Funktionstrennung, bestehend aus einem klassischen Batteriestack, der in ein Kohlenstofffasergewebe einlaminiert ist, einen funktionalen Mehrwert bieten. In dieser Abbildung konnten insgesamt 1321 Kombinationen identifiziert werden, die innerhalb dieses Multifunktionalitätsbereichs liegen.
+
+\begin{figure}[!ht]
+	%\raggedleft
+		%\def\svgwidth{\columnwidth}
+        \center
+		\includegraphics[width=0.8\textwidth, angle=0]{quintus_bending_energy.pdf}
+		\caption{\label{fig:quintus_bending_energy}Konvergenz der Verlustfunktion über den Trainingsprogress des neuronalen Netzwerkes.
+        }
+\end{figure}
+In Bild~\ref{fig:quintus_bending_energy} ist analog dazu die Biegesteifigkeit in MPa gegenüber der Energiedichte in Wh/kg aufgetragen. Auch hier sind die Ergebnisse der Quintus-Simulationen als Scatterplot dargestellt und durch einen hellgrauen Bereich ergänzt, der experimentell beobachtete Streuungen abbildet. Der Multifunktionalitätsbereich ist ebenfalls hervorgehoben und umfasst in diesem Fall 1143 Materialkombinationen, die einen Mehrwert gegenüber der konventionellen Lösung aufweisen.
+
+In beiden Abbildungen ist zu erkennen, dass die Datenpunkte nicht homogen verteilt sind, sondern sich lokale Ansammlungen bilden. Diese Cluster lassen sich jeweils auf bestimmte Typen von Materialien und Konstruktionsprinzipien zurückführen.
+
+Die Analyse von Bild~\ref{fig:quintus_tensile_energy} zeigt eine klare Gruppierung der Materialkombinationen in mehrere charakteristische Klassen. Diese lassen sich grob in reine konventionelle Elektroden, Kombinationen aus Kohlenstofffaser- und konventionellen Elektroden, Aluminiumpouchbags mit reinen Kohlenstofffaserelektroden sowie Kohlenstofffaserpouchbags mit reinen Kohlenstofffaserelektroden einteilen. Ein zentraler Trend ist dabei der Zielkonflikt zwischen mechanischer Leistungsfähigkeit und Energiedichte: Ein höherer Kohlenstoffanteil, realisiert etwa durch Kohlenstofffaserpouchbags und entsprechende Elektroden, führt zu einer signifikanten Erhöhung der Zugsteifigkeit. Gleichzeitig geht dieser Zugewinn jedoch mit einer Reduktion der Energiedichte einher. Umgekehrt weisen Kombinationen mit überwiegend konventionellen Elektroden tendenziell höhere Energiedichten auf, erreichen jedoch geringere Zugsteifigkeiten. Diese Beobachtung verdeutlicht den fundamentalen Trade-off zwischen struktureller Funktionalität und elektrochemischer Leistungsfähigkeit.
+
+Bild~\ref{fig:quintus_bending_energy} offenbart ein ähnliches Grundverhalten, wobei sich die Gruppen hier nach anderen Kriterien differenzieren lassen. Die Kombinationen lassen sich unter anderem in Kohlenstofffaserpouchbags mit Strukturelektrolyt, Kohlenstofffaserpouchbags mit flüssigem Elektrolyt, konventionelle Elektroden mit Strukturelektrolyt, konventionelle Elektroden mit  flüssigem Elektrolyt, sowie hybride Kombinationen aus Kohlenstofffaserelektroden und konventionellen Elektroden einteilen. Im Vergleich zu Bild~\ref{fig:quintus_tensile_energy} wird deutlich, dass die Wahl des Pouchbags einen besonders starken Einfluss auf die Biegesteifigkeit besitzt. Ein Wechsel zu Kohlenstofffaserpouchbags führt hier zu einer deutlichen Steigerung der Biegesteifigkeit, ohne einen nachteiligen Effekt auf die Energiedichte zu verursachen.
+
+Darüber hinaus zeigt sich, dass der Einsatz von Strukturelektrolyten eine signifikante Erhöhung der Biegesteifigkeit bewirkt. Dieser mechanische Vorteil geht jedoch mit einer starken Reduktion der Energiedichte einher, was die Notwendigkeit einer sorgfältigen Abwägung zwischen strukturellen und energetischen Anforderungen unterstreicht. Insgesamt bestätigen beide Abbildungen, dass multifunktionale Strukturbatterien zwar ein hohes Potenzial zur Gewichts- und Funktionsintegration bieten, ihre optimale Auslegung jedoch maßgeblich von der gezielten Auswahl und Kombination der verwendeten Materialien abhängt.
+
+
