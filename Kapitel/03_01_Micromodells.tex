@@ -1,5 +1,3 @@
-% filepath: /home/williz/Promotion/Monografie/Kapitel/03_01_Micromodells.tex
-
 \section{\label{sec:existing_micro_models}Mikroskalenmodelle}
 
 Die auf Mikro- oder Partikelebene ablaufenden Prozesse sind grundsätzlich unabhängig davon, ob eine konventionelle oder eine Strukturbatterie betrachtet wird. Einige dieser Prozesse spielen in konventionellen Batterien jedoch nur eine untergeordnete Rolle und werden daher häufig vernachlässigt oder vereinfacht dargestellt~\cite{Carlstedt2020a}. Der Ionentransport stellt dabei den zentralen Prozess dar~\cite{Carlstedt2019b}. Nach \textsc{Newman} bestehen signifikante Unterschiede im Transportverhalten zwischen flüssigen und festen Phasen~\cite{Newman2021}. Da sowohl konventionelle als auch strukturelle Batterien mit zweiphasigen Elektrolyten einen Ionentransport durch beide Phasen ermöglichen, lässt sich ihr Verhalten in erster Näherung durch die folgenden fünf Differentialgleichungen, auch als \textsc{Doyle}-\textsc{Fuller}-\textsc{Newman}-Modell bezeichnet, beschreiben~\cite{Plett2015}.
@@ -108,11 +106,9 @@ Die thermischen und elektrochemischen Dehnungsanteile hängen von den jeweiligen
     \boldsymbol{\varepsilon}_{th}  &= \boldsymbol{\alpha}_{th}\left( T - T_0\right).
 \end{align}
 \begin{figure}[!ht]
-    %\raggedleft
-        %\def\svgwidth{\columnwidth}
-        \center
-        \includegraphics[width=1.0\textwidth, angle=0]{cahn-hilliard.pdf}
-        \caption{\label{fig:cahn-hilliard}a) Zufallsverteilte Ausgangswerte, b) Funktion $f(c)$ zur Separation der Konzentrationen, c)--d) Ergebnisse mit $M=0{,}2$, $\lambda = 0{,}5$}
+    \center
+    \includegraphics[width=1.0\textwidth, angle=0]{cahn-hilliard.pdf}
+    \caption{\label{fig:cahn-hilliard}a) Zufallsverteilte Ausgangswerte, b) Funktion $f(c)$ zur Separation der Konzentrationen, c)--d) Ergebnisse mit $M=0{,}2$, $\lambda = 0{,}5$}
 \end{figure}
 Die aus den Gleichungen abgeleitete mikroskalige Modellierung kann eingesetzt werden, um Halbzellen mit Geometrien im vergleichbaren Größenspektrum zu analysieren~\cite{Plett2015}. Zur realitätsnahen Simulation einer Strukturbatteriezelle aus zwei Fasern ist es jedoch erforderlich, auch die Struktur des Zweiphasen-Elektrolyten adäquat abzubilden~\cite{Tu2020}. Die zugrunde liegende Geometrie ergibt sich aus dem Prozess der Phasenseparierung, welcher durch die \textsc{Cahn-Hilliard}-Gleichung beschrieben werden kann~\cite{Carolan2015,Grant1993}.
 \begin{align}
@@ -131,10 +127,8 @@ Dabei wird die Phasenseparation der Konzentration $c$\footnote{Nach Konvention g
 
 Das resultierende Mikroskalenmodell besteht aus einer einfasrigen Kohlenstofffanode und einer mit LFP beschichteten Kohlenstofffkathode, die durch einen Strukturelektrolyt verbunden sind, siehe Bild~\ref{fig:micro_model}a. Dabei befinden sich die Poren des Strukturelektrolyten im Nanometerbereich, während die typischen Partikelgrößen der LFP-Komponenten und Kohlenstofffasern $1~\mu\text{m}$ beziehungsweise $10~\mu\text{m}$ betragen~\cite{Chaudhary2024a,Huson2014}. Dies erfordert ein äußerst feines Rechennetz\footnote{Hier $180 \times 180 \times 640 = 20\,736\,000$ Elemente.}, um die relevanten Mikrostrukturen adäquat abzubilden, siehe Bild~\ref{fig:micro_model}b.
 \begin{figure}[!ht]
-    %\raggedleft
-        %\def\svgwidth{\columnwidth}
-        \center
-        \includegraphics[width=1.0\textwidth, angle=0]{micro_model.pdf}
-        \caption{\label{fig:micro_model}a) Simulation einer Zweifaser-Batterie aus einer Kohlenstofffaser als Anode und einer mit LFP beschichteten Kohlenstofffaser als Kathode, b) Blockvernetzung und Zuweisung der Domänen für die gekoppelte FE-Simulation, c) Der angelegte Strom als treibende Randbedingung über die Zeit, d) Die elektrische Spannung und Stromdichte über die Zeit, e) Die gemittelte Temperatur über die Zeit. Die Lithiumkonzentration (f), die mechanische Spannung (g) und die Temperaturverteilung (h) bei $t = 2000~\text{s}$.}
+    \center
+    \includegraphics[width=1.0\textwidth, angle=0]{micro_model.pdf}
+    \caption{\label{fig:micro_model}a) Simulation einer Zweifaser-Batterie aus einer Kohlenstofffaser als Anode und einer mit LFP beschichteten Kohlenstofffaser als Kathode, b) Blockvernetzung und Zuweisung der Domänen für die gekoppelte FE-Simulation, c) Der angelegte Strom als treibende Randbedingung über die Zeit, d) Die elektrische Spannung und Stromdichte über die Zeit, e) Die gemittelte Temperatur über die Zeit. Die Lithiumkonzentration (f), die mechanische Spannung (g) und die Temperaturverteilung (h) bei $t = 2000~\text{s}$.}
 \end{figure}
 In Kombination mit den nichtlinearen Differentialgleichungen und den vielfältigen physikalischen Kopplungen resultiert daraus ein komplexes Simulationsmodell\footnote{Um die Parallelisierbarkeit von Blocknetzen möglichst gut auszunutzen, werden alle benötigten Parameter allen Knoten zugewiesen. Bereiche, die nicht an den jeweiligen Prozessen teilnehmen, bekommen dafür um mehrere Größenordnungen größere beziehungsweise kleinere Parameter. Außerdem verhindert dieser Ansatz Singularitäten in der Matrix, die sonst bei isolierten Bereichen entstehen können.}. Die Simulation eines vollständigen Entlade- und Beladevorgangs wird dadurch sehr rechenintensiv\footnote{Berechnungsserver der HTWK unter Ausnutzung von zwei integrierten AMD EPYC 7F753 CPUs mit einer Taktfrequenz von $2{,}95~\text{GHz}$ und jeweils 32 Rechenkernen.} (siehe Bild~\ref{fig:micro_model}).

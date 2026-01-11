@@ -37,7 +37,7 @@ S^p_j &= \frac{\pi (3d_j^2 - 4l_{ij,j}^2)}{12l_{ij,j}}, \\
 S^v_{ij} &= \frac{\pi d_{ij}^2}{4l_{ij}}.
 \end{align}
 
-Die Umrechnung in ionische Leitfähigkeit erfolgt über die Nernst–Einstein-Gleichung:
+Die Umrechnung in ionische Leitfähigkeit erfolgt über die Nernst-Einstein-Gleichung:
 \begin{equation}
 D = \frac{kT}{nq^2} \sigma.
 \end{equation}
@@ -71,12 +71,9 @@ Dabei ist die Porosität $\epsilon$ definiert durch das Verhältnis von Volumen 
 \end{equation}
 
 \begin{figure}[!ht]
-    %\raggedleft
-        %\def\svgwidth{\columnwidth}
-        \center
-        \includegraphics[width=0.99\textwidth, angle=0]{RVE_generation.pdf}
-        \caption{\label{fig:sphere_cylinder_model_RVE_generation}Die Generierung möglichst akkurater Repräsentationen des Strukturelektrolytes beinhaltet (a) die experimentelle Bestimmung der Porenverteilung durch Gasabsorptionsmessungen verschiedener Oligomere (O1–O4), (b) die Konvertierung in eine kumulative Wahrscheinlichkeitsverteilung, (c) das zufällige Auswählen einer vorher festgelegten Anzahl an Poren, (d) die Vernetzung und Skalierung der Porenverbindungen und (e) die Simulation des Ionentransports und der Vergleich mit den experimentellen Ergebnissen.
-        }
+    \center
+    \includegraphics[width=0.99\textwidth, angle=0]{RVE_generation.pdf}
+    \caption{\label{fig:sphere_cylinder_model_RVE_generation}Die Generierung möglichst akkurater Repräsentationen des Strukturelektrolytes beinhaltet (a) die experimentelle Bestimmung der Porenverteilung durch Gasabsorptionsmessungen verschiedener Oligomere (O1-O4), (b) die Konvertierung in eine kumulative Wahrscheinlichkeitsverteilung, (c) das zufällige Auswählen einer vorher festgelegten Anzahl an Poren, (d) die Vernetzung und Skalierung der Porenverbindungen und (e) die Simulation des Ionentransports und der Vergleich mit den experimentellen Ergebnissen.}
 \end{figure}
 
 Das Modell wurde mit experimentellen Porengrößenverteilungen validiert, die über Gasabsorptionsmessungen gewonnen wurden (Bild~\ref{fig:sphere_cylinder_model_RVE_generation}a). Dazu wurde die Verteilung auf das Intervall $[0,1]$ normalisiert, um eine Wahrscheinlichkeitsverteilung für die zufällige Generierung zu erhalten (Bild~\ref{fig:sphere_cylinder_model_RVE_generation}b). Allerdings muss das Volumenverhältnis $r$ zwischen Verbindungs- und Porenvolumen vorgegeben werden, welches durch
@@ -101,12 +98,9 @@ Zur Bestimmung der effektiven Größen wurde eine konstante molare Flussrate an 
 \end{align}
 
 \begin{figure}[!ht]
-    %\raggedleft
-        %\def\svgwidth{\columnwidth}
-        \center
-        \includegraphics[width=0.99\textwidth, angle=0]{convergence.pdf}
-        \caption{\label{fig:sphere_cylinder_model_convergence}Der relative Fehler verschiedener Porennetzwerke mit (a) einer festen Anzahl an Verbindungen über verschiedene Volumenverhältnisse zwischen Verbindungs- und Porenvolumen, (b) verschiedene Anzahl an verbundenen Porennachbarn und (c)-(d) Konvergenzverhalten bei vermehrter Porenanzahl bei optimalen Volumenverhältnissen.
-        }
+    \center
+    \includegraphics[width=0.99\textwidth, angle=0]{convergence.pdf}
+    \caption{\label{fig:sphere_cylinder_model_convergence}Der relative Fehler verschiedener Porennetzwerke mit (a) einer festen Anzahl an Verbindungen über verschiedene Volumenverhältnisse zwischen Verbindungs- und Porenvolumen, (b) verschiedene Anzahl an verbundenen Porennachbarn und (c)-(d) Konvergenzverhalten bei vermehrter Porenanzahl bei optimalen Volumenverhältnissen.}
 \end{figure}
 
 \input{Abbildungen/03_Modellierung/poren_network_results.tex}
@@ -116,7 +110,7 @@ Zur Analyse der Genauigkeit wurden die berechneten Leitfähigkeiten mit den expe
 
 Für jede Konfiguration wurden 50 unterschiedliche Netzwerke mit zufälliger Porenverteilung generiert. In der ersten Untersuchung wurde der durchschnittliche relative Fehler für jede Substanz über verschiedene Volumenverhältnisse hinweg verfolgt (Bild~\ref{fig:sphere_cylinder_model_convergence}a). Das Volumenverhältnis mit dem geringsten durchschnittlichen Fehler wurde anschließend für eine Konvergenzstudie ausgewählt.
 
-Diese Ergebnisse zeigen, dass der Fehlerbereich und der durchschnittliche Fehler mit zunehmender Netzwerkgröße kleiner werden. Bereits ab etwa 3000 Poren nähert sich der Fehler einem Wert unterhalb von \SI{10}{\percent} an und lässt sich mit steigender Porenzahl weiter reduzieren, siehe Bild~\ref{fig:sphere_cylinder_model_convergence}c–e.
+Diese Ergebnisse zeigen, dass der Fehlerbereich und der durchschnittliche Fehler mit zunehmender Netzwerkgröße kleiner werden. Bereits ab etwa 3000 Poren nähert sich der Fehler einem Wert unterhalb von \SI{10}{\percent} an und lässt sich mit steigender Porenzahl weiter reduzieren, siehe Bild~\ref{fig:sphere_cylinder_model_convergence}c-e.
 
 Abschließend wurde die Konnektivität zwischen benachbarten Poren variiert. Dabei zeigte sich ein signifikanter Einfluss auf die Gesamtleitfähigkeit des Netzwerks: Eine höhere Konnektivität führte zu einer deutlichen Steigerung der effektiven Leitfähigkeit, siehe Bild~\ref{fig:sphere_cylinder_model_convergence}b.
 
@@ -133,12 +127,9 @@ Walk-on-Stars (WoSt) ist eine netzfreie Methode zum Lösen linearer Differential
 WoSt stellt dabei die Weiterentwicklung von Walk on Spheres (WoS) dar, welcher Brown'sche Teilchenbewegungen durch Zufallsbewegungen innerhalb von Kugeln annähert (Bild~\ref{fig:wost_method}a)~\cite{Sawhney2020}. WoSt basiert auf drei Kernmechanismen: die Bestimmung des größtmöglichen Sterngebiets\footnote{Ein (Teil-)Gebiet, bei dem alle Punkte von einem Punkt aus sichtbar sind.} für jeden Abfragepunkt, die Reflektion von Pfaden, die durch Flächen mit Neumann-Randbedingung laufen würden, und die Beendigung sowie Aggregation der beendeten Pfade nach Treffen auf eine Dirichlet-Randbedingung oder Erreichen einer maximalen Anzahl an Schritten~\cite{Sawhney2023a}.
 
 \begin{figure}[!ht]
-    %\raggedleft
-        %\def\svgwidth{\columnwidth}
-        \center
-        \includegraphics[width=0.99\textwidth, angle=0]{wost_method.pdf}
-        \caption{\label{fig:wost_method}a) Brownsche Bewegung mit absorbierenden Dirichlet-Randbedingungen und reflektierenden Neumann-Randbedingungen. b)–f) Ablauf der Walk-on-Star-Methode zur Annäherung der Lösung einer linearen Differentialgleichung in einem Punkt. e) Berücksichtigung des Einflusses unterschiedlicher Materialkoeffizienten durch Abtastung an der Stelle $y_{k+1}$.
-        }
+    \center
+    \includegraphics[width=0.99\textwidth, angle=0]{wost_method.pdf}
+    \caption{\label{fig:wost_method}a) Brownsche Bewegung mit absorbierenden Dirichlet-Randbedingungen und reflektierenden Neumann-Randbedingungen. b)-f) Ablauf der Walk-on-Star-Methode zur Annäherung der Lösung einer linearen Differentialgleichung in einem Punkt. e) Berücksichtigung des Einflusses unterschiedlicher Materialkoeffizienten durch Abtastung an der Stelle $y_{k+1}$.}
 \end{figure}
 
 Vorausgesetzt, die Geometrie des Strukturelektrolyten ist bekannt, kann diese Methode adaptiert werden, um schnell gute Annäherungen an die Diffusionskoeffizienten in der flüssigen Phase und an die durch die feste Phase verursachte Steifigkeit zu bestimmen.
@@ -180,12 +171,9 @@ E = \frac{\Delta \sigma}{\Delta \varepsilon} = \frac{pL}{u_z(z=L)}.
 \end{equation}
 
 \begin{figure}[!ht]
-    %\raggedleft
-        %\def\svgwidth{\columnwidth}
-        \center
-        \includegraphics[width=0.99\textwidth, angle=0]{wost_results.pdf}
-        \caption{\label{fig:wost_result}a) Simulation des Diffusionsverhaltens durch Walk-on-Stars. b) Simulation des Verformungsverhaltens. c–d) Konvergenzverhalten des berechneten Diffusions- und Steifigkeitsfehlers mit höherer Schrittzahl pro Pixel.
-        }
+    \center
+    \includegraphics[width=0.99\textwidth, angle=0]{wost_results.pdf}
+    \caption{\label{fig:wost_result}a) Simulation des Diffusionsverhaltens durch Walk-on-Stars. b) Simulation des Verformungsverhaltens. c-d) Konvergenzverhalten des berechneten Diffusions- und Steifigkeitsfehlers mit höherer Schrittzahl pro Pixel.}
 \end{figure}
 
 Analog kann WoSt benutzt werden, um in der flüssigen Phase die effektive Diffusion zu bestimmen.
@@ -196,12 +184,9 @@ Analog kann WoSt benutzt werden, um in der flüssigen Phase die effektive Diffus
 
 Sowohl die Porennetzwerkmethode als auch die Annäherung durch Walk-on-Stars benötigen eine geometrische Repräsentation der zweiphasigen Strukturelektrolyte. In den Erläuterungen zur Porennetzwerkmethode wurde bereits eine Möglichkeit beschrieben, aus Gasabsorptionsmessungen ein Ersatzmodell aus Kugeln und zylindrischen Verbindungen zu generieren. Während diese Methode auch für den WoSt-Ansatz benutzt werden kann\footnote{Dazu die Domain innerhalb der Kugeln und Hälse für die Fluidphase wählen oder die außerhalb liegende, aber immer noch im RVE-Würfel liegende Domain für die feste Phase benutzen.} sind Gasabsorptionsmessungen in der Literatur nicht immer vorhanden. Allerdings können aus Computertomographen Aufnahmen von ausreichender Auflösung mithilfe maschinellen Lernens (ML) die Randbedingungen der \textsc{Cahn-Hilliard}-Gleichungen sowie die Stoppzeit abgeschätzt werden.
 \begin{figure}[!ht]
-    %\raggedleft
-        %\def\svgwidth{\columnwidth}
-        \center
-        \includegraphics[width=0.99\textwidth, angle=0]{nn_metod_rve_se.pdf}
-        \caption{\label{fig:nn_method_rve_se}Ausnutzung eines Convolutional Neural Network zur Abschätzung geeigneter Ausgangsparameter der \textsc{Cahn-Hilliard}-Gleichung.
-        }
+    \center
+    \includegraphics[width=0.99\textwidth, angle=0]{nn_metod_rve_se.pdf}
+    \caption{\label{fig:nn_method_rve_se}Ausnutzung eines Convolutional Neural Network zur Abschätzung geeigneter Ausgangsparameter der \textsc{Cahn-Hilliard}-Gleichung.}
 \end{figure}
 
 Die Trainingsdaten bestehen aus Grauwert-REM-Scans in Schwarz-Weiß sowie den zugehörigen realen Abmessungen der Bildausschnitte in Nanometern. Zusätzlich werden experimentell bestimmte Diffusionskoeffizienten $D_i$ und elastische Steifigkeiten $E_i$ sowohl für die Einzelkomponenten als auch für das Verbundmaterial gemessen und den entsprechenden REM-Bildabschnitten zugeordnet.
@@ -209,12 +194,9 @@ Die Trainingsdaten bestehen aus Grauwert-REM-Scans in Schwarz-Weiß sowie den zu
 Ein Convolutional Neural Network extrahiert aus den REM-Bildern textur- und strukturrelevante Merkmale. Diese Merkmale, kombiniert mit den realen Abmessungen, dienen als Eingabe für ein nachgeschaltetes Fully-Connected-Network, das die Parameter für die \textsc{Cahn-Hilliard}-Gleichung vorhersagt, namentlich den Randparameter $M$ und die Mobilität $L$, siehe Bild~\ref{fig:nn_method_rve_se}. %\citep{Zhang2021CHparameters, Müller2017MLforCH}.
 
 \begin{figure}[!ht]
-    %\raggedleft
-        %\def\svgwidth{\columnwidth}
-        \center
-        \includegraphics[width=0.6\textwidth, angle=0]{training_progress.pdf}
-        \caption{\label{fig:nn_method_result}Konvergenz der Verlustfunktion über den Trainingsprogress des neuronalen Netzwerkes.
-        }
+    \center
+    \includegraphics[width=0.6\textwidth, angle=0]{training_progress.pdf}
+    \caption{\label{fig:nn_method_result}Konvergenz der Verlustfunktion über den Trainingsprogress des neuronalen Netzwerkes.}
 \end{figure}
 Die \textsc{Cahn-Hilliard}-Gleichung wird mit einer Finite-Elemente-Methode gelöst, wobei die Parameter $L(\mathbf{x})$ und $\varepsilon$ durch das ML-Modell bereitgestellt werden %\citep{Elliott1989CHFEM, Schneider2022FEMCH}.
 
