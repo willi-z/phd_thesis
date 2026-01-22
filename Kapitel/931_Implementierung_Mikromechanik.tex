@@ -1,0 +1,38 @@
+\subsection{Numerische Umsetzung in FEniCSx/Dolfinx}
+
+Die in den vorangegangenen Abschnitten hergeleiteten mikroskaligen Gleichungen werden im Rahmen dieser Arbeit in der Finite-Elemente-Software FEniCSx/Dolfinx implementiert. Die Wahl dieser Umgebung ermöglicht eine effiziente Formulierung und Lösung stark gekoppelter Mehrfeldprobleme sowie eine robuste Parallelisierung über MPI. Die numerische Umsetzung erfolgt in zwei klar getrennten Schritten: Zunächst wird die Cahn-Hilliard-Gleichung in einem vorgelagerten Simulationslauf gelöst, um ein stationäres Phasenfeld zu erzeugen, das die feste und flüssige Phase des Strukturelektrolyten definiert. Anschließend wird das vollständige Strukturbatteriemodell als monolithisch gekoppeltes System aus Elektrochemie, Wärmeleitung und Mikromechanik formuliert und mittels eines Newton-Krylov-Verfahrens gelöst. Die verwendeten Funktionsräume basieren auf gemischten Lagrange-Elementen, wobei die mechanischen Verschiebungen mit höherer Ordnung diskretisiert werden. Die Randbedingungen für Potenziale, Konzentrationen und Verschiebungen werden entsprechend der physikalischen Schnittstellenbedingungen formuliert. Eine adaptive Zeitschrittsteuerung gewährleistet numerische Stabilität und Effizienz insbesondere bei stark nichtlinearen Lastwechseln.
+
+\appendix
+\section{Erweiterte Beschreibung der numerischen Implementierung in FEniCSx/Dolfinx}
+\label{app:fem_implementation}
+
+Die numerische Umsetzung der mikroskaligen Modelle erfolgt vollständig in FEniCSx/Dolfinx und nutzt dessen moderne UFL-Syntax sowie die PETSc-basierten linearen und nichtlinearen Löser. Die Implementierung ist in zwei logisch getrennte Simulationsschritte gegliedert: (i) die Erzeugung eines realistischen Zweiphasenfeldes mittels der Cahn-Hilliard-Gleichung und (ii) die anschließende monolithische Lösung des elektrochemisch-thermomechanischen Strukturbatteriemodells.
+
+\subsection*{Cahn-Hilliard-Preprocessing}
+
+Die Cahn-Hilliard-Gleichung wird in operatorzerlegter Form gelöst:
+\begin{align}
+    \frac{\partial c}{\partial t} - \nabla \cdot (M \nabla \mu) &= 0,\\
+    \mu - \frac{\partial f}{\partial c} + \lambda \nabla^2 c &= 0.
+\end{align}
+Für die Felder $c$ und $\mu$ werden kontinuierliche Lagrange-Elemente (P1 oder P2) verwendet. Die Zeitintegration erfolgt semi-implizit, beispielsweise mittels Eyre-stabilisierter Verfahren, um die Stabilität bei großen Zeitschritten sicherzustellen. Neumann-Randbedingungen $M \nabla \mu \cdot n = 0$ gewährleisten einen geschlossenen Stoffhaushalt. Das resultierende stationäre Phasenfeld $c(\boldsymbol{x})$ wird anschließend auf das Rechennetz der Strukturbatteriesimulation übertragen und dient dort zur Definition der Materialparameter in fester und flüssiger Phase.
+
+\subsection*{Monolithische Mehrfeldsimulation der Strukturbatterie}
+
+Die Strukturbatteriesimulation umfasst die Gleichungen für Ladungserhalt, Massenerhalt, Wärmeleitung und lineare Elastizität. Aufgrund der starken Kopplung zwischen den Feldern (z.\,B. konzentrationsabhängige Elastizitätsmodule, temperaturabhängige Leitfähigkeiten, Joule-Heizung) wird das Gesamtsystem monolithisch formuliert. Die Funktionsräume bestehen aus einem blockstrukturierten gemischten Ansatz:
+
+
+\[
+(\phi_s, \phi_e, c_s, c_e, T_s, T_e, \boldsymbol{u}),
+\]
+
+
+wobei die mechanischen Verschiebungen $\boldsymbol{u}$ mit Lagrange-Elementen zweiter Ordnung diskretisiert werden, während die übrigen Felder mit P1- oder P2-Elementen abgebildet werden.
+
+Die nichtlinearen Gleichungen werden mittels eines Newton-Krylov-Verfahrens (PETSc SNES) gelöst. Der Jacobian wird vollständig aus allen Teilgleichungen zusammengesetzt und blockweise vorkonditioniert, um die Konvergenz zu verbessern. Die Randbedingungen umfassen Dirichlet- und Neumann-Bedingungen für elektrische Potenziale, Konzentrationen und mechanische Verschiebungen. Die mechanische Gleichung wird ausschließlich in der Festkörperphase gelöst, während die Elektrolytphase spannungsfrei bleibt.
+
+\subsection*{Zeitintegration und Stabilität}
+
+Für die Cahn-Hilliard-Simulation sowie für die Strukturbatteriesimulation werden adaptive Zeitschritte verwendet. Die Schrittweite wird anhand der Newton-Konvergenz, der Änderung der Feldgrößen und physikalisch motivierter Stabilitätskriterien (z.\,B. diffusionsähnliche CFL-Bedingungen) angepasst. Dies ermöglicht eine effiziente Abbildung sowohl schneller transiente Prozesse (z.\,B. Stromsprünge) als auch langsamer Diffusions- und Relaxationsvorgänge.
+
+Die Kombination aus vorgelagerter Phasenfeldberechnung und monolithischer Mehrfeldsimulation erlaubt eine konsistente und numerisch robuste Abbildung der komplexen Kopplungen in Strukturbatterien und bildet die Grundlage für die in dieser Arbeit entwickelte skalenübergreifende Auslegungsmethodik.
