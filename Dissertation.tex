@@ -101,7 +101,7 @@ automark, %
 {Abbildungen/05_Ergebnisse/}
 {Abbildungen/06_Leichtbau/}
 {Abbildungen/07_Zusammenfassung/}
-{Abbildungen/09_Anhang/}
+{Abbildungen/90_Anhang/}
 } % Definiere Grafikpfade
 
 \usepackage{lmodern}
@@ -265,11 +265,13 @@ detect-all, % Detektiert die aktuelle Schriftart
 
 \include{Kapitel/01_Einleitung}
 \include{Kapitel/02_SoA}
-\include{Kapitel/03_Modellierung}
-% \include{Kapitel/04_Digitalisierung}
-\include{Kapitel/05_Ergebnisse}
-\include{Kapitel/06_Leichtbau}
-\include{Kapitel/07_Zusammenfassung}
+\include{Kapitel/03_Model_Grundlagen}
+\include{Kapitel/04_SBE}
+\include{Kapitel/05_Multi_Skaliger_Ansatz}
+\include{Kapitel/06_Analytischer_Ansatz}
+\include{Kapitel/07_Ergebnisse}
+\include{Kapitel/08_Leichtbau}
+\include{Kapitel/09_Zusammenfassung}
 
 %Literaturverzeichnis und Datenbank einfügen
 \nocite{} %\nocite{*} --> alle in der Datenbank existierenden Einträge werden bearbeitet; ohne * --> nur die verwendeten werden aufgeführt
@@ -277,7 +279,7 @@ detect-all, % Detektiert die aktuelle Schriftart
 \bibliography{Literatur_Diss} % Einbinden der Literaturdatenbank <yyyymmdd_Literatur.bib>
 %\printbibliography
 \appendix
-\include{Kapitel/09_Anhang}
+\include{Kapitel/90_Anhang}
 
 \cleardoublepage
 \include{Kapitel/10_Lebenslauf}
