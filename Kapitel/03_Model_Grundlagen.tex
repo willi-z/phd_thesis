@@ -102,7 +102,7 @@ Zur Veranschaulichung der zuvor hergeleiteten mikroskaligen Gleichungen wurde ei
 \begin{figure}[!ht]
     \center
     \includegraphics[width=1.0\textwidth, angle=0]{micro_model.pdf}
-    \caption{\label{fig:micro_model}a) Simulation einer Zweifaser-Batterie aus einer Kohlenstofffaser als Anode und einer mit LFP beschichteten Kohlenstofffaser als Kathode, b) Blockvernetzung und Zuweisung der Domänen für die gekoppelte FE-Simulation, c) Der angelegte Strom als treibende Randbedingung über die Zeit, d) Die elektrische Spannung und Stromdichte über die Zeit, e) Die gemittelte Temperatur über die Zeit. Die Lithiumkonzentration (f), die mechanische Spannung (g) und die Temperaturverteilung (h) bei $t = 2000~\text{s}$.}
+    \caption{\label{fig:micro_model} a) Aufbau der Zweifaser-Strukturbatteriezelle, b) FE-Netz und Domänenzuweisung, c) angelegtes Stromprofil, d) resultierende elektrische Spannung und Stromdichte, e) gemittelte Temperatur, f) Lithiumkonzentration, g) mechanische Spannung, h) Temperaturverteilung zum Zeitpunkt $t = 2000\,\text{s}$.}
 \end{figure}
 
 
@@ -110,6 +110,7 @@ Die numerische Umsetzung erfolgt in FEniCSx/Dolfinx und folgt einem zweistufigen
 
 Im zweiten Schritt wird das elektrochemisch-thermomechanische Modell als monolithisch gekoppeltes Mehrfeldproblem formuliert. Die Funktionsräume umfassen elektrische Potenziale, Konzentrationen, Temperaturen und mechanische Verschiebungen, die gemeinsam in einem blockstrukturierten Ansatz gelöst werden. Die nichtlinearen Kopplungen, insbesondere die Butler-Volmer-Kinetik, konzentrationsabhängige Elastizitätsmodule und Joule-Heizung, werden mittels eines Newton-Krylov-Verfahrens behandelt. Die Randbedingungen für Potenziale, Konzentrationen und Verschiebungen werden entsprechend den physikalischen Schnittstellen formuliert. Eine adaptive Zeitschrittsteuerung stellt sicher, dass sowohl schnelle transiente Vorgänge als auch langsame Diffusionsprozesse numerisch stabil und effizient erfasst werden.
 
+Die Simulationsergebnisse zeigen die erwarteten qualitativen Trends: Die Zellspannung folgt dem vorgegebenen Stromprofil, die Lithiumkonzentration verschiebt sich während der Entladung in Richtung der Kathode, und die mechanischen Spannungen entstehen in Abhängigkeit der lokalen Interkalation. Auch die Temperaturentwicklung bleibt, wie für kleine Zellen typisch,c nahezu konstant. Damit bestätigt das Modell die korrekte Umsetzung der zuvor beschriebenen Gleichungen. Gleichzeitig wird deutlich, dass die mikroskalige Vollfeldsimulation für praktische Auslegungsaufgaben ungeeignet ist. Trotz moderater Lasten und kurzer Simulationsdauer entstehen Rechenzeiten im Bereich vieler Stunden. Die Kombination aus nichtlinearen Kopplungen, hoher räumlicher Auflösung und monolithischer Lösung macht das Verfahren extrem rechenintensiv. 
 Das realisierte Modell dient somit als konsistenter numerischer Demonstrator der zuvor eingeführten mikroskaligen Gleichungen und bildet die Grundlage für die in den folgenden Kapiteln dargestellten Homogenisierungs- und Skalierungsansätze.
 
 
