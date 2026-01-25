@@ -114,89 +114,91 @@ Die Simulationsergebnisse zeigen die erwarteten qualitativen Trends: Die Zellspa
 Das realisierte Modell dient somit als konsistenter numerischer Demonstrator der zuvor eingeführten mikroskaligen Gleichungen und bildet die Grundlage für die in den folgenden Kapiteln dargestellten Homogenisierungs- und Skalierungsansätze.
 
 
-\section{\label{sec:homogenisation}Homogenisierung von Mikroskalenmodellen}
+\section{\label{sec:homogenisation}Homogenisierung mikroskaliger Modellgleichungen}
 
-Die Modellierung der einzelnen physikalischen Prozesse ist auf der Mikroskala häufig einfacher umzusetzen~\cite{Plett2015}. Mithilfe mikroskaliger Modelle lassen sich die Einflüsse der Geometrie, Verteilung und Clusterbildung präzise ermitteln~\cite{Newman2021}. Aufgrund der hohen Komplexität, die mit den verschiedenen Skalenbereichen einhergeht, ist der damit verbundene Berechnungsaufwand jedoch zu groß, um eine Vielzahl von Zellen effizient zu simulieren~\cite{Liu2019}. Daher sind makroskalige Modelle erforderlich, welche den Rechenaufwand durch Homogenisierung und geeignete Modellvereinfachungen deutlich reduzieren~\cite{Plett2015}. Darüber hinaus bestehen Abweichungen durch Skalierungseffekte sowie durch die richtige Abbildung der untersuchten Mikrostruktur und durch nicht hinreichend bestimmte Materialkennwerte.
+Die physikalisch exakte Abbildung einzelner Prozesse ist auf der Mikroskala oft mit vergleichsweise geringem Modellierungsaufwand möglich~\cite{Plett2015}. Mikroskalige Modelle erlauben es, den Einfluss der Geometrie, der Phasenverteilung und der Clusterbildung präzise zu determinieren~\cite{Newman2021}. Aufgrund der signifikanten Skalenunterschiede und der hohen geometrischen Komplexität ist der damit verbundene Rechenaufwand jedoch zu groß, um vollständige Batteriezellen oder Systeme effizient zu simulieren~\cite{Liu2019}. Daher ist der Übergang zu makroskaligen Modellen erforderlich, die den Rechenaufwand durch Homogenisierung und gezielte Modellvereinfachungen reduzieren~\cite{Plett2015}.
 
-Ein häufig verwendeter Ansatz stellt die Mittelung der physikalischen Eigenschaften über ein repräsentatives Volumenelement~(RVE) dar~\cite{Burow2016,Arunachalam2019,Li2020}. Die dazugehörigen mathematischen Grundlagen basieren auf drei Volumenmittelungstheoremen~\cite{Gray1977}.
+\subsection{Mathematische Grundlagen der Volumenmittelung}
+
+Der Übergang von der Mikro- zur Makroskala basiert auf der Annahme, dass Inhomogenitäten auf der kleinen Skala durch ein effektives Kontinuum auf der großen Skala beschrieben werden können~\cite{Plett2024}. Ein etablierter Ansatz ist die Mittelung physikalischer Größen über ein repräsentatives Volumenelement (RVE)~\cite{Burow2016,Arunachalam2019,Li2020}. Die mathematische Basis bilden drei zentrale Volumenmittelungstheoreme~\cite{Gray1977}:
+
 \begin{enumerate}
-    \item Volumenmittelung für ein skalares Feld $\psi$ 
+    \item \textbf{Volumenmittelung eines skalaren Feldes} $\psi$:
     \begin{equation}
-        \varepsilon_{\alpha} \overline{\nabla \psi_{\alpha}} = \nabla \left(\varepsilon_{\alpha} \bar{\psi}_{\alpha} \right) + \frac{1}{V} \iint_{A_{\alpha \beta(\boldsymbol{x},t)}}\psi_{\alpha} \hat{\boldsymbol{n}}_{\alpha} \,\mathrm{d}A,
+        \varepsilon_{\alpha} \overline{\nabla \psi_{\alpha}} = \nabla \left(\varepsilon_{\alpha} \bar{\psi}_{\alpha} \right) + \frac{1}{V} \iint_{A_{\alpha \beta}(\boldsymbol{x},t)}\psi_{\alpha} \hat{\boldsymbol{n}}_{\alpha} \,\mathrm{d}A
     \end{equation}
-    \item Volumenmittelung für ein Vektorfeld $\boldsymbol{\psi}$
+    \item \textbf{Volumenmittelung eines Vektorfeldes} $\boldsymbol{\psi}$:
     \begin{equation}
-        \varepsilon_{\alpha} \overline{\nabla \cdot \boldsymbol{\psi}_{\alpha}} = \nabla \cdot \left(\varepsilon_{\alpha} \bar{\boldsymbol{\psi}}_{\alpha} \right) + \frac{1}{V} \iint_{A_{\alpha \beta(\boldsymbol{x},t)}}\boldsymbol{\psi}_{\alpha} \cdot \hat{\boldsymbol{n}}_{\alpha} \,\mathrm{d}A,
+        \varepsilon_{\alpha} \overline{\nabla \cdot \boldsymbol{\psi}_{\alpha}} = \nabla \cdot \left(\varepsilon_{\alpha} \bar{\boldsymbol{\psi}}_{\alpha} \right) + \frac{1}{V} \iint_{A_{\alpha \beta}(\boldsymbol{x},t)}\boldsymbol{\psi}_{\alpha} \cdot \hat{\boldsymbol{n}}_{\alpha} \,\mathrm{d}A
     \end{equation}
-    \item Volumenmittelung für die zeitliche Änderung eines skalaren Feldes $\psi$ 
+    \item \textbf{Volumenmittelung der zeitlichen Änderung}:
     \begin{equation}
-        \varepsilon_{\alpha} \overline{\left[\frac{\partial \psi_{\alpha}}{\partial t}\right]} = \frac{\partial \left(\varepsilon_{\alpha} \bar{\psi}_{\alpha} \right)}{\partial t} - \frac{1}{V} \iint_{A_{\alpha \beta(\boldsymbol{x},t)}}\psi_{\alpha} \boldsymbol{v}_{\alpha \beta} \cdot \hat{\boldsymbol{n}}_{\alpha} \,\mathrm{d}A.
+        \varepsilon_{\alpha} \overline{\left[\frac{\partial \psi_{\alpha}}{\partial t}\right]} = \frac{\partial \left(\varepsilon_{\alpha} \bar{\psi}_{\alpha} \right)}{\partial t} - \frac{1}{V} \iint_{A_{\alpha \beta}(\boldsymbol{x},t)}\psi_{\alpha} \boldsymbol{v}_{\alpha \beta} \cdot \hat{\boldsymbol{n}}_{\alpha} \,\mathrm{d}A
     \end{equation}
 \end{enumerate}
-Dabei beschreibt $\bar{\psi}_{\alpha}$ bzw. $\bar{\boldsymbol{\psi}}_{\alpha}$ die intrinsische Mittelung über Phase $\alpha$. Diese Mittelung wird nur über das von Phase $\alpha$ eingenommene Volumen\footnote{Hier als Zwei-Phasen-System mit der zweiten Phase $\beta$ betrachtet.} ermittelt. Die intrinsische Mittelung bietet gegenüber einer klassischen Mittelung $\langle \psi_{\alpha} \rangle$, die sich auf das Volumen des gesamten Gebiets bezieht, größere Flexibilität und Wiederverwendbarkeit\footnote{Intrinsische Werte können wegen der Unabhängigkeit vom Phasenanteil für beliebige Phasenanteile wiederverwendet werden.}. Mittels des Volumenanteils $\varepsilon_{\alpha}$
+
+Hierbei beschreibt $\bar{\psi}_{\alpha}$ die intrinsische Mittelung über die Phase $\alpha$. Im Gegensatz zur klassischen Mittelung $\langle \psi_{\alpha} \rangle$, die sich auf das gesamte Volumen bezieht, bietet die intrinsische Mittelung eine höhere Flexibilität bei variierenden Phasenanteilen $\varepsilon_{\alpha}$, da die Kennwerte unabhängig vom Volumenanteil definiert werden können. Die Umrechnung erfolgt über den Zusammenhang $\langle \psi_{\alpha} \rangle = \varepsilon_{\alpha} \bar{\psi}_{\alpha}$~\cite{Doyle1995}.
+
+\subsection{Makroskopische Bilanzgleichungen}
+
+Durch Anwendung der Volumenmittelungstheoreme auf die mikroskaligen Erhaltungssätze lassen sich die makroskopischen Gleichungen für poröse Elektroden herleiten~\cite{Doyle1995}. Diese beschreiben die effektiven Transportvorgänge und Reaktionen innerhalb eines homogenisierten Kontinuums, wobei die mikroskalige Geometrie über effektive Parameter und Volumenanteile berücksichtigt wird. Die zentralen Gleichungen umfassen:
+
+\begin{enumerate}
+    \item \textbf{Volumengemittelter Ladungserhalt (Festkörper)}
+    \begin{equation}
+        \nabla \cdot \left(\sigma_{\text{eff}} \nabla \hat{\phi}_{\text{s}} \right) = a_{\text{s}} F_{\text{K}} \hat{j}
+    \end{equation}
+    \item \textbf{Volumengemittelter Ladungserhalt (Elektrolyt)}
+    \begin{equation}
+        \nabla \cdot \left(\kappa_{\text{eff}} \nabla \hat{\phi}_{\text{e}} + \kappa_{\text{D,eff}} \nabla \ln \hat{c}_{\text{e}}\right) + a_{\text{s}} F_{\text{K}} \hat{j} = 0
+    \end{equation}
+    \item \textbf{Volumengemittelter Massenerhalt (Elektrolyt)}
+    \begin{equation}
+        \frac{\partial \left(\varepsilon_{\text{e}} \hat{c}_{\text{e}} \right)}{\partial t} = \nabla \cdot \left(D_{\text{e,eff}}\nabla\hat{c}_{\text{e}}\right) + a_{\text{s}} (1-t^0_+) \hat{j}
+    \end{equation}
+    \item \textbf{Homogenisierte Butler-Volmer-Beziehung}
+    \begin{equation}
+        \hat{j} = j(c_{\text{s,e}},\hat{c}_{\text{e}},\hat{\phi}_{\text{s}},\hat{\phi}_{\text{e}})
+    \end{equation}
+\end{enumerate}
+
+Für die thermische und mechanische Kopplung werden analoge Homogenisierungsansätze verwendet. Während die mechanische Spannung über den effektiven Steifigkeitstensor $\boldsymbol{\sigma} = \boldsymbol{C}_{\text{eff}} \boldsymbol{\varepsilon}_{\text{mech}}$ beschrieben wird, ergibt sich die Temperaturentwicklung aus der volumengemittelten Wärmeleitungsgleichung:
 \begin{equation}
-    \varepsilon_{\alpha} = \frac{V_{\alpha}(\boldsymbol{x},t)}{V} 
-\end{equation}
-können die beiden Mittelungsarten ineinander umgewandelt werden:
-\begin{equation}
-    \langle \psi_{\alpha} \rangle = \varepsilon_{\alpha} \bar{\psi}_{\alpha}.
+    \frac{\partial (\rho c_{\text{P}} T)}{\partial t} = \nabla \cdot (\lambda \nabla T) + q
 \end{equation}
 
-Mithilfe der drei Volumenmittelungstheoreme lassen sich die folgenden vier Gleichungen herleiten~\cite{Doyle1995}.
+Die Wärmequelle $q$ integriert dabei die maßgeblichen physikalischen Verlustmechanismen und setzt sich aus den folgenden fünf Beiträgen zusammen~\cite{Plett2015}:
+
 \begin{enumerate}
-    \item Volumengemittelte Näherung des Ladungserhalts in der festen Phase der porösen Elektrode
+    \item \textbf{Irreversible Wärmeentstehung} durch chemische Reaktionen:
     \begin{equation}
-        \nabla \cdot \left(\sigma_{\text{eff}} \nabla \hat{\phi}_{s} \right) = a_s F_{\text{K}} \hat{j},
+        q_{\text{i}} = a_{\text{s}} F_{\text{K}} \hat{j}_j \eta_{j}
     \end{equation}
-    \item Volumengemittelte Näherung des Ladungserhalts in der Elektrolytphase der porösen Elektrode
+    \item \textbf{Reversible Wärmebildung} durch Entropieänderung:
     \begin{equation}
-        \nabla \cdot \left(\kappa_{\text{eff}} \nabla \hat{\phi}_e + \kappa_{D, \text{eff}} \nabla \ln \hat{c}_e\right) + a_s F_{\text{K}} \hat{j} = 0,
+        q_{\text{r}} = a_{\text{s}} F_{\text{K}} \hat{j}_j T \frac{\partial U_{\text{ocp},j}}{\partial T}
     \end{equation}
-    \item Volumengemittelte Näherung des Massenerhalts in der Elektrolytphase der porösen Elektrode
+    \item \textbf{Joule-Wärme im Feststoff}:
     \begin{equation}
-        \frac{\partial \left(\varepsilon_e \hat{c}_e \right)}{\partial t} = \nabla \cdot \left(D_{e,\text{eff}}\nabla\hat{c}_e\right) + a_s (1+t^0_+) \hat{j},
+        q_{\text{s}} = \sigma_{\text{eff}}(\nabla\hat{\phi}_{\text{s}} \cdot \nabla\hat{\phi}_{\text{s}})
     \end{equation}
-    \item Volumengemittelte Näherung der mikroskopischen Butler-Volmer-Beziehung für den Ionenphasenwechsel
+    \item \textbf{Joule-Wärme im Elektrolyt}:
     \begin{equation}
-        \hat{j} = j(c_{s,e},\hat{c}_e,\hat{\phi}_s,\hat{\phi}_e).
+        q_{\text{e}} = \kappa_{\text{eff}}(\nabla\hat{\phi}_{\text{e}} \cdot \nabla\hat{\phi}_{\text{e}}) + \kappa_{\text{D,eff}} (\nabla \ln \hat{c}_{\text{e}} \cdot \nabla \hat{\phi}_{\text{e}})
+    \end{equation}
+    \item \textbf{Wärmeentstehung durch Kontaktwiderstände}\footnote{$q_{\text{c}}$ wirkt auf die Elektrodenfläche; die übrigen Terme beziehen sich auf das Einheitsvolumen.}:
+    \begin{equation}
+        q_{\text{c}} = i_{\text{app}}^2 R_{\text{Kontakt}}
     \end{equation}
 \end{enumerate}
 
-Analog lassen sich für die mechanische Spannung und die Temperatur die folgenden Zusammenhänge aufstellen.
-\begin{enumerate}
-    \item Homogenisierung der mechanischen Spannung
-    \begin{equation}
-    \boldsymbol{\sigma} = \boldsymbol{C}_{\text{eff}} \boldsymbol{\varepsilon}_{\text{mech}},
-    \end{equation}
-    \item Volumengemittelte Darstellung der Temperaturentwicklung
-    \begin{equation}
-        \frac{\partial (\rho c_{\text{P}} T)}{\partial t} = \nabla \cdot (\lambda \nabla T) + q.
-    \end{equation}
-\end{enumerate}
+\subsection{Numerische Implementierung und Analyse nach Carlstedt}
 
-Die eingeführte Wärmequelle $q$ kann dabei aus den folgenden fünf Beiträgen zusammengesetzt werden~\cite{Plett2015}.
-\begin{enumerate}
-    \item Irreversible Wärmeentstehung durch chemische Reaktionen
-    \begin{equation}
-        q_i = a_{\text{s}} F_{\text{K}} \hat{j}_j \eta_{j},
-    \end{equation}
-    \item Reversible Wärmebildung durch Entropieänderung
-    \begin{equation}
-    q_{r} = a_{\text{s}} F_{\text{K}} \hat{j}_j T \frac{\partial U_{\text{ocp},j}}{\partial T},
-    \end{equation}
-    \item Joule-Wärme im Feststoff
-    \begin{equation}
-    q_{s} = \sigma_{\text{eff}}(\nabla\hat{\phi}_{\text{s}} \cdot \nabla\hat{\phi}_{\text{s}}),
-    \end{equation}
-    \item Joule-Wärme im Elektrolyt
-    \begin{equation}
-        q_{e} = \kappa_{\text{eff}}(\nabla\hat{\phi}_{\text{e}} \cdot \nabla\hat{\phi}_{\text{e}}) + \kappa_{D,\text{eff}} (\nabla \ln \hat{c}_e \cdot \nabla \hat{\phi}_{\text{e}}),
-    \end{equation}
-    \item Wärmeentstehung durch Kontaktwiderstände\footnote{$q_c$ gilt nur für die Elektrodenfläche und ist daher auf die Einheitsfläche bezogen; die anderen Terme sind auf das Einheitsvolumen bezogen.}
-    \begin{equation}
-        q_{c} = i_{\text{app}}^2 R_{\text{Kontakt}}.
-    \end{equation}
-\end{enumerate}
+Die praktische Anwendung der theoretisch hergeleiteten Volumenmittelung wird zunächst anhand einer direkten numerischen Implementierung untersucht. Dieser Ansatz folgt methodisch der Vorgehensweise von \textsc{Carlstedt}~\cite{Carlstedt2022b}, um die Homogenisierungstheorie ohne zusätzliche geometrische Annahmen über die Partikelform auf eine vollständige Zelle zu übertragen.
+
+Die numerische Umsetzung erfolgt, analog zu den Mikroskalenmodellen (Abschnitt~\ref{sec:existing_micro_models}), mithilfe der FEniCS-Plattform unter Nutzung von \textsc{Dolfinx}. Dabei werden für das resultierende System aus partiellen Differentialgleichungen vergleichbare iterative Solver und Vorkonditionierer eingesetzt. Ein wesentlicher Unterschied liegt jedoch in der reduzierten Dimensionalität: Während das Mikromodell eine vollflächige 3D-Vernetzung erfordert, nutzt dieses Modell zweidimensionale, achsensymmetrische Elemente (siehe Bild~\ref{fig:carlstedt}). Die komplexen Faser-Matrix-Grenzflächen werden hierbei durch ein homogenisiertes Kontinuum ersetzt, dessen effektive Materialeigenschaften über die Volumenanteile $\varepsilon_{\alpha}$ definiert sind. 
+
+Trotz der methodischen Anlehnung an \textsc{Carlstedt} weist das hier implementierte Gleichungssystem signifikante Unterschiede auf. Während viele von \textsc{Carlstedt}-Gleichungen linearisiert wurden, bleiben in diesem Ansatz die physikalischen Nichtlinearitäten der Elektrochemie (insbesondere der Butler-Volmer-Kinetik) vollständig erhalten~\cite{Carlstedt2022a, Carlstedt2022b}. Zudem wird das Transportverhalten im Festkörper explizit über den konzentrationsabhängigen Diffusionskoeffizienten $D_{\text{s}}$ beschrieben, statt, auf eine Beschreibung mittels Mobilitätstensor zurückzugreifen~\cite{Carlstedt2020b,Carlstedt2019a}. Dies erlaubt eine präzisere Abbildung der transienten Konzentrationsgradienten, erhöht jedoch die numerische Komplexität.
 
 \begin{figure}[!ht]
     \center
@@ -204,37 +206,28 @@ Die eingeführte Wärmequelle $q$ kann dabei aus den folgenden fünf Beiträgen 
     \caption{\label{fig:carlstedt}a) Beispielhafte Darstellung der untersuchten Kohlenstofffaser-Strukturbatterie und der LFP-Zelle nach~\cite{Carlstedt2022b}, b) zweidimensionales Modell zur Durchführung der FEM-Simulation, c) Zeitverlauf des angelegten Stroms als treibende Randbedingung, d) elektrische Spannung und Stromdichte im zeitlichen Verlauf sowie die Lithiumkonzentration zu den Zeitpunkten $t_1 = 2000\,\text{s}$ und $t_2 = 6000\,\text{s}$, e) gemittelte Temperatur über die Zeit sowie Temperaturverteilungen bei $t_1$ und $t_2$, f) mechanische Spannungskomponenten $\sigma_{11}$ und $\sigma_{22}$ zu den Zeitpunkten $t_1$ und $t_2$.}
 \end{figure}
 
-Angelehnt an Arbeiten von \textsc{Carlstedt}~\cite{Carlstedt2022b}\footnote{Die Materialwerte, Geometrie und Randbedingungen wurden der Arbeit entnommen, um einen Vergleich zu ermöglichen.} können diese Gleichungen bereits verwendet werden, um das Verhalten ganzer Zellen zu beschreiben\footnote{Hier: eine Kohlenstofffaser-LFP-Zelle} (Bild~\ref{fig:carlstedt}). Die Zelle durchläuft dabei einen Entlade- und Ladezyklus innerhalb von 2,2\,h. Die Simulationszeit betrug 34,6\,h auf einem Berechnungsserver der HTWK\footnote{Unter voller Ausnutzung von zwei eingebauten CPUs der Marke AMD EPYC 75F3 mit einer Taktrate von 2,95\,GHz und jeweils 32 Kernen.}. Der hohe Rechenaufwand bereits für einen Ladezyklus macht diesen Ansatz jedoch ungeeignet, um eine Vielzahl an Varianten und größere, mehrzellige Batteriesysteme auszulegen.
+Wissenschaftlich kritisch ist die Diskrepanz zwischen physikalischer Detailtiefe und verbleibendem numerischem Aufwand zu bewerten. Zwar bildet das Modell das globale Zellverhalten (Bild~\ref{fig:carlstedt}d, e) präzise ab, jedoch bleibt die Effizienz trotz des Wechsels auf 2D-Elemente ein Hindernis. Die Rechenzeit für einen 2,2\,h-Zyklus betrug etwa 34,6\,h auf einem HPC-Serverknoten\footnote{Zwei AMD EPYC 75F3 CPUs, 2,95\,GHz, jeweils 32 Kerne.}. Dies resultiert primär aus dem Erhalt der Nichtlinearitäten und der Tatsache, dass die Diffusion weiterhin über die vollen räumlichen Koordinaten der 2D-Domäne berechnet wird. 
 
-Durch Ermittlung effektiver physikalischer Eigenschaften werden die Inhomogenitäten auf der Mikroskala durch ein Kontinuum auf der Makroskala beschrieben~\cite{Plett2024}. Die Genauigkeit dieses Ansatzes hängt jedoch stark von den zu betrachtenden Längenskalen ab~\cite{Plett2015}. Lokal erhöhte Porendichten oder ähnliche inhomogene Effekte lassen sich nur aufwendig berücksichtigen~\cite{Mei2019}. Bei der Analyse deutlich größerer Skalen als die Inhomogenitäten zeigen diese Modelle hingegen eine höhere Effizienz und ausreichende Genauigkeit~\cite{Plett2015}. 
+Zudem führt die Volumenmittelung zu einem Verlust lokaler Informationen: Die mechanischen Spannungen (Bild~\ref{fig:carlstedt}f) stellen lediglich gemittelte Kontinuumswerte dar, wodurch lokale Spitzen an den Faser-Matrix-Grenzflächen geglättet werden. Das Modell beweist somit die Validität der Homogenisierung, verdeutlicht aber gleichzeitig die Notwendigkeit für die weitere Komplexitätsreduktion im P2D-Ansatz, um für iterative Optimierungsprozesse praktikabel zu sein.
 
-Um die Berechnungszeit weiter zu reduzieren, kann aufgrund der Butler-Volmer-Randbedingung keine Volumenmittelung für die Massenerhaltung in der festen Phase\footnote{Die Materialien, die als Interkalationsort dienen.} verwendet werden~\cite{Plett2015}. Durch Geometrievereinfachungen lassen sich jedoch Freiheitsgrade reduzieren und zusätzlicher Rechenaufwand vermeiden. Im Kontext von Strukturbatterien ist der interkalationsaktiv teilnehmende Bereich partikel- oder faserförmig und kann durch Kugeln bzw. Zylinder approximiert werden~\cite{Newman2021}. Daraus ergeben sich die nachfolgenden Gleichungen:
+\subsection{Geometrische Vereinfachung und P2D-Ansatz}
+
+Um die für iterative Optimierungsschleifen und Systemauslegungen notwendige Recheneffizienz zu erreichen, wird das Modell durch gezielte geometrische Idealisierungen der aktiven Phasen zum sogenannten Pseudo-Zweidimensionalen Modell (P2D) erweitert~\cite{Newman2021}. Während im zuvor beschriebenen Carlstedt-Modell die Konzentrationen noch über die vollen Raumkoordinaten der 2D-Domäne berechnet werden, abstrahiert der P2D-Ansatz die Geometrie der interkalationsaktiven Bereiche (Fasern oder Partikel) innerhalb des homogenisierten Kontinuums.
+
+Hierbei werden die Kohlenstofffasern oder Aktivmaterialpartikel als idealisierte geometrische Körper betrachtet. Die Diffusion im Festkörper wird dadurch von der makroskopischen Transportrichtung entkoppelt und auf ein lokales, eindimensionales Problem in radialer Richtung reduziert (siehe Bild~\ref{fig:p2d_model}). Für die Bestimmung der Lithium-Konzentration in den Aktivmaterialien der Anode und Kathode ergeben sich daraus die beiden spezifischen Massenerhaltungsgleichungen:
+
 \begin{enumerate}
-    \item Spezialfall Massenerhalt in kugelförmigen Festkörpern
+    \item Kugelförmige Partikel (z. B. NMC/LFP): 
     \begin{equation}
-        \label{eq:diffusion_sphere}
-    \frac{\partial c_{\text{s}}}{\partial t} = \frac{1}{r^2} \frac{\partial}{ \partial r} \left[ D_{\text{s}} r^2 \frac{\partial c_{\text{s}}}{\partial r}\right],
+        \frac{\partial c_{\text{s}}}{\partial t} = \frac{1}{r^2} \frac{\partial}{ \partial r} \left[ D_{\text{s}} r^2 \frac{\partial c_{\text{s}}}{\partial r}\right]
     \end{equation}
-    \item Spezialfall Massenerhalt in zylindrischen Festkörpern
+    \item Zylindrische Fasern (z. B. Kohlenstofffasern): 
     \begin{equation}
-        \label{eq:diffusion_cylinder}
-    \frac{\partial c_{\text{s}}^{\pm}}{\partial t} = \frac{1}{r} \frac{\partial}{ \partial r} \left[ D_{\text{s}} r \frac{\partial c_{\text{s}}}{\partial r}\right] + \frac{\partial}{ \partial z}\left[D_{\text{s}}  \frac{\partial c_{\text{s}}}{\partial z}\right].
+        \label{eq:diffusion_cylinder_p2d}
+        \frac{\partial c_{\text{s}}^{\pm}}{\partial t} = \frac{1}{r} \frac{\partial}{ \partial r} \left[ D_{\text{s}} r \frac{\partial c_{\text{s}}}{\partial r}\right]
     \end{equation}
 \end{enumerate}
-Dabei ist für viele Szenarien die Verteilung der Konzentration in $z$-Richtung näherungsweise konstant~\cite{Wang2020c}. In diesem Fall kann der Massenerhalt in zylindrischen Festkörpern weiter vereinfacht werden:
-\begin{equation}
-    \frac{\partial c_{\text{s}}^{\pm}}{\partial t} = \frac{1}{r} \frac{\partial}{ \partial r} \left[ D_{\text{s}} r \frac{\partial c_{\text{s}}}{\partial r}\right].
-\end{equation}
-In beiden Fällen lässt sich das Interkalationsverhalten durch die Randbedingungen
-\begin{align}
-    \left.\frac{\partial c_{\text{s}}^{\pm}}{\partial r}\right\vert_{r=0} &= 0, \\
-    \left.\frac{\partial c_{\text{s}}^{\pm}}{\partial r}\right\vert_{r=R_{\text{p,s}}^{\pm}} &= -\frac{1}{ D_{\text{s}}^\pm} j_{n}^{\pm}(x,t),
-\end{align}
-darstellen, wobei im Falle einer stromgesteuerten Be- und Entladung
-\begin{equation}
-j_{n}^{\pm}(t) = \mp \frac{I(t)}{F a^{\pm} L^{\pm}}
-\end{equation}
-ist~\cite{Plett2015}.
+Durch diese Reduktion der Dimensionalität des Diffusionsprozesses sinkt die Anzahl der zu lösenden Freiheitsgrade deutlich, ohne die wesentlichen physikalischen Transportmechanismen zu vernachlässigen.
 
 \begin{figure}[!ht]
     \center
@@ -242,4 +235,4 @@ ist~\cite{Plett2015}.
     \caption{\label{fig:p2d_model}a) Vereinfachung und Überführung einer NMC-Zelle zu einem 2D-Modell für die FEM-Berechnung, b) elektrische Spannung über mehrere durch den Strom geprägte Lade- und Entladezyklen, c) Temperaturverlauf während der Zyklen, d) maximale und minimale mechanische Spannung über den betrachteten Zeitraum.}
 \end{figure}
 
-Die daraus folgenden zweidimensionalen Modelle\footnote{Eine Dimension in Dicken-/Höhenrichtung und eine weitere in Radialrichtung der Partikel oder Fasern.} (Bild~\ref{fig:p2d_model}) gelten als die effizientesten physikalisch basierten Batteriemodelle. Mit diesen lassen sich mehrere Zyklen über 65\,h in unter 43\,min simulieren\footnote{Unter voller Ausnutzung von zwei eingebauten CPUs der Marke AMD EPYC 75F3 mit einer Taktrate von 2,95\,GHz und jeweils 32 Kernen.}. Die Genauigkeit dieser Modelle ist dabei hoch und zeigt meist Abweichungen von unter 0,5~\%~\cite{Pistorio2023}. Wie in anderen Modellen werden die schwer zu bestimmenden kinetischen Parameter häufig durch Anpassung an die ersten Zyklenverläufe identifiziert, wobei als Startwerte Literaturwerte verwendet werden~\cite{Sauerteig2018,Shui2023}. Eine einheitliche Bestimmung und ein konsistenter Austausch dieser Parameter zwischen verschiedenen Modellen ist aufgrund der unterschiedlichen Modellannahmen jedoch schwierig~\cite{Madani2018}. Für eine breite Werkstoff- bzw. Komponentenauswahl im Sinne einer Vorauslegung von Strukturbatterien sind diese Modelle aufgrund der hohen Anzahl zu bestimmender Parameter oft ungeeignet~\cite{Li2022}.
+Die daraus folgenden Modelle gelten als die effizientesten physikalisch basierten Batteriemodelle~\cite{Plett2024}. In der vorliegenden Implementierung konnten damit mehrere Zyklen über einen realen Zeitraum von 65\,h in unter 43\,min simuliert werden\footnote{Unter voller Ausnutzung von zwei CPUs der Marke AMD EPYC 75F3 mit jeweils 32 Kernen.}. Dies entspricht einer Beschleunigung gegenüber dem direkten Homogenisierungsansatz nach \textsc{Carlstedt} um mehrere Größenordnungen. Trotz dieser massiven Vereinfachung bleibt die Genauigkeit hoch und zeigt in der Literatur meist Abweichungen von unter 0,5\,\% gegenüber höherdimensionalen Modellen~\cite{Pistorio2023}. Damit stellt der P2D-Ansatz das leistungsfähigste Werkzeug für die hier angestrebte skalenübergreifende Simulation dar, sofern die entsprechenden Materialparameter präzise identifiziert werden können.
