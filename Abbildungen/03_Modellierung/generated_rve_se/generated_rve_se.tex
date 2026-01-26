@@ -7,11 +7,11 @@
         >{\centering\arraybackslash}m{0.08\textwidth} % λ
         >{\centering\arraybackslash}m{0.11\textwidth} % T_end
         >{\centering\arraybackslash}m{0.08\textwidth} % c0
-        >{\centering\arraybackslash}m{0.08\textwidth} % c0                                           % L
+        >{\centering\arraybackslash}m{0.08\textwidth} % L                                          % L
         >{\centering\arraybackslash}m{0.2\textwidth}  % RVE column
     }
     \toprule
-    \textbf{SEM-Aufnahme}
+    \textbf{REM-Aufnahme}
     & \textbf{M}
     & $\boldsymbol{\mathrm{\lambda}}$
     & $\boldsymbol{\mathrm{T_{end}}}$
@@ -20,16 +20,24 @@
     & \textbf{RVE}
     \\
     \midrule
-    \makecell{\includegraphics[width=0.2\textwidth]{generated_rve_se/SEM_60DGEBA.png}\\60DEBA}
+    \makecell{\includegraphics[width=0.2\textwidth]{generated_rve_se/SEM_60DGEBA.png}\\60DEBA\footnotemark}
         & 0,94 & 0,013 & $\mathrm{5,5 \times 10^{-5}}$ & 0,92 & 0,97 
         & \includegraphics[width=0.22\textwidth]{generated_rve_se/RVE_spheres.png} \\
-    \makecell{\includegraphics[width=0.22\textwidth]{generated_rve_se/SEM_50MTM57_2.3.png}\\50MTM57/2.3}
+    \makecell{\includegraphics[width=0.22\textwidth]{generated_rve_se/SEM_50MTM57_2.3.png}\\50MTM57/2.3\footnotemark}
         & 3,22 & 0,061 & $\mathrm{36,0 \times 10^{-5}}$ & 0,94 & 0,98 
         & \includegraphics[width=0.22\textwidth]{generated_rve_se/RVE_Cahn_Hilbert.png} \\
-    \makecell{\includegraphics[width=0.2\textwidth]{generated_rve_se/SEM_polyMIPE.png}\\polyMIPE}
+    \makecell{\includegraphics[width=0.2\textwidth]{generated_rve_se/SEM_polyMIPE.png}\\polyMIPE\footnotemark}
         & 1,02 & 0,012 & $\mathrm{7,5 \times 10^{-5}}$ & 0,06 & 0,88 
         & \includegraphics[width=0.22\textwidth]{generated_rve_se/RVE_Template.png} \\
     \bottomrule
     \end{tabularx}\\
     %\noindent{\footnotesize{\textsuperscript{*} Gemessen gegenüber \ce{Li}/\ce{Li+}.}}
 \end{table}
+
+% WICHTIG: Die Reihenfolge muss exakt der in der Tabelle entsprechen!
+\addtocounter{footnote}{-2} % Counter zurücksetzen, um die erste Markierung zu treffen
+\footnotetext{Bezeichnet ein poröses Elektrolytsystem bestehend aus 60 Gew.-\% flüssigem Elektrolyten und einer festen Matrix aus \textit{Diglycidylether von Bisphenol A} (DGEBA), einem gängigen Epoxidharz, das hier mittels PIPS (\textit{Polymerisation-Induced Phase Separation}) hergestellt wurde.}
+\stepcounter{footnote}
+\footnotetext{Ein strukturelles Elektrolytsystem mit 50 Gew.-\% Elektrolytanteil. Die Matrix besteht aus dem trifunktionellen Epoxidharz \textit{MY0510}, dem Härter \textit{MNA} und dem Beschleuniger \textit{Tertiary amine} (zusammengefasst als MTM), infiltriert mit einem 2,3 M Lithium-Salz-Elektrolyten.}
+\stepcounter{footnote}
+\footnotetext{Steht für \textit{polymerized Medium Internal Phase Emulsion}. Im Gegensatz zu polyHIPE (High Internal Phase, $>74\%$ interne Phase) beschreibt polyMIPE ein poröses Polymer, das aus einer Emulsion mit einem mittleren Volumenanteil der inneren Phase (typischerweise zwischen 30 \% und 74 \%) synthetisiert wurde.}
