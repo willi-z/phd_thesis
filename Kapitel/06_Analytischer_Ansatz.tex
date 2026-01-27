@@ -1,16 +1,5 @@
-\chapter{\label{sec:analytical_approach}Herleitung Analytischer Ansätze für perspektivische Vorauslegungen}
+\chapter{Herleitung Analytischer Ansätze für perspektivische Vorauslegungen}
 \section{\label{sec:improve_elchem}Analytische Vorhersage der Energiedichte}
-% \begin{itemize}
-%     \item Diffusionskoeffizient wird durch equivalente Schaltung ermittelt, die % konstanten Wert vorraussetzen
-%     \item Diffusionskoeeffizeint ist eigentlich stark von der Lithierung abhängig
-%     \item aufwendig zu ermitteln
-%     \item außerdem abweichungen durch Bildung Elektrolyteinterface
-%     \item daher für vorhersagen ist die benutzung eher ungeeignet
-%     \item für Batterien ist Energidichte wichtiger als Leisungsdichte
-%     \item Lösung quasistatische Be- und Entladung, also warten bis vorher
-%     \item dies reduziert die vereinfacht die oberen Gleichungen enorm
-% \end{itemize}
-
 Die präzise elektrochemische Modellierung von Lithium-Ionen-Zellen erfordert in der Regel die Berücksichtigung eines diffusionsabhängigen Stofftransportes im aktiven Material. Traditionell wird der Diffusionskoeffizient über eine äquivalente elektrische Schaltung angenähert, die einen konstanten, d.h. lithierungsunabhängigen Wert voraussetzt. Diese Annahme führt jedoch zu erheblichen Vereinfachungen, da der tatsächliche Diffusionskoeffizient stark von der lokalen Lithierung abhängt und zudem im Betrieb Temperaturänderungen sowie Alterungsmechanismen, insbesondere die Ausbildung der SEI, berücksichtigt werden müssten. Die exakte Ermittlung eines dynamischen, lithierungsabhängigen Diffusionskoeffizienten ist erfahrungsgemäß rechenaufwendig und experimentell schwer zugänglich. Für schnelle, echtzeitfähige Vorhersagemodelle ist dieser Ansatz daher nur bedingt geeignet.
 
 Für viele Anwendungen im Bereich der elektrochemischen Energiespeicher ist jedoch nicht primär die Leistungsdichte, sondern vielmehr die Energiedichte der Batterie maßgebend. Dieser Fokus ermöglicht es, den Modellierungsaufwand erheblich zu reduzieren. Eine praktikable Lösung besteht darin, Be- und Entladeprozesse quasistatisch zu betrachten. Dabei wird nach jedem kleinen Lade- oder Entladeschritt eine Relaxationsphase angenommen, in der sich das Konzentrationsfeld im aktiven Material vollständig ausgleicht. Die Diffusionsprozesse müssen somit nicht explizit zeitaufgelöst simuliert werden, was die oberen elektrochemischen Gleichungen drastisch vereinfacht und den Berechnungsaufwand deutlich reduziert.Auf dieser Grundlage lassen sich die relevanten Kapazitäts-, Massen- und Energiekennwerte des Batteriestacks durch folgende vereinfachte Beziehungen beschreiben.
@@ -232,7 +221,7 @@ Die hergeleiteten Gleichungen beschreiben das 3-Punkt-Biegungsverhalten eines au
 
 Durch Vergleich des Verformungsverhaltens von glatten und angerauten Aluminiumfolien, die ohne PVDF auf einander gelegt wurden, konnte gezeigt werden, dass die vernachlässigte Oberflächenrauheit keinen relevanten Einfluss auf das Biegeverhalten ausübt. Wie in Bild~\ref{fig:bending_pre_tests}e dargestellt, ist der Unterschied vernachlässigbar. 
 
-Wegen der besseren Adhäsion wurden anschließend die glatten Aluminiumfolien durch verschiedene poröse PVDF-Folien miteinander verbunden (Bild~\ref{fig:bending_pre_tests}b). Aus den Versuchen ließ sich ableiten, dass sich das resultierende maximale Durchbiegungsverhalten als lineare Kombination der beiden Grenzfälle beschreiben lässt. Diese Überlagerung kann über den Phasenvolumenanteil $\varphi$ der flüssigen Phase formuliert werden zu
+Wegen der besseren Adhäsion wurden anschließend die glatten Aluminiumfolien durch verschiedene poröse PVDF-Folien miteinander verbunden (Bild~\ref{fig:bending_pre_tests}b). Aus den Versuchen ließ sich ableiten, dass sich das resultierende maximale Durchbiegungsverhalten als lineare Kombination der beiden Grenzfälle beschreiben lässt. Diese Überlagerung kann über den Phasenvolumenanteil $\psi$ der flüssigen Phase formuliert werden zu
 \begin{equation}
-    u_\text{max} = \varphi \cdot u_{\text{max,flüssig}} + (1-\varphi) \cdot u_{\text{max,fest}}.
+    u_\text{max} = \psi \cdot u_{\text{max,flüssig}} + (1-\psi) \cdot u_{\text{max,fest}}.
 \end{equation}
