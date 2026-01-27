@@ -6,7 +6,7 @@
 \RequirePackage[hyphens]{url}
 \documentclass[
 draft=false, % Entwurfsmodus an/aus true|false
-DIV=10, % DIVzahl|DIV=calc - Satzspiegel (Seitenränder), ggf. geometry-Paket nutzen % TODO: auf 14 für Druckversion setzten
+DIV=14, % DIVzahl|DIV=calc - Satzspiegel (Seitenränder), ggf. geometry-Paket nutzen % TODO: auf 14 für Druckversion setzten
 fontsize=12pt, % Schriftgröße
 a4paper, % Papierformat a5paper|a4paper
 oneside, % Ein- oder zweiseitig oneside|twoside % TODO: twoside für Druckversion nach der Verteidigung
@@ -241,7 +241,7 @@ detect-all, % Detektiert die aktuelle Schriftart
 \pagenumbering{gobble} % Ausschalten der Seitenzählung für die Titelseite und das Vorwort
 
 \include{Kapitel/00_Titelseite}
-% \include{Kapitel/00_Vorwort} % TODO: erst nach der Verteidigung einfügen
+% \include{Kapitel/00_Vorwort} % TODO(willi): erst nach der Verteidigung einfügen
 \include{Kapitel/00_Kurzfassung}
 
 \pagenumbering{roman} % Römische Zahlen für den ganzen Vorspann
