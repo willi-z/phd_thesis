@@ -1,95 +1,81 @@
-\chapter{\label{sec:multi_scale}Entwicklung einer effizienten multiskaligen Auslegungsmethodik von Strukturbatterien}
-Die Modelle, die sich aus den Arbeiten von \textsc{Carlstedt}, \textsc{Doyle}, \textsc{Newman}, \textsc{Fuller} und \textsc{Plett} ergeben, sind mit einem hohen Detailgrad versehen. Dieser Detailgrad erlaubt eine hohe physikalische Präzision, gleichzeitig führt er jedoch zu einer großen Anzahl an Parametern, die aufwendig bestimmt werden müssen. Daraus ergibt sich das Problem, dass es in bestimmten Konstellationen schneller und günstiger ist, direkt Experimente mit allen Materialkombinationen durchzuführen, statt zuerst alle benötigten Material- und Interaktionsparameter zu bestimmen. Daher wird für eine möglichst optimale Entwicklungsstrategie in Kapitel~\ref{sec:efficent_development} ein entsprechendes Auswahl- und Bewertungsrahmenwerk entwickelt. Mithilfe dieses Rahmens wird dann in Kapitel~\ref{sec:reduction_and_parallelization} eine gezielte Reduktion weniger signifikanter Einflussfaktoren vorgenommen. Um die Einsatzfähigkeiten verschiedener Strukturbatterien automatisiert bewerten zu können, wird in Kapitel~\ref{sec:automated_failure} eine Versagens- und Risikoabschätzung vorgestellt. Abschließend werden in Kapitel~\ref{sec:validation} die simulierten Ergebnisse dieses Ansatzes mit experimentellen Ergebnissen verglichen.
+\chapter{Mehrskalige Berechnungsmethodik für Strukturbatterien}
 
-\section{\label{sec:efficent_development}Konzeption einer effizienten Entwicklung von Strukturbatterien}
-Für den effektiven Einsatz der Modelle zur Vorhersage mechanischer und elektrochemischer Eigenschaften wurden zahlreiche Anforderungen an die Modellierung zusammengestellt:
-\begin{itemize}
-    \item Modellierung basierend auf physikalischen Prozessen (kein reines Fitting),
-    \item geringe Anzahl an Materialparametern und keine Einführung neuer, schwer bestim-mbarer Größen,
-    \item ausreichend präzise für Vergleichbarkeit zwischen Ergebnissen,
-    \item schnelle Berechnungen (keine Wochenlaufzeiten).
-\end{itemize} 
+Nachdem die theoretischen Grundlagen sowie die Homogenisierung der Struktelektrolyte mittels repräsentativer Volumenelemente bereits etabliert wurden, erfolgt nun die Übertragung dieser Konzepte auf das Gesamtsystem der Strukturbatterie. In der ingenieurwissenschaftlichen Praxis ergibt sich dabei oft die Herausforderung, dass die physikalische Genauigkeit hochdetaillierter Modelle durch einen sehr hohen Bedarf an Material- und Interaktionsparametern erkauft wird. Wenn der Aufwand zur Parameteridentifikation den Zeitrahmen der eigentlichen Bauteilauslegung überschreitet, verliert die Simulation ihren praktischen Nutzen als effizientes Entwicklungswerkzeug.
 
-Diese Anforderungen beruhen auf der Annahme, dass experimentell gewonnene Ergebnisse das reale Verhalten des untersuchten Objekts abbilden. Daraus folgt, dass Simulationsergebnisse diesem idealerweise möglichst nahekommen, jedoch stets ungenauer sind, solange experimentelle Messfehler vernachlässigt werden können~\cite{Morris2024}. Der mit hochwertigen Experimenten verbundene Aufwand ($k_{\mathrm{exp}}$) hinsichtlich Material- und Zeitkosten ist in vielen Fällen deutlich höher als der Aufwand für eine Computersimulation ($k_{\mathrm{sim}}$):
-\begin{equation}
-    k_{\mathrm{exp}} \gg k_{\mathrm{sim}}.
-\end{equation}
-Für einen rein experimentellen Ansatz, der jede mögliche Materialkombination ($n_{\mathrm{Kombis}}$) einer bestimmten Anzahl an experimentellen Bestimmungen ($n_{\mathrm{exp,Bestimmungen}}$) unterzieht, ergibt sich der gesamte Aufwand ($k_{\mathrm{exp, gesamt}}$) etwa als
-\begin{align}
-    k_{\mathrm{exp, gesamt}} &\approx k_{\mathrm{exp}} \cdot n_{\mathrm{Kombis}} \cdot n_{\mathrm{exp,Bestimmungen}}.
-\end{align}
-Der schnelle Anstieg des experimentellen Aufwands bei vielen Kombinationen kann zu hohen zeitlichen und finanziellen Kosten führen. Insbesondere im Kontext von Strukturbatterien liegt der Einzelaufwand $k_{\mathrm{exp}}$ für Präparation, Zusammenbau und Validierung einzelner Zellen häufig im Bereich mehrerer Monate.
+Für eine anwendungsorientierte Simulation ist es daher entscheidend, den Fokus auf die maßgeblichen physikalischen Effekte zu legen und weniger signifikante Kopplungen gezielt zu vernachlässigen. Eine Modellierungsstrategie ist nur dann effektiv, wenn sie mit einer überschaubaren Anzahl an experimentell zugänglichen Parametern auskommt und gleichzeitig eine hohe Recheneffizienz bietet. Dies erlaubt es, die numerische Analyse nicht nur als punktuelle Validierung, sondern als proaktives Werkzeug zur schnellen Bewertung zahlreicher Materialkombinationen einzusetzen.\footnote{Die Reduktion der Modellkomplexität verhindert, dass die Parameteridentifikation zum eigentlichen Flaschenhals im Entwicklungsprozess von multifunktionalen Leichtbaustrukturen wird.}
 
-Um viele potenzielle Materialkombinationen zu testen, sind simulationsbasierte Modelle daher unverzichtbar. Dabei muss jedoch sichergestellt werden, dass der Aufwand zur Bestimmung der Materialkennwerte und die Gesamtrechenzeit der Modellierung ($k_{\mathrm{sim, gesamt}}$) nicht den reinen experimentellen Aufwand übersteigen. Eine grobe Abschätzung des Gesamtaufwands für eine Simulationsstrategie lautet:
-\begin{align}
-    k_{\mathrm{sim, gesamt}}
-    &= k_{\mathrm{sim}} \cdot n_{\mathrm{Kombis}} \cdot n_{\mathrm{Rechnungen}} \nonumber \\
-    &\quad + \sum_{m=1}^{n_{\mathrm{Material}}} \Big( n_{\mathrm{exp, Bestimmung,m}} \cdot k_{\mathrm{exp}} + n_{\mathrm{lit, Bestimmung,m}} \cdot k_{\mathrm{lit}} \Big).
-\end{align}
-Für eine große Zahl an Materialkandidaten erhöht die Menge der experimentell zu bestimmenden Größen den Simulationsaufwand schnell. Unter Abwägung dieser Aufwände stellt ein mehrstufiges Verfahren oft einen guten Kompromiss zwischen Aussagegenauigkeit und Bestimmungsaufwand dar: Zunächst grobe, schnelle Simulationen zur Vorauswahl, dann detaillierte Simulationen für aussichtsreiche Kandidaten und abschließend gezielte Experimente zur Validierung und Feinkalibrierung.
+Die nachfolgende Methodik nutzt die zuvor definierten RVE-Strukturen, um das komplexe Zusammenspiel von Mechanik und Elektrochemie auf Systemebene abzubilden. Dabei steht zunächst die gezielte Entkopplung von Feldgrößen im Vordergrund, die unter realen Lastbedingungen nur geringe Wechselwirkungen zeigen. Zur ganzheitlichen Bewertung der Einsatzfähigkeit wird darüber hinaus ein multifunktionales Versagenskriterium vorgestellt. Dieses ermöglicht eine direkte Verknüpfung des mechanischen Strukturversagens mit dem daraus resultierenden Funktionsverlust, um eine effiziente und praxisnahe Sicherheitsbewertung der Strukturbatterie zu gewährleisten.
 
-\section{\label{sec:reduction_and_parallelization}Entkopplung und Parallelisierungsstrategie zur Reduktion des Simulationsaufwandes von Strukturbatterien}
+\section{\label{sec:reduction_and_parallelization}Entkopplung und Parallelisierungsstrategie zur Reduktion des Simulationsaufwandes}
+
+Die Umsetzung einer anwendungsorientierten Simulation erfordert eine zweistufige Reduktionsstrategie, um sowohl die Anzahl der benötigten Materialparameter als auch die notwendigen Rechenressourcen zu minimieren. Zunächst werden die physikalischen Wirkzusammenhänge auf die maßgeblichen Kopplungen beschränkt, wodurch das Modell parameterarm bleibt und die experimentelle Identifikationslast gesenkt wird. Darauf aufbauend ermöglicht eine gezielte geometrische Abstraktion unter Ausnutzung von Symmetrien, den Berechnungsraum signifikant zu verkleinern, um eine hohe Recheneffizienz für iterative Optimierungsprozesse zu erzielen. Dieser kombinierte Ansatz stellt sicher, dass die Modellierung trotz der inhärenten Multiphysik ein handhabbares Werkzeug für die Bauteilauslegung bleibt.
 \begin{figure}[!ht]
     \center
     \includegraphics[width=0.99\textwidth, angle=0]{simulation_model.pdf}
     \caption{\label{fig:homogenisation}Mehrskalige Homogenisierung der Strukturbatterie durch Abstraktion der Geometrie.}
 \end{figure}
-Strukturbatterien neigen aufgrund des etwa hundertfach geringeren effektiven Diffusionskoeffizienten von Kohlenstofffasern im Vergleich zu Graphit dazu, bei schnellen Lade- und Entladezyklen ineffizient zu werden~\cite{Uchida1996,Kim2021,Johansen2024}. Dies führt zu vergleichsweise langsamen Auf- und Entladeprozessen. In diesem Bereich verlieren insbesondere temperatureinflussabhängige Effekte an Einfluss auf das Gesamtverhalten und können in erster Näherung vernachlässigt werden~\cite{Carlstedt2019a,Carlstedt2018}. Auch die meisten Interaktionskoeffizienten zwischen den unterschiedlichen physikalischen Domänen haben nur geringen Einfluss und fallen oft mehrere Größenordnungen kleiner aus\footnote{Der Einfluss der Interkalation auf das Elastizitätsmodul liegt unter 1\,\%\cite{Carlstedt2019}.}~\cite{Carlstedt2022b}. Zwar existieren sowohl chemische als auch mechanische Wechselwirkungen; diese können jedoch aufgrund sicherheitstechnischer Restriktionen praktisch kaum experimentell untersucht und damit nur begrenzt validiert werden~\cite{Asp2024}. Aus diesem Grund erscheint eine gezielte Entkopplung der gekoppelten Feldgrößen gerechtfertigt und zweckmäßig.
+\subsection{Physikalische Domänenentkopplung und Parameterreduktion}
+Strukturbatterien neigen aufgrund des im Vergleich zu Graphit signifikant geringeren effektiven Diffusionskoeffizienten $D$ [$\si{\metre\squared\per\second}$] der Kohlenstofffasern dazu, bei schnellen Lade- und Entladezyklen zunehmend ineffizient zu werden~\cite{Uchida1996,Kim2021}. Dies bedingt vergleichsweise langsame elektrochemische Prozesse, wodurch temperatureinflussabhängige Effekte an Bedeutung verlieren und in erster Näherung vernachlässigt werden können~\cite{Carlstedt2019a}. Ebenfalls einen geringen Einfluss auf das Gesamtsystem zeigen die meisten Interaktionskoeffizienten zwischen den physikalischen Domänen, welche oft mehrere Größenordnungen unter den Hauptkopplungen liegen.\footnote{Beispielsweise liegt der Einfluss der Lithium-Interkalation auf den Elastizitätsmodul $E$ unter 1\,\%~\cite{Carlstedt2019}.}
 
-Die für die betrachteten Belastungsfälle relevante Pouch-Folienbauform kann weiter vereinfacht werden. Insbesondere die in der realen Zelle vorhandenen Siegelstellen in der Mitte des Batteriestacks werden im abstrahierten Modell weggelassen, siehe Bild~\ref{fig:homogenisation}. Da die Diffusion durch den Elektrolyten im Vergleich zu den mechanisch induzierten Längenänderungen sehr schnell erfolgt, kann die Kopplung zwischen Diffusion und geometrischer Deformation ebenfalls vernachlässigt werden. 
+Infolge dieser Reduktion lässt sich die Gesamtverformung der Strukturbatterie als Summe zweier getrennter Beiträge beschreiben: der rein mechanisch verursachten Ausdehnung und der elektrochemisch bedingten Volumenänderung. Während diese physikalischen Entkopplungen allgemeingültig für verschiedene Belastungszustände sind, werden für die hier betrachteten Belastungsfälle der Zug- und 3-Punkt-Biegebelastung zusätzliche Annahmen zur Steigerung der Recheneffizienz getroffen.
 
-\begin{figure}[!ht]
-    \center
-    \includegraphics[width=0.7\textwidth, angle=0]{bending.pdf}
-    \caption{\label{fig:bending_electroylte_tests}Validierung des 3-Punkt-Biegeversuchs: a) visueller Vergleich von Simulation und Experiment, b) Kraftverlauf in Abhängigkeit der Durchbiegung für Pouchzellen mit und ohne Elektrolyt.}
-\end{figure}
+Die Folien-Pouchbauform wird dahingehend abstrahiert, dass die Siegelstellen des Batteriestacks vernachlässigt werden, siehe Bild~\ref{fig:homogenisation}. Da die ionische Diffusion im Elektrolyten im Vergleich zu den mechanisch induzierten Längenänderungen sehr schnell erfolgt, wird die Kopplung zwischen Diffusion und geometrischer Deformation entkoppelt. Mit dem Schwerpunkt dieser Arbeit auf der strukturellen Batteriefunktionalität und sensorische Effekte laut \textsc{Carlstedt} lediglich vernachlässigbare kleine Ströme ausbilden~\cite{Carlstedt2023}, wird die Rückwirkung mechanischer Spannungen $\boldsymbol{\sigma}$ [$\si{\pascal}$] auf die Elektrochemie entkoppelt. Diese Vereinfachung trägt maßgeblich zu einem parameterarmen Modell bei, da auf die Identifikation komplexer piezoresistiver oder elektromechanischer Interaktionskoeffizienten verzichtet werden kann.
 
-Da der Fokus dieser Arbeit primär auf den Batterieeffekten und nicht auf möglichen sensorischen Eigenschaften liegt, und da diese, wie in \cite{Carlstedt2023} gezeigt, selbst bei Anregung nur sehr kleine Ströme ausbilden, kann die Rückkopplung mechanischer Spannungen auf die elektrochemische Funktionalität entkoppelt werden. Infolge dieser Reduktion der Kopplungen kann die Gesamtverformung der Strukturbatterie als Summe zweier getrennter Beiträge beschrieben werden: der rein mechanisch verursachten Ausdehnung und der elektrochemisch bedingten Volumenänderung.
-
+\subsection{Reduziertes elektrochemisches Ersatzmodell}
 \begin{figure}[!ht]
     \center
     \includegraphics[width=0.65\textwidth, angle=0]{simulation_electro_chem.pdf}
-    \caption{\label{fig:simulation_electro_chem}Reduktion des Rechenaufwands der elektrochemischen Simulation durch Modellreduktion und Homogenisierung.}
+    \caption{\label{fig:simulation_electro_chem}Reduzierung des Berechnugnsaufwandes der elektro-chemischen Simulation durch Verwenung eines Single-Particle-Models.}
 \end{figure}
 
-Für die mechanische Simulation wird ausgenutzt, dass der gesamte Zellstapel bei einem 3-Punkt-Biegeversuch lediglich entlang der Biegelinie unterschiedliche Verschiebungen erfährt, während sich die Elemente in der dazu senkrechten Richtung aufgrund der vorhandenen Symmetrie ähnlich verhalten. Daher genügt es, einen dünnen, repräsentativen Streifen zu betrachten, der anteilig belastet wird. Zusätzlich können die einzelnen Schichten des Stapels durch die Kombination mehrerer repräsentativer Volumenelemente als Blockelemente beschrieben werden. Nichtlineare Eigenschaften dieser Volumenelemente können an ausgewählten Stellen ausgewertet und anschließend mittels Interpolation ohne zusätzlichen Rechenaufwand rekonstruiert werden. Eine vergleichende Studie des Deformationsverhaltens eines Batteriestacks mit und ohne Elektrolyt zeigte dabei gute Übereinstimmung mit den simulierten Ergebnissen, siehe Bild~\ref{fig:bending_electroylte_tests}.
-
-Für die elektrochemische Simulation wird eine analoge Strategie verfolgt: Es wird nur ein Streifen der Batterie betrachtet, wobei jeder Zellstapel als Kombination mehrerer, auf jeweils ein Partikel reduzierter Ersatzschaltungen repräsentiert wird, siehe Bild~\ref{fig:simulation_electro_chem}. Dieser Ansatz basiert auf einem von \textsc{Moura et al.} modifizierten Single-Particle-Modell~\cite{Moura2017}. Als Basis dienen die Diffusionsgleichungen (\ref{eq:diffusion_sphere}) und (\ref{eq:diffusion_cylinder}) für die Partikel in den Elektroden sowie die Transportgleichung im Elektrolyten für die Bereiche Anode ($-$), Separator (sep) und Kathode ($+$):
+Analog hierzu wird für die elektrochemische Simulation ein Single-Partikel-Modell verwendet~\cite{Moura2017}. Jeder Zellstapel wird als Kombination reduzierter Ersatzschaltungen repräsentiert, siehe Bild~\ref{fig:simulation_electro_chem}. Als Basis dienen die Transportgleichungen innerhalb der Domänen $\Omega$ für Anode ($-$), Kathode ($+$) und Separator ($\text{sep}$):
 \begin{equation}
-    \frac{\partial c_{e,j}}{\partial t} = \frac{\partial}{\partial x}\left[\frac{D_{e}^{\text{eff}}(c_{e,j})}{\varepsilon_{e,j}} \frac{\partial c_{e,j}}{\partial x} (x,t)\right]-\operatorname{sign}(j)\frac{1-t_c^0}{\varepsilon_{e,j} F L_j} I(t),
+    \frac{\partial c_{e,j}}{\partial t} = \frac{\partial}{\partial x}\left[\frac{D_{\text{e}}^{\text{eff}}(c_{e,j})}{\psi_{e,j}} \frac{\partial c_{e,j}}{\partial x} (x,t)\right]-\text{sign}(j)\frac{1-t_+^0}{\psi_{e,j} F_{\text{K}} L_j} I(t).
 \end{equation}
-mit $j \in \{-,\text{sep},+\}$ und
+mit $j \in \{-, \text{sep}, +\}$ und der Richtungsfunktion
 \begin{equation}
-    \operatorname{sign}(j) = \begin{cases}
-        -1 & j = - ,\\
-         0 & j = \text{sep},\\
-         1 & j = +.
-    \end{cases}
+    \text{sign}(j) = \left\{
+        \begin{array}{ll}
+            -1 & j = - \\
+            0 & j = \text{sep} \\
+            1 & j = +
+        \end{array}
+    \right. .
 \end{equation}
-Die Differentialgleichungen sind über folgende Randbedingungen verbunden:
+Hierbei bezeichnen $\psi_{e,j}$ [-] den Volumenanteil der Elektrolytphase, $t_+^0$ [-] die Hittorfsche Überführungszahl, $F_{\text{K}}$ [$\si{\coulomb\per\mole}$] die Faraday-Konstante und $L_j$ [$\si{\metre}$] die Schichtdicke. Die Kopplung erfolgt über die Randbedingungen an den Grenzflächen:
 \begin{align}
-\frac{\partial c_{e,-}}{\partial x} (0_-,t) &= \frac{\partial c_{e,+}}{\partial x} (0_+,t) = 0,\\
-D_{e,\text{eff},-}\frac{\partial c_{e,-}}{\partial x} (L_-,t) &= D_{e,\text{eff,sep}} \frac{\partial c_{e,\text{sep}}}{\partial x} (0_{\text{sep}},t),\\
-D_{e,\text{eff,sep}}\frac{\partial c_{e,\text{sep}}}{\partial x} (L_{\text{sep}},t) &= D_{e,\text{eff},+} \frac{\partial c_{e,+}}{\partial x} (L_+,t),\\
-c_e(L_-,t) &= c_e(0_{\text{sep}}, t),\\
-c_e(L_{\text{sep}},t) &= c_e(L_+, t).
+\frac{\partial c_{\text{e},-}}{\partial x} (0_-,t) &= \frac{\partial c_{\text{e},+}}{\partial x} (0_+,t) = 0\\
+D_{\text{e,eff,-}}\frac{\partial c_{e,-}}{\partial x} (L_-,t) &= D_{\text{e,eff,sep}} \frac{\partial c_{\text{e,sep}}}{\partial x} (0_{\text{sep}},t)\\
+D_{\text{e,eff,sep}}\frac{\partial c_{\text{e,sep}}}{\partial x} (L_{\text{sep}},t) &= D_{\text{e,eff,+}} \frac{\partial c_{e,+}}{\partial x} (L_{\text{+}},t)\\
+c_e(L_{\text{-}},t) &= c_e(0_{\text{sep}}, t)\\
+c_e(L_{\text{sep}},t) &= c_e(L_{\text{+}, t})
 \end{align}
-Die effektiven Eigenschaften werden, wie bereits im mechanischen Simulationsteil, durch Homogenisierung der zugrunde liegenden Mikrostruktur bestimmt. Auf diese Weise lässt sich der numerische Aufwand erheblich reduzieren, während die maßgeblichen physikalischen Effekte weiterhin mit ausreichender Genauigkeit erfasst werden.
+Die effektiven Eigenschaften werden konsistent zum mechanischen Teil durch die Homogenisierung der Mikrostruktur bestimmt, wodurch der numerische Aufwand bei Erhalt der maßgeblichen physikalischen Genauigkeit minimiert wird.
 
-\section{\label{sec:automated_failure}Kopplung mechanisches Versagen mit multifunktionalem Versagen}
-Mithilfe des entwickelten Modells kann der lokale Spannungszustand
+\subsection{Lastfallspezifische geometrische Abstraktion}
+\begin{figure}[!ht]
+    \center
+    \includegraphics[width=0.7\textwidth, angle=0]{bending.pdf}
+    \caption{\label{fig:bending_electroylte_tests}Validierung des 3-Punkt-Biegefalls durch: a) visuellen Vergleich von Simulation und Experiment und b) Kraftverlauf in Abhängigkeit der Durchbiegung für Pouchzellen mit und ohne Elektrolyt.\protect\footnote{Die experimentellen Untersuchungen wurden von den Projektpartnern im Rahmen des ElViS-Projekts am Institut für Leichtbau und Kunststofftechnik (ILK) der TU Dresden sowie am Fraunhofer IWS Dresden durchgeführt.}}
+\end{figure}
+Für die Untersuchung der mechanischen Integrität unter Zug- und Biegebelastung wird der Berechnungsraum unter Ausnutzung von Symmetrien radikal reduziert. In der 3-Punkt-Biegung ermöglicht die Identität der Spannungszustände quer zur Biegelinie die Abstraktion auf einen repräsentativen zweidimensionalen Streifen. Diese geometrische Vereinfachung reduziert die Anzahl der finiten Elemente drastisch, ohne die Vorhersagegüte für die globale Kraft-Durchbiegungs-Charakteristik zu mindern. Die Einzelschichten des Stapels werden durch RVE als Blockelemente beschrieben. Nichtlineare Eigenschaften dieser RVE können an diskreten Stützstellen ausgewertet und mittels Interpolation ohne nennenswerten Rechenaufwand über den gesamten Bereich rekonstruiert werden. Vergleichende Studien zeigten hierbei eine gute Übereinstimmung mit experimentellen Daten\footnote{Die Versuchsreihe wurde im Rahmen des ElViS-Projektes durchgeführt. Dabei erfolgte die Zellherstellung durch das Fraunhofer IWS, die Biegeversuche wurden am Institut für Leichtbau und Kunststofftechnik (ILK) der TU Dresden durchgeführt.}, siehe Bild~\ref{fig:bending_electroylte_tests}.
+
+\section{\label{sec:automated_failure}Analyse des Versagens der Multifunktionalität und Kritikalitätsbewertung}
+
+Auf Basis der entwickelten Methodik kann der lokale mechanische Spannungszustand $\boldsymbol{\sigma}$ [$\si{\pascal}$] für jede funktionale Schicht der Strukturbatterie bestimmt werden:
 \begin{equation}
 \boldsymbol{\sigma} =
 \begin{bmatrix}
 \sigma_{xx} & \tau_{xy} & \tau_{xz} \\
 \tau_{xy}   & \sigma_{yy} & \tau_{yz} \\
 \tau_{xz}   & \tau_{yz}   & \sigma_{zz}
-\end{bmatrix}
+\end{bmatrix}.
 \end{equation}
-für alle relevanten Materialschichten der Strukturbatterie bestimmt werden. Aufbauend darauf wird eine automatisierte Versagensanalyse durchgeführt, um kritische Bereiche zu identifizieren und das mit einem Schichtversagen verbundene Gesamtrisiko der Batterie zu bewerten.
+Anstatt einer rein strukturellen Betrachtung wird eine Analyse des Versagens der Multiunktionalität durchgeführt. Ziel ist es, kritische Zustände zu identifizieren, die über das mechanische Bauteilversagen hinaus einen unmittelbaren Funktionsverlust der elektrochemischen Domäne oder sicherheitstechnische Havarien auslösen.
 
 \subsection{Versagenskriterien und plastisches Fließverhalten der Einzelschichten}
-Für isotrope Materialien, etwa metallische Stromableiter oder Teile der Polymerhülle, wird das von-Mises-Kriterium~\cite{Hill1998} verwendet. Die Vergleichsspannung lautet
+
+Für isotrope Komponenten, wie die metallischen Stromableiter oder die Polymerhülle, wird das von-Mises-Kriterium~\cite{Hill1998} angewendet. Die Vergleichsspannung $\sigma_\mathrm{v}$ [$\si{\pascal}$] berechnet sich zu:
 \begin{equation}
 \sigma_\mathrm{v} = \sqrt{\frac{1}{2}
 \left [
@@ -99,46 +85,23 @@ Für isotrope Materialien, etwa metallische Stromableiter oder Teile der Polymer
 \right ]
 + 3\left ( \tau_{xy}^2 + \tau_{yz}^2 + \tau_{xz}^2 \right )}.
 \end{equation}
-Versagen bzw. plastisches Fließen tritt ein, wenn
+Zur realistischen Abbildung der metallischen Ableiter wird ein isotropes Verfestigungsmodell genutzt, bei dem die Fließspannung $\sigma_\mathrm{y}$ [$\si{\pascal}$] mit zunehmender äquivalenter plastischer Dehnung $\bar{\varepsilon}^p$ [-] ansteigt:
 \begin{equation}
-\sigma_\mathrm{v} \ge \sigma_\mathrm{y}
+\sigma_\mathrm{y} = \sigma_{\mathrm{y}0} + H \, \bar{\varepsilon}^p .
 \end{equation}
-gilt. Für ideal plastisches Verhalten ist die Fließspannung konstant und entspricht der Anfangsfließgrenze $\sigma_{\mathrm{y}0}$.
+Hierbei ergibt sich die äquivalente plastische Dehnung inkrementell aus dem plastischen Dehnungstensor $\boldsymbol{\varepsilon}^p$:
+\begin{equation}
+\Delta \bar{\varepsilon}^p = \sqrt{\frac{2}{3} \, \Delta \boldsymbol{\varepsilon}^p : \Delta \boldsymbol{\varepsilon}^p}, \quad \bar{\varepsilon}^{p}_{n+1} = \bar{\varepsilon}^{p}_{n} + \Delta \bar{\varepsilon}^{p}.
+\end{equation}
+Die Fließbedingung $f \le 0$ definiert den elastischen Bereich. Bei Überschreitung ($f > 0$) wird die plastische Dehnungsrate über das assoziative Fließgesetz bestimmt:
+\begin{equation}
+f = \sigma_\mathrm{v} - \sigma_\mathrm{y} \le 0, \quad \dot{\boldsymbol{\varepsilon}}^p = \dot{\lambda} \frac{\partial f}{\partial \boldsymbol{\sigma}} = \dot{\lambda} \frac{3}{2} \frac{\boldsymbol{s}}{\sigma_\mathrm{v}},
+\end{equation}
+wobei $\boldsymbol{s} = \boldsymbol{\sigma} - \frac{1}{3}\text{tr}(\boldsymbol{\sigma}) \boldsymbol{I}$ den Deviatorspannungstensor und $\dot{\lambda}$ den plastischen Multiplikator darstellt.
 
-Zur realistischeren Beschreibung metallischer Werkstoffe wird ein isotrop verfestigendes Materialmodell verwendet. Die Fließspannung wächst mit zunehmender plastischer Deformation:
+Für die anisotropen Verstärkungslagen wird das \textsc{Tsai}-\textsc{Wu}-Kriterium~\cite{Tsai1971} herangezogen:
 \begin{equation}
-\sigma_\mathrm{y} = \sigma_{\mathrm{y}0} + H \, \bar{\varepsilon}^p ,
-\end{equation}
-wobei $H$ der isotrope Verfestigungsmodul und $\bar{\varepsilon}^p$ die äquivalente plastische Dehnung ist. Diese ergibt sich inkrementell aus
-\begin{equation}
-\Delta \bar{\varepsilon}^p = \sqrt{\frac{2}{3} \, \Delta \boldsymbol{\varepsilon}^p : \Delta \boldsymbol{\varepsilon}^p},
-\end{equation}
-und wird über den Belastungsverlauf aufsummiert:
-\begin{equation}
-\bar{\varepsilon}^{p}_{n+1} = \bar{\varepsilon}^{p}_{n} + \Delta \bar{\varepsilon}^{p}.
-\end{equation}
-Die Fließbedingung lautet damit
-\begin{equation}
-f(\boldsymbol{\sigma}, \bar{\varepsilon}^p) =
-\sigma_\mathrm{v} - \left( \sigma_{\mathrm{y}0} + H \, \bar{\varepsilon}^p \right) \le 0.
-\end{equation}
-Bei Überschreitung ($f>0$) tritt plastische Deformation auf; die plastische Dehnungsrate wird nach dem assoziativen Fließgesetz berechnet:
-\begin{equation}
-\dot{\boldsymbol{\varepsilon}}^p
-= \dot{\lambda}
-\frac{\partial f}{\partial \boldsymbol{\sigma}}
-= \dot{\lambda} \frac{3}{2} \frac{\boldsymbol{s}}{\sigma_\mathrm{v}},
-\end{equation}
-mit dem Deviatorspannungstensor
-\begin{equation}
-\boldsymbol{s} = \boldsymbol{\sigma} - \frac{1}{3}\operatorname{tr}(\boldsymbol{\sigma}) \boldsymbol{I}
-\end{equation}
-und dem plastischen Multiplikator $\dot{\lambda}$.
-
-Für anisotrope, faserverstärkte Werkstoffe, insbesondere die strukturellen Verstärkungslagen, wird das Tsai-Wu-Kriterium verwendet. Es lautet:
-\begin{equation}
-F_1 \sigma_1 + F_2 \sigma_2 + F_{11} \sigma_1^2 + F_{22} \sigma_2^2
-+ 2F_{12} \sigma_1 \sigma_2 + F_{66} \tau_{12}^2 \geq 1,
+F_1 \sigma_1 + F_2 \sigma_2 + F_{11} \sigma_1^2 + F_{22} \sigma_2^2 + 2F_{12} \sigma_1 \sigma_2 + F_{66} \tau_{12}^2 \geq 1,
 \end{equation}
 wobei $\sigma_1$ und $\sigma_2$ die Normalspannungen in Faserrichtung und quer zur Faserrichtung sowie $\tau_{12}$ die Schubspannung in der Materialebene darstellen. Die Koeffizienten $F_i$ und $F_{ij}$ werden aus den Zug- und Druckfestigkeiten in Faserrichtung ($R^\text{z}_{||}$, $R^\text{d}_{||}$) sowie quer zur Faser ($R^\text{z}_{\bot}$, $R^\text{d}_{\bot}$) und der Schubfestigkeit ($R_{||\bot}$) bestimmt:
 \begin{align}
@@ -150,42 +113,65 @@ F_{66} &= \frac{1}{R_{||\bot}^2}, &
 F_{12} &\approx -\frac{1}{2}\sqrt{F_{11} F_{22}}.
 \end{align}
 
-\subsection{Verknüpfte Sicherheitsrisiken}
+\subsection{Multifunktionale Kritikalitätsbewertung}
+
+Das Kernstück der hier vorgestellten Analyse bildet die Bewertung des Versagens der Multifunktionalität. Im Gegensatz zu konventionellen Strukturen, bei denen lokales Materialversagen primär die Resttragfähigkeit mindert, bedingt ein Defekt in Strukturbatterien stets eine Beeinträchtigung der elektrochemischen Domäne. Um diese Interdependenzen systematisch zu erfassen, wurde im Rahmen dieser Arbeit ein Bewertungsschema entwickelt, das mechanische Schädigungszustände direkt mit funktionalen Konsequenzen korreliert. Die daraus resultierende Kritikalitätsmatrix (siehe Tab.~\ref{tab:failure_modes}) ordnet den Einzelschichten spezifische Gefährdungspotenziale zu.
+
 \input{Abbildungen/03_Modellierung/failure_modes/failure_modes.tex}
 
-Wesentlich kritischer als das lokale Versagen einer einzelnen Schicht ist das damit verbundene Sicherheitsrisiko für die gesamte Strukturbatterie und ihre Umgebung. Ein rein mechanisches Versagen kann, abhängig von der betroffenen Lage, direkte Auswirkungen auf Funktionalität, Sicherheit und Umweltverträglichkeit haben. Tabelle~\ref{tab:failure_modes} gibt einen Überblick über die wichtigsten Versagensarten und deren Konsequenzen.
+Ein Bruch der Pouchfolie führt zur Leckage des Elektrolyten, was durch das Austrocknen der Zelle einen unmittelbaren Funktionsstopp nach sich zieht. Im Gegensatz dazu wird eine Schädigung der Elektrodenlagen primär als Degradation der Kapazität eingestuft. Als kritischster Zustand innerhalb des entwickelten Schemas ist das strukturelle Versagen des Separators definiert: Eine mechanische Perforation ermöglicht den direkten Kontakt der Elektroden, was einen internen Kurzschluss induziert und im Extremfall ein thermisches Durchgehen\footnote{Thermal Runaway} auslösen kann. Diese methodische Einordnung ermöglicht ein sicherheitsorientiertes Design, bei dem kritische Funktionsschichten gezielt in mechanisch neutrale Zonen der Gesamtstruktur verschoben werden können.
 
-Besonders kritisch ist das Versagen des Separators, da dies zu einem internen Kurzschluss mit lokaler Überhitzung und im Extremfall zu thermischem Durchgehen führen kann. Ein Versagen der Pouchfolie kann zum Austreten des Elektrolyten und damit zu Funktionsverlust und Gesundheitsrisiko führen. Ein Versagen der Elektroden führt primär zu Leistungsverlust und verringerter Kapazität.
+\section{\label{sec:validation}Validierung des skalenübergreifenden Modelles}
 
-Im Rahmen der automatisierten Versagensanalyse wird nicht nur ein binärer Schadenszustand (intakt/versagt) bewertet, sondern zusätzlich eine qualitative Risikoklassifikation vorgenommen. Diese erlaubt eine Zuordnung von Simulationsergebnissen zu sicherheitsrelevanten Zuständen und dient als Grundlage für das strukturelle Batterie-Design unter Sicherheitsaspekten.
+Die Validierung des hier vorgestellten mehrskaligen Berechnungsansatzes erfolgt durch den direkten Vergleich mit experimentellen Daten eines Schichtverbunds, der in einer Stapelanordnung vier funktionale Einzelzellen realisiert. Die Herstellung und elektrochemische Charakterisierungder Testzellen erfolgte am Fraunhofer-Institut für Werkstoff- und Strahltechnik (IWS) in Dresden, während die mechanische Untersuchung am Institut für Leichtbau und Kunststofftechnik (ILK) der TU Dresden durchgeführt wurde. Um die Vorhersagegüte der Methodik zu prüfen, wird ein konventionelles Referenzsystem der neu entwickelten Strukturbatterie gegenübergestellt. Die spezifischen Materialzusammensetzungen beider Systeme, extrahiert aus den experimentellen Datensätzen, sind in Tabelle~\ref{tab:material_comp} zusammengefasst.
+\begin{table}[ht]
+    \centering
+    \caption{\label{tab:material_comp}Materialkomposition der Referenz- und Strukturbatterie.}
+    \begin{tabularx}{\textwidth}{lXX}
+    \toprule
+    \textbf{Komponente} & \textbf{Referenzsystem} & \textbf{Strukturbatterie} \\
+    \midrule
+    Anode & Graphit auf Kupferfolie (\SI{14}{\micro\metre}) & Hardcarbon auf PX-35 CF-Gelege inkl. Cu-Primer \\
+    \addlinespace
+    Kathode & NMC622 auf Aluminium (\SI{15}{\micro\metre}) & NMC622 auf Aluminium (\SI{15}{\micro\metre}) \\
+    \addlinespace
+    Separator & Celgard 2400 (PP, \SI{25}{\micro\metre}) & Celgard 2400 (PP, \SI{25}{\micro\metre}) \\
+    \addlinespace
+    Elektrolyt & LP30 (flüssig) & LP30 + \SI{10}{\%} KYNAR FLEX 28 (SBE) \\
+    \addlinespace
+    Gehäuse & Standard Pouchfolie (\SI{111}{\micro\metre}) & Standard Pouchfolie (\SI{111}{\micro\metre}) \\
+    \bottomrule
+    \end{tabularx}
+\end{table}
 
-\section{\label{sec:validation}Validierung der Eigenschaftsvorhersagen}
-Die Validierung der theoretischen Modelle erfolgt durch Vergleich mit experimentellen Daten eines Schichtverbunds aus neun Lagen, der in einer Stapelanordnung vier funktionale Einzelzellen (Anode–Separator–Kathode) realisiert. Als Referenz dient ein System mit Graphitanode auf Kupferfolie, NMC622-Kathode auf Aluminium und Celgard-2400-Separator mit flüssigem LP30-Elektrolyten. Die zu validierende Strukturbatterie basiert auf einem PX-35 Kohlenstofffasergelege mit Kupfer-Primer und Hardcarbon-Beschichtung; die mechanische Integrität wurde durch Modifikation des Elektrolyten mit KYNAR FLEX 28 erhöht.
+Das Referenzsystem repräsentiert den Stand der Technik für Hochenergie-Lithium-Ionen-Zellen. Bei der Strukturbatterie kommt hingegen ein multifunktionaler Ansatz zum Einsatz: Das PX-35 Kohlenstofffasergelege dient gleichzeitig als Stromableiter und mechanisches Verstärkungselement. Die Hardcarbon-Beschichtung der Anode ist speziell auf die Interkalation in Kohlenstofffasern optimiert. Zur Steigerung der mechanischen Integrität (Schubübertragung) wurde der flüssige Elektrolyt durch die Zugabe von KYNAR FLEX 28\footnote{PVDF-HFP-Copolymer} zu einem strukturellen Gelelektrolyten modifiziert.
 
-Die experimentelle Charakterisierung erfolgte mittels elektrochemischer Zyklierungsversuche und 3-Punkt-Biegeversuchen. Die elektrische Prüfung wurde galvanostatisch durchgeführt, die Stromraten wurden schrittweise von $C/100$ bis $2C$ variiert, um Ratenfähigkeit und Energiedichte über bis zu 35 Zyklen zu erfassen. Parallel wurde die mechanische Tragfähigkeit im 3-Punkt-Biegeversuch bestimmt; die Proben wurden mit konstanter Traversengeschwindigkeit belastet, um die resultierende Kraftaufnahme in Abhängigkeit von der Durchbiegung zu dokumentieren.
+Die experimentelle Charakterisierung erfolgte durch eine Kombination aus elektrochemischen Zyklierungsversuchen und 3-Punkt-Biegeversuchen. Die elektrochemische Charakteristik wurde mittels galvanostatischer Entladung bestimmt, wobei die Stromraten stufenweise von $C/100$ bis $2C$ variiert wurden, um die Ratenfähigkeit über 35 Zyklen zu erfassen. Anschließend dazu wurde die mechanische Tragfähigkeit im 3-Punkt-Biegeversuch bei konstanter Traversengeschwindigkeit ermittelt. 
 
 \begin{figure}[!ht]
     \center
     \includegraphics[width=0.8\textwidth, angle=0]{electrical_sim_final.pdf}
-    \caption{\label{fig:electrical_sim_final}Vergleich der experimentellen und simulierten gravimetrischen Energiedichte über 40 Zyklen bei variierenden Entladeraten für Referenz- und Strukturbatterie.}
+    \caption{\label{fig:electrical_sim_final}Vergleich der experimentellen und simulativen Energiedichte über 40 Zyklen bei variierenden Entladeraten.}
 \end{figure}
 
-In Bild~\ref{fig:electrical_sim_final} erreicht die Referenzzelle eine Energiedichte von ca. 75,0 [Wh/kg], während die Strukturbatterie aufgrund zusätzlicher passiver Masse der strukturellen Komponenten etwa 43 [Wh/kg] erreicht. Die simulierten Vorhersagen zeigen gute Übereinstimmung mit den experimentellen Daten über das betrachtete Entladespektrum ($C/10$ bis $2C$).
+In Bild~\ref{fig:electrical_sim_final} wird die elektrochemische Leistungsfähigkeit anhand der gravimetrischen Energiedichte dargestellt. Während die Referenzzelle eine Energiedichte von ca. \SI{75,0}{Wh/kg} erreicht, weist die Strukturbatterie aufgrund der passiven Masse der Verstärkungskomponenten etwa \SI{43}{Wh/kg} auf. Die simulative Vorhersage zeigt eine exzellente Übereinstimmung mit den experimentellen Daten über das gesamte Entladespektrum. Besonders hervorzuheben ist die präzise Abbildung der Ratenfähigkeit, die durch die modellbasierte Berücksichtigung der diffusionsbedingten Limitierungen in den Kohlenstofffasern ermöglicht wird. Diese Ergebnisse bestätigen die Validität des mehrskaligen Ansatzes zur Beschreibung der elektrochemischen Dynamik in Strukturbatterien.
 
 \begin{figure}[!ht]
     \center
-    \includegraphics[width=0.99\textwidth, angle=0]{mech_sim_final.pdf}
-    \caption{\label{fig:mech_sim_final}Kraft-Durchbiegungs-Diagramm: experimentelle Validierung und korrigierte Simulation im 3-Punkt-Biegeversuch.}
+    \includegraphics[width=0.9\textwidth, angle=0]{mech_sim_final.pdf}
+    \caption{\label{fig:mech_sim_final}Kraft-Durchbiegungs-Diagramm der experimentellen Validierung und der korrigierten Simulation.}
 \end{figure}
 
-Die mechanische Validierung (Bild~\ref{fig:mech_sim_final}) zeigt: Die Referenzzelle erreicht eine maximale Kraftaufnahme von ca. 4,5 [N], die Strukturbatterie etwa 9,6 [N]. Geringe Abweichungen im Post-Peak-Bereich der Strukturbatterie lassen sich auf lokal begrenzte Versagensmechanismen im Hardcarbon-Slurry zurückführen, die über die globale Modellierung hinausgehen.
+Die mechanische Validierung im 3-Punkt-Biegeversuch (Bild~\ref{fig:mech_sim_final}) verdeutlicht die signifikante Steigerung der Kraftaufnahme durch den Kohlefaserverbund auf \SI{9,6}{N}. Auffallend ist hierbei, dass eine rein theoretische Vorhersage allein auf Basis von Material-Einzelwerten bei der Strukturbatterie zu deutlichen Abweichungen führt. Im Gegensatz zum Referenzsystem, dessen Herstellungsprozesse am Fraunhofer IWS bereits langjährig erprobt und dessen Materialparameter präzise charakterisiert sind, unterliegt die neuartige Strukturbatterie größeren fertigungsbedingten Toleranzen. 
 
-Zur Optimierung der Übereinstimmung wurde ein gezieltes Parameterfitting durchgeführt: Modellparameter wurden anhand der Messdaten der ersten Zyklen (elektrisch) sowie der linearen Phase der Dehnung (mechanisch) kalibriert. Dadurch können fertigungsbedingte Toleranzen (z. B. Schichtdickenvariationen oder Infiltrationsqualität des Elektrolyten) kompensiert werden.
+Ein deutliches Indiz für diese Hypothese ist der unerwartete Steifigkeitseinbruch bei einer der untersuchten Proben (siehe Bild~\ref{fig:mech_sim_final}), welcher auf stochastische Defekte in der Strukturbatterie hindeutet. Als weitere Ursachen für die Abweichungen zwischen Idealmodell und Experiment wurden Variationen in der Schichtdicke, lokale Infiltrationsunterschiede des versteiften Elektrolyten sowie eine unzureichende Grenzflächenhaftung des Hardcarbon-Slurrys auf dem CF-Gelege identifiziert\footnote{Diese Faktoren erwiesen sich bereits in Vorversuchen der Projektpartner am Fraunhofer IWS und dem ILK der TU Dresden als prozesskritisch.}. 
+
+Um diese Effekte zu kompensieren und eine hochpräzise Abbildung des realen Systems zu ermöglichen, wurde die Simulation durch ein gezieltes Parameterfitting kalibriert. Diese „korrigierte Simulation“ nutzt die Messdaten der ersten Zyklen (elektrochemisch) sowie den linear-elastischen Bereich der ersten Prozent Dehnung (mechanisch) als Stützstellen. Dieser Abgleich ist notwendig, um die Diskrepanz zwischen idealisierter Modellwelt und realem Prototyp zu schließen und bildet die Grundlage für die anschließende Versagensanalyse.
 
 \begin{figure}[!ht]
     \center
     \includegraphics[width=0.69\textwidth, angle=0]{plasticity.pdf}
-    \caption{\label{fig:plasticity}Post-mortem-Analyse nach dem 3-Punkt-Biegeversuch im Vergleich zu simulierten Ergebnissen der plastischen Verformung: a) erste Schicht, b) siebte (mittlere) Schicht, c) fünfzehnte (letzte) Schicht.}
+    \caption{\label{fig:plasticity}Postmortale Analyse der plastischen Verformungszonen im Vergleich zur Simulation.}
 \end{figure}
 
-Die postmortale Analyse zeigt gute Übereinstimmung zwischen experimentell beobachteten Deformationsmechanismen und den modellbasierten Vorhersagen. Plastische Verformungszonen in den einzelnen Schichten lassen sich in Lokalisation und Ausprägung mit den Prognosen korrelieren, was die Tauglichkeit des verwendeten plastischen Materialmodells bestätigt.
+Die postmortale Analyse (Bild~\ref{fig:plasticity}) bestätigt die prognostizierten Deformationsmechanismen. Die Identifikation plastischer Zonen in den Einzelschichten korrespondiert mit den modellbasierten Vorhersagen und untermauert die Gültigkeit des verwendeten mehrskaligen Materialmodells.

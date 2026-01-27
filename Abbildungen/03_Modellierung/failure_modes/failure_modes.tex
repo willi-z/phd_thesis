@@ -1,29 +1,31 @@
 \begin{table}[ht]
     \centering
-    \caption{\label{tab:failure_modes}Übersicht des mit Versagens der Einzelschichten verknüpften Sichheitsrisikos.}
+    \caption{\label{tab:failure_modes}Kritikalität beim Versagen der Einzelschichten einer Batterie im Überblick.}
+    \small
     \begin{tabularx}{\textwidth}{lXXX}
     \toprule
-    &\makecell{Pouchfolienversagen\\\includegraphics[width=0.2\textwidth]{failure_modes/failure_mode_pouch.png}}
-    &\makecell{Elektrodenversagen\\\includegraphics[width=0.2\textwidth]{failure_modes/failure_mode_electrode.png}}
-    &\makecell{Separatorversagen\\\includegraphics[width=0.2\textwidth]{failure_modes/failure_mode_separator.png}}
+    &\makecell[t]{\textbf{Pouchfolien-}\\\textbf{versagen}\\\includegraphics[width=0.24\textwidth]{failure_modes/failure_mode_pouch.png}}
+    &\makecell[t]{\textbf{Elektroden-}\\\textbf{versagen}\\\includegraphics[width=0.24\textwidth]{failure_modes/failure_mode_electrode.png}}
+    &\makecell[t]{\textbf{Separator-}\\\textbf{versagen}\\\includegraphics[width=0.24\textwidth]{failure_modes/failure_mode_separator.png}}
     \\
     \midrule
-    Funktion
-        & Funktionsversagen der gesamten Batterie durch austrocknen
+    \makecell[t]{\textbf{Funktion-}\\\textbf{versagen}}
+        & Versagen gesamten Batterie durch austrocknen
         & Leistungsverlust der Zelle
-        & Funktionsversagen der Zelle, je nach Verschaltung auch der gesamten Batterie
+        & Versagen der Zelle, je nach Verschaltung auch der gesamten Batterie
     \\
-    Brandgefahr
+    \addlinespace
+    \makecell[t]{\textbf{Brandgefahr}}
         & kein Risiko
         & kein Risiko
         & Flammenbildung durch Überhitzung
     \\
-    Gesundheit
+    \addlinespace
+    \makecell[t]{\textbf{Gesundheits-}\\\textbf{risiko}}
         & hohes Risiko durch austretendes Elektrolyt
         & kein Risiko
         & kein zusätzliches Risiko
     \\
     \bottomrule
     \end{tabularx}\\
-    %\noindent{\footnotesize{\textsuperscript{*} Gemessen gegenüber \ce{Li}/\ce{Li+}.}}
-\end{table}%
+\end{table}
