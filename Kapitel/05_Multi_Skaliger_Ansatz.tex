@@ -123,7 +123,7 @@ Ein Bruch der Pouchfolie führt zur Leckage des Elektrolyten, was durch das Aust
 
 \section{\label{sec:validation}Validierung des skalenübergreifenden Modelles}
 
-Die Validierung des hier vorgestellten mehrskaligen Berechnungsansatzes erfolgt durch den direkten Vergleich mit experimentellen Daten eines Schichtverbunds, der in einer Stapelanordnung vier funktionale Einzelzellen realisiert. Die Herstellung und elektrochemische Charakterisierungder Testzellen erfolgte am Fraunhofer-Institut für Werkstoff- und Strahltechnik (IWS) in Dresden, während die mechanische Untersuchung am Institut für Leichtbau und Kunststofftechnik (ILK) der TU Dresden durchgeführt wurde. Um die Vorhersagegüte der Methodik zu prüfen, wird ein konventionelles Referenzsystem der neu entwickelten Strukturbatterie gegenübergestellt. Die spezifischen Materialzusammensetzungen beider Systeme, extrahiert aus den experimentellen Datensätzen, sind in Tabelle~\ref{tab:material_comp} zusammengefasst.
+Die Validierung des hier vorgestellten mehrskaligen Berechnungsansatzes erfolgt durch den direkten Vergleich mit experimentellen Daten\footnote{Die Herstellung und elektrochemische Charakterisierungder Testzellen erfolgte am Fraunhofer-Institut für Werkstoff- und Strahltechnik (IWS) in Dresden, während die mechanische Untersuchung am Institut für Leichtbau und Kunststofftechnik (ILK) der TU Dresden durchgeführt wurde.} eines Schichtverbunds, der in einer Stapelanordnung vier funktionale Einzelzellen realisiert. Um die Vorhersagegüte der Methodik zu prüfen, wird ein konventionelles Referenzsystem der neu entwickelten Strukturbatterie gegenübergestellt. Die spezifischen Materialzusammensetzungen beider Systeme, extrahiert aus den experimentellen Datensätzen, sind in Tabelle~\ref{tab:material_comp} zusammengefasst.
 \begin{table}[ht]
     \centering
     \caption{\label{tab:material_comp}Materialkomposition der Referenz- und Strukturbatterie.}
@@ -158,7 +158,7 @@ In Bild~\ref{fig:electrical_sim_final} wird die elektrochemische Leistungsfähig
 
 \begin{figure}[!ht]
     \center
-    \includegraphics[width=0.9\textwidth, angle=0]{mech_sim_final.pdf}
+    \includegraphics[width=0.8\textwidth, angle=0]{mech_sim_final.pdf}
     \caption{\label{fig:mech_sim_final}Kraft-Durchbiegungs-Diagramm der experimentellen Validierung und der korrigierten Simulation.}
 \end{figure}
 
@@ -166,12 +166,12 @@ Die mechanische Validierung im 3-Punkt-Biegeversuch (Bild~\ref{fig:mech_sim_fina
 
 Ein deutliches Indiz für diese Hypothese ist der unerwartete Steifigkeitseinbruch bei einer der untersuchten Proben (siehe Bild~\ref{fig:mech_sim_final}), welcher auf stochastische Defekte in der Strukturbatterie hindeutet. Als weitere Ursachen für die Abweichungen zwischen Idealmodell und Experiment wurden Variationen in der Schichtdicke, lokale Infiltrationsunterschiede des versteiften Elektrolyten sowie eine unzureichende Grenzflächenhaftung des Hardcarbon-Slurrys auf dem CF-Gelege identifiziert\footnote{Diese Faktoren erwiesen sich bereits in Vorversuchen der Projektpartner am Fraunhofer IWS und dem ILK der TU Dresden als prozesskritisch.}. 
 
-Um diese Effekte zu kompensieren und eine hochpräzise Abbildung des realen Systems zu ermöglichen, wurde die Simulation durch ein gezieltes Parameterfitting kalibriert. Diese „korrigierte Simulation“ nutzt die Messdaten der ersten Zyklen (elektrochemisch) sowie den linear-elastischen Bereich der ersten Prozent Dehnung (mechanisch) als Stützstellen. Dieser Abgleich ist notwendig, um die Diskrepanz zwischen idealisierter Modellwelt und realem Prototyp zu schließen und bildet die Grundlage für die anschließende Versagensanalyse.
-
 \begin{figure}[!ht]
     \center
-    \includegraphics[width=0.69\textwidth, angle=0]{plasticity.pdf}
+    \includegraphics[width=0.64\textwidth, angle=0]{plasticity.pdf}
     \caption{\label{fig:plasticity}Postmortale Analyse der plastischen Verformungszonen im Vergleich zur Simulation.}
 \end{figure}
+
+Um diese Effekte zu kompensieren und eine hochpräzise Abbildung des realen Systems zu ermöglichen, wurde die Simulation durch ein gezieltes Parameterfitting kalibriert. Diese „korrigierte Simulation“ nutzt die Messdaten der ersten Zyklen (elektrochemisch) sowie den linear-elastischen Bereich der ersten Prozent Dehnung (mechanisch) als Stützstellen. Dieser Abgleich ist notwendig, um die Diskrepanz zwischen idealisierter Modellwelt und realem Prototyp zu schließen und bildet die Grundlage für die anschließende Versagensanalyse.
 
 Die postmortale Analyse (Bild~\ref{fig:plasticity}) bestätigt die prognostizierten Deformationsmechanismen. Die Identifikation plastischer Zonen in den Einzelschichten korrespondiert mit den modellbasierten Vorhersagen und untermauert die Gültigkeit des verwendeten mehrskaligen Materialmodells.
