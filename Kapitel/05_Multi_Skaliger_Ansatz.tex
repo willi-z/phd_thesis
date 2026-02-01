@@ -1,10 +1,47 @@
-\chapter{Mehrskalige Berechnungsmethodik für Strukturbatterien}
+\chapter{\label{sec:multi_scale}Mehrskalige Berechnungsmethodik für Strukturbatterien}
 
-Nachdem die theoretischen Grundlagen sowie die Homogenisierung der Struktelektrolyte mittels repräsentativer Volumenelemente bereits etabliert wurden, erfolgt nun die Übertragung dieser Konzepte auf das Gesamtsystem der Strukturbatterie. In der ingenieurwissenschaftlichen Praxis ergibt sich dabei oft die Herausforderung, dass die physikalische Genauigkeit hochdetaillierter Modelle durch einen sehr hohen Bedarf an Material- und Interaktionsparametern erkauft wird. Wenn der Aufwand zur Parameteridentifikation den Zeitrahmen der eigentlichen Bauteilauslegung überschreitet, verliert die Simulation ihren praktischen Nutzen als effizientes Entwicklungswerkzeug.
+Nachdem die theoretischen Grundlagen der Materialmodellierung etabliert wurden, fokussiert dieses Kapitel die praktische Anwendung repräsentativer Volumenelemente (RVE) zur Bestimmung effektiver Materialparameter und deren Übertragung auf das Gesamtsystem. In der ingenieurwissenschaftlichen Praxis ergibt sich dabei oft die Herausforderung, dass die physikalische Genauigkeit hochdetaillierter Modelle durch einen sehr hohen Bedarf an Material- und Interaktionsparametern erkauft wird. Wenn der Aufwand zur Parameteridentifikation den Zeitrahmen der eigentlichen Bauteilauslegung überschreitet, verliert die Simulation ihren praktischen Nutzen als effizientes Entwicklungswerkzeug.
 
 Für eine anwendungsorientierte Simulation ist es daher entscheidend, den Fokus auf die maßgeblichen physikalischen Effekte zu legen und weniger signifikante Kopplungen gezielt zu vernachlässigen. Eine Modellierungsstrategie ist nur dann effektiv, wenn sie mit einer überschaubaren Anzahl an experimentell zugänglichen Parametern auskommt und gleichzeitig eine hohe Recheneffizienz bietet. Dies erlaubt es, die numerische Analyse nicht nur als punktuelle Validierung, sondern als proaktives Werkzeug zur schnellen Bewertung zahlreicher Materialkombinationen einzusetzen.\footnote{Die Reduktion der Modellkomplexität verhindert, dass die Parameteridentifikation zum eigentlichen Flaschenhals im Entwicklungsprozess von multifunktionalen Leichtbaustrukturen wird.}
 
-Die nachfolgende Methodik nutzt die zuvor definierten RVE-Strukturen, um das komplexe Zusammenspiel von Mechanik und Elektrochemie auf Systemebene abzubilden. Dabei steht zunächst die gezielte Entkopplung von Feldgrößen im Vordergrund, die unter realen Lastbedingungen nur geringe Wechselwirkungen zeigen. Zur ganzheitlichen Bewertung der Einsatzfähigkeit wird darüber hinaus ein multifunktionales Versagenskriterium vorgestellt. Dieses ermöglicht eine direkte Verknüpfung des mechanischen Strukturversagens mit dem daraus resultierenden Funktionsverlust, um eine effiziente und praxisnahe Sicherheitsbewertung der Strukturbatterie zu gewährleisten.
+Die im vorangegangenen Abschnitt charakterisierte RVE-Methodik bildet die Basis für die nachfolgende Entkopplungs- und Parallelisierungsstrategie, um das komplexe Zusammenspiel von Mechanik und Elektrochemie auf Systemebene abzubilden. Dabei steht zunächst die gezielte Entkopplung von Feldgrößen im Vordergrund, die unter realen Lastbedingungen nur geringe Wechselwirkungen zeigen. Zur ganzheitlichen Bewertung der Einsatzfähigkeit wird darüber hinaus ein multifunktionales Versagenskriterium vorgestellt. Dieses ermöglicht eine direkte Verknüpfung des mechanischen Strukturversagens mit dem daraus resultierenden Funktionsverlust, um eine effiziente und praxisnahe Sicherheitsbewertung der Strukturbatterie zu gewährleisten.
+
+\section{\label{sec:rve_methodology}Methodik zur Anwendung Repräsentativer Volumenelemente (RVE)}
+
+Die effiziente Simulation von Strukturbatterien erfordert den Brückenschlag zwischen der Mikroskala\footnote{Fasern, Partikel, Matrix} und der Makroskala des Bauteils. Das RVE dient hierbei als zentrale informationstechnische Schnittstelle. Es definiert das kleinste Volumen eines heterogenen Materials, welches die statistisch maßgeblichen Merkmale der Mikrostruktur so präzise abbildet, dass die daraus abgeleiteten Eigenschaften als repräsentativ für das gesamte Kontinuum gelten können.
+
+\subsection{Bestimmung effektiver mechanischer Eigenschaften}
+
+Zur Bestimmung des effektiven Steifigkeitstensors $\boldsymbol{C}_{\text{eff}}$ wird das RVE einer numerischen Homogenisierung unterzogen. Dabei wird auf der Mikroebene ein Randwertproblem gelöst, bei dem makroskopische Dehnungen $\bar{\boldsymbol{\varepsilon}}$ als Randbedingungen aufgeprägt werden. Unter Anwendung der Hill-Mandel-Bedingung\footnote{Die Hill-Mandel-Bedingung besagt, dass die virtuelle Arbeit auf der Makroebene der mittleren virtuellen Arbeit auf der Mikroebene entsprechen muss.}, ergibt sich die effektive Spannung $\bar{\boldsymbol{\sigma}}$ durch Volumenmittelung~\cite{Hill1963,Mandel1971}:
+\begin{equation}
+    \bar{\boldsymbol{\sigma}} = \frac{1}{V_{RVE}} \int_{V_{RVE}} \boldsymbol{\sigma}(x, y, z) \, dV.
+\end{equation}
+
+
+
+Durch systematische Variation der Belastungszustände im RVE-Modell wird die vollständige Konstitutivmatrix\footnote{Die Konstitutivmatrix (auch Materialsteifigkeitsmatrix) verknüpft im verallgemeinerten Hookeschen Gesetz die Spannungs- und Dehnungstensoren. Sie enthält die richtungsabhängigen Materialkennwerte und beschreibt somit das grundlegende physikalische Antwortverhalten des Werkstoffs auf äußere Lasten.} identifiziert. Besonders kritisch ist hierbei die Abbildung der Grenzflächenschubspannung zwischen Kohlenstofffaser und dem strukturellen Gelelektrolyten, da diese die globale Biegesteifigkeit maßgeblich beeinflusst. Die RVE-Methodik bietet zudem das Potenzial, zukünftige Untersuchungen zu stochastischen Fehlstellen\footnote{Beispielsweise Poren, lokale Faserfehlorientierungen oder Delaminationen auf Mikroebene.} ohne Änderung des globalen Modellrahmens zu integrieren, auch wenn diese in der vorliegenden Arbeit noch nicht explizit quantifiziert werden.
+
+\subsection{Homogenisierung elektrochemischer Transportparameter}
+
+Analog zur Mechanik werden für die elektrochemische Domäne effektive Transportkoeffizienten bestimmt. Der effektive Diffusionskoeffizient $D_{\text{eff}}$ und die ionische Leitfähigkeit $\kappa_{\text{eff}}$ hängen stark von der Tortuosität $\tau$ und dem Volumenanteil $\phi$ der leitfähigen Phase ab. Im RVE wird dies über die Lösung des stationären Diffusionsproblems bei vorgegebener Konzentrationsdifferenz $\Delta c$ realisiert:
+\begin{equation}
+    \boldsymbol{j}_{\text{eff}} = -D_{\text{eff}} \nabla \bar{c} = \frac{1}{V_{RVE}} \int_{V_{RVE}} \boldsymbol{j}(x, y, z) \, dV.
+\end{equation}
+Hierbei zeigt sich der Vorteil der RVE-Methodik: Komplexe geometrische Hindernisse für den Ionenfluss werden in einem einzigen anisotropen Tensor zusammengefasst. Dies reduziert die Rechenlast auf Systemebene massiv, da dort keine feine Auflösung der Faserzwischenräume mehr erforderlich ist.
+
+\subsection{Implementierung mittels FEniCSx und Blockelementen}
+
+Die numerische Umsetzung der RVE-Analysen erfolgt in dieser Arbeit unter Verwendung der Open-Source-Plattform \textsc{FEniCSx}~\cite{LoggEtAl2012}. Zur Steigerung der Automatisierbarkeit wird eine Strategie gewählt, die auf sehr feinen, regulären Blockelementen basiert. Anstatt das Netz aufwendig an die komplexen Fasergeometrien anzupassen\footnote{Remeshing}, wird ein hochaufgelöstes Ausgangsmesh verwendet, bei dem jedem Element\footnote{Voxel} über eine Integrationspunkt-Zuweisung die entsprechenden Materialeigenschaften der jeweiligen Phase\footnote{Faser, Matrix oder Coating} zugeordnet werden.
+
+Dieser Ansatz ermöglicht eine robuste Skalierung des Homogenisierungsprozesses. Durch den Verzicht auf geometrisches Remeshing können Variationen der Mikrostruktur — etwa die Verschiebung von Fasern oder die Änderung von Volumenanteilen — rein algorithmisch durch eine Neuzuweisung der Materialparameter im bestehenden Mesh realisiert werden. Dies ist insbesondere für die Generierung großer Datensätze im Rahmen der nachfolgenden Metamodellierung vorteilhaft.
+
+\subsection{Vorbestimmung und Metamodellierung}
+
+Um eine rechenintensive Online-Kopplung zu vermeiden\footnote{Full-Scale Multi-Level FE oder FE²-Ansätze}, wird eine Strategie der Vorbestimmung (Pre-processing) verfolgt~\cite{ZohdiWriggers2005, Geers2008}. Die effektiven Eigenschaften werden für einen definierten Parameterraum der Mikrostruktur — beispielsweise variierende Faser-Volumenanteile oder unterschiedliche Lithiierungsgrade — vorab berechnet. Die resultierenden Datenpunkte werden in multidimensionalen Look-up Tables oder mittels analytischer Metamodelle hinterlegt. Während der globalen Bauteilsimulation greift der Solver lediglich auf diese vorkalkulierten Werte zu. Dieser Ansatz ermöglicht es, auch nichtlineare Effekte effizient zu berücksichtigen:
+\begin{equation}
+    \kappa_{\text{eff}} = f(\bar{\boldsymbol{\varepsilon}}, SOC, T).
+\end{equation}
+
 
 \section{\label{sec:reduction_and_parallelization}Entkopplung und Parallelisierungsstrategie zur Reduktion des Simulationsaufwandes}
 
