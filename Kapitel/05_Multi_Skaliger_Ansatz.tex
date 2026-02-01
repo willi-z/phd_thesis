@@ -28,7 +28,7 @@ Die Folien-Pouchbauform wird dahingehend abstrahiert, dass die Siegelstellen des
     \caption{\label{fig:simulation_electro_chem}Reduzierung des Berechnugnsaufwandes der elektro-chemischen Simulation durch Verwenung eines Single-Particle-Models.}
 \end{figure}
 
-Analog hierzu wird für die elektrochemische Simulation ein Single-Partikel-Modell verwendet~\cite{Moura2017}. Jeder Zellstapel wird als Kombination reduzierter Ersatzschaltungen repräsentiert, siehe Bild~\ref{fig:simulation_electro_chem}. Als Basis dienen die Transportgleichungen innerhalb der Domänen $\Omega$ für Anode ($-$), Kathode ($+$) und Separator ($\text{sep}$):
+Analog hierzu wird für die elektrochemische Simulation ein Single-Partikel-Modell verwendet~\cite{Moura2017,zschiebsch2023pitfalls_acm}. Jeder Zellstapel wird als Kombination reduzierter Ersatzschaltungen repräsentiert, siehe Bild~\ref{fig:simulation_electro_chem}. Als Basis dienen die Transportgleichungen innerhalb der Domänen $\Omega$ für Anode ($-$), Kathode ($+$) und Separator ($\text{sep}$):
 \begin{equation}
     \frac{\partial c_{e,j}}{\partial t} = \frac{\partial}{\partial x}\left[\frac{D_{\text{e}}^{\text{eff}}(c_{e,j})}{\psi_{e,j}} \frac{\partial c_{e,j}}{\partial x} (x,t)\right]-\text{sign}(j)\frac{1-t_+^0}{\psi_{e,j} F_{\text{K}} L_j} I(t).
 \end{equation}
@@ -115,7 +115,7 @@ F_{12} &\approx -\frac{1}{2}\sqrt{F_{11} F_{22}}.
 
 \subsection{Multifunktionale Kritikalitätsbewertung}
 
-Das Kernstück der hier vorgestellten Analyse bildet die Bewertung des Versagens der Multifunktionalität. Im Gegensatz zu konventionellen Strukturen, bei denen lokales Materialversagen primär die Resttragfähigkeit mindert, bedingt ein Defekt in Strukturbatterien stets eine Beeinträchtigung der elektrochemischen Domäne. Um diese Interdependenzen systematisch zu erfassen, wurde im Rahmen dieser Arbeit ein Bewertungsschema entwickelt, das mechanische Schädigungszustände direkt mit funktionalen Konsequenzen korreliert. Die daraus resultierende Kritikalitätsmatrix (siehe Tab.~\ref{tab:failure_modes}) ordnet den Einzelschichten spezifische Gefährdungspotenziale zu.
+Das Kernstück der hier vorgestellten Analyse bildet die Bewertung des Versagens der Multifunktionalität. Im Gegensatz zu konventionellen Strukturen, bei denen lokales Materialversagen primär die Resttragfähigkeit mindert~\cite{boehm2010,boehm20215,boehm2020}, bedingt ein Defekt in Strukturbatterien stets eine Beeinträchtigung der elektrochemischen Domäne. Um diese Interdependenzen systematisch zu erfassen, wurde im Rahmen dieser Arbeit ein Bewertungsschema entwickelt, das mechanische Schädigungszustände direkt mit funktionalen Konsequenzen korreliert. Die daraus resultierende Kritikalitätsmatrix (siehe Tab.~\ref{tab:failure_modes}) ordnet den Einzelschichten spezifische Gefährdungspotenziale zu.
 
 \input{Abbildungen/03_Modellierung/failure_modes/failure_modes.tex}
 
@@ -162,7 +162,7 @@ In Bild~\ref{fig:electrical_sim_final} wird die elektrochemische Leistungsfähig
     \caption{\label{fig:mech_sim_final}Kraft-Durchbiegungs-Diagramm der experimentellen Validierung und der korrigierten Simulation.}
 \end{figure}
 
-Die mechanische Validierung im 3-Punkt-Biegeversuch (Bild~\ref{fig:mech_sim_final}) verdeutlicht die signifikante Steigerung der Kraftaufnahme durch den Kohlefaserverbund auf \SI{9,6}{N}. Auffallend ist hierbei, dass eine rein theoretische Vorhersage allein auf Basis von Material-Einzelwerten bei der Strukturbatterie zu deutlichen Abweichungen führt. Im Gegensatz zum Referenzsystem, dessen Herstellungsprozesse am Fraunhofer IWS bereits langjährig erprobt und dessen Materialparameter präzise charakterisiert sind, unterliegt die neuartige Strukturbatterie größeren fertigungsbedingten Toleranzen. 
+Die mechanische Validierung im 3-Punkt-Biegeversuch (Bild~\ref{fig:mech_sim_final}) verdeutlicht die signifikante Steigerung der Kraftaufnahme durch den Kohlefaserverbund auf \SI{9,6}{N}. Auffallend ist hierbei, dass eine rein theoretische Vorhersage allein auf Basis von Material-Einzelwerten bei der Strukturbatterie zu deutlichen Abweichungen führt. Im Gegensatz zum Referenzsystem, dessen Herstellungsprozesse am Fraunhofer IWS bereits langjährig erprobt und dessen Materialparameter präzise charakterisiert sind, unterliegt die neuartige Strukturbatterie größeren fertigungsbedingten Toleranzen~\cite{kuehn2024concepts}. 
 
 Ein deutliches Indiz für diese Hypothese ist der unerwartete Steifigkeitseinbruch bei einer der untersuchten Proben (siehe Bild~\ref{fig:mech_sim_final}), welcher auf stochastische Defekte in der Strukturbatterie hindeutet. Als weitere Ursachen für die Abweichungen zwischen Idealmodell und Experiment wurden Variationen in der Schichtdicke, lokale Infiltrationsunterschiede des versteiften Elektrolyten sowie eine unzureichende Grenzflächenhaftung des Hardcarbon-Slurrys auf dem CF-Gelege identifiziert\footnote{Diese Faktoren erwiesen sich bereits in Vorversuchen der Projektpartner am Fraunhofer IWS und dem ILK der TU Dresden als prozesskritisch.}. 
 
