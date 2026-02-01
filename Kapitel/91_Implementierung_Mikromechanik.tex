@@ -1,7 +1,7 @@
-\chapter{Erweiterte Beschreibung der numerischen Implementierung in FEniCSx/Dolfinx}
+\chapter{Erweiterte Beschreibung der numerischen Implementierung in FEniCSx}
 \label{app:fem_implementation}
 
-Die numerische Umsetzung der mikroskaligen Modelle erfolgt vollständig in FEniCSx/Dolfinx und nutzt dessen moderne UFL-Syntax sowie die PETSc-basierten linearen und nichtlinearen Löser. Die Implementierung ist in zwei logisch getrennte Simulationsschritte gegliedert: (i) die Erzeugung eines realistischen Zweiphasenfeldes mittels der Cahn-Hilliard-Gleichung und (ii) die anschließende monolithische Lösung des elektrochemisch-thermomechanischen Strukturbatteriemodells.
+Die numerische Umsetzung der mikroskaligen Modelle erfolgt vollständig in \texttt{FEniCSx} und nutzt dessen moderne UFL-Syntax sowie die PETSc-basierten linearen und nichtlinearen Löser. Die Implementierung ist in zwei logisch getrennte Simulationsschritte gegliedert: (i) die Erzeugung eines realistischen Zweiphasenfeldes mittels der Cahn-Hilliard-Gleichung und (ii) die anschließende monolithische Lösung des elektrochemisch-thermomechanischen Strukturbatteriemodells.
 
 \section{Cahn-Hilliard-Preprocessing}
 

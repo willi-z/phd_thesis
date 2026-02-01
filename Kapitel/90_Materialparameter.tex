@@ -1,0 +1,28 @@
+\chapter{\label{tab:materialparameter}Materialparameterübersicht}
+\begin{table}[!ht]
+    \small
+    \centering
+    %\caption{\label{tab:materialparameter}Materialparameterübersicht.}
+    \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+    \begin{tabularx}{\textwidth}{@{}llYl@{}}
+    \toprule
+    \textbf{Symbol} & \textbf{Parameter} & \textbf{Einzelwerte (Isotrop / Anisotrop)} & \textbf{Einheit} \\ \midrule
+    $E$ & Elastizitätsmodul & \textbf{Isotrop:} $E$ \newline \textbf{Anisotrop:} $E_1, E_2, E_3$ & $\si{\pascal}$ \\ \addlinespace
+    $G$ & Schubmodul & \textbf{Isotrop:} $G$ \newline \textbf{Anisotrop:} $G_{12}, G_{23}, G_{31}$ & $\si{\pascal}$ \\ \addlinespace
+    $\nu$ & Poissonzahl & \textbf{Isotrop:} $\nu$ \newline \textbf{Anisotrop:} $\nu_{12}, \nu_{21}, \nu_{23}$ & $-$ \\ \addlinespace
+    $R$ & Festigkeitswert & \textbf{Isotrop:} $R_m, R_e$ \newline \textbf{Anisotrop:} $R_{t,\|}, R_{c,\|}, R_{t,\perp}, R_{c,\perp}, R_{\tau}$ & $\si{\pascal}$ \\ \addlinespace
+    $H$ & Verfestigungsmodul & \textbf{Isotrop:} $H$ & $\si{\pascal}$ \\ \addlinespace
+    $k$ & Wärmeleitfähigkeit & \textbf{Isotrop:} $k$ \newline \textbf{Anisotrop:} $k_{11}, k_{22}, k_{33}$ & $\si{\watt\per\metre\per\kelvin}$ \\ \addlinespace
+    $\kappa$ & Elektr. Leitfähigkeit & \textbf{Isotrop:} $\kappa$ \newline \textbf{Anisotrop:} $\kappa_{11}, \kappa_{22}, \kappa_{33}$ & $\si{\siemens\per\metre}$ \\ \addlinespace
+    $\gamma$ & Ionische Leitfähigkeit & \textbf{Isotrop:} $\gamma$ \newline \textbf{Anisotrop:} $\gamma_{11}, \gamma_{22}, \gamma_{33}$ & $\si{\siemens\per\metre}$ \\ \addlinespace
+    $\boldsymbol{\alpha}_\text{therm}$ & Therm. Ausdehnungstensor & \textbf{Isotrop:} $\alpha_\text{therm}$ \newline \textbf{Anisotrop:} $\alpha_{\text{therm},1}, \alpha_{\text{therm},2}, \alpha_{\text{therm},3}$ & $\si{\per\kelvin}$ \\ \addlinespace
+    $\boldsymbol{\alpha}_\text{chem}$ & Chem. Ausdehnungstensor & \textbf{Isotrop:} $\alpha_\text{chem}$ \newline \textbf{Anisotrop:} $\alpha_{\text{chem},1}, \alpha_{\text{chem},2}, \alpha_{\text{chem},3}$ & $\si{\per\kelvin}$ \\ \addlinespace
+    $c_{\text{max}}$ & Max. Li-Konzentration & \textbf{Isotrop:} $c_{\text{s,max}}$ (Maximale Kapazität an speicherbaren Ionen) & $\si{\mole\per\metre\cubed}$ \\ \addlinespace
+    $D$ & Diffusionskoeffizient & \textbf{Isotrop:} $D$ \newline \textbf{Anisotrop:} $D_{ij}$ & $\si{\metre\squared\per\second}$ \\ \addlinespace
+    $U$ & Elektr. Potenzial & \textbf{Isotrop:} $U$ (vs. Referenz), $U_{\text{OCP}}$ (Open Circuit Potential) & $\si{\volt}$ \\ \addlinespace
+    $\rho$ & Dichte & Einheitswert (Skalar) & $\si{\kilo\gram\per\metre\cubed}$ \\ \addlinespace
+    %$\tau$ & Tortuosität & Richtungsfaktoren: $\tau_x, \tau_y, \tau_z$ & $-$ \\ \addlinespace
+    $f_{\pm}$ & Aktivitätskoeffizient & Wechselwirkungsparameter & $-$ \\ \addlinespace
+    $t^0_+$ & Überführungszahl & Transportspezifisch & $-$ \\ \bottomrule
+    \end{tabularx}
+\end{table}
