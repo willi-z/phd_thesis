@@ -2,7 +2,7 @@
 
 pkgs.mkShell {
   buildInputs = [
-    pkgs.jabref
+    # pkgs.jabref
     
     (pkgs.texlive.combine {
       inherit (pkgs.texlive)
