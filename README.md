@@ -42,7 +42,7 @@
     - Batterieauslegung
     - derzeitige Defizite
         - Fragen und Probleme im Zusammenhang Leichtbau beschreiben
-        - Multifunktionale Performanz
+        - Multifunktionale Performance
 3. Beschreibung der gekoppelten mechanischen-elektrochemischen Eigenschaften von Strukturbatterien (25 Seiten)
     - Batteriechemie
     - Mechanik

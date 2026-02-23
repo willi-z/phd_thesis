@@ -31,7 +31,7 @@ mischer Eigenschaften von Strukturbatterien
     5.2 Messtechnik und Probekörper
     5.3 Vorversuche
     5.4 Verhalten unter Biegebelastung
-    5.5 Bestimmung der elektrochemischen Performanz
+    5.5 Bestimmung der elektrochemischen Performance
 
 6 Vergleich experimenteller und simulativer Ergebnisse
     6.1 Validierung der Eigenschaftsvorhersagen
