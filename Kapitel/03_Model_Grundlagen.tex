@@ -1,4 +1,4 @@
-\chapter{\label{sec:modelling_SB}Grundlagen und Herleitung mikroskaliger Modellgleichungen für Strukturbatterien}
+\chapter{\label{sec:modelling_SB}Mikroskalige Modellgleichungen für Strukturbatterien}
 
 Die Entwicklung einer belastungsgerechten, multiphysikalischen Auslegungsmethodik für Strukturbatterien erfordert ein präzises Verständnis der maßgeblichen mikroskaligen Prozesse. Den theoretischen Rahmen bilden die mikroskaligen Modellgleichungen, welche das elektrochemische, thermische und mechanische Verhalten der Funktionsmaterialien beschreiben. 
 Da eine direkte Auflösung der Mikroskala numerisch nicht praktikabel ist, erfolgt mittels Homogenisierungsverfahren zunächst die Überführung in eine makroskopische Kontinuumsbeschreibung. Auf dieser Basis lassen sich gezielte geometrische Vereinfachungen ableiten, die die Komplexität der ursprünglichen Mikrostruktur reduzieren und recheneffiziente, skalenübergreifende Modellierungsansätze ermöglichen.
@@ -14,7 +14,7 @@ Der Ionentransport stellt den dominierenden Prozess auf der Mikroskala dar~\cite
 \begin{enumerate}
     \item \textbf{Ladungserhalt im Festkörper}
     \begin{equation}
-        \nabla \cdot \boldsymbol{i}_{\text{s}} = \nabla \cdot \left( - \sigma \nabla U_{\text{s}} \right) = 0
+        \nabla \cdot \boldsymbol{i}_{\text{s}} = \nabla \cdot \left( - \kappa \nabla U_{\text{s}} \right) = 0
     \end{equation}
 
     \item \textbf{Massenerhalt im Festkörper}
@@ -40,7 +40,7 @@ Der Ionentransport stellt den dominierenden Prozess auf der Mikroskala dar~\cite
     \end{align}
 \end{enumerate}
 
-Die Parameter umfassen unter anderem die Stromdichte $\boldsymbol{i}$, die elektrische Leitfähigkeit $\sigma$, das elektrische Potenzial $U$, die Konzentration der Ladungsträger $c$, den Diffusionskoeffizienten $D$, die Hittorfsche Überführungszahl $t_+^0$, die Faraday-Konstante $F_{\text{K}}$, die Elektrolytgeschwindigkeit $\boldsymbol{v}_0$, die ionische Leitfähigkeit $\gamma$, der asymmetrische Ladungstransferkoeffizient $\alpha$ die ideale Gaskonstante $R_{\text{K}}$, die Temperatur $T$ sowie den Aktivitätskoeffizienten $f_{\pm}$.
+Die Parameter umfassen unter anderem die Stromdichte $\boldsymbol{i}$, die elektrische Leitfähigkeit $\kappa$, das elektrische Potenzial $U$, die Konzentration der Ladungsträger $c$, den Diffusionskoeffizienten $D$, die Hittorfsche Überführungszahl $t_+^0$, die Faraday-Konstante $F_{\text{K}}$, die Elektrolytgeschwindigkeit $\boldsymbol{v}_0$, die ionische Leitfähigkeit $\gamma$, der asymmetrische Ladungstransferkoeffizient $\alpha$ die ideale Gaskonstante $R_{\text{K}}$, die Temperatur $T$ sowie den Aktivitätskoeffizienten $f_{\pm}$.
 
 \subsection{Thermische und mechanische Kopplung}
 
@@ -59,12 +59,12 @@ Für kleine Deformationen und homogene Werkstoffe gilt das lineare elastische Ma
     \boldsymbol{\sigma} = \boldsymbol{C}\,\boldsymbol{\varepsilon}_{\text{mech}}.
 \end{equation}
 
-Der Elastizitätstensor $\boldsymbol{C}$ wird je nach Materialklasse isotrop, transversal-isotrop oder orthotrop formuliert. Für interkalationsaktive Materialien zeigen Untersuchungen von \textsc{Duan}~\cite{Duan2021}, dass die Elastizitätsmodule $E_i$ linear von der Ionenkonzentration abhängen:
+Der Elastizitätstensor $\boldsymbol{C}$ wird je nach Materialklasse isotrop, transversal-isotrop oder orthotrop formuliert. Für interkalationsaktive Materialien zeigen Untersuchungen von \textsc{Duan}~\cite{Duan2021}, dass die Elastizitätsmoduli $E_i$ linear von der Ionenkonzentration abhängen:
 \begin{equation}
     E_i(c_s) = E_{i,0} + \frac{c_s}{c_{s,1}}(E_{i,1} - E_{i,0}).
 \end{equation}
 
-Die Gesamtdehnung setzt sich aus mechanischen, thermischen und elektrochemischen Anteilen zusammen:
+Die Gesamtdehnung an einem Punkt setzt sich aus mechanischen, thermischen und elektrochemischen Anteilen zusammen:
 \begin{equation}
     \boldsymbol{\varepsilon} = \boldsymbol{\varepsilon}_{\text{mech}} + \boldsymbol{\varepsilon}_{\text{th}} + \boldsymbol{\varepsilon}_{\text{echem}},
 \end{equation}
@@ -75,7 +75,7 @@ wobei die Dehnung aus dem Verschiebungsfeld $u$ folgt:
 
 \subsection{Phasenseparation und Mikrostrukturabbildung}
 
-Für eine realitätsnahe Abbildung des Zweiphasen-Elektrolyten wird die Mikrostruktur mittels der \textsc{Cahn-Hilliard}-Gleichung generiert~\cite{Carolan2015,Grant1993}. Diese beschreibt die zeitliche Entwicklung einer Konzentrationsverteilung $c(\boldsymbol{x})$, aus der feste und flüssige Domänen abgeleitet werden:
+Für eine realitätsnahe Abbildung des Zweiphasen-Elektrolyten wird die Mikrostruktur mittels der \textsc{Cahn-Hilliard}-Gleichung generiert~\cite{Carolan2015,Grant1993}. Diese beschreibt die zeitliche Entwicklung einer Konzentrationsverteilung $c(\boldsymbol{x})$, aus der feste und flüssige Phasen abgeleitet werden:
 \begin{align}
     \frac{\partial c}{\partial t} - \nabla \cdot M \left( \nabla \left( \frac{df}{dc} - \lambda \nabla^2 c\right) \right) &= 0,\\
     M\left( \nabla \left( \frac{df}{dc} - \lambda \nabla^2 c \right)\right) \cdot \boldsymbol{n} &= 0.
