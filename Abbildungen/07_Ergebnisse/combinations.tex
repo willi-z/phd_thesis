@@ -1,10 +1,11 @@
 \begin{table}[!ht]
     \centering
-    \caption{\label{tab:combinations}Materialzusammensetzung und Kennwerte von getesteten und identifizierten vielversprechenden Batterievarianten.}
+    \caption{\label{tab:combinations}Materialzusammensetzung und Kennwerte von getesteten und identifizierten vielversprechenden Strukturbatterievarianten.}
     \footnotesize
     \setlength{\tabcolsep}{2pt} 
-    \begin{tabularx}{\textwidth}{l >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X c c c c}
+    \begin{tabularx}{\textwidth}{c l >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X c c c c}
         \toprule
+        &
         \textbf{Name} & 
         \textbf{Anode} & 
         \textbf{Kathode} &
@@ -15,79 +16,82 @@
         \makecell{\textbf{Biege-}\\\textbf{steifigkeit}\\ \textbf{[\unit{\mega\pascal}]}} & 
         \makecell{\textbf{Zug-}\\\textbf{steifigkeit}\\ \textbf{[\unit{\giga\pascal}]}} \\
         \midrule
-        \textbf{ElViS}
-            & PX-35 Gewebe, \ce{Cu}-Primer, Hardcarbon
+        \multirow{8}{*}{\rotatebox{90}{\textbf{getestet}}}
+        &\textbf{ElViS}
+            & PX-35 Gewebe\textsuperscript{1}, \ce{Cu}-Primer, Hardcarbon
             & 2x \ce{NMC622}, \ce{Al}
             & Celgard 2400 (PP)
             & LP30 + KYNAR
             & \ce{Al}
-            & 43 & 152 & 13\textsuperscript{*} \\
+            & 43 & 152 & 13 \\
         \addlinespace
-        \makecell[tl]{\textbf{Li-Ionen-}\\\textbf{Batterie}}
+        &\makecell[tl]{\textbf{Li-Ionen-}\\\textbf{Batterie}}
             & 2x Graphit, \ce{Cu}
             & 2x \ce{NMC622}, \ce{Al}
             & Celgard 2400 (PP)
             & LP30
             & \ce{Al}
-            & 75 & 47 & 4\textsuperscript{*} \\
-        \addlinespace
-        \textbf{A}
+            & 75 & 47 & 4 \\
+        \midrule
+        \multirow{29}{*}{\rotatebox{90}{\textbf{berechnet}}}
+        &\textbf{A}
             & Graphit/ Faser/ Cellulose
-            & T300-Gewebe, \ce{Li2S_{n}}-Katholyt
-            & GF-Gewebe
+            & T300-Gewebe\textsuperscript{1}, \ce{Li2S_{n}}-Katholyt
+            & GF-Gewebe\textsuperscript{1}
             & PEO
-            & T300-Lam.
-            & 9\textsuperscript{*} & 287\textsuperscript{*} & 56\textsuperscript{*} \\
+            & T300-Lam.\textsuperscript{1}
+            & 9 & 287 & 56 \\
         \addlinespace
-        \textbf{B}
-            & T300-Faser, \ce{Li}-Metall
-            & T300-Gewebe, \ce{Li2S_{n}}-Katholyt
-            & GF-Gewebe
+        &\textbf{B}
+            & T300-Faser\textsuperscript{2}, \ce{Li}-Metall
+            & T300-Gewebe\textsuperscript{1}, \ce{Li2S_{n}}-Katholyt
+            & GF-Gewebe\textsuperscript{1}
             & \ce{LiPF6} in \ce{DMC}:\ce{EC}
-            & T300-Lam.
-            & 70\textsuperscript{*} & 272\textsuperscript{*} & 25\textsuperscript{*} \\
+            & T300-Lam.\textsuperscript{1}
+            & 70 & 272 & 25 \\
         \addlinespace
-        \textbf{C}
+        &\textbf{C}
             & IWS \ce{Li}-Metall
             & \ce{NMC} auf \ce{Al} (doppelt)
-            & Whatman GF/C
+            & What"=man GF/C\textsuperscript{1}
             & \ce{LiClO4}, \ce{EC}/\ce{PC}, \ce{PAN}
-            & CF-PEAK
-            & 106\textsuperscript{*} & 104\textsuperscript{*} & 11\textsuperscript{*} \\
+            & CF-PEEK
+            & 106 & 104 & 11 \\
         \addlinespace
-        \textbf{D}
+        &\textbf{D}
             & IWS \ce{Li}-Metall
             & IWS Slurry E-CS-1591
-            & Whatman GF/C
+            & What"=man GF/C\textsuperscript{1}
             & \ce{LiPF6} in \ce{DMC}:\ce{EC}
             & \ce{Al}
-            & 165\textsuperscript{*} & 3\textsuperscript{*} & 0,4\textsuperscript{*} \\
+            & 165 & 3 & 0,4 \\
         \addlinespace
-        \textbf{E}
-            & Graphit/ Faser/ Cellulose
-            & T300-Gewebe, \ce{Li2S_{n}}-Katholyt
-            & GF-Gewebe
+        &\textbf{E}
+            & Graphit/ Faser/ Cellulose\textsuperscript{2}
+            & T300-Gewebe\textsuperscript{1}, \ce{Li2S_{n}}-Katholyt
+            & GF-Gewebe\textsuperscript{1}
             & \ce{LiDFOB}/ \ce{LiBF4} in PVDF-HFP
-            & T300-Lam.
-            & 39\textsuperscript{*} & 224\textsuperscript{*} & 54\textsuperscript{*} \\
+            & T300-Lam.\textsuperscript{1}
+            & 39 & 224 & 54 \\
         \addlinespace
-        \textbf{F}
-            & T300-Faser, \ce{Li}-Metall
-            & T300-Gewebe, \ce{Li2S_{n}}-Katholyt
-            & GF-Gewebe
+        &\textbf{F}
+            & T300-Faser\textsuperscript{2}, \ce{Li}-Metall
+            & T300-Gewebe\textsuperscript{1}, \ce{Li2S_{n}}-Katholyt
+            & GF-Gewebe\textsuperscript{1}
             & LP30 + Additive
             & \ce{Al}
-            & 73\textsuperscript{*} & 252\textsuperscript{*} & 29\textsuperscript{*} \\
+            & 73 & 252 & 29 \\
         \addlinespace
-        \textbf{G}
-            & T300-Faser, \ce{Li}-Metall
+        &\textbf{G}
+            & T300-Faser\textsuperscript{2}, \ce{Li}-Metall
             & IWS Slurry E-CS-1591
-            & Whatman GF/C
+            & What"=man GF/C\textsuperscript{1}
             & \ce{LiPF6} in \ce{DMC}:\ce{EC}
             & \ce{Al}
-            & 121\textsuperscript{*} & 12\textsuperscript{*} & 13,5\textsuperscript{*} \\
+            & 121 & 12 & 13,5 \\
         \bottomrule
     \end{tabularx}
     \raggedright
-    \noindent{\footnotesize{\textsuperscript{*} berechneter Wert.}}
+    \noindent{\footnotesize{\textsuperscript{1} [0/90]\textsubscript{S}}}\\
+    \noindent{\footnotesize{\textsuperscript{2} 0°-Orientierung}}
 \end{table}
