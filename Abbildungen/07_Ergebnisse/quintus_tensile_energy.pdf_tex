@@ -1,0 +1,120 @@
+%% Creator: Inkscape 1.4.2 (ebf0e940d0, 2025-05-08), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'quintus_tensile_energy.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{610.61988831bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.9852168)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{quintus_tensile_energy.pdf}}%
+    \put(0.60802648,0.49514105){\color[rgb]{0,0.28627451,0.1254902}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Multifunktionali-}\end{tabular}}}}%
+    \put(0.60802649,0.47057585){\color[rgb]{0,0.28627451,0.1254902}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{tätsbereich}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{quintus_tensile_energy.pdf}}%
+    \put(0.07496163,0.04928266){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{quintus_tensile_energy.pdf}}%
+    \put(0.07496163,0.2015869){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}10,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{quintus_tensile_energy.pdf}}%
+    \put(0.07496163,0.35389115){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}20,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{quintus_tensile_energy.pdf}}%
+    \put(0.07496163,0.50742365){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}30,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{quintus_tensile_energy.pdf}}%
+    \put(0.07496163,0.65972789){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}40,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{quintus_tensile_energy.pdf}}%
+    \put(0.07496163,0.81203214){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}50,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{quintus_tensile_energy.pdf}}%
+    \put(0.07496163,0.96556464){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}60,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{quintus_tensile_energy.pdf}}%
+    \put(0.08724423,0.02840224){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{quintus_tensile_energy.pdf}}%
+    \put(0.18673329,0.02840224){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}20,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{quintus_tensile_energy.pdf}}%
+    \put(0.28622236,0.02840224){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}40,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{quintus_tensile_energy.pdf}}%
+    \put(0.38571142,0.02840224){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}60,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{quintus_tensile_energy.pdf}}%
+    \put(0.48520048,0.02840224){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}80,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{quintus_tensile_energy.pdf}}%
+    \put(0.58468954,0.02840224){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}100,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{quintus_tensile_energy.pdf}}%
+    \put(0.68417861,0.02840224){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}120,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{quintus_tensile_energy.pdf}}%
+    \put(0.78366767,0.02840224){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}140,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{quintus_tensile_energy.pdf}}%
+    \put(0.88315673,0.02840224){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}160,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{quintus_tensile_energy.pdf}}%
+    \put(0.98264579,0.02840224){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}180,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=19]{quintus_tensile_energy.pdf}}%
+    \put(0.72962423,0.9372552){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\texttt{Quintus}\end{tabular}}}}%
+    \put(0.72962423,0.90292338){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Asp et al. \cite{Asp2021}\end{tabular}}}}%
+    \put(0.72962423,0.86607558){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Saraj et al. \cite{Siraj2023}\end{tabular}}}}%
+    \put(0.72962423,0.82922778){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Meng  et al. \cite{Meng2018}\end{tabular}}}}%
+    \put(0.72962423,0.79237997){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Thakur \& Dong \cite{Thakur2020}\end{tabular}}}}%
+    \put(0.72962423,0.75553217){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Moyler \cite{Moyer2020}\end{tabular}}}}%
+    \put(0.72962423,0.71868437){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Liu \cite{Liu2009}\end{tabular}}}}%
+    \put(0.72962423,0.67938005){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Li-Ionen-Batterie\end{tabular}}}}%
+    \put(0.72962423,0.64253225){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}ElViS-SB\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=20]{quintus_tensile_energy.pdf}}%
+    \put(0.52082002,0.00138052){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Energiedichte [Wh/kg]}\end{tabular}}}}%
+    \put(0.02304585,0.50988017){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Zugsteifigkeit [GPa]}\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{quintus_tensile_energy.pdf}}%
+    \put(0.38141192,0.81549554){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Kohlenstofffaser-\\pouchbag\end{tabular}}}}%
+    \put(0.18529377,0.95369964){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Ziel} Linde et al. \cite{Ishfaq2022}\end{tabular}}}}%
+    \put(0.51997561,0.63923599){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Aluminium-\\pouchbag\end{tabular}}}}%
+    \put(0.31361111,0.66266259){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}reine Kohlenstoff-\\faserelektroden\end{tabular}}}}%
+    \put(0.22013645,0.91173241){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{E}\end{tabular}}}}%
+    \put(0.24825747,0.35638058){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Kohlenstofffaser-\\und konventionelle\\Elektroden\end{tabular}}}}%
+    \put(0.60197178,0.16473295){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}reine konventionelle\\Elektroden\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=22]{quintus_tensile_energy.pdf}}%
+    \put(0.42134694,0.5351528){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{F}\end{tabular}}}}%
+    \put(0.92728384,0.08430464){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{D}\end{tabular}}}}%
+    \put(0.72565691,0.29215039){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{G}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=23]{quintus_tensile_energy.pdf}}%
+  \end{picture}%
+\endgroup%

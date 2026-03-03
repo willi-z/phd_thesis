@@ -1,0 +1,130 @@
+%% Creator: Inkscape 1.4.2 (ebf0e940d0, 2025-05-08), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'quintus_bending_energy.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{620.26689148bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.96853624)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{quintus_bending_energy.pdf}}%
+    \put(0.08441476,0.04715867){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{quintus_bending_energy.pdf}}%
+    \put(0.08441476,0.19709413){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}50,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{quintus_bending_energy.pdf}}%
+    \put(0.08441476,0.34702958){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}100,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{quintus_bending_energy.pdf}}%
+    \put(0.08441476,0.4981742){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}150,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{quintus_bending_energy.pdf}}%
+    \put(0.08441476,0.64810966){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}200,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{quintus_bending_energy.pdf}}%
+    \put(0.08441476,0.79804511){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}250,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{quintus_bending_energy.pdf}}%
+    \put(0.08441476,0.94918973){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}300,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{quintus_bending_energy.pdf}}%
+    \put(0.09892464,0.02683643){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{quintus_bending_energy.pdf}}%
+    \put(0.19686634,0.02683643){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}20,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{quintus_bending_energy.pdf}}%
+    \put(0.29480805,0.02683643){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}40,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{quintus_bending_energy.pdf}}%
+    \put(0.39274976,0.02683643){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}60,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{quintus_bending_energy.pdf}}%
+    \put(0.49069147,0.02683643){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}80,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{quintus_bending_energy.pdf}}%
+    \put(0.58863318,0.02683643){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}100,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{quintus_bending_energy.pdf}}%
+    \put(0.68657493,0.02683643){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}120,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{quintus_bending_energy.pdf}}%
+    \put(0.78451664,0.02683643){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}140,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{quintus_bending_energy.pdf}}%
+    \put(0.88245835,0.02683643){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}160,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{quintus_bending_energy.pdf}}%
+    \put(0.98040006,0.02683643){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}180,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{quintus_bending_energy.pdf}}%
+    \put(0.75307856,0.92233477){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\texttt{Quintus}\end{tabular}}}}%
+    \put(0.75307856,0.88666465){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}kommerz. Batterie\end{tabular}}}}%
+    \put(0.75307856,0.8488297){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}ElViS\end{tabular}}}}%
+    \put(0.75275848,0.81761502){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Strukturelektrolyt\end{tabular}}}}%
+    \put(0.72992384,0.81724563){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{S}\end{tabular}}}}%
+    \put(0.57237196,0.29260195){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{S}\end{tabular}}}}%
+    \put(0.14553955,0.47276637){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{S}\end{tabular}}}}%
+    \put(0.1213534,0.73695581){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{S}\end{tabular}}}}%
+    \put(0.29058511,0.54637505){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{S}\end{tabular}}}}%
+    \put(0.11651979,0.41593599){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{S}\end{tabular}}}}%
+    \put(0.1636769,0.38691623){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{S}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=19]{quintus_bending_energy.pdf}}%
+    \put(0.52575702,-0.00241676){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Energiedichte [Wh/kg]}\end{tabular}}}}%
+    \put(0.01219675,0.50059251){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Biegesteifigkeit [MPa]}\end{tabular}}}}}%
+    \put(0.83844504,0.66895058){\color[rgb]{0,0.28627451,0.1254902}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Multifunktionali-}\end{tabular}}}}%
+    \put(0.83844505,0.64476744){\color[rgb]{0,0.28627451,0.1254902}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{tätsbereich}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=20]{quintus_bending_energy.pdf}}%
+    \put(0.17175608,0.9391465){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Kohlenstofffaser-\\pouchbag\\\end{tabular}}}}%
+    \put(0.101803,0.62643649){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}reine Kohlenstoff-\\faserelektroden\end{tabular}}}}%
+    \put(0.20460488,0.29646263){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Kohlenstoffaser-\\und konventio-\\nellen Elektroden\end{tabular}}}}%
+    \put(0.67514402,0.31051798){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}konventionellen \\Elektroden\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{quintus_bending_energy.pdf}}%
+    \put(0.10440879,0.94179044){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{A}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=22]{quintus_bending_energy.pdf}}%
+    \put(0.40146615,0.89299428){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{B}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=23]{quintus_bending_energy.pdf}}%
+    \put(0.63279888,0.39531593){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{C}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=24]{quintus_bending_energy.pdf}}%
+    \put(0.93640553,0.09275231){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{D}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=25]{quintus_bending_energy.pdf}}%
+    \put(0.5061309,0.61286643){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}155,0\end{tabular}}}}%
+    \put(0.61106921,0.49085634){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}40,0\end{tabular}}}}%
+    \put(0.54827682,0.49085646){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}35,0\end{tabular}}}}%
+    \put(0.67386161,0.49085634){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}45,0\end{tabular}}}}%
+    \put(0.5061309,0.51250298){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}145,0\end{tabular}}}}%
+    \put(0.5061309,0.66304816){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}160,0\end{tabular}}}}%
+    \put(0.5061309,0.56268472){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}150,0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=26]{quintus_bending_energy.pdf}}%
+  \end{picture}%
+\endgroup%
