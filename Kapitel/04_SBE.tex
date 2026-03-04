@@ -2,7 +2,7 @@
 
 Die numerische Beschreibung zweiphasiger Elektrolytsysteme erfordert aufgrund ihrer komplexen Porenmorphologie eine effiziente Reduktion der Mikrostrukturkomplexität unter Wahrung der physikalischen Genauigkeit (\textbf{TZ 2}). Die hier entwickelte Methodik kombiniert unterschiedliche Modellierungsansätze, um den Rechenaufwand konventioneller Feldsimulationen zu umgehen. Zunächst ermöglicht eine Porennetzwerk-Modellierung die hocheffiziente Bestimmung der ionischen Leitfähigkeit $\gamma$ und des effektiven Diffusionskoeffizienten $D$ direkt aus experimentellen Absorptionsmessungen. Während dieser Ansatz eine schnelle Charakterisierung der Transporteigenschaften erlaubt, bleibt die mechanische Steifigkeit $\boldsymbol{C}$ unberücksichtigt. 
 
-Um diese Lücke zu schließen, wird die \textit{Walk-on-Spheres}-Methode eingesetzt, die sowohl Diffusionskoeffizienten als auch effektive Steifigkeiten in komplexen, nicht-templatebasierten Porenstrukturen simultan berechnen kann. Da dieses Verfahren jedoch auf eine präzise räumliche Geometrie angewiesen ist, wird die Methodik durch ein \textit{Convolutional Neural Network} (CNN) vervollständigt. Dieses sagt die Parameter der Cahn-Hilliard-Gleichung direkt aus REM-Aufnahmen voraus und automatisiert so die Generierung realistischer Repräsentativer Volumenelemente (RVE). In der Summe entsteht eine geschlossene Simulationskette, die von der Bilddiagnostik bis zur Vorhersage makroskopischer Materialparameter eine recheneffiziente Skalierung gewährleistet.
+Um diese Lücke zu schließen, wird die \textit{Walk-on-Spheres}-Methode eingesetzt, die sowohl Diffusionskoeffizienten als auch effektive Steifigkeiten in komplexen, nicht"=templatebasierten\footnote{Während bei der Phasenseparation die poröse Architektur durch spontane Entmischung (Selbstorganisation) der Komponenten entsteht und meist zufällige Strukturen bildet, wird bei template-basierten Verfahren eine präzise 3D-Geometrie aktiv vorgegeben (z. B. durch Elektrospinning oder chemische Selbstorganisation). Dies ermöglicht eine gezielte Optimierung der Ionenleitfähigkeit durch geordnete Transportwege bei gleichzeitiger Maximierung der mechanischen Steifigkeit.} Porenstrukturen simultan berechnen kann. Da dieses Verfahren jedoch auf eine präzise räumliche Geometrie angewiesen ist, wird die Methodik durch ein \textit{Convolutional Neural Network} (CNN) vervollständigt. Dieses sagt die Parameter der \textsc{Cahn-Hilliard}-Gleichung direkt aus REM-Aufnahmen voraus und automatisiert so die Generierung realistischer Repräsentativer Volumenelemente (RVE). In der Summe entsteht eine geschlossene Simulationskette, die von der Bilddiagnostik bis zur Vorhersage makroskopischer Materialparameter eine recheneffiziente Skalierung gewährleistet.
 
 
 \section{Modellierung der effektiven Ionenleitfähigkeit als Porennetzwerk}
@@ -15,7 +15,7 @@ Die Porennetzwerk-Modellierung (PNM) ist ein ursprünglich aus den Geowissenscha
     \caption{\label{fig:sphere_cylinder_model}Porennetzwerkmodell mit sphärischen Poren und zylindrischen Verbindungselementen zur recheneffizienten Bestimmung der effektiven Transporteigenschaften zweiphasiger Strukturelektrolyte.}
 \end{figure}
 
-Die Grundlage bildet die Beschreibung des diffusiven Transports. Das erste Ficksche Gesetz beschreibt den molaren Ionenfluss $\boldsymbol{j}$ in Abhängigkeit des Konzentrationsgradienten:
+Die Grundlage bildet die Beschreibung des diffusiven Transports. Das erste \textsc{Fick}sche Gesetz beschreibt den molaren Ionenfluss $\boldsymbol{j}$ in Abhängigkeit des Konzentrationsgradienten:
 \begin{equation}\label{eq:fick_local}
     \boldsymbol{j} = -D \nabla c.
 \end{equation}
@@ -31,14 +31,14 @@ Dabei repräsentiert $S_{ij}$ den geometrischen Formfaktor, welcher sich aus den
 \begin{equation}
     \frac{1}{S_{ij}} = \frac{1}{S^p_i} + \frac{1}{S^v_{ij}} + \frac{1}{S^p_j}.
 \end{equation}
-Unter Annahme kugelformiger Poren mit Durchmesser $d$ und zylindrischer Verbindungen mit Durchmesser $d_{ij}$ und Länge $l$ ergeben sich die Formfaktoren zu:
+Unter Annahme kugelformiger Poren mit Durchmesser $d$ und zylindrischer Verbindungen mit Durchmesser $d_{ij}$ und Länge $l$ (siehe Bild~\ref{fig:sphere_cylinder_model}) ergeben sich die Formfaktoren zu:
 \begin{align}
     S^p_i &= \frac{\pi (3d_i^2 - 4l_{ij,i}^2)}{12l_{ij,i}}, \\
     S^p_j &= \frac{\pi (3d_j^2 - 4l_{ij,j}^2)}{12l_{ij,j}}, \\
     S^v_{ij} &= \frac{\pi d_{ij}^2}{4l_{ij}}.
 \end{align}
 
-Die Verknüpfung zur ionischen Leitfähigkeit $\gamma$ erfolgt über die Nernst-Einstein-Gleichung:
+Die Verknüpfung zur ionischen Leitfähigkeit $\gamma$ erfolgt über die \textsc{Nernst-Einstein}-Gleichung:
 \begin{equation}
     D = \frac{k_{\text{B}}T}{n q^2} \gamma.
 \end{equation}
@@ -84,13 +84,13 @@ Die Genauigkeit wird über den relativen Fehler $\text{Err}_{\text{rel}}$ gegen�
 \end{figure}
 
 Die Ergebnisse (Bild~\ref{fig:sphere_cylinder_model_convergence}) verdeutlichen, dass der Fehler mit zunehmender Netzwerkgröße sinkt. Ab einer Anzahl von ca. 3000 Poren stabilisiert sich der Fehler unterhalb von \SI{10}{\percent}. Es zeigte sich zudem, dass die Konnektivität (Anzahl der Verbindungen pro Pore) die effektive Leitfähigkeit maßgeblich beeinflusst (Bild~\ref{fig:sphere_cylinder_model_convergence}b). 
-Trotz der hohen Recheneffizienz verbleiben Herausforderungen in der experimentellen Bestimmbarkeit der Hals-zu-Poren-Verhältnisse. Zudem ist dieser Ansatz naturgemäß auf Transporteigenschaften limitiert. %Zur Bestimmung der mechanischen Steifigkeit der festen Phase sind weiterführende Methoden wie die \textit{Walk-on-Spheres}-Methode erforderlich \cite{Sawhney2023a}.
+Die hier beschriebene Methode ermöglicht es, mit vergleichsweise geringem Rechenaufwand sehr genaue Voranalysen für den erwartbaren effizienten Diffusionskoeffizienten zu erhalten. Die dazu benötigten Parameter können dabei, wie gezeigt, aus weitverbreiteten Gasabsorptionsmessungen ermittelt werden. Solange nur die effektive Leitfähigkeit oder der Diffusionskoeffizient von Interesse sind, stellt die hier vorgestellte Porennetzwerk-Modellierung eine effiziente Alternative zu aufwendigeren Methoden dar. Für die Bestimmung der effektiven Steifigkeit ist jedoch ein anderer Ansatz notwendig, welcher im folgenden Abschnitt beschrieben wird.
 
-\section{Effektive mechanische und diffusive Eigenschaften mittels Walk-on-Stars}
+\section{Effektive Steifigkeit und Diffusionskoeffizient mittels Walk-on-Stars}
 
 Die \textit{Walk-on-Stars}-Methode (WoSt) ist ein netzfreies Verfahren zur Lösung linearer Differentialgleichungen, das sich aufgrund seiner inhärenten Parallelisierbarkeit besonders für die Implementierung auf Grafikkarten (GPUs) eignet. Im Gegensatz zu klassischen Feldmethoden ermöglicht WoSt die effiziente Behandlung fraktaler Geometrien mit hohen Detailgraden \cite{Sawhney2023a}. Die mathematische Grundlage bilden die Arbeiten von \textsc{Feynman} und \textsc{Kac}, welche den Zusammenhang zwischen parabolischen partiellen Differentialgleichungen und stochastischen Prozessen aufzeigten \cite{Pascucci2024}.
 
-WoSt stellt eine Weiterentwicklung der \textit{Walk-on-Spheres}-Methode (WoS) dar, bei der die Brownsche Molekularbewegung durch Zufallsbewegungen innerhalb von maximalen Sterngebieten anstatt einfacher Kugeln approximiert wird (Bild~\ref{fig:wost_method}a-f) \cite{Sawhney2020}. Das Verfahren basiert auf drei Kernmechanismen: der Bestimmung des größtmöglichen Sterngebietes für jeden Abfragepunkt, der Reflexion von Pfaden an Neumann-Randbedingungen\footnote{Die Neumann-Randbedingung (auch Randbedingung 2. Art) definiert die Normalenableitung der Funktion am Rand, was physikalisch meist einem Fluss entspricht: $\frac{\partial u}{\partial \mathbf{n}}(\mathbf{x}) = \nabla u \cdot \mathbf{n} = g(\mathbf{x}) \quad \forall \mathbf{x} \in \partial \Omega$, wobei $\mathbf{n}$ den äußeren Normalenvektor beschreibt.} und der Aggregation der Pfade beim Auftreffen auf Dirichlet-Randbedingungen\footnote{Die Dirichlet-Randbedingung (auch Randbedingung 1. Art) legt den Wert der gesuchten Funktion $u$ direkt auf dem Rand $\partial \Omega$ des Definitionsbereiches fest: $u(\mathbf{x}) = f(\mathbf{x}) \quad \forall \mathbf{x} \in \partial \Omega$.} oder nach Erreichen eines Abbruchkriteriums \cite{Sawhney2023a}.
+WoSt stellt eine Weiterentwicklung der \textit{Walk-on-Spheres}-Methode (WoS) dar, bei der die Brownsche Molekularbewegung durch Zufallsbewegungen innerhalb von maximalen Sterngebieten anstatt einfacher Kugeln approximiert wird (Bild~\ref{fig:wost_method}a-f) \cite{Sawhney2020}. Das Verfahren basiert auf drei Kernmechanismen: der Bestimmung des größtmöglichen Sterngebietes für jeden Abfragepunkt, der Reflexion von Pfaden an Neumann"=Randbedingungen\footnote{Die Neumann"=Randbedingung (auch Randbedingung 2. Art) definiert die Normalenableitung der Funktion am Rand, was physikalisch meist einem Fluss entspricht: $\frac{\partial u}{\partial \mathbf{n}}(\mathbf{x}) = \nabla u \cdot \mathbf{n} = g(\mathbf{x}) \quad \forall \mathbf{x} \in \partial \Omega$, wobei $\mathbf{n}$ den äußeren Normalenvektor beschreibt.} und der Aggregation der Pfade beim Auftreffen auf Dirichlet"=Randbedingungen\footnote{Die Dirichlet"=Randbedingung (auch Randbedingung 1. Art) legt den Wert der gesuchten Funktion $u$ direkt auf dem Rand $\partial \Omega$ des Definitionsbereiches fest: $u(\mathbf{x}) = f(\mathbf{x}) \quad \forall \mathbf{x} \in \partial \Omega$.} oder nach Erreichen eines Abbruchkriteriums \cite{Sawhney2023a}.
 
 \begin{figure}[!ht]
     \center
@@ -131,7 +131,7 @@ Zur Bestimmung der effektiven Steifigkeit des RVE wird ein kubisches Gebiet $\Om
 
 Analog wird das Verfahren in der flüssigen Phase angewendet, um den effektiven Diffusionskoeffizienten $D_{\text{eff}}$ über die stochastische Pfadaggregation zu bestimmen.
 
-
+Im Ergebnis liegt damit eine Methode vor, die es ermöglicht, sowohl die effektive Steifigkeit als auch den Diffusionskoeffizienten für komplexe Porenstrukturen zu bestimmen. Damit stellt WoSt eine wertvolle Ergänzung zur klassischen FE"=Methode dar. Ein wesentlicher Vorteil liegt in der Fähigkeit, hochauflösende Geometrien mit geringem Rechenaufwand zu behandeln, was insbesondere für die Simulation von Strukturelektrolyten von Bedeutung ist. Die Konvergenzanalyse (Bild~\ref{fig:wost_result}c-d) zeigt, dass bereits ab einer Stichprobengröße von ca. 100 Schritten eine Fehlerreduktion auf unter \SI{5}{\percent} erreicht werden kann. Allerdings wird wie auch bei der FE-Methode die Genauigkeit durch die Qualität der zugrunde liegenden Geometrie begrenzt, weshalb eine präzise RVE-Generierung von entscheidender Bedeutung ist. Die folgende Methodik zur CNN-basierten RVE-Generierung aus REM-Aufnahmen adressiert genau diese Herausforderung und ermöglicht die automatisierte Generierung von repräsentativen Volumenelementen für die WoSt-Simulationen.
 
 \section{CNN-basierte RVE-Generierung aus REM-Aufnahmen}
 
@@ -143,9 +143,9 @@ Sowohl die Porennetzwerkmethode als auch der \textit{Walk-on-Stars}-Ansatz erfor
     \caption{\label{fig:nn_method_rve_se}Einsatz eines \textit{Convolutional Neural Networks} (CNN) zur Extraktion struktureller Merkmale und anschließender Vorhersage der \textsc{Cahn-Hilliard}-Parameter.}
 \end{figure}
 
-Der Trainingsdatensatz umfasst Grauwert-REM-Scans, die realen Abmessungen der Bildausschnitte sowie experimentell\footnote{Die experimentellen Daten und REM-Aufnahmen wurden im Kontext des ElViS-Projektes von den beiden Projektpartners IWS und Tu Dresden erhoben.} bestimmte Referenzwerte für die effektive Steifigkeit $E_{\text{eff}}$ und den Diffusionskoeffizienten $D_{\text{eff}}$. Ein CNN extrahiert hierbei texturrelevante Merkmale, die zusammen mit den geometrischen Randbedingungen an ein \textit{Fully Connected Network} übergeben werden. Dieses sagt die physikalischen Parameter für die Gefügesimulation voraus, insbesondere die Mobilität $M$ und den Gradientenenergiekoeffizienten $\lambda$ (Bild~\ref{fig:nn_method_rve_se}).
+Der Trainingsdatensatz umfasst Grauwert-REM-Scans, die realen Abmessungen der Bildausschnitte sowie experimentell\footnote{Die experimentellen Daten und REM-Aufnahmen wurden im Kontext des ElViS-Projektes von den beiden Projektpartners IWS und TU Dresden erhoben.} bestimmte Referenzwerte für die effektive Steifigkeit $E_{\text{eff}}$ und den Diffusionskoeffizienten $D_{\text{eff}}$. Ein CNN extrahiert hierbei texturrelevante Merkmale, die zusammen mit den geometrischen Randbedingungen an ein \textit{Fully Connected Network} übergeben werden. Dieses sagt die physikalischen Parameter für die Gefügesimulation voraus, insbesondere die Mobilität $M$ und den Gradientenenergiekoeffizienten $\lambda$ (Bild~\ref{fig:nn_method_rve_se}).
 
-Zur Validierung und Berechnung der Verlustfunktion wird die \textsc{Cahn-Hilliard}-Gleichung mittels der FE-Methode gelöst\footnote{Die numerische Umsetzung erfolgte in \texttt{FEniCSx} unter Verwendung regelmäßiger Blockelemente wegen der guten Parallelisierungunterstützung.}. Aus der resultierenden zeitabhängigen Lösung des Phasenanteils $\varphi(\boldsymbol{x}, t)$ werden zum Zeitpunkt $t^*$ mittels \textit{Marching Cubes} die Phasengrenzen als Isoflächen extrahiert. Auf dieser generierten Geometrie wird unmittelbar eine linear-elastische FEM-Analyse sowie die Lösung der Diffusionsgleichung durchgeführt, um die simulierten Kennwerte mit den experimentellen Daten abzugleichen:
+Zur Validierung und Berechnung der Verlustfunktion wird die \textsc{Cahn-Hilliard}"=Gleichung mittels der FE-Methode gelöst\footnote{Die numerische Umsetzung erfolgte in \texttt{FEniCSx} unter Verwendung regelmäßiger Blockelemente wegen der guten Parallelisierungunterstützung.}. Aus der resultierenden zeitabhängigen Lösung des Phasenanteils $\varphi(\boldsymbol{x}, t)$ werden zum Zeitpunkt $t^*$ mittels \textit{Marching Cubes} die Phasengrenzen als Isoflächen extrahiert. Auf dieser generierten Geometrie wird unmittelbar eine linear-elastische FEM-Analyse sowie die Lösung der Diffusionsgleichung durchgeführt, um die simulierten Kennwerte mit den experimentellen Daten abzugleichen:
 \begin{equation}
     \nabla \cdot \bigl(\boldsymbol{C} : \boldsymbol{\varepsilon}\bigr) = \mathbf{0}.
 \end{equation}
@@ -161,8 +161,12 @@ Das Modell wird \textit{end-to-end} trainiert, indem die Abweichung der simulier
     \mathcal{L} = \left( 1 + \sqrt{ \left\lVert \frac{E_{\text{eff}}^{\text{pred}} - E_{\text{eff}}^{\text{exp}}}{E_{\text{rein}}^{\text{exp}}} \right\rVert^2 + \left\lVert \frac{D_{\text{eff}}^{\text{pred}} - D_{\text{eff}}^{\text{exp}}}{D_{\text{rein}}^{\text{exp}}} \right\rVert^2 } \right)^{-1}.
 \end{equation}
 
-\input{Abbildungen/03_Modellierung/generated_rve_se/generated_rve_se.tex}
-
 Die Ergebnisse (Tabelle~\ref{tab:nn_method_rve_se_results}) zeigen, dass das Netzwerk die Parameter konsistent ableitet. Hohe $\mathcal{L}$-Werte zwischen 0,88 und 0,98 belegen eine exzellente Übereinstimmung mit den Experimenten. Die Parameter $M$\footnote{Die Mobilität ist im Kontext der Cahn-Hilliard-Gleichung ein Maß für die Geschwindigkeit der Phasenseparation.} und $T_{\text{end}}$\footnote{Zeitpunkt, bei dem die fortlaufende Phasenseparation gestopped wird.} korrelieren hierbei stark mit der Koarsening-Dynamik: Eine hohe Mobilität führt zu einer schnelleren Ausbildung großer Porenstrukturen, wie beim System 50MTM57/2.3 beobachtet. 
 
+\input{Abbildungen/03_Modellierung/generated_rve_se/generated_rve_se.tex}
+
 Der Startwert $\varphi_0$ definiert das initiale Phasenverhältnis, wobei niedrigere Werte (z.B. polyMIPE) einen höheren Festphasenanteil repräsentieren. Der Koeffizient $\lambda$ bestimmt die Schärfe der Phasengrenzen; größere Werte führen zu klarer ausgeprägten Strukturen, was qualitativ mit den REM-Aufnahmen übereinstimmt. Damit stellt die ML-basierte Parametrisierung eine robuste Methode dar, um experimentell schwer zugängliche Gefügeparameter direkt aus der Bildgebung in physikalisch konsistente RVE-Modelle zu überführen.
+
+Die hier beschriebene Methodik ermöglicht es, die komplexe Mikrostruktur zweiphasiger Strukturelektrolyte effizient zu generieren. Durch die Kombination von Porennetzwerk-Modellierung, Walk-on-Stars-Methode und CNN-basierter RVE-Generierung entsteht eine leistungsfähige Simulationskette, die zur Vorhersage makroskopischer Materialparameter dient eine recheneffiziente Skalierung gewährleistet.
+
+
