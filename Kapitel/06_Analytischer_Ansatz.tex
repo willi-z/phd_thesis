@@ -1,17 +1,18 @@
-\chapter{\label{sec:analytical_approach}Schnellere Vorauslegung von Struktrubatterien}
-Während die vorangegangenen Kapitel detaillierte numerische Modelle zur Abbildung lokaler Effekte und komplexer Kopplungsphänomene behandelten, steht in diesem Kapitel die praktische Anwendbarkeit für die Systemauslegung im Vordergrund. Für die Dimensionierung multifunktionaler Leichtbaustrukturen unter komplexen Lastprofilen (gemäß TZ 4) ist es essenziell, bereits in frühen Entwurfsphasen die Wechselwirkungen zwischen Zellchemie und mechanischer Integrität quantifizieren zu können, ohne auf rechenintensive Simulationen angewiesen zu sein.
+\chapter{\label{sec:analytical_approach}Analytische Vorauslegung von Struktrubatterien}
+Während die vorangegangenen Kapitel~\ref{sec:modelling_SB} - \ref{sec:multi_scale} detaillierte numerische Modelle zur Abbildung lokaler Effekte und komplexer Kopplungsphänomene behandelten, steht in diesem Kapitel die praktische Anwendbarkeit für die Systemauslegung im Vordergrund (TZ 4). Für die Dimensionierung multifunktionaler Leichtbaustrukturen unter komplexen Lastprofilen ist es essenziell, bereits in frühen Entwurfsphasen die Wechselwirkungen zwischen Zellchemie und mechanischer Integrität quantifizieren zu können, ohne auf rechenintensive Simulationen angewiesen zu sein.
 
 Der Fokus liegt hierbei auf der Identifikation von methodischen Modellreduktionen, die physikalisch konsistente Vorhersagen über die Energiedichte und das Verformungsverhalten erlauben. Durch die Überführung der elektrochemischen Dynamik in eine quasistatische Betrachtungsweise sowie die Anwendung modifizierter Laminattheorien für das Biegeverhalten wird eine Brücke zwischen Materialkennwerten und der globalen Systemcharakteristik geschlagen. Dies ermöglicht eine effiziente Variantenstudie und bildet die Grundlage für die zielgerichtete Auslegung von Strukturbatterien in realen Leichtbauanwendungen.
 
 \section{\label{sec:improve_elchem}Analytische Vorhersage der Energiedichte}
-Die präzise elektrochemische Modellierung von Lithium-Ionen-Zellen erfordert in der Regel die Berücksichtigung eines diffusionsabhängigen Stofftransportes im aktiven Material. Traditionell wird der Diffusionskoeffizient über eine äquivalente elektrische Schaltung angenähert, die einen konstanten, d.h. lithierungsunabhängigen Wert voraussetzt. Diese Annahme führt jedoch zu erheblichen Vereinfachungen, da der tatsächliche Diffusionskoeffizient stark von der lokalen Lithierung abhängt und zudem im Betrieb Temperaturänderungen sowie Alterungsmechanismen, insbesondere die Ausbildung der SEI, berücksichtigt werden müssten. Die exakte Ermittlung eines dynamischen, lithierungsabhängigen Diffusionskoeffizienten ist erfahrungsgemäß rechenaufwendig und experimentell schwer zugänglich. Für schnelle, echtzeitfähige Vorhersagemodelle ist dieser Ansatz daher nur bedingt geeignet.
+Die präzise elektrochemische Modellierung von Lithium-Ionen-Zellen erfordert in der Regel die Berücksichtigung eines diffusionsabhängigen Stofftransportes im aktiven Material. Traditionell wird der Diffusionskoeffizient über eine äquivalente elektrische Schaltung angenähert, die einen konstanten, d.h. lithierungsunabhängigen Wert voraussetzt. Diese Annahme führt jedoch zu erheblichen Vereinfachungen, da der tatsächliche Diffusionskoeffizient stark von der lokalen Lithierung abhängt und zudem im Betrieb Temperaturänderungen sowie Alterungsmechanismen, insbesondere die Ausbildung der SEI, berücksichtigt werden müssten. Die exakte Ermittlung eines dynamischen, lithierungsabhängigen Diffusionskoeffizienten ist erfahrungsgemäß rechenaufwendig und experimentell schwer zugänglich. Für schnelle Vorhersagemodelle ist dieser Ansatz daher nur bedingt geeignet.
 
-Für viele Anwendungen im Bereich der elektrochemischen Energiespeicher ist jedoch nicht primär die Leistungsdichte, sondern vielmehr die Energiedichte der Batterie maßgebend. Dieser Fokus ermöglicht es, den Modellierungsaufwand erheblich zu reduzieren. Eine praktikable Lösung besteht darin, Be- und Entladeprozesse quasistatisch zu betrachten. Dabei wird nach jedem kleinen Lade- oder Entladeschritt eine Relaxationsphase angenommen, in der sich das Konzentrationsfeld im aktiven Material vollständig ausgleicht. Die Diffusionsprozesse müssen somit nicht explizit zeitaufgelöst simuliert werden, was die vorherigen elektrochemischen Gleichungen drastisch vereinfacht und den Berechnungsaufwand deutlich reduziert.
+Für viele Anwendungen im Bereich der elektrochemischen Energiespeicher ist jedoch nicht primär die Leistungsdichte, sondern vielmehr die Energiedichte der Batterie maßgebend. Daher besteht eine praktikable Lösung darin, Be- und Entladeprozesse quasistatisch zu betrachten. Dabei wird nach jedem kleinen Lade- oder Entladeschritt eine Relaxationsphase angenommen, in der sich das Konzentrationsfeld im aktiven Material vollständig ausgleicht. Die Diffusionsprozesse müssen somit nicht explizit zeitaufgelöst simuliert werden, was die vorherigen elektrochemischen Gleichungen drastisch vereinfacht.
 
 Ein zentraler Schritt zur Bewertung der maximal verfügbaren Energiedichte eines elektrochemischen Systems ist die Bestimmung der Oberflächenkapazität der Zelle. Die Oberflächenkapazität beschreibt die umgesetzte Stoffmenge pro aktiver Elektrodenfläche und ist damit direkt an die stöchiometrisch erreichbare Lithiumaufnahme der Elektroden gekoppelt. Da eine Lithium-Ionen-Zelle stets aus einer Anode und einer Kathode besteht, die über den Elektrolyten Lithiumionen austauschen, bestimmt die jeweils limitierende Elektrode die insgesamt nutzbare Kapazität. 
 
 Genau dieses limitierende Verhalten wird durch die folgende Beziehung beschrieben
 \begin{equation}
+    \label{eq:capacity_limitation}
     C_{\text{A, Zelle}} = \min \left( C_{\text{A, -}} , C_{\text{A, +}}\right).
 \end{equation}
 
@@ -21,6 +22,7 @@ Die Wahl der minimalen Kapazität stellt somit sicher, dass das Modell physikali
 
 Da in der Praxis ausschließlich identische Zellen innerhalb eines Stacks verschaltet werden, addieren sich deren Einzelkapazitäten linear, sodass die Gesamtkapazität des Stacks einfach als Produkt aus der Anzahl der Zellen und der Oberflächenkapazität einer Einzelzelle beschrieben werden kann
 \begin{equation}
+    \label{eq:capacity_stack}
     C_{\text{A, Stack}} = n_{\text{Zellen}} \cdot C_{\text{A, Zelle}}.
 \end{equation}
 
@@ -41,6 +43,7 @@ Während die zuvor hergeleiteten Größen auf die elektrochemisch aktive Fläche
 
 Daraus ergibt sich die gravimetrische Energiedichte des Stacks unmittelbar aus der massenbezogenen Kapazität und der nutzbaren Zellspannung. Durch Multiplikation dieser beiden Größen erhält man den spezifischen Energieinhalt des Systems.
 \begin{equation}
+    \label{eq:grav_energy_density}
     \Gamma_{\text{Stack}} = C_{\text{m, Stack}} \cdot \left(U_{+} - U_{-}\right)
 \end{equation}
 
@@ -73,9 +76,10 @@ Unter der Annahme, dass alle Einzelschichten beidseitig kraft- oder formschlüss
     \varepsilon_{x,ges} = \varepsilon_{x,i}\\
 \end{equation}
 
-Kennzeichnend für Batterien mit reinen Flüssig- oder Gelelektrolytsystemen ist, dass diese, im Gegensatz zu Festkörperelektrolyten, über keine mechanisch belastbare Feststoffphase verfügen. Die Zellstruktur kann daher als Schichtung lasttragender Strukturelemente, während der Elektrolyt als mechanisch passive Infiltration in den Zwischenschichten vorliegt.
+Kennzeichnend für Strukturbatterien mit reinen Flüssig- oder Gelelektrolytsystemen ist, dass diese, im Gegensatz zu Festkörperelektrolyten, über keine mechanisch belastbare Feststoffphase verfügen. Die Zellstruktur kann daher als Schichtung lasttragender Strukturelemente, während der Elektrolyt als mechanisch passive Infiltration in den Zwischenschichten vorliegt.
 Dadurch sind die einzelnen Schichten nicht direkt mit einander verbunden und halten einzig durch den Druck, der durch die äußere Pouchfolie ampliziert wird, aneinander. Unter der Annahme der Verschiebungsstetigkeit an den Schichtgrenzflächen folgt, dass die Krümmung $\kappa$ mit
 \begin{equation}
+    \label{eq:curvature}
     \kappa = \frac{1}{r} = \frac{M_y}{E I_y}
 \end{equation}
 in jeder Schicht einheitlich ist.
@@ -86,13 +90,13 @@ Des Weiteren folgt aus dem Momentengleichgewicht, dass das außen angreifende Bi
 \begin{equation}
     M_{b} = \sum_{i}^{n}M_{y,i}
 \end{equation}
-Unter Annahme von rechteckigen Querschnitten mit Breite $b_i$ und Höhe $h_i$ und der Annhame, dass alle Elektroden näherungsweise gleich Breit sind, also $b_i = b$ gilt, folgt für die Belastung einer Einzelschicht durch das Moment $M_i$:
+Unter Annahme von rechteckigen Querschnitten mit Breite $b_i$ und Höhe $h_i$ und, dass alle Elektroden näherungsweise gleich breit sind, also $b_i = b$ gilt, folgt für die Belastung einer Einzelschicht durch das Moment $M_i$:
 \begin{align}
     M_{b} &= M_i \sum_{k}^{n}\frac{E_k I_{yy,k}}{E_i I_{yy,i}}\\
     M_{b} &= M_i \frac{\sum_{k}^{n} E_k h_k^3}{E_i h_i^3}\\
     M_i &= M_{b} \frac{ E_i h_i^3} { \sum_{k}^{n}E_k h_k^3}
 \end{align}
-Durch einsetzen Einzelschichtmomente in die Formel zur Bestimmung der Biegespannung erhält man einen Zusammenhang zwischen Einzelschichtspannung und Biegemomentenbelastung:
+Durch das Einsetzen der Einzelschichtmomente in die Formel zur Bestimmung der Biegespannung erhält man einen Zusammenhang zwischen Einzelschichtspannung und Biegemomentenbelastung:
 \begin{align}
     \sigma_{b,i} &= \frac{M_y,i}{I_{yy}/h_i} \\
     \sigma_{b,i} &= 12 \frac{ M_y,i}{b h_i^2}\\
@@ -101,7 +105,7 @@ Durch einsetzen Einzelschichtmomente in die Formel zur Bestimmung der Biegespann
 \end{align}
 
 Für die Bestimmung der Durchbiegung $u$ beim 3-Punkt-Biegeversuch kann 
-unter der Annahme der Bernoulli-Hypothese der exakte Ausdruck für die Krümmung linearisiert werden:
+unter der Annahme der \textsc{Bernoulli}-Hypothese der exakte Ausdruck für die Krümmung linearisiert werden:
 \begin{equation}
 \frac{\frac{\partial^2 u(x)}{\partial x^2}}{\left(1 + \left(\frac{\partial u(x)}{\partial x} \right)^2 \right)^{3/2}} = -\frac{M_y}{E I_{yy}}
 \end{equation}
@@ -124,11 +128,12 @@ An dieser Stelle ist zu bemerken, dass für den Spezialfall, in dem alle $n$ Sch
 \end{equation}
 Für diesen Spezialfall ergibt sich die maximale Durchbiegung $u_\text{max,flüssig} $ als
 \begin{equation}
+    \label{eq:bending_fluid}
     u_\text{max,flüssig}  = \frac{L^3 Q}{4 n b h^3 E} = \frac{L^2 \sigma}{6 h E}.
 \end{equation}
 
 
-Da die bisherigen Annäherungen vor allem bei konventionellen Batterien mit nichttragenden Elektrolytschichten eine bessere Gültigkeit besitzen ist auch über den Fall zu sprechen wo die Schichten durch das Elektrolyt fest verbunden sind, wie es vorrangig bei Strukturelektrolyten der Fall ist. Die resultierende Laminatstruktur kann beliebig viele Lagen mit unterschiedlichen Orientierungen aufweisen und wird durch die klassische Laminattheorie (CLT) beschrieben~\cite{Carlstedt2018}. Dabei wird angenommen, dass das Material linear-elastisch ist und kleine Durchbiegungen auftreten.
+Die bisherigen Annäherungen (Gleichungen \ref{eq:curvature} - \ref{eq:bending_fluid}) finden vor allem bei konventionellen Batterien mit nichttragenden Elektrolytschichten eine häufige Verwendung. Für den Fall, wo die Schichten durch das Elektrolyt fest verbunden sind, wie es vorrangig bei Strukturelektrolyten der Fall ist, sind diese Annahmen nur bedingt gültig. Die resultierende Laminatstruktur kann beliebig viele Lagen mit unterschiedlichen Orientierungen aufweisen und wird näherungsweise durch die klassische Laminattheorie (CLT) beschrieben~\cite{Carlstedt2018}. Dabei wird angenommen, dass das Material linear-elastisch ist und kleine Durchbiegungen auftreten.
 
 
 In der CLT wird die Dehnung über der Dicke $z$ des Laminats beschrieben durch
@@ -190,7 +195,7 @@ Somit ergibt sich die Krümmung zu:
 \kappa_x(x) = \frac{F x}{2 D^*_{11}}.
 \end{equation}
 
-Nach zweimaliger Integration gemäß der \textsc{Eulerian-Bernoulli-Theorie}-Bernoulli-Theorie entsteht die maximale Durchbiegung in der Balkenmitte zu
+Nach zweimaliger Integration gemäß der \textsc{Eulerian-Bernoulli}-Theorie entsteht die maximale Durchbiegung in der Balkenmitte zu
 \begin{equation}\label{eq:bending_sbe_100}
 u_\text{max,fest} = \frac{F L^3}{48 D^*_{11}}, \quad
 D^*_{11} = D_{11} - [\mathbf{B} \mathbf{A}^{-1} \mathbf{B}]_{11}.
@@ -211,7 +216,7 @@ Die Dehnung in $x$-Richtung in einer Schicht bei Höhe $z$ ergibt sich zu
 		%\def\svgwidth{\columnwidth}
         \center
 		\includegraphics[width=0.99\textwidth, angle=0]{bending_pre_tests.pdf}
-		\caption{\label{fig:bending_pre_tests}Zur Entwicklung einer vereinfachten Bestimmung des Verformungsverhaltens wurden \textbf{a)} Probekörper aus 11 Schichten einer $100~\mu m$ dicken Aluminiumfolie hergestellt, welche \textbf{b)} flächig mit Verschiedenen Anteilen an PVDF und Luft zusammengefügt wurden. Die \textbf{c-d)} 3-Punkt-Biegeversuche \textbf{e)} wurden mit den äquivalenten Kraft-Verschiebungskurven der entwickelten Methode anschließend verglichen.}
+		\caption{\label{fig:bending_pre_tests}Vereinfachten Bestimmung des Verformungsverhaltens an \textbf{a)} 11-lagigen Aluminium-Probekörper, gefügt mit \textbf{b)} variierenden Anteilen an PVDF und Luft. Vergleich der \textbf{c-d)} 3-Punkt-Biegeversuche mit den \textbf{e)} berechneten Kraft-Verschiebungswerten.}
 \end{figure}
 
 Zur Bestimmung der Schichtspannungen wird diese globale Dehnung in die lokale Koordinatenrichtung jeder Schicht transformiert\footnote{je nach Faserwinkel $\theta_i$} und mittels Anwendung des Materialgesetzes bestimmt
@@ -232,7 +237,30 @@ Der Übergang von der idealen Gleitschicht (flüssiger Elektrolyt) zum schubstar
 Um diesen intermediären Zustand für die Vorauslegung mathematisch zugänglich zu machen, wird die effektive Durchbiegung $u_{\text{max}}$ als gewichtete Überlagerung der Grenzfälle modelliert. Als Gewichtungsfaktor dient der Phasenvolumenanteil $\psi$ der flüssigen, mechanisch passiven Phase:
 
 \begin{equation}
+    \label{eq:bending_total}
     u_{\text{max}} = \psi \cdot u_{\text{max,flüssig}} + (1-\psi) \cdot u_{\text{max,fest}}.
 \end{equation}
 
-In dieser Formulierung fungiert $\psi$ als physikalisch interpretierbarer Kopplungsparameter. Ein Wert von $\psi = 1$ repräsentiert das Verhalten einer konventionellen Batterie mit rein flüssigem Elektrolyten, während $\psi \to 0$ den idealen schubfesten Verbund einer monolithischen Strukturbatterie beschreibt. Dieser analytische Mischungsansatz ermöglicht es, die mechanische Wirksamkeit des infiltrierten Strukturelektrolyten ohne numerische Kontaktmodellierung direkt in die Dimensionierung der Hochleistungsstruktur (TZ 4) einzubeziehen.
+In dieser Formulierung fungiert $\psi$ als physikalisch interpretierbarer Kopplungsparameter. Ein Wert von $\psi = 1$ repräsentiert das Verhalten einer konventionellen Batterie mit rein flüssigem Elektrolyten, während $\psi \to 0$ den idealen schubfesten Verbund einer monolithischen Strukturbatterie beschreibt.
+
+Die Gegenüberstellung der Ergebnisse aus Bild~\ref{fig:bending_pre_tests}e zeigt, dass der analytische Ansatz die experimentell beobachteten Verformungsverhalten innerhalb des ersten Millimeters relativ gut darstellt. Allerdings weicht mit zunehmender Verformung die lineare Annäherung vom beobachteten nicht-linearen Verhalten ab. Ein Hauptursache könnte hierbei der wachsende Einfluss der geometrischen Nichtlinearitäten sein. Dies würde auch erklären, warum die Abweichung vom linearen Verlauf bereits so frühzeitig zu beobachten ist, wo weitere Einflussfaktoren, wie Plastifizierung noch keine signifikante Rolle spielen. Da dieser analytische Mischungsansatz aber bereits jetzt es ermöglicht, die mechanische Wirksamkeit des infiltrierten Strukturelektrolyten ohne numerische Kontaktmodellierung direkt in die Dimensionierung der Hochleistungsstruktur einzubeziehen, ist dieser rein linearer Ansatz für eine erste analytische Beschreibung des Verhaltens als ausreichend zu bewerten.
+
+\section{Anwendung und Validierung der analytischen Vorauslegung}
+
+Nachdem im vorangegangenen Abschnitt die theoretischen Grundlagen zur Bestimmung der Energiedichte und des Biegeverhaltens erarbeitet wurden, erfolgt nun die analytische Vorauslegung mit den erreichten experimentellen Werten der gefertigten Batterietypen aus Tabelle~\ref{tab:material_comp}, wodurch neben der praktischen Anwendbarkeit auch die Validität der hergeleiteten Gleichungen überprüft werden kann.
+
+Die experimentell ermittelte Energiedichte während des ersten Lade- und Entladezyklus, welcher aufgrund der geringen Stromstärken näherungsweise einer quasistatischen Entladung entspricht, liegt für die ElViS-Strukturbatterien im Durchschnitt bei 42~\unit{\watt\hour\per\kilo\gram}. Mittels der analytischen Gleichungen~\ref{eq:capacity_limitation} bis \ref{eq:grav_energy_density} wird eine Energiedichte von 44~\unit{\watt\hour\per\kilo\gram} berechnet (siehe Tabelle~\ref{tab:compare_analytical_results}). Auch beim mechanischen Verhalten zeigt sich eine hohe Übereinstimmung: Die experimentell ermittelte Biegesteifigkeit der ElViS"=Strukturbatterie beträgt 152~\unit{\mega\pascal}, während die analytische Berechnung mittels Gleichung~\ref{eq:bending_total} einen Wert von 159~\unit{\mega\pascal} ergibt.
+
+Dass die analytischen Gleichungen ebenso auf konventionelle Systeme übertragbar sind, zeigt der Vergleich mit der Referenzbatterie. Hier wurden experimentell eine Energiedichte von 71~\unit{\watt\hour\per\kilo\gram} und eine Biegesteifigkeit von 47~\unit{\mega\pascal} gemessen. Die entsprechenden analytisch berechneten Werte liegen bei 77~\unit{\watt\hour\per\kilo\gram} bzw. 50~\unit{\mega\pascal}.
+
+\input{Abbildungen/03_Modellierung/analytical_comparision.tex}
+
+In beiden Fällen weisen die analytischen Ergebnisse eine gute Übereinstimmung mit den experimentellen Daten auf. Die Abweichungen liegen für die ElViS"=Strukturbatterie unter 5~\%, während sie bei der Referenzbatterie unter 10~\% verbleiben. Diese Ergebnisse bestätigen, dass die hergeleiteten analytischen Ansätze eine verlässliche Grundlage für die schnelle Abschätzung der Leistungsfähigkeit von Strukturbatterien bieten und somit als effizientes Werkzeug in der frühen Designphase eingesetzt werden können (TZ 4).
+
+Nachdem die Validität sichergestellt ist, können die analytischen Gleichungen nun für die systematische Untersuchung von Designparametern und deren Einfluss auf die Energiedichte und das mechanische Verhalten genutzt werden (Kapitel~\ref{sec:battery_identification}). Für die Entwicklung von Designrichtlinien und die Identifikation von Optimierungspotenzialen lassen sich aber auch so breits einige Erkenntnisse ableiten. 
+
+Die Gleichung~\ref{eq:capacity_limitation} zeigt, dass die Kapazität der Zelle durch die limitierende Elektrode bestimmt wird. Daher ist es entscheidend, die Kapazitäten von Anode und Kathode sorgfältig aufeinander abzustimmen, um die Energiedichte zu maximieren. Ein Übermaß an Kapazität auf einer Seite führt zu ungenutztem Potenzial und damit zu einer suboptimalen Energiedichte. Da faserbasierte Elektroden signifikant geringere Energiedichten aufweisen, ist in der Kombination mit konventionellen Kathoden anzuraten, die Dicke der Faseranode zu erhöhen. 
+
+Ein ebenfalls vielversprechender Ansatz lässt sich in Gleichung~\ref{eq:capacity_stack} finden. Die lineare Skalierung der Kapazität mit der Anzahl der Zellen legt nahe, dass die Stapelung von mehr Zellen eine direkte Möglichkeit darstellt, die Energiedichte zu erhöhen. Auch wirkt sich die damit verbunde größere Dicke sehr positiv auf die Biegesteifigkeit aus. In der Praxis führen jedoch die damit verbundenen Herstellungsherausforderungen, wie die Gewährleistung einer homogenen Zellverschaltung und die Vermeidung von Kurzschlüssen, zu einem Kompromiss der häufig kleinere Zellstapel bevorzugt\footnote{Fast alle derzeit bekannten Struktubatterien bestehen aus lediglich einer Zelle, konventionlle Batterien weisen bis etwa 20 Zellen pro Stack auf.}.
+
+Abschließend sei erwähnt, dass beide Gleichungen~\ref{eq:bending_sbe_0} und \ref{eq:bending_sbe_100}, die die Teile der Gesamtverformung beschreiben, von steiferen Materialien in den beiden äußersten Schichten am meisten profitieren. Daher scheint gerade für Pouchfolien die Verwendung von Kohlenstofffasern besonders geeignet zu sein. Die Herausforderung besteht hier allerdings darin, die notwendige Dichtigkeit der Pouchfolie zu gewährleisten (Tabelle~\ref{tab:failure_modes}), da Kohlenstofffasergelege von Natur aus porös sind und damit die Gefahr von Elektrolytleckagen besteht \footnote{In selbst betreuten Arbeiten wurde dieses Thema bereits erstmalig untersucht, allerdings wurde keine funktionalintegrierte Lösung gefunden.}.
