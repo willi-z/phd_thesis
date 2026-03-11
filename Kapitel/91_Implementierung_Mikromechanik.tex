@@ -10,7 +10,7 @@ Die Cahn-Hilliard-Gleichung wird in operatorzerlegter Form gelöst:
     \frac{\partial c}{\partial t} - \nabla \cdot (M \nabla \mu) &= 0,\\
     \mu - \frac{\partial f}{\partial c} + \lambda \nabla^2 c &= 0.
 \end{align}
-Für die Felder $c$ und $\mu$ werden kontinuierliche Lagrange-Elemente (P1 oder P2) verwendet. Die Zeitintegration erfolgt semi-implizit, beispielsweise mittels Eyre-stabilisierter Verfahren, um die Stabilität bei großen Zeitschritten sicherzustellen. Neumann-Randbedingungen $M \nabla \mu \cdot n = 0$ gewährleisten einen geschlossenen Stoffhaushalt. Das resultierende stationäre Phasenfeld $c(\boldsymbol{x})$ wird anschließend auf das Rechennetz der Strukturbatteriesimulation übertragen und dient dort zur Definition der Materialparameter in fester und flüssiger Phase.
+Für die Felder $c$ und $\mu$ werden kontinuierliche \textsc{Lagrange}-Elemente (P1 oder P2) verwendet. Die Zeitintegration erfolgt semi-implizit, beispielsweise mittels Eyre-stabilisierter Verfahren, um die Stabilität bei großen Zeitschritten sicherzustellen. Neumann-Randbedingungen $M \nabla \mu \cdot n = 0$ gewährleisten einen geschlossenen Stoffhaushalt. Das resultierende stationäre Phasenfeld $c(\boldsymbol{x})$ wird anschließend auf das Rechennetz der Strukturbatteriesimulation übertragen und dient dort zur Definition der Materialparameter in fester und flüssiger Phase.
 
 \section{Monolithische Mehrfeldsimulation der Strukturbatterie}
 
@@ -22,7 +22,7 @@ Die Strukturbatteriesimulation umfasst die Gleichungen für Ladungserhalt, Masse
 \]
 
 
-wobei die mechanischen Verschiebungen $\boldsymbol{u}$ mit Lagrange-Elementen zweiter Ordnung diskretisiert werden, während die übrigen Felder mit P1- oder P2-Elementen abgebildet werden.
+wobei die mechanischen Verschiebungen $\boldsymbol{u}$ mit \textsc{Lagrange}-Elementen zweiter Ordnung diskretisiert werden, während die übrigen Felder mit P1- oder P2-Elementen abgebildet werden.
 
 Die nichtlinearen Gleichungen werden mittels eines Newton-Krylov-Verfahrens (PETSc SNES) gelöst. Der Jacobian wird vollständig aus allen Teilgleichungen zusammengesetzt und blockweise vorkonditioniert, um die Konvergenz zu verbessern. Die Randbedingungen umfassen Dirichlet- und Neumann-Bedingungen für elektrische Potenziale, Konzentrationen und mechanische Verschiebungen. Die mechanische Gleichung wird ausschließlich in der Festkörperphase gelöst, während die Elektrolytphase spannungsfrei bleibt.
 

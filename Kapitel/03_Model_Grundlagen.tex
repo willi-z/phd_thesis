@@ -1,11 +1,14 @@
-\chapter{\label{sec:modelling_SB}Mikroskalige Modellgleichungen für Strukturbatterien}
+\chapter{Mikroskalige Modellgleichungen für Strukturbatterien}\label{sec:modelling_SB}
 
 Die Entwicklung einer belastungsgerechten, multiphysikalischen Auslegungsmethodik für Strukturbatterien erfordert ein präzises Verständnis der maßgeblichen mikroskaligen Prozesse. Den theoretischen Rahmen bilden die mikroskaligen Modellgleichungen, welche das elektrochemische, thermische und mechanische Verhalten der Funktionsmaterialien beschreiben. 
 Da eine direkte Auflösung der Mikroskala numerisch nicht praktikabel ist, erfolgt mittels Homogenisierungsverfahren zunächst die Überführung in eine makroskopische Kontinuumsbeschreibung. Auf dieser Basis lassen sich gezielte geometrische Vereinfachungen ableiten, die die Komplexität der ursprünglichen Mikrostruktur reduzieren und recheneffiziente, skalenübergreifende Modellierungsansätze ermöglichen.
 
+
+%Modellierungsstrategie:
+%Die numerische Umsetzung der RVE-Analysen erfolgt in dieser Arbeit unter Verwendung der Open-Source-Plattform \textsc{FEniCSx}~\cite{LoggEtAl2012}. 
 \section{\label{sec:existing_micro_models}Mikroskalenmodelle}
 
-Die mikroskalige Beschreibung bildet die physikalische Grundlage für das Verständnis der in Strukturbatterien ablaufenden elektrochemischen, thermischen und mechanischen Prozesse. Obwohl viele dieser Vorgänge sowohl in konventionellen als auch in strukturellen Batterien auftreten, gewinnen sie im Kontext tragender Energiespeicher aufgrund der zusätzlichen mechanischen Belastungen und der damit verbundenen Kopplungseffekte eine deutlich höhere Relevanz. %Die folgenden Abschnitte führen die zentralen mikroskaligen Gleichungen ein, die das Verhalten der Funktionsmaterialien bestimmen und damit die Basis für die spätere Homogenisierung und makroskalige Modellbildung bilden.
+Die mikroskalige Beschreibung bildet die physikalische Grundlage für das Verständnis der in Strukturbatterien ablaufenden elektrochemischen, thermischen und mechanischen Prozesse innerhalb der Batteriestruktur. Auf dieser Ebene wird unabhängig von der späteren Funktion als Anode oder Kathode das grundsätzliche Zusammenspiel zwischen der festen Phase (dem Aktivmaterial) und der flüssigen Phase (dem Elektrolyten) betrachtet. In dieser mikroskopischen Betrachtungsweise gelten für beide Elektroden dieselben physikalischen Gesetzmäßigkeiten der Diffusion und Interkalation. Erst durch die makroskopische Architektur der Zelle wird festgelegt, welche Seite als Minus- oder Pluspol fungiert. Im Kontext von Strukturbatterien gewinnt diese verallgemeinerte Sichtweise an Bedeutung, da die mechanischen Belastungen und Kopplungseffekte das Materialgefüge auf dieser fundamentalen Ebene beeinflussen, bevor sie sich in der Gesamtleistung der Batterie niederschlagen.
 
 \subsection{Elektrochemische Grundgleichungen}
 
@@ -14,26 +17,31 @@ Der Ionentransport stellt den dominierenden Prozess auf der Mikroskala dar~\cite
 \begin{enumerate}
     \item \textbf{Ladungserhalt im Festkörper}
     \begin{equation}
+        \label{eq:micro_potential_solid}
         \nabla \cdot \boldsymbol{i}_{\text{s}} = \nabla \cdot \left( - \kappa \nabla U_{\text{s}} \right) = 0
     \end{equation}
 
     \item \textbf{Massenerhalt im Festkörper}
     \begin{equation}
+        \label{eq:micro_concentration_solid}
         \frac{\partial c_{\text{s}}}{\partial t} = \nabla \cdot \left( D_{\text{s}} \nabla c_{\text{s}} \right)
     \end{equation}
 
     \item \textbf{Massenerhalt im Elektrolyten}
     \begin{equation}
+        \label{eq:micro_concentration_liquid}
         \frac{\partial c_e}{\partial t} = \nabla \cdot (D_e \nabla c_e) - \frac{\boldsymbol{i}_{\text{e}} \cdot \nabla t_+^0}{F_{\text{K}}} - \nabla \cdot (c_{\text{e}} \boldsymbol{v}_0)
     \end{equation}
 
     \item \textbf{Ladungserhalt im Elektrolyten}
     \begin{equation}
+        \label{eq:micro_potential_electrolyte}
         \nabla \cdot \boldsymbol{i}_{\text{e}} = \nabla \cdot \left( - \gamma \nabla U_{\text{e}} - \frac{2\gamma R_{\text{K}} T}{F_{\text{K}}} \left(1 + \frac{\partial \ln f_\pm}{\partial \ln c_{\text{e}}}\right)(t_+^0 - 1)\nabla \ln c_{\text{e}} \right) = 0
     \end{equation}
 
-    \item \textbf{Ionentransport zwischen fester und flüssiger Phase}
+    \item \textbf{Ionentransport zwischen fester und flüssiger Phase}\footnote{\textsc{Butler-Volmer}-Kinetik~\cite{Chen2022}}
     \begin{align}
+        \label{eq:micro_butler_volmer}
         j &= \frac{i_0}{F}\left[\exp\left(\frac{(1-\alpha)F}{RT}\eta\right) - \exp\left(-\frac{\alpha F_{\text{K}}}{R_{\text{K}}T}\eta\right)\right],\\
         i_0 &= n F_{\text{K}} k_{0,\text{K}} \left(\prod_i c_{o,i}\right)^{1-\alpha} \left(\prod_i c_{r,i}\right)^\alpha,\\
         \eta &= (U_{\text{s}} - U_{\text{e}}) - U_{\text{ocp}}.
@@ -46,7 +54,9 @@ Die Parameter umfassen unter anderem die Stromdichte $\boldsymbol{i}$, die elekt
 
 Neben dem Ladungs- und Stofftransport beeinflussen auch Temperaturentwicklung und mechanische Spannungen das Verhalten der Batterie. Die Temperaturverteilung in fester und flüssiger Phase ergibt sich aus der Wärmeleitungsgleichung, ergänzt um Joule-Heizterme:
 \begin{align}
+    \label{eq:micro_thermal_solid}
     \rho_{\text{s}} c_{\text{P,s}} \frac{\partial T_{\text{s}}}{\partial t} &= \nabla \cdot (\gamma_{\text{s}} \nabla T_{\text{s}}) - \boldsymbol{i}_{\text{s}} \cdot \nabla U_{\text{s}},\\
+    \label{eq:micro_thermal_liquid}
     \rho_{\text{e}} c_{\text{P,e}} \frac{\partial T_{\text{e}}}{\partial t} &= \nabla \cdot (\gamma_{\text{e}} \nabla T_{\text{e}}) - \boldsymbol{i}_{\text{e}} \cdot \nabla U_{\text{e}}.
 \end{align}
 
@@ -59,12 +69,12 @@ Für kleine Deformationen und homogene Werkstoffe gilt das lineare elastische Ma
     \boldsymbol{\sigma} = \boldsymbol{C}\,\boldsymbol{\varepsilon}_{\text{mech}}.
 \end{equation}
 
-Der Elastizitätstensor $\boldsymbol{C}$ wird je nach Materialklasse isotrop, transversal-isotrop oder orthotrop formuliert. Für interkalationsaktive Materialien zeigen Untersuchungen von \textsc{Duan}~\cite{Duan2021}, dass die Elastizitätsmoduli $E_i$ linear von der Ionenkonzentration abhängen:
+Der Elastizitätstensor $\boldsymbol{C}$ wird je nach Materialklasse isotrop, transversal-isotrop, orthotrop oder anisotrop formuliert. Für interkalationsaktive Materialien zeigen Untersuchungen von \textsc{Duan}~\cite{Duan2021}, dass die Elastizitätsmoduli $E_i$ linear von der Ionenkonzentration abhängen:
 \begin{equation}
     E_i(c_s) = E_{i,0} + \frac{c_s}{c_{s,1}}(E_{i,1} - E_{i,0}).
 \end{equation}
 
-Die Gesamtdehnung an einem Punkt setzt sich aus mechanischen, thermischen und elektrochemischen Anteilen zusammen:
+Die Gesamtdehnung eines materiellen Punktes setzt sich aus mechanischen, thermischen und elektrochemischen Anteilen zusammen:
 \begin{equation}
     \boldsymbol{\varepsilon} = \boldsymbol{\varepsilon}_{\text{mech}} + \boldsymbol{\varepsilon}_{\text{th}} + \boldsymbol{\varepsilon}_{\text{echem}},
 \end{equation}
@@ -75,11 +85,13 @@ wobei die Dehnung aus dem Verschiebungsfeld $u$ folgt:
 
 \subsection{Phasenseparation und Mikrostrukturabbildung}
 
-Für eine realitätsnahe Abbildung des Zweiphasen-Elektrolyten wird die Mikrostruktur mittels der \textsc{Cahn-Hilliard}-Gleichung generiert~\cite{Carolan2015,Grant1993}. Diese beschreibt die zeitliche Entwicklung einer Konzentrationsverteilung $c(\boldsymbol{x})$, aus der feste und flüssige Phasen abgeleitet werden:
+Für eine realitätsnahe Abbildung des Zweiphasen-Elektrolyten wird die Mikrostruktur mittels der \textsc{Cahn-Hilliard}-Gleichung generiert~\cite{Carolan2015,Grant1993}. Diese beschreibt die zeitliche Entwicklung einer Konzentrationsverteilung $c(\boldsymbol{x})$, aus der feste ($c \approx 1$) und flüssige ($c \approx 0$) Phasen abgeleitet werden:
 \begin{align}
     \frac{\partial c}{\partial t} - \nabla \cdot M \left( \nabla \left( \frac{df}{dc} - \lambda \nabla^2 c\right) \right) &= 0,\\
+    \label{eq:cahn-hilliard-neumann}
     M\left( \nabla \left( \frac{df}{dc} - \lambda \nabla^2 c \right)\right) \cdot \boldsymbol{n} &= 0.
 \end{align}
+Hierbei repräsentiert $M$ die Mobilität, welche die Geschwindigkeit der Diffusionsprozesse skaliert. Der Term $f(c)$ beschreibt die lokale freie Energiedichte, die üblicherweise als Doppelmuldenpotential (Bild~\ref{fig:cahn-hilliard}b) formuliert wird, um die Entmischung in zwei stabile Zustände zu treiben. Der Gradientenenergie-Koeffizient $\lambda$ wirkt einer unendlich scharfen Phasengrenze entgegen und korreliert direkt mit der resultierenden Grenzflächendicke.
 
 \begin{figure}[!ht]
     \center
@@ -87,16 +99,17 @@ Für eine realitätsnahe Abbildung des Zweiphasen-Elektrolyten wird die Mikrostr
     \caption{\label{fig:cahn-hilliard}a) Zufallsverteilte Ausgangswerte, b) Funktion $f(c)$ zur Separation der Konzentrationen, c)--d) Ergebnisse mit $M=0{,}2$, $\lambda = 0{,}5$}
 \end{figure}
 
-Aus einer zufälligen Anfangsverteilung entsteht durch Phasenseparation eine charakteristische Mikrostruktur, die anschließend als Grundlage für die Zuordnung der Materialparameter dient (Bild~\ref{fig:cahn-hilliard}). Die Operatorzerlegung
+Aus einer zufälligen Anfangsverteilung (Bild~\ref{fig:cahn-hilliard}a) entsteht durch Phasenseparation eine charakteristische Mikrostruktur, die anschließend als Grundlage für die Zuordnung der Materialparameter dient (Bild~\ref{fig:cahn-hilliard}c,d). Um die numerische Umsetzung der vierten Ordnung zu vereinfachen, wird eine Operatorzerlegung in zwei Gleichungen zweiter Ordnung durchgeführt:
 \begin{align}
     \frac{\partial c}{\partial t} - \nabla \cdot M \nabla \mu &= 0,\\
-    \mu - \frac{\partial f}{\partial c} + \lambda \nabla^2 c &= 0
+    \label{eq:micro_last}
+    \mu - \frac{\partial f}{\partial c} + \lambda \nabla^2 c &= 0.
 \end{align}
-ermöglicht eine numerisch stabile Lösung mit Standard-Lagrange-Elementen.
+Dabei wird das chemische Potential $\mu$ als zusätzliche Hilfsvariable eingeführt, was eine numerisch stabile Lösung mit Standard-\textsc{Lagrange}-Elementen ermöglicht. Die Randbedingung in Gleichung~\ref{eq:cahn-hilliard-neumann} stellt sicher, dass kein Massenfluss über die Systemgrenzen erfolgt und somit die Gesamtkonzentration im Zeitverlauf erhalten bleibt.
 
 \subsection{Mikroskalige Simulation einer Zweifaser-Strukturbatterie}
 
-Zur Veranschaulichung der zuvor hergeleiteten mikroskaligen Gleichungen wurde ein vollständiges Mehrfeldmodell einer Zweifaser-Strukturbatteriezelle realisiert. Das Modell umfasst eine einfasrige Kohlenstofffaseranode sowie eine mit LFP beschichtete Kohlenstofffaserkathode, die durch einen Strukturelektrolyten getrennt sind, siehe Bild~\ref{fig:micro_model}. Die Poren des Elektrolyten liegen im Nanometerbereich, während die charakteristischen Partikelgrößen der LFP-Komponenten und Kohlenstofffasern im Bereich von $1~\mu\text{m}$ bzw. $10~\mu\text{m}$ liegen~\cite{Chaudhary2024a,Huson2014}. Die Abbildung dieser Skalen erfordert ein sehr feines Rechennetz\footnote{Hier $180 \times 180 \times 640 = 20\,736\,000$ Elemente.}, wodurch die Simulation eines vollständigen Lade- und Entladezyklus sehr rechenintensiv wird\footnote{Berechnungsserver der HTWK mit zwei AMD EPYC 7F753 CPUs, $2{,}95~\text{GHz}$, jeweils 32 Kerne.}.
+Zur Veranschaulichung der Gleichungen~\ref{eq:micro_potential_solid} bis \ref{eq:micro_last} wurde ein vollständiges Mehrfeldmodell einer Zweifaser-Strukturbatteriezelle realisiert. Unter einem solchen Modell wird die simultane Lösung der gekoppelten Erhaltungsgleichungen verstanden, bei der elektrochemische Stoffströme, thermische Dissipation und mechanische Deformationen in gegenseitiger Abhängigkeit berechnet werden\footnote{vollständige Kopplung}. Das Modell umfasst eine einfasrige Kohlenstofffaseranode sowie eine mit LFP beschichtete Kohlenstofffaserkathode, die durch einen Strukturelektrolyten getrennt sind, siehe Bild~\ref{fig:micro_model}. Die Poren des Elektrolyten liegen im Nanometerbereich, während die charakteristischen Partikelgrößen der LFP-Komponenten und Kohlenstofffasern im Bereich von $1~\mu\text{m}$ bzw. $10~\mu\text{m}$ liegen~\cite{Chaudhary2024a,Huson2014}. Die Abbildung dieser Skalen erfordert ein sehr feines Rechennetz\footnote{Hier $180 \times 180 \times 640 = 20\,736\,000$ Elemente.}, wodurch die Simulation eines vollständigen Lade- und Entladezyklus sehr rechenintensiv wird\footnote{Berechnungsserver der HTWK mit zwei AMD EPYC 7F753 CPUs, $2{,}95~\text{GHz}$, jeweils 32 Kerne.}.
 
 \begin{figure}[!ht]
     \center
@@ -105,9 +118,9 @@ Zur Veranschaulichung der zuvor hergeleiteten mikroskaligen Gleichungen wurde ei
 \end{figure}
 
 
-Die numerische Umsetzung erfolgt in \texttt{FEniCSx} und folgt einem zweistufigen Ansatz. Zunächst wird die Mikrostruktur des Zweiphasen-Elektrolyten in einem vorgelagerten Simulationslauf mittels der operatorzerlegten \textsc{Cahn-Hilliard}-Gleichung berechnet. Die Felder $c$ und $\mu$ werden mit kontinuierlichen Lagrange-Elementen diskretisiert, und die zeitliche Integration erfolgt semi-implizit, um Stabilität bei großen Zeitschritten sicherzustellen. Das resultierende stationäre Phasenfeld definiert die festen und flüssigen Domänen und wird anschließend auf das Rechennetz der Strukturbatteriesimulation übertragen.
+Die numerische Umsetzung erfolgt in \texttt{FEniCSx} und folgt einem zweistufigen Ansatz. Zunächst wird die Mikrostruktur des Zweiphasen-Elektrolyten in einem vorgelagerten Simulationslauf mittels der operatorzerlegten \textsc{Cahn-Hilliard}-Gleichung berechnet. Die Felder $c$ und $\mu$ werden mit kontinuierlichen \textsc{Lagrange}-Elementen diskretisiert, und die zeitliche Integration erfolgt semi-implizit, um Stabilität bei großen Zeitschritten sicherzustellen. Das resultierende stationäre Phasenfeld definiert die festen und flüssigen Domänen und wird anschließend auf das Rechennetz der Strukturbatteriesimulation übertragen.
 
-Im zweiten Schritt wird das elektrochemisch-thermomechanische Modell als monolithisch gekoppeltes Mehrfeldproblem formuliert. Die Funktionsräume umfassen elektrische Potenziale, Konzentrationen, Temperaturen und mechanische Verschiebungen, die gemeinsam in einem blockstrukturierten Ansatz gelöst werden. Die nichtlinearen Kopplungen, insbesondere die Butler-Volmer-Kinetik~\cite{zschiebsch2023pitfalls_acm, zschiebsch2023pitfalls_conf}, konzentrationsabhängige Elastizitätsmodule und Joule-Heizung, werden mittels eines Newton-Krylov-Verfahrens behandelt. Die Randbedingungen für Potenziale, Konzentrationen und Verschiebungen werden entsprechend den physikalischen Schnittstellen formuliert. Eine adaptive Zeitschrittsteuerung stellt sicher, dass sowohl schnelle transiente Vorgänge als auch langsame Diffusionsprozesse numerisch stabil und recheneffizient erfasst werden.
+Im zweiten Schritt wird das elektrochemisch-thermomechanische Modell als monolithisch gekoppeltes Mehrfeldproblem formuliert. Die Funktionsräume umfassen elektrische Potenziale (Gleichung~\ref{eq:micro_potential_solid} und \ref{eq:micro_potential_electrolyte}), Konzentrationen (Gleichung~\ref{eq:micro_concentration_solid} und \ref{eq:micro_concentration_liquid}), Temperaturen (Gleichung~\ref{eq:micro_thermal_solid} und \ref{eq:micro_thermal_liquid}) und mechanische Verschiebungen (Gleichung~\ref{eq:stress_gov} bis \ref{eq:strain_total_displacement}), die gemeinsam in einem blockstrukturierten Ansatz gelöst werden. Die nichtlinearen Kopplungen, insbesondere die \textsc{Butler-Volmer}-Kinetik~\cite{zschiebsch2023pitfalls_acm, zschiebsch2023pitfalls_conf}, konzentrationsabhängige Elastizitätsmodule und Joule-Heizung, werden mittels eines \textsc{Newton-Krylov}-Verfahrens~\cite{Kelley1995, Deuflhard2011} behandelt. Die Randbedingungen für Potenziale, Konzentrationen und Verschiebungen werden entsprechend den physikalischen Schnittstellen formuliert. Eine adaptive Zeitschrittsteuerung stellt sicher, dass sowohl schnelle transiente Vorgänge als auch langsame Diffusionsprozesse numerisch stabil und recheneffizient erfasst werden.
 
 Die Simulationsergebnisse zeigen die erwarteten qualitativen Trends: Die Zellspannung folgt dem vorgegebenen Stromprofil, die Lithiumkonzentration verschiebt sich während der Entladung in Richtung der Kathode, und die mechanischen Spannungen entstehen in Abhängigkeit der lokalen Interkalation. Auch die Temperaturentwicklung bleibt, wie für kleine Zellen typisch,c nahezu konstant. Damit bestätigt das Modell die korrekte Umsetzung der zuvor beschriebenen Gleichungen. Gleichzeitig wird deutlich, dass die mikroskalige Vollfeldsimulation für praktische Auslegungsaufgaben ungeeignet ist. Trotz moderater Lasten und kurzer Simulationsdauer entstehen Rechenzeiten im Bereich vieler Stunden. Die Kombination aus nichtlinearen Kopplungen, hoher räumlicher Auflösung und monolithischer Lösung macht das Verfahren extrem rechenintensiv. 
 Das realisierte Modell dient somit als konsistenter numerischer Demonstrator der zuvor eingeführten mikroskaligen Gleichungen und bildet die Grundlage für die in den folgenden Kapiteln dargestellten Homogenisierungs- und Skalierungsansätze.
@@ -209,7 +222,7 @@ Wissenschaftlich kritisch ist die Diskrepanz zwischen physikalischer Detailtiefe
 
 Zudem führt die Volumenmittelung zu einem Verlust lokaler Informationen: Die mechanischen Spannungen (Bild~\ref{fig:carlstedt}f) stellen lediglich gemittelte Kontinuumswerte dar, wodurch lokale Spitzen an den Faser-Matrix-Grenzflächen geglättet werden. Das Modell beweist somit die Validität der Homogenisierung, verdeutlicht aber gleichzeitig die Notwendigkeit für die weitere Komplexitätsreduktion im P2D-Ansatz, um für iterative Optimierungsprozesse praktikabel zu sein.
 
-\section{Geometrische Vereinfachung und P2D-Ansatz}
+\section{\label{sec:p2d_model}Geometrische Vereinfachung und P2D-Ansatz}
 
 Um die für iterative Optimierungsschleifen und Systemauslegungen notwendige Recheneffizienz zu erreichen, wird das Modell durch gezielte geometrische Idealisierungen der aktiven Phasen zum sogenannten Pseudo-Zweidimensionalen Modell (P2D) erweitert~\cite{Newman2021}. Während im zuvor beschriebenen Carlstedt-Modell die Konzentrationen noch über die vollen Raumkoordinaten der 2D-Domäne berechnet werden, abstrahiert der P2D-Ansatz die Geometrie der interkalationsaktiven Bereiche (Fasern oder Partikel) innerhalb des homogenisierten Kontinuums.
 
