@@ -1,23 +1,53 @@
 \chapter{Glossar}\label{sec:glosar}
 
 \begin{description}
+    \item[Aktivierungsenergie ($E_{\text{a}}$)] Die energetische Barriere, die überwunden werden muss, damit eine chemische Reaktion oder ein Ladungstransferprozess stattfinden kann. Im Kontext des Reduktionsmittels beschreibt $\Delta E_{\text{a,red}}$ die spezifische Energiehürde für die Abgabe von Elektronen; ihre Größe bestimmt maßgeblich die Reaktionsgeschwindigkeit und fließt über den Ladungstransferkoeffizienten in die kinetische Beschreibung der Elektrodenreaktion ein.
+
     \item[Aktivitätskoeffizient ($f_{\pm}$)] Ein Korrekturfaktor in der Thermodynamik, der die Abweichung einer realen Elektrolytlösung vom idealen Verhalten beschreibt. Er berücksichtigt die interionischen Wechselwirkungen bei höheren Konzentrationen.
+    
+    \item[Anode] Die Elektrode, an der während des Entladevorgangs die Oxidation stattfindet (Erhöhung der Oxidationszahl durch Elektronenabgabe). In Lithium-Ionen-Batterien fungiert sie als Reservoir für Lithium-Ionen, die beim Entladen interkaliert aus dem Aktivmaterial (z.\,B. Hardcarbon) in den Elektrolyten übertrehen.
     
     \item[Asymmetrischer Ladungstransferkoeffizient ($\alpha$)] Der asymmetrische Ladungstransferkoeffizient $\alpha$ ergibt sich aus dem Verhältnis der Änderungen der Aktivierungsenergie der Reduktionsmittel ($\Delta E_{\text{a,red}}$) und der Gibbs-Energie der Oxidationsmittel ($\Delta G_0$): \begin{equation} \alpha = \left|\frac{\Delta E_{\text{a,red}}}{\Delta G_0}\right|, \end{equation} wodurch er definitionsgemäß im Bereich $0 < \alpha < 1$ liegt.
 
+    \item[Brownsche Bewegung] Die unregelmäßige und zufällige Eigenbewegung von Teilchen in einem Fluid, hervorgerufen durch thermische Kollisionen. Sie bildet das mikroskopische Fundament für das Ficksche Diffusionsgesetz. In numerischen Verfahren wie \textit{Walk-on-Spheres} dient sie als stochastisches Modell, um die Laplace-Gleichung durch die Simulation von Zufallspfaden zu lösen.
+    
     \item[Butler-Volmer-Kinetik] Beschreibt den Zusammenhang zwischen dem elektrischen Strom an einer Elektrode und dem Elektrodenpotential (Überspannung). Sie ist das elektrochemische Äquivalent zu einem nichtlinearen Reibungs- oder Dämpfungsgesetz in der Mechanik und bestimmt die Rate des Ladungstransfers über die Grenzfläche.
     
     \item[Diffusionskoeffizient ($D$)] Ein Maß für die Geschwindigkeit, mit der Teilchen (z.\,B. Ionen) in einem Medium aufgrund von Konzentrationsgradienten wandern. Er ist ein zentraler Parameter in der Beschreibung des Massentransports in Elektrolyten und Festkörpern.
+
+    \item[Elektrolyt] Das Medium, welches den Transport von Ionen zwischen den Elektroden ermöglicht, während es für Elektronen isolierend wirkt. In Strukturbatterien wird häufig ein Zweiphasen-Elektrolyt eingesetzt, der sowohl ionische Leitfähigkeit als auch mechanische Steifigkeit (als Matrixmaterial) bereitstellt.
+    
+    \item[Gibbs-Energie ($G$)] Auch als freie Enthalpie bezeichnetes thermodynamisches Potential, das die bei konstantem Druck und konstanter Temperatur maximal verfügbare Nutzarbeit eines Systems beschreibt. Die Änderung $\Delta G = \Delta H - T \cdot \Delta S$ dient als zentrales Stabilitätskriterium: Ein Prozess läuft nur dann spontan ab, wenn die Gibbs-Energie abnimmt ($\Delta G < 0$). In der Elektrochemie ist sie über $\Delta G = -n \cdot F \cdot E$ direkt mit der Leerlaufspannung einer Zelle verknüpft.
+
+    \item[Gleichgewichtspotential ($U_{\text{ocp}}$)] Auch als Leerlaufspannung oder \textit{Open-Circuit Potential} bezeichnetes elektrisches Potential einer Elektrode im stromlosen Zustand ($I = 0$). Es stellt den thermodynamischen Ruhezustand dar, bei dem die anodischen und kathodischen Teilstromdichten betragsgleich sind (Austauschstromdichte). Das OCP ist über die Nernst-Gleichung mit der Konzentration der elektroaktiven Spezies und über die Gibbs-Energie mit der Triebkraft der Gesamtreaktion verknüpft.
 
     \item[Hardcarbon-Slurry] Bezeichnung für eine viskose Suspension (Paste), die im Fertigungsprozess auf den Stromableiter (hier: PX-35 Kohlenstofffasergelege) appliziert wird. Der Slurry besteht primär aus Hardcarbon (nicht-graphitierbarer Kohlenstoff) als aktivem Anodenmaterial, einem leitfähigen Additiv (z. B. Carbon Black) und einem polymeren Binderschwerpunkt. Im Gegensatz zu Graphit weist Hardcarbon eine ungeordnete Schichtstruktur auf, die eine höhere mechanische Robustheit bei der Interkalation von Lithium-Ionen bietet. In Strukturbatterien ist die Grenzflächenhaftung des ausgehärteten Slurrys auf den Kohlenstofffasern kritisch für die Schubübertragung und die elektrische Kontaktierung; fertigungsbedingte Inhomogenitäten in der Slurry-Verteilung können zu lokalen Steifigkeitseinbrüchen und vorzeitigem strukturellem Versagen führen.
 
     \item[Hittorfsche Überführungszahl ($t_+^0$)] Gibt den Anteil des gesamten elektrischen Stroms an, der durch eine bestimmte Ionenart (meist das Kation) transportiert wird. Sie ist entscheidend für die Ausbildung von Konzentrationsgradienten im Elektrolyten.
     
+    \item[Homogenisierung] Ein mathematisch-physikalisches Verfahren zur Bestimmung effektiver Materialeigenschaften eines heterogenen Mediums (Mikroebene) für die Verwendung in einem makroskopischen Ersatzmodell (Meso- oder Makroebene). Dabei werden über ein repräsentatives Volumenelement (RVE) gemittelte Feldgrößen berechnet, um komplexe Mikrostrukturen, wie etwa den Faser-Matrix-Verbund einer Strukturbatterie, durch ein energetisch äquivalentes, jedoch homogenes Kontinuum zu ersetzen.
+    
     \item[Interkalation] Das reversible Einlagern von Ionen (z.\,B. Lithium-Ionen) in die Gitterstruktur eines Festkörpers (Wirtsgitter). In der Mechanik führt dies zu einer Volumenausdehnung, die analog zur thermischen Dehnung als \textit{interkalationsinduzierte Dehnung} modelliert wird.
     
     \item[Ionische Leitfähigkeit ($\gamma$)] Ein Maß für die Fähigkeit eines Elektrolyten, elektrischen Strom durch Ionenbewegung zu leiten. Sie ist das Analogon zur elektrischen Leitfähigkeit $\sigma$ in Metallen, hängt jedoch stark von der Konzentration und der Viskosität des Mediums ab.
     
+    \item[Kathode] Die Elektrode, an der während des Entladevorgangs die Reduktion stattfindet (Elektronenaufnahme). Sie besitzt im Vergleich zur Anode ein höheres Standardpotential. Die Leistungsfähigkeit der Kathode limitiert oft die Energiedichte und Zyklenfestigkeit des Gesamtsystems.
+    
     \item[Konstruktrivmatrix] Die Konstitutivmatrix (auch Materialsteifigkeitsmatrix) verknüpft im verallgemeinerten Hookeschen Gesetz die Spannungs- und Dehnungstensoren. Sie enthält die richtungsabhängigen Materialkennwerte und beschreibt somit das grundlegende physikalische Antwortverhalten des Werkstoffs auf äußere Lasten.
+
+    \item[Makroskala] Die globale Betrachtungsebene der gesamten Komponente oder Batterie-Zelle. Auf dieser Skala wird das Material als homogenes Kontinuum behandelt, wobei die komplexen Details der Mikrostruktur nur noch indirekt über die zuvor ermittelten effektiven Materialparameter (z.\,B. effektive Steifigkeitsmatrix oder Leitfähigkeit) einfließen.
+    
+    \item[Mesoskala] Eine intermediäre Skalenebene, die als Bindeglied zwischen Mikro- und Makrowelt fungiert. Auf dieser Ebene werden typischerweise repräsentative Volumenelemente (RVE) oder Laminat-Einzelschichten betrachtet, um durch Homogenisierungsverfahren effektive Materialeigenschaften für den Verbundwerkstoff abzuleiten.
+    
+    \item[Mikroskala] Die unterste Betrachtungsebene, auf der die einzelnen Materialphasen und deren Grenzflächen explizit aufgelöst werden (z.\,B. einzelne Kohlenstofffasern, Hardcarbon-Partikel oder die Porenstruktur im Strukturelektrolyten). Hier werden die lokalen physikalischen Phänomene wie die Interkalationskinetik oder der lokale Ladungstransfer modelliert.
+    
+    \item[Monte-Carlo-Methoden] Eine Klasse von Algorithmen, die auf wiederholten Zufallsexperimenten basieren, um numerische Probleme zu lösen. In der Elektrochemie und Thermodynamik werden sie eingesetzt, um komplexe Teilcheninteraktionen oder Diffusionspfade statistisch zu erfassen, wenn eine direkte Lösung der deterministischen Feldgleichungen aufgrund der Systemgröße oder Unordnung (z.\,B. in Hardcarbon) zu rechenintensiv wäre.
+    
+    \item[Newton-Konvergenz] Beschreibt das Konvergenzverhalten des Newton-Raphson-Verfahrens bei der Lösung nichtlinearer Gleichungssysteme. In der numerischen Simulation dient die Anzahl der benötigten Iterationen pro Zeitschritt als Indikator für die numerische Stabilität; eine schlechte Newton-Konvergenz führt in adaptiven Algorithmen typischerweise zu einer automatischen Verringerung der Schrittweite ($\Delta t$), um die Lösung innerhalb der Fehlertoleranz zu halten.
+
+    \item[Newton-Krylov-Verfahren] Ein iteratives Lösungsverfahren für große nichtlineare Gleichungssysteme, das das Newton-Raphson-Verfahren mit einem Krylov-Unterraum-Verfahren kombiniert. Anstatt die Jacobi-Matrix explizit zu invertieren, wird das lineare Gleichungssystem in jedem Newton-Schritt approximativ gelöst. Dies ist besonders bei rechenintensiven Simulationen (wie der Cahn-Hilliard-Gleichung) vorteilhaft, da Speicherplatz gespart und die Recheneffizienz gesteigert wird.
+    
+    \item[Newton-Raphson-Verfahren] Ein effizientes numerisches Iterationsverfahren zur Bestimmung von Nullstellen nichtlinearer Gleichungen oder Gleichungssysteme. Es approximiert die Funktion in einem Startpunkt durch ihre Tangente (unter Verwendung der Jacobi-Matrix) und nutzt deren Nullstelle als verbesserten Startwert für die nächste Iteration. Aufgrund seiner quadratischen Konvergenzrate ist es das Standardverfahren für die Lösung der nichtlinearen Feldgleichungen in der Finite-Elemente-Methode.
 
     \item[P2D-Modell (Pseudo-Two-Dimensional)] Ein hocheffizientes Batteriemodell nach \textsc{Newman}. Es reduziert die komplexe Geometrie der Elektrode auf eine Dimension entlang der Schichtdicke, während die Diffusion im Inneren der Aktivmaterialpartikel als zusätzliche (pseudo-zweite) Dimension radial berechnet wird.
     
@@ -25,6 +55,10 @@
     
     \item[Repräsentatives Volumenelement (RVE)] Das kleinste Volumen eines heterogenen Materials (z.\,B. Faser-Matrix-Verbund), das die makroskopischen Eigenschaften des Gesamtsystems statistisch signifikant repräsentiert. In der Homogenisierung dient es dazu, effektive Materialparameter (wie den Elastizitätstensor oder die effektive Leitfähigkeit) zu bestimmen.
 
+    \item[Separator] Eine poröse, elektrisch isolierende Membran, die Anode und Kathode räumlich trennt, um einen internen Kurzschluss zu verhindern. Er muss für Ionen durchlässig sein und verfügt im Kontext von Strukturbatterien über eine definierte Tortuosität, die den Ionentransport beeinflusst.
+    
+    \item[Stromdichte ($j$)] Der auf die Elektrodenoberfläche bezogene elektrische Strom ($j = I/A$). In der Elektrochemie ist sie ein Maß für die Reaktionsrate pro Flächeneinheit. Die Netto-Stromdichte ergibt sich aus der Differenz von anodischen und kathodischen Teilstromdichten und wird durch die Butler-Volmer-Gleichung in Abhängigkeit von der Überspannung $\eta$ beschrieben.
+    
     \item[Strukturelektrolyt] Ein multifunktionales Material, das sowohl die Aufgabe des Ionentransports (Elektrolyt) als auch die der Lastübertragung (Matrix im Faserverbund) übernimmt. Meist handelt es sich um ein Zweiphasensystem aus einem steifen Polymer und einem ionisch leitfähigen Flüssigelektrolyten.
     
     \item[Template-basierter Strukturelektrolyt] Ein Strukturelektrolyt, bei dem die Mikrostruktur durch die Verwendung von Vorlagen (z.\,B. durch 3D-Druck, Elektrospinning oder chemische Selbstorganisation) gezielt gestaltet wird. Diese Vorlagen dienen als Gerüst für die Ausbildung der Phasen und ermöglichen eine kontrollierte Anordnung der leitfähigen und strukturellen Komponenten.
@@ -32,5 +66,8 @@
     \item[Tortuosität ($\tau$)] Ein dimensionsloser Faktor, der die Verlängerung des effektiven Transportweges in porösen oder komplexen Medien beschreibt. Sie beeinflusst die effektive Diffusions- und Leitfähigkeit in Materialien wie Elektrolyten oder Festkörpern.
 
     \item[Überspannung ($\eta$)] Die Differenz zwischen dem aktuellen Potential einer Elektrode unter Stromfluss und ihrem Gleichgewichtspotential ($U_{\text{ocp}}$). Sie stellt die "treibende Kraft" für die elektrochemische Reaktion dar, ist jedoch gleichzeitig mit energetischen Verlusten (Wärmebildung) verbunden.
+
+    \item[Walk-on-Stars (WoS)] Ein probabilistisches numerisches Verfahren zur Lösung von Randwertproblemen (z.\,B. der Poisson- oder Laplace-Gleichung). Im Gegensatz zu klassischen Gitter-Methoden (FEM) basiert WoS auf der Auswertung von Brownschen Molekularbewegungen. Dabei springt der Algorithmus in jedem Schritt zum Rand der größtmöglichen in der Domäne liegenden Kugel (dem „Stern“), bis eine definierte Abbruchschwellen am Rand erreicht wird. Dies ermöglicht eine punktweise Lösung des Potentials, ohne das gesamte Volumen diskretisieren zu müssen, was besonders bei komplexen Geometrien oder hohen Gradienten effizient sein kann.
+    
 \end{description}
 

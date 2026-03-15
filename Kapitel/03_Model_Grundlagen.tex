@@ -1,11 +1,24 @@
 \chapter{Mikroskalige Modellgleichungen für Strukturbatterien}\label{sec:modelling_SB}
+\section{Modellierungsstrategie}
 
-Die Entwicklung einer belastungsgerechten, multiphysikalischen Auslegungsmethodik für Strukturbatterien erfordert ein präzises Verständnis der maßgeblichen mikroskaligen Prozesse. Den theoretischen Rahmen bilden die mikroskaligen Modellgleichungen, welche das elektrochemische, thermische und mechanische Verhalten der Funktionsmaterialien beschreiben. 
-Da eine direkte Auflösung der Mikroskala numerisch nicht praktikabel ist, erfolgt mittels Homogenisierungsverfahren zunächst die Überführung in eine makroskopische Kontinuumsbeschreibung. Auf dieser Basis lassen sich gezielte geometrische Vereinfachungen ableiten, die die Komplexität der ursprünglichen Mikrostruktur reduzieren und recheneffiziente, skalenübergreifende Modellierungsansätze ermöglichen.
+Wie in Kapitel~\ref{sec:basics_sb} dargelegt, existiert eine Vielzahl potenziell geeigneter Materialkombinationen für Strukturbatterien, deren mechanische und elektrochemische Eigenschaften signifikant variieren können. Für eine zielgerichtete Materialauswahl ist es daher von entscheidender Bedeutung, die maßgeblichen physikalischen Prozesse auf der Mikroebene grundlegend zu verstehen und präzise abzubilden. Nur so lassen sich die komplexen Wechselwirkungen zwischen den Komponenten sowie die resultierenden Kopplungseffekte systematisch erfassen (TZ~1).
+
+Neben der physikalischen Detailtreue spielen Verfahren zur Homogenisierung sowie geometrische Vereinfachungen (siehe Abbildung~\ref{fig:thesis_structure}) eine zentrale Rolle innerhalb der skalenübergreifenden Modellierung. Die Homogenisierung bildet hierbei die methodische Basis, um mittels Repräsentativer Volumenelemente den Einfluss mikroskaligen Materialverhaltens auf höheren Ebenen, wie der Meso- und Makroebene, zu berücksichtigen, ohne die Rechenzeit unverhältnismäßig zu steigern.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{monografie_structure.pdf}
+    \caption{Struktur der Arbeit und methodischer Ablauf im Überblick.}
+    \label{fig:thesis_structure}
+\end{figure}
+
+Diese RVE-Ansätze müssen nicht zwangsläufig auf klassischen Finite-Elemente-Methoden (FEM) beruhen (siehe Kapitel~\ref{sec:rve_methodology}). Insbesondere für den Strukturelektrolyten, dessen Porenstruktur mehrere Größenordnungen umfasst, können durch den Einsatz spezialisierter Verfahren sowohl das Steifigkeitsverhalten als auch die Transporteigenschaften effizient vorhergesagt werden (Kapitel~\ref{sec:sim_sbe}). Durch die Integration verschiedener Homogenisierungsansätze und gezielter Vereinfachungen wird eine recheneffiziente Multiskalensimulation realisiert (TZ~2), die das Verhalten klassischer Lithium-Ionen-Batterien sowie innovativer Strukturbatterien präzise abbildet (TZ~3; siehe Kapitel~\ref{sec:multi_scale}).
+
+Für groß angelegte Voranalysen diverser Materialkombinationen kann die Anzahl der erforderlichen Materialparameter jedoch noch weiter reduziert werden. Durch die Ableitung eines recheneffizienten analytischen Berechnungsansatzes wird eine schnelle Vorhersage der maßgeblichen Zielgrößen — insbesondere der Energiedichte sowie der Zug- und Biegesteifigkeit — ermöglicht (Kapitel~\ref{sec:analytical_approach}). Dies erlaubt erstmalig ein systematisches Screening von 6.600 Materialkombinationen. Die daraus resultierenden Ergebnisse identifizieren vielversprechende Konfigurationen und bilden die essenzielle Grundlage für die weitere Materialentwicklung. 
+
+Die im Rahmen dieser Arbeit vorgestellten Modelle wurden mittels der Programmiersprache \texttt{Python} implementiert. Zur numerischen Lösung der gekoppelten Feldprobleme innerhalb der FEM wurde die Bibliothek \texttt{FEniCSx} verwendet.
 
 
-%Modellierungsstrategie:
-%Die numerische Umsetzung erfolgt in dieser Arbeit unter Verwendung der Open-Source-Plattform \textsc{FEniCSx}~\cite{LoggEtAl2012}. 
 \section{\label{sec:existing_micro_models}Mikroskalenmodelle}
 
 Die mikroskalige Beschreibung bildet die physikalische Grundlage für das Verständnis der in Strukturbatterien ablaufenden elektrochemischen, thermischen und mechanischen Prozesse innerhalb der Batteriestruktur. Auf dieser Ebene wird unabhängig von der späteren Funktion als Anode oder Kathode das grundsätzliche Zusammenspiel zwischen der festen Phase (dem Aktivmaterial) und der flüssigen Phase (dem Elektrolyten) betrachtet. In dieser mikroskopischen Betrachtungsweise gelten für beide Elektroden dieselben physikalischen Gesetzmäßigkeiten der Diffusion und Interkalation. Erst durch die makroskopische Architektur der Zelle wird festgelegt, welche Seite als Minus- oder Pluspol fungiert. Im Kontext von Strukturbatterien gewinnt diese verallgemeinerte Sichtweise an Bedeutung, da die mechanischen Belastungen und Kopplungseffekte das Materialgefüge auf dieser fundamentalen Ebene beeinflussen, bevor sie sich in der Gesamtleistung der Batterie niederschlagen.
