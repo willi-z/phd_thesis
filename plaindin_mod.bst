@@ -117,7 +117,7 @@
 %%
 %%  NEUE FELDER
 %%  Zur Erfassung der neuen digitalen Online-Medien z.B. Internetquellen, E-journals, E-books,
-%%  E-mail u.a. gibt es die zusaetzlichen Felder: doi, url, urn, lastchecked
+%%  E-mail u.~a. gibt es die zusaetzlichen Felder: doi, url, urn, lastchecked
 %%  Internetquellen werden vorzugsweise mit dem BOOKLET-Typ erfasst.
 %%  Normen, Patente, Schutzrechte sind mit dem MISC-Typ zu erfassen.
 %
@@ -205,7 +205,7 @@ FUNCTION { und } { " u. " }
 %%  oder ausgeschrieben:  FUNCTION { und } { " und " }
 %
 % Einige elektronische Medien erhalten nach DIN 1505 eine "Ergaenzende Angabe"
-% zusaetzlich zum materiellen Typ, z.B. CD ROM oder DVD u.a.:
+% zusaetzlich zum materiellen Typ, z.B. CD ROM oder DVD u.~a.:
 
 FUNCTION { eress } { "Elektronische Ressource" }
 

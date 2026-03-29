@@ -101,14 +101,14 @@
     \put(0.1636769,0.38691623){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{S}\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=19]{quintus_bending_energy.pdf}}%
     \put(0.52575702,-0.00241676){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Energiedichte [Wh/kg]}\end{tabular}}}}%
-    \put(0.01219675,0.50059251){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Biegesteifigkeit [MPa]}\end{tabular}}}}}%
+    \put(0.01219675,0.50059252){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{\textbf{}\textbf{Biegesteifigkeit [MPa]}}\end{tabular}}}}}%
     \put(0.83844504,0.66895058){\color[rgb]{0,0.28627451,0.1254902}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Multifunktionali-}\end{tabular}}}}%
     \put(0.83844505,0.64476744){\color[rgb]{0,0.28627451,0.1254902}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{tätsbereich}\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=20]{quintus_bending_energy.pdf}}%
     \put(0.17175608,0.9391465){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Kohlenstofffaser-\\pouchbag\\\end{tabular}}}}%
     \put(0.101803,0.62643649){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}reine Kohlenstoff-\\faserelektroden\end{tabular}}}}%
-    \put(0.20460488,0.29646263){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Kohlenstoffaser-\\und konventio-\\nellen Elektroden\end{tabular}}}}%
-    \put(0.67514402,0.31051798){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}konventionellen \\Elektroden\end{tabular}}}}%
+    \put(0.20460488,0.29646263){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Kohlenstoffaser-\\und konventio-\\nelle Elektroden\end{tabular}}}}%
+    \put(0.67514402,0.31051798){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}konventionelle \\Elektroden\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=21]{quintus_bending_energy.pdf}}%
     \put(0.10440879,0.94179044){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{A}\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=22]{quintus_bending_energy.pdf}}%

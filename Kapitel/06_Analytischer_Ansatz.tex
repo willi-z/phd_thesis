@@ -1,4 +1,4 @@
-\chapter{Analytische Vorauslegung von Struktrubatterien}\label{sec:analytical_approach}
+\chapter{Analytische Vorauslegung von Strukturbatterien}\label{sec:analytical_approach}
 Während die vorangegangenen Kapitel~\ref{sec:modelling_SB} - \ref{sec:multi_scale} detaillierte numerische Modelle zur Abbildung lokaler Effekte und komplexer Kopplungsphänomene behandelten, steht in diesem Kapitel die praktische Anwendbarkeit für die Systemauslegung im Vordergrund (TZ 4). Für die Dimensionierung multifunktionaler Leichtbaustrukturen unter komplexen Lastprofilen ist es essenziell, bereits in frühen Entwurfsphasen die Wechselwirkungen zwischen Zellchemie und mechanischer Integrität quantifizieren zu können, ohne auf rechenintensive Simulationen angewiesen zu sein.
 
 Der Fokus liegt hierbei auf der Identifikation von methodischen Modellreduktionen, die physikalisch konsistente Vorhersagen über die Energiedichte und das Verformungsverhalten erlauben. Durch die Überführung der elektrochemischen Dynamik in eine quasistatische Betrachtungsweise sowie die Anwendung modifizierter Laminattheorien für das Biegeverhalten wird eine Brücke zwischen Materialkennwerten und der globalen Systemcharakteristik geschlagen. Dies ermöglicht eine effiziente Variantenstudie und bildet die Grundlage für die zielgerichtete Auslegung von Strukturbatterien in realen Leichtbauanwendungen.
@@ -41,10 +41,10 @@ Während die zuvor hergeleiteten Größen auf die elektrochemisch aktive Fläche
     C_{\text{m, Stack}} = \frac{C_{\text{A, Stack}} }{ m_{\text{A, Stack}}}.
 \end{equation}
 
-Daraus ergibt sich die gravimetrische Energiedichte des Stacks unmittelbar aus der massenbezogenen Kapazität und der nutzbaren Zellspannung. Durch Multiplikation dieser beiden Größen erhält man den spezifischen Energieinhalt des Systems.
+Daraus ergibt sich die gravimetrische Energiedichte des Stacks unmittelbar aus der massenbezogenen Kapazität und der nutzbaren Zellspannung. Durch Multiplikation dieser beiden Größen erhält man den spezifischen Energieinhalt des Systems
 \begin{equation}
     \label{eq:grav_energy_density}
-    \Gamma_{\text{Stack}} = C_{\text{m, Stack}} \cdot \left(U_{+} - U_{-}\right)
+    \Gamma_{\text{Stack}} = C_{\text{m, Stack}} \cdot \left(U_{+} - U_{-}\right).
 \end{equation}
 
 % Simultaneously Coupled Mechanical-Electrochemical- Thermal Simulation of Lithium-Ion Cells
@@ -76,8 +76,8 @@ Unter der Annahme, dass alle Einzelschichten beidseitig kraft- oder formschlüss
     \varepsilon_{x,ges} = \varepsilon_{x,i}\\
 \end{equation}
 
-Kennzeichnend für Strukturbatterien mit reinen Flüssig- oder Gelelektrolytsystemen ist, dass diese, im Gegensatz zu Festkörperelektrolyten, über keine mechanisch belastbare Feststoffphase verfügen. Die Zellstruktur kann daher als Schichtung lasttragender Strukturelemente, während der Elektrolyt als mechanisch passive Infiltration in den Zwischenschichten vorliegt.
-Dadurch sind die einzelnen Schichten nicht direkt mit einander verbunden und halten einzig durch den Druck, der durch die äußere Pouchfolie ampliziert wird, aneinander. Unter der Annahme der Verschiebungsstetigkeit an den Schichtgrenzflächen folgt, dass die Krümmung $\kappa$ mit
+Kennzeichnend für Strukturbatterien mit reinen Flüssig- oder Gelelektrolytsystemen ist, dass diese, im Gegensatz zu Festkörperelektrolyten, über keine mechanisch belastbare Feststoffphase verfügen. Die Zellstruktur kann daher als Schichtung lasttragender Strukturelemente beachtet werden, während der Elektrolyt als mechanisch passive Infiltration in den Zwischenschichten vorliegt.
+Dadurch sind die einzelnen Schichten nicht direkt miteinander verbunden und halten einzig durch den Druck, der durch die äußere Pouchfolie ampliziert wird, aneinander. Unter der Annahme der Verschiebungsstetigkeit an den Schichtgrenzflächen folgt, dass die Krümmung $\kappa$ mit
 \begin{equation}
     \label{eq:curvature}
     \kappa = \frac{1}{r} = \frac{M_y}{E I_y}
@@ -90,7 +90,7 @@ Des Weiteren folgt aus dem Momentengleichgewicht, dass das außen angreifende Bi
 \begin{equation}
     M_{b} = \sum_{i}^{n}M_{y,i}
 \end{equation}
-Unter Annahme von rechteckigen Querschnitten mit Breite $b_i$ und Höhe $h_i$ und, dass alle Elektroden näherungsweise gleich breit sind, also $b_i = b$ gilt, folgt für die Belastung einer Einzelschicht durch das Moment $M_i$:
+Unter Annahme von rechteckigen Querschnitten mit Breite $b_i$ und Höhe $h_i$ und dass alle Elektroden näherungsweise gleich breit sind, also $b_i = b$ gilt, folgt für die Belastung einer Einzelschicht durch das Moment $M_i$:
 \begin{align}
     M_{b} &= M_i \sum_{k}^{n}\frac{E_k I_{yy,k}}{E_i I_{yy,i}}\\
     M_{b} &= M_i \frac{\sum_{k}^{n} E_k h_k^3}{E_i h_i^3}\\
@@ -133,7 +133,7 @@ Für diesen Spezialfall ergibt sich die maximale Durchbiegung $u_\text{max,flüs
 \end{equation}
 
 
-Die bisherigen Annäherungen (Gleichungen \ref{eq:curvature} - \ref{eq:bending_fluid}) finden vor allem bei konventionellen Batterien mit nichttragenden Elektrolytschichten eine häufige Verwendung. Für den Fall, wo die Schichten durch das Elektrolyt fest verbunden sind, wie es vorrangig bei Strukturelektrolyten der Fall ist, sind diese Annahmen nur bedingt gültig. Die resultierende Laminatstruktur kann beliebig viele Lagen mit unterschiedlichen Orientierungen aufweisen und wird näherungsweise durch die klassische Laminattheorie (CLT) beschrieben~\cite{Carlstedt2018}. Dabei wird angenommen, dass das Material linear-elastisch ist und kleine Durchbiegungen auftreten.
+Die bisherigen Annäherungen (Gleichungen \ref{eq:curvature} - \ref{eq:bending_fluid}) finden vor allem bei konventionellen Batterien mit nichttragenden Elektrolytschichten eine häufige Verwendung. Für den Fall, dass die Schichten durch das Elektrolyt fest verbunden sind, wie es vorrangig bei Strukturelektrolyten der Fall ist, sind diese Annahmen nur bedingt gültig. Die resultierende Laminatstruktur kann beliebig viele Lagen mit unterschiedlichen Orientierungen aufweisen und wird näherungsweise durch die klassische Laminattheorie (CLT) beschrieben~\cite{Carlstedt2018}. Dabei wird angenommen, dass das Material linear-elastisch ist und kleine Durchbiegungen auftreten.
 
 
 In der CLT wird die Dehnung über der Dicke $z$ des Laminats beschrieben durch
@@ -172,7 +172,7 @@ Durch Einsetzen in die Momentengleichung ergibt
 
 Die Größe
 \begin{equation}
-\mathbf{D}^* = \mathbf{D} - \mathbf{B} \mathbf{A}^{-1} \mathbf{B}.
+\mathbf{D}^* = \mathbf{D} - \mathbf{B} \mathbf{A}^{-1} \mathbf{B}
 \end{equation}
 wird als effektive Biegesteifigkeit eines unsymmetrischen Laminats bezeichnet~\cite{Jones2018}. 
 Damit ergibt sich der Zusammenhang
@@ -216,7 +216,7 @@ Die Dehnung in $x$-Richtung in einer Schicht bei Höhe $z$ ergibt sich zu
 		%\def\svgwidth{\columnwidth}
         \center
 		\includegraphics[width=0.99\textwidth, angle=0]{bending_pre_tests.pdf}
-		\caption{\label{fig:bending_pre_tests}Vereinfachten Bestimmung des Verformungsverhaltens an \textbf{a)} 11-lagigen Aluminium-Probekörper, gefügt mit \textbf{b)} variierenden Anteilen an PVDF und Luft. Vergleich der \textbf{c-d)} 3-Punkt-Biegeversuche mit den \textbf{e)} berechneten Kraft-Verschiebungswerten.}
+		\caption{\label{fig:bending_pre_tests}Vereinfachte Bestimmung des Verformungsverhaltens an \textbf{a)} 11-lagigen Aluminium-Probekörpern, gefügt mit \textbf{b)} variierenden Anteilen an PVDF und Luft. Vergleich der \textbf{c-d)} 3-Punkt-Biegeversuche mit den \textbf{e)} berechneten Kraft-Verschiebungswerten.}
 \end{figure}
 
 Zur Bestimmung der Schichtspannungen wird diese globale Dehnung in die lokale Koordinatenrichtung jeder Schicht transformiert\footnote{je nach Faserwinkel $\theta_i$} und mittels Anwendung des Materialgesetzes bestimmt
@@ -243,7 +243,7 @@ Um diesen intermediären Zustand für die Vorauslegung mathematisch zugänglich 
 
 In dieser Formulierung fungiert $\psi$ als physikalisch interpretierbarer Kopplungsparameter. Ein Wert von $\psi = 1$ repräsentiert das Verhalten einer konventionellen Batterie mit rein flüssigem Elektrolyten, während $\psi \to 0$ den idealen schubfesten Verbund einer monolithischen Strukturbatterie beschreibt.
 
-Die Gegenüberstellung der Ergebnisse aus Bild~\ref{fig:bending_pre_tests}e zeigt, dass der analytische Ansatz die experimentell beobachteten Verformungsverhalten innerhalb des ersten Millimeters relativ gut darstellt. Allerdings weicht mit zunehmender Verformung die lineare Annäherung vom beobachteten nicht-linearen Verhalten ab. Ein Hauptursache könnte hierbei der wachsende Einfluss der geometrischen Nichtlinearitäten sein. Dies würde auch erklären, warum die Abweichung vom linearen Verlauf bereits so frühzeitig zu beobachten ist, wo weitere Einflussfaktoren, wie Plastifizierung noch keine signifikante Rolle spielen. Da dieser analytische Mischungsansatz aber bereits jetzt es ermöglicht, die mechanische Wirksamkeit des infiltrierten Strukturelektrolyten ohne numerische Kontaktmodellierung direkt in die Dimensionierung der Hochleistungsstruktur einzubeziehen, ist dieser rein linearer Ansatz für eine erste analytische Beschreibung des Verhaltens als ausreichend zu bewerten.
+Die Gegenüberstellung der Ergebnisse aus Bild~\ref{fig:bending_pre_tests}e zeigt, dass der analytische Ansatz die experimentell beobachteten Verformungsverhalten innerhalb des ersten Millimeters relativ gut darstellt. Allerdings weicht mit zunehmender Verformung die lineare Annäherung vom beobachteten nicht-linearen Verhalten ab. Eine Hauptursache könnte hierbei der wachsende Einfluss der geometrischen Nichtlinearitäten sein. Dies würde auch erklären, warum die Abweichung vom linearen Verlauf bereits so frühzeitig zu beobachten ist, wo weitere Einflussfaktoren, wie Plastifizierung, noch keine signifikante Rolle spielen. Da dieser analytische Mischungsansatz aber bereits jetzt ermöglicht, die mechanische Wirksamkeit des infiltrierten Strukturelektrolyten ohne numerische Kontaktmodellierung direkt in die Dimensionierung der Hochleistungsstruktur einzubeziehen, ist dieser rein linearere Ansatz für eine erste analytische Beschreibung des Verhaltens als ausreichend zu bewerten.
 
 \section{Anwendung und Validierung der analytischen Vorauslegung}
 
@@ -257,10 +257,10 @@ Dass die analytischen Gleichungen ebenso auf konventionelle Systeme übertragbar
 
 In beiden Fällen weisen die analytischen Ergebnisse eine gute Übereinstimmung mit den experimentellen Daten auf. Die Abweichungen liegen für die ElViS"=Strukturbatterie unter 5~\%, während sie bei der Referenzbatterie unter 10~\% verbleiben. Diese Ergebnisse bestätigen, dass die hergeleiteten analytischen Ansätze eine verlässliche Grundlage für die schnelle Abschätzung der Leistungsfähigkeit von Strukturbatterien bieten und somit als effizientes Werkzeug in der frühen Designphase eingesetzt werden können (TZ 4).
 
-Nachdem die Validität sichergestellt ist, können die analytischen Gleichungen nun für die systematische Untersuchung von Designparametern und deren Einfluss auf die Energiedichte und das mechanische Verhalten genutzt werden (Kapitel~\ref{sec:battery_identification}). Für die Entwicklung von Designrichtlinien und die Identifikation von Optimierungspotenzialen lassen sich aber auch so breits einige Erkenntnisse ableiten. 
+Nachdem die Validität sichergestellt ist, können die analytischen Gleichungen nun für die systematische Untersuchung von Designparametern und deren Einfluss auf die Energiedichte und das mechanische Verhalten genutzt werden (Kapitel~\ref{sec:battery_identification}). Für die Entwicklung von Designrichtlinien und die Identifikation von Optimierungspotenzialen lassen sich aber auch hierdurch bereits einige Erkenntnisse ableiten. 
 
 Die Gleichung~\ref{eq:capacity_limitation} zeigt, dass die Kapazität der Zelle durch die limitierende Elektrode bestimmt wird. Daher ist es entscheidend, die Kapazitäten von Anode und Kathode sorgfältig aufeinander abzustimmen, um die Energiedichte zu maximieren. Ein Übermaß an Kapazität auf einer Seite führt zu ungenutztem Potenzial und damit zu einer suboptimalen Energiedichte. Da faserbasierte Elektroden signifikant geringere Energiedichten aufweisen, ist in der Kombination mit konventionellen Kathoden anzuraten, die Dicke der Faseranode zu erhöhen. 
 
-Ein ebenfalls vielversprechender Ansatz lässt sich in Gleichung~\ref{eq:capacity_stack} finden. Die lineare Skalierung der Kapazität mit der Anzahl der Zellen legt nahe, dass die Stapelung von mehr Zellen eine direkte Möglichkeit darstellt, die Energiedichte zu erhöhen. Auch wirkt sich die damit verbunde größere Dicke sehr positiv auf die Biegesteifigkeit aus. In der Praxis führen jedoch die damit verbundenen Herstellungsherausforderungen, wie die Gewährleistung einer homogenen Zellverschaltung und die Vermeidung von Kurzschlüssen, zu einem Kompromiss der häufig kleinere Zellstapel bevorzugt\footnote{Fast alle derzeit bekannten Struktubatterien bestehen aus lediglich einer Zelle, konventionlle Batterien weisen bis etwa 20 Zellen pro Stack auf.}.
+Ein ebenfalls vielversprechender Ansatz lässt sich in Gleichung~\ref{eq:capacity_stack} finden. Die lineare Skalierung der Kapazität mit der Anzahl der Zellen legt nahe, dass die Stapelung von mehr Zellen eine direkte Möglichkeit darstellt, die Energiedichte zu erhöhen. Auch wirkt sich die damit verbundene größere Dicke sehr positiv auf die Biegesteifigkeit aus. In der Praxis führen jedoch die damit verbundenen Herstellungsherausforderungen, wie die Gewährleistung einer homogenen Zellverschaltung und die Vermeidung von Kurzschlüssen, zu einem Kompromiss, be dem häufig kleinere Zellstapel bevorzugt werden\footnote{Fast alle derzeit bekannten Strukturbatterien bestehen aus lediglich einer Zelle, konventionlle Batterien weisen bis etwa 20 Zellen pro Stack auf.}.
 
-Abschließend sei erwähnt, dass beide Gleichungen~\ref{eq:bending_sbe_0} und \ref{eq:bending_sbe_100}, die die Teile der Gesamtverformung beschreiben, von steiferen Materialien in den beiden äußersten Schichten am meisten profitieren. Daher scheint gerade für Pouchfolien die Verwendung von Kohlenstofffasern besonders geeignet zu sein. Die Herausforderung besteht hier allerdings darin, die notwendige Dichtigkeit der Pouchfolie zu gewährleisten (Tabelle~\ref{tab:failure_modes}), da Kohlenstofffasergelege von Natur aus porös sind und damit die Gefahr von Elektrolytleckagen besteht \footnote{In selbst betreuten Arbeiten wurde dieses Thema bereits erstmalig untersucht, allerdings wurde keine funktionalintegrierte Lösung gefunden.}.
+Abschließend sei erwähnt, dass beide Gleichungen~\ref{eq:bending_sbe_0} und \ref{eq:bending_sbe_100}, die die Teile der Gesamtverformung beschreiben, von steiferen Materialien in den beiden äußersten Schichten am meisten profitieren. Daher scheint gerade für Pouchfolien die Verwendung von Kohlenstofffasern besonders geeignet zu sein. Die Herausforderung besteht hier allerdings darin, die notwendige Dichtigkeit der Pouchfolie zu gewährleisten (Tabelle~\ref{tab:failure_modes}), da Kohlenstofffasergelege von Natur aus porös sind und damit die Gefahr von Elektrolytleckagen besteht\footnote{In selbst betreuten Arbeiten wurde dieses Thema bereits erstmalig untersucht, allerdings wurde keine funktionalintegrierte Lösung gefunden.}.
