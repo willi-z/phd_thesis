@@ -29,14 +29,14 @@ Analog zur Mechanik werden für den elektrochemischen Bereich effektive Transpor
 \end{equation}
 Hierbei zeigt sich der Vorteil der RVE-Methodik: Komplexe geometrische Hindernisse für den Ionenfluss werden in einem einzigen anisotropen Tensor zusammengefasst. Dies reduziert die Rechenlast auf Systemebene massiv, da dort keine feine Auflösung der Faserzwischenräume mehr erforderlich ist.
 
-\subsection{Automatische Generierung von RVEs}
+\subsection{\label{sec:automated_rves}Automatische Generierung von RVEs}
 
 Wie in Bild~\ref{fig:homogenisation} beispielhaft angedeutet ist, besteht eine große Varianz an unterschiedlichen Mikroarchitekturen, die es bei der RVE-Generierung zu berücksichtigen gilt.
 Zur Steigerung der Automatisierbarkeit wird eine Strategie gewählt, die auf sehr feinen, regulären Blockelementen basiert. Anstatt das Netz aufwendig an die komplexen Geometrien anzupassen\footnote{Auch als Remeshing bezeichnet}, wird einmal ein hochaufgelöstes Ausgangsnetz verwendet, bei dem jedem Element über eine Integrationspunkt-Zuweisung die entsprechenden Materialeigenschaften der jeweiligen Phase\footnote{Faser, Matrix oder Aktivmaterial} zugeordnet werden.
 
 Dieser Ansatz ermöglicht eine robuste Skalierung des Homogenisierungsprozesses. Durch den Verzicht auf geometrisches Remeshing können Variationen der Mikrostruktur\footnote{Z.~B. durch die Verschiebung von Fasern oder die Änderung von Volumenanteilen} rein algorithmisch durch eine Neuzuweisung der Materialparameter im bestehenden Mesh realisiert werden. Außerdem sind Herausforderungen, wie etwa ein periodisches Netz beizubehalten, oder Singularitäten durch ungünstige Elementverzerrungen quasi nicht existent. Dies ist insbesondere für die Generierung großer Datensätze im Rahmen der nachfolgenden Look-up Tabellen vorteilhaft.
 
-\subsection{Effizienter Einsatz von Look-Up Tabellen für die skalenübergreifende Simulation}
+\subsection{\label{sec:look_up_tables}Effizienter Einsatz von Look-Up Tabellen für die skalenübergreifende Simulation}
 
 Um eine rechenintensive Live-Kopplung während des eigentlichen Simulationsprozesses zu vermeiden\footnote{Auch als Full"=Scale Multi"=Level FE Ansätze bezeichnet}, wird eine Strategie der Vorverarbeitung (Pre"=processing) verfolgt~\cite{ZohdiWriggers2005, Geers2008}. Die effektiven Eigenschaften werden für einen definierten Parameterraum der Mikrostruktur\footnote{beispielsweise variierende Faser-Volumenanteile oder unterschiedliche Lithiierungsgrade} vorab berechnet. Die resultierenden Datenpunkte werden in multi"=dimensionalen Look-up Tabellen hinterlegt. Während der globalen Bauteilsimulation greift der Solver lediglich auf diese vorkalkulierten Werte zu. Zudem ermöglicht es dieser Ansatz, nichtlineare Effekte effizient zu berücksichtigen:
 \begin{equation}
